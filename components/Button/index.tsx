@@ -1,6 +1,2 @@
-
-export function Button() {
-    return (
-        <button className='btn'>按钮</button>
-    )
-}
+export { Button } from './Button'
+export type { ButtonProps } from './Button'
