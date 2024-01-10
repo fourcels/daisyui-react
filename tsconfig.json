@@ -20,7 +20,12 @@
     "strict": true,
     "noUnusedLocals": false,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "daisyui-react": [
+        "./components"
+      ]
+    }
   },
   "include": [
     "docs",

@@ -4,95 +4,108 @@ import { twMerge } from 'tailwind-merge'
 import { Loading } from '../Loading'
 
 export type ButtonProps<
-    T extends ElementType = 'button'
+  T extends ElementType = 'button'
 > = React.HTMLAttributes<HTMLButtonElement>
-    & ComponentBaseProps
-    & {
-        shape?: ComponentShape
-        size?: ComponentSize
-        variant?: 'outline' | 'link'
-        color?: ComponentColor
-        glass?: boolean
-        wide?: boolean
-        fullWidth?: boolean
-        responsive?: boolean
-        animation?: boolean
-        loading?: boolean
-        active?: boolean
-        startIcon?: ReactNode
-        endIcon?: ReactNode
-        disabled?: boolean
-        tag?: T
-    }
+  & ComponentBaseProps
+  & {
+    shape?: ComponentShape
+    size?: ComponentSize
+    variant?: 'outline' | 'link'
+    color?: ComponentColor
+    glass?: boolean
+    wide?: boolean
+    fullWidth?: boolean
+    responsive?: boolean
+    animation?: boolean
+    loading?: boolean
+    active?: boolean
+    startIcon?: ReactNode
+    endIcon?: ReactNode
+    disabled?: boolean
+    tag?: T
+  }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>((
-    {
-        children,
-        shape,
-        size,
-        variant,
-        color,
-        glass,
-        startIcon,
-        endIcon,
-        wide,
-        fullWidth,
-        responsive,
-        animation = true,
-        loading,
-        active,
-        disabled,
-        dataTheme,
-        className,
-        style,
-        tag: Tag = 'button',
-        ...props
-    },
-    ref
+  {
+    children,
+    shape,
+    size,
+    variant,
+    color,
+    glass,
+    startIcon,
+    endIcon,
+    wide,
+    fullWidth,
+    responsive,
+    animation = true,
+    loading,
+    active,
+    disabled,
+    dataTheme,
+    className,
+    style,
+    tag: Tag = 'button',
+    ...props
+  },
+  ref
 ) => {
-    const classes = twMerge(
-        'btn',
-        size === 'lg' && 'btn-lg',
-        size === 'md' && 'btn-md',
-        size === 'sm' && 'btn-sm',
-        size === 'xs' && 'btn-xs',
-        shape === 'circle' && 'btn-circle',
-        shape === 'square' && 'btn-square',
-        variant === 'outline' && 'btn-outline',
-        variant === 'link' && 'btn-link',
-        color === 'neutral' && 'btn-neutral',
-        color === 'primary' && 'btn-primary',
-        color === 'secondary' && 'btn-secondary',
-        color === 'accent' && 'btn-accent',
-        color === 'info' && 'btn-info',
-        color === 'success' && 'btn-success',
-        color === 'warning' && 'btn-warning',
-        color === 'error' && 'btn-error',
-        color === 'ghost' && 'btn-ghost',
-        glass && 'glass',
-        wide && 'btn-wide',
-        fullWidth && 'btn-block',
-        responsive && 'btn-xs sm:btn-sm md:btn-md lg:btn-lg',
-        !animation && 'no-animation',
-        active && 'btn-active',
-        disabled && 'btn-disabled',
-        className,
-    )
-    return (
-        <Tag
-            {...props}
-            ref={ref}
-            data-theme={dataTheme}
-            className={classes}
-            style={style}
-            disabled={disabled}
-        >
-            {loading && <Loading size={size} />}
-            {startIcon && !loading && startIcon}
-            {children}
-            {endIcon}
-        </Tag>
-    )
+  const sizes = {
+    lg: 'btn-lg',
+    md: 'btn-md',
+    sm: 'btn-sm',
+    xs: 'btn-xs',
+  }
+  const shapes = {
+    circle: 'btn-circle',
+    square: 'btn-square',
+  }
+  const variants = {
+    outline: 'btn-outline',
+    link: 'btn-link',
+  }
+  const colors = {
+    neutral: 'btn-neutral',
+    primary: 'btn-primary',
+    secondary: 'btn-secondary',
+    accent: 'btn-accent',
+    info: 'btn-info',
+    success: 'btn-success',
+    warning: 'btn-warning',
+    error: 'btn-error',
+    ghost: 'btn-ghost',
+  }
+
+  const classes = twMerge(
+    'btn',
+    size && sizes[size],
+    shape && shapes[shape],
+    variant && variants[variant],
+    color && colors[color],
+    glass && 'glass',
+    wide && 'btn-wide',
+    fullWidth && 'btn-block',
+    responsive && 'btn-xs sm:btn-sm md:btn-md lg:btn-lg',
+    !animation && 'no-animation',
+    active && 'btn-active',
+    disabled && 'btn-disabled',
+    className,
+  )
+  return (
+    <Tag
+      {...props}
+      ref={ref}
+      data-theme={dataTheme}
+      className={classes}
+      style={style}
+      disabled={disabled}
+    >
+      {loading && <Loading size={size} />}
+      {startIcon && !loading && startIcon}
+      {children}
+      {endIcon}
+    </Tag>
+  )
 })
 
 Button.displayName = 'Button'
