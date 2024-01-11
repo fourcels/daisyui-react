@@ -1,21 +1,23 @@
 import React, { FC, Suspense, useRef, useState } from 'react';
 import { LiveProvider, LiveError, LivePreview, LiveEditor } from "react-live";
 import * as scope from 'daisyui-react'
+import { Button, Divider } from 'daisyui-react'
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { twMerge } from 'tailwind-merge';
 
 
 
 export function CodePreview(props: {
     code: string;
     lang: string;
-    loadComponent: () => Promise<{ default: React.ComponentType }>
+    title?: string;
+    description?: string;
+    live: boolean;
+    loadComponent?: () => Promise<{ default: React.ComponentType }>
 }) {
-    const timer = useRef<number>()
-    const [showCode, setShowCode] = useState(false)
-    const [isCopied, setIsCopied] = useState(false)
     const code = React.useMemo(() => {
         return decodeURIComponent(atob(props.code))
     }, [props.code])
@@ -30,45 +32,123 @@ export function CodePreview(props: {
         }
         if (code) {
             return (
-                <LiveProvider code={code} scope={scope}>
+                <LiveProvider code={`<>${code}</>`} scope={scope}>
                     <LiveError />
-                    <LivePreview />
+                    <LivePreview className='flex items-center justify-center flex-wrap gap-4' />
                 </LiveProvider>
             )
         }
         return null
     }, [props.loadComponent, code])
-    return (
-        <div className='border border-slate-700 rounded'>
-            <div className='relative'>
-                <div className='translate-x-0 py-10 px-6'>
-                    {component}
-                </div>
-                <scope.Button onClick={() => setShowCode(!showCode)} className='absolute bottom-10 right-10' color='primary' variant='outline'>
-                    {showCode ? <IconCodeExpand /> : <IconCode />}
-                </scope.Button>
-            </div>
 
+    const live = React.useMemo(() => {
+        if (!['tsx', 'jsx'].includes(props.lang)) {
+            return false
+        }
+        return props.live
+    }, [props.lang, props.live])
+
+    return (
+        <div className='border rounded'>
+            {live && (
+                <div>
+                    <div className='translate-x-0 py-10 px-6'>
+                        {component}
+                    </div>
+                    <CodeInfo title={props.title} description={props.description} />
+                </div>
+            )}
+            <SourceCode live={live} lang={props.lang} code={code} />
+        </div>
+    )
+}
+
+
+const languageNames: Record<string, string> = {
+    diff: 'Diff',
+    html: 'HTML',
+    js: 'JavaScript',
+    jsx: 'JavaScript',
+    md: 'Markdown',
+    mdx: 'MDX',
+    sh: 'Shell',
+    txt: 'Plain text',
+    ts: 'TypeScript',
+    tsx: 'TypeScript'
+}
+
+function SourceCodeContent({ code, lang, className }: {
+    code: string;
+    lang: string;
+    className?: string
+}) {
+    const timer = useRef<number>()
+    const [isCopied, setIsCopied] = useState(false)
+    return (
+        <div className={twMerge('group relative', className)} >
+            {lang && (
+                <span className='p-1 rounded-bl-md absolute right-0 top-0 dark:bg-black'>{languageNames[lang] || lang.toUpperCase()}</span>
+            )}
+            <CopyToClipboard
+                text={code}
+                onCopy={() => {
+                    setIsCopied(true);
+                    clearTimeout(timer.current);
+                    timer.current = window.setTimeout(() => setIsCopied(false), 2000);
+                }}
+            >
+                <Button className='group-hover:block hidden absolute bottom-5 right-5' variant='outline'>
+                    {isCopied ? <IconCopied /> : <IconCopy />}
+                </Button>
+            </CopyToClipboard>
+            <SyntaxHighlighter customStyle={{ margin: 0, padding: "40px 24px" }} language={lang} style={oneDark}>
+                {code}
+            </SyntaxHighlighter>
+        </div>
+    )
+}
+
+function SourceCode({ code, lang, live }: {
+    lang: string;
+    code: string;
+    live: boolean;
+}) {
+    const [showCode, setShowCode] = useState(false)
+    if (!live) {
+        return (
+            <SourceCodeContent lang={lang} code={code} />
+        )
+    }
+    return (
+        <div>
+            <div className='flex justify-center py-2 border-t cursor-pointer select-none' onClick={() => setShowCode(!showCode)}>
+                {showCode ? <IconCode /> : <IconCodeExpand />}
+            </div>
             {showCode && (
-                <div className='border-t border-slate-700 relative'>
-                    <CopyToClipboard
-                        text={code}
-                        onCopy={() => {
-                            setIsCopied(true);
-                            clearTimeout(timer.current);
-                            timer.current = window.setTimeout(() => setIsCopied(false), 2000);
-                        }}
-                    >
-                        <scope.Button className='absolute top-10 right-10' color='primary' variant='outline'>
-                            {isCopied ? <IconCopied /> : <IconCopy />}
-                        </scope.Button>
-                    </CopyToClipboard>
-                    <SyntaxHighlighter customStyle={{ margin: 0, padding: "40px 24px" }} language={props.lang} style={oneDark}>
-                        {code}
-                    </SyntaxHighlighter>
+                <div>
+                    <SourceCodeContent className="border-t border-dashed" lang={lang} code={code} />
+                    <div onClick={() => setShowCode(false)} className='flex justify-center items-center gap-1 py-2 border-t cursor-pointer select-none'>
+                        <IconUp /> 收起
+                    </div>
                 </div>
             )}
         </div>
+
+    )
+}
+
+function CodeInfo({ title, description }: {
+    title?: string;
+    description?: string;
+}) {
+    if (!title && !description) {
+        return null
+    }
+    return (
+        <>
+            <Divider className='m-0'>{title}</Divider>
+            {description && <div className='p-6'>{description}</div>}
+        </>
     )
 }
 
@@ -123,4 +203,8 @@ const IconCopied: FC = () => (
             d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"
         />
     </svg>
+)
+
+const IconUp: FC = () => (
+    <svg viewBox="64 64 896 896" focusable="false" data-icon="up" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M890.5 755.3L537.9 269.2c-12.8-17.6-39-17.6-51.7 0L133.5 755.3A8 8 0 00140 768h75c5.1 0 9.9-2.5 12.9-6.6L512 369.8l284.1 391.6c3 4.1 7.8 6.6 12.9 6.6h75c6.5 0 10.3-7.4 6.5-12.7z"></path></svg>
 )

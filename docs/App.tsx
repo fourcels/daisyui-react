@@ -10,14 +10,15 @@ import { CodePreview } from './components/CodePreview'
 
 
 import Button, { frontmatter } from '../components/Button/Button.mdx'
-
-console.log(frontmatter)
+import { Layout } from './components/Layout';
 
 const router = createBrowserRouter([
   {
     path: "",
     element: (
-      <Button />
+      <Layout frontmatter={frontmatter}>
+        <Button />
+      </Layout>
     ),
   }
 ]);

@@ -1,10 +1,154 @@
 ---
 title: Button
-desc: Buttons allow the user to take actions or make choices.
+description: Buttons allow the user to take actions or make choices.
 ---
 
-```tsx
+
+### Button
+```tsx live
 <Button>Button</Button>
 ```
 
-<code src="./demos/demo1.tsx" />
+### Buttons with brand colors
+```tsx live
+<Button>Button</Button>
+<Button color="neutral">Neutral</Button>
+<Button color="primary">Primary</Button>
+<Button color="secondary">Secondary</Button>
+<Button color="accent">Accent</Button>
+<Button color="ghost">Ghost</Button>
+<Button variant="link">Link</Button>
+```
+
+### Active buttons
+```tsx live
+<Button active>Default</Button>
+<Button active color="neutral">Neutral</Button>
+<Button active color="primary">Primary</Button>
+<Button active color="secondary">Secondary</Button>
+<Button active color="accent">Accent</Button>
+<Button active color="ghost">Ghost</Button>
+<Button active variant="link">Link</Button>
+```
+### Buttons with state colors
+```tsx live
+<Button color="info">Info</Button>
+<Button color="success">Success</Button>
+<Button color="warning">Warning</Button>
+<Button color="error">Error</Button>
+```
+
+### Outline buttons
+```tsx live
+<Button variant="outline">Default</Button>
+<Button variant="outline" color="primary">Primary</Button>
+<Button variant="outline" color="secondary">Secondary</Button>
+<Button variant="outline" color="accent">Accent</Button>
+```
+
+
+### Outline buttons with state colors
+```tsx live
+<Button variant="outline" color="info">Info</Button>
+<Button variant="outline" color="success">Success</Button>
+<Button variant="outline" color="warning">Warning</Button>
+<Button variant="outline" color="error">Error</Button>
+```
+
+
+### Button sizes
+```tsx live
+<Button size="lg">Large</Button>
+<Button size="md">Normal</Button>
+<Button size="sm">Small</Button>
+<Button size="xs">Tiny</Button>
+```
+
+
+### Responsive button
+```tsx live
+/**
+ * description: This button will have different sizes on different browser viewpoints
+ */
+<Button responsive>Responsive</Button>
+```
+
+
+### Wide button
+```tsx live
+<Button wide>Wide</Button>
+```
+
+
+### Glass button
+```tsx live
+<Button glass>Glass button</Button>
+```
+
+### Buttons with different HTML tags
+```tsx live
+/**
+ * description: You can use `btn` class on <button>, <input>, <a>, etc...
+ */
+
+<Button tag="a">Link</Button>
+<Button type="submit">Button</Button>
+<Button tag="input" type="button" value="Input" />
+<Button tag="input" type="submit" value="Submit" />
+<Button tag="input" type="radio" aria-label="Radio" />
+<Button tag="input" type="checkbox" aria-label="Checkbox" />
+<Button tag="input" type="reset" aria-label="Reset" />
+```
+
+### Disabled buttons
+```tsx live
+<Button disabled>Disabled</Button>
+```
+
+### Square button
+```tsx live
+<Button shape="square">
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+</Button>
+<Button shape="square" variant="outline">
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+</Button>
+```
+
+### Circle button
+```tsx live
+<Button shape="circle">
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+</Button>
+<Button shape="circle" variant="outline">
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+</Button>
+```
+
+### Icon at start
+```tsx live
+<Button startIcon={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>}>
+    Button
+</Button>
+```
+### Icon at end
+```tsx live
+<Button endIcon={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>}>
+    Button
+</Button>
+```
+
+### Button block
+```tsx live
+<Button fullWidth>block</Button>
+```
+
+### Button with loading spinner
+```tsx live
+<Button loading>loading</Button>
+```
+
+### Button without click animation
+```tsx live
+<Button animation={false}>I don't have click animation</Button>
+```

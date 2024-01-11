@@ -13,6 +13,9 @@ import { fromMarkdown } from 'mdast-util-from-markdown'
 import { mdxFromMarkdown } from 'mdast-util-mdx'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
+import remarkToc from "remark-toc";
+import rehypeSlug from "rehype-slug";
+
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -21,7 +24,11 @@ export default defineConfig({
       remarkPlugins: [
         remarkFrontmatter,
         remarkMdxFrontmatter,
+        remarkToc,
         remarkCode,
+      ],
+      rehypePlugins: [
+        rehypeSlug,
       ],
       providerImportSource: "@mdx-js/react",
     }),
@@ -37,10 +44,10 @@ export default defineConfig({
 
 function remarkCode() {
   return (tree: Root, file: VFile) => {
+    console.log(tree)
     visit(tree, 'code', (node, index, parent) => {
-      console.log(node)
       const { code, frontmatter } = parseCodeFrontmatter(node.value)
-      const estree = fromMarkdown(`<CodePreview lang="${node.lang}" code="${btoa(encodeURIComponent(code))}" {...${JSON.stringify(frontmatter)}} />`, {
+      const estree = fromMarkdown(`<CodePreview ${node.meta} lang="${node.lang}" code="${btoa(encodeURIComponent(code))}" {...${JSON.stringify(frontmatter)}} />`, {
         extensions: [mdxjs()],
         mdastExtensions: [mdxFromMarkdown()]
       })
@@ -58,7 +65,7 @@ function remarkCode() {
       const lang = path.extname(src).substring(1)
       const raw = fs.readFileSync(src, { encoding: 'utf-8' })
       const { code, frontmatter } = parseCodeFrontmatter(raw)
-      const estree = fromMarkdown(`<CodePreview lang="${lang}" code="${btoa(encodeURIComponent(code))}" {...${JSON.stringify(frontmatter)}} loadComponent={() => import("${src}")}/>`, {
+      const estree = fromMarkdown(`<CodePreview live lang="${lang}" code="${btoa(encodeURIComponent(code))}" {...${JSON.stringify(frontmatter)}} loadComponent={() => import("${src}")}/>`, {
         extensions: [mdxjs()],
         mdastExtensions: [mdxFromMarkdown()]
       })

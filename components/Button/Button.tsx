@@ -3,6 +3,26 @@ import { ComponentShape, ComponentSize, ComponentColor, ComponentBaseProps } fro
 import { twMerge } from 'tailwind-merge'
 import { Loading } from '../Loading'
 
+
+//  https://developer.mozilla.org/en-US/docs/Glossary/Void_element
+const VoidElementList: ElementType[] = [
+  'area',
+  'base',
+  'br',
+  'col',
+  'embed',
+  'hr',
+  'img',
+  'input',
+  'link',
+  'keygen',
+  'meta',
+  'param',
+  'source',
+  'track',
+  'wbr',
+]
+
 export type ButtonProps<
   T extends ElementType = 'button'
 > = React.HTMLAttributes<HTMLButtonElement>
@@ -91,21 +111,34 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((
     disabled && 'btn-disabled',
     className,
   )
-  return (
-    <Tag
-      {...props}
-      ref={ref}
-      data-theme={dataTheme}
-      className={classes}
-      style={style}
-      disabled={disabled}
-    >
-      {loading && <Loading size={size} />}
-      {startIcon && !loading && startIcon}
-      {children}
-      {endIcon}
-    </Tag>
-  )
+  if (VoidElementList.includes(Tag)) {
+    return (
+      <Tag
+        {...props}
+        ref={ref}
+        data-theme={dataTheme}
+        className={classes}
+        style={style}
+        disabled={disabled}
+      />
+    )
+  } else {
+    return (
+      <Tag
+        {...props}
+        ref={ref}
+        data-theme={dataTheme}
+        className={classes}
+        style={style}
+        disabled={disabled}
+      >
+        {loading && <Loading size={size} />}
+        {startIcon && !loading && startIcon}
+        {children}
+        {endIcon}
+      </Tag>
+    )
+  }
 })
 
 Button.displayName = 'Button'
