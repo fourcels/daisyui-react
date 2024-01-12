@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 
@@ -27,10 +28,29 @@ function Toc({ toc, className }: {
     toc: Record<string, any>[];
     className?: string;
 }) {
+    const [active, setActive] = useState(0)
+
+    const activeClass = 'before:absolute before:-left-0.5 before:top-0 before:w-0.5 before:h-full before:bg-primary'
+
     return (
-        <ul className={twMerge("border-l-2 pl-4", className)}>
-            {toc.map((item) => (
-                <li key={item.id} className='mb-1'><a href={`#${item.id}`}>{item.title}</a></li>
+        <ul className={className}>
+            {toc.map((item, idx) => (
+                <li key={item.id} className={twMerge('border-l-2 pl-4 py-0.5 relative', active === idx && activeClass)}>
+                    <a
+                        href={`#${item.id}`}
+                        onClick={(e) => {
+                            e.preventDefault()
+                            setActive(idx)
+                            const elem = document.getElementById(item.id)
+                            elem?.scrollIntoView({
+                                behavior: 'smooth'
+                            })
+                            history.replaceState(null, document.title, item.id)
+                        }}
+                    >
+                        {item.title}
+                    </a>
+                </li>
             ))}
         </ul>
     )
