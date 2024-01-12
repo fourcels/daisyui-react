@@ -9,14 +9,14 @@ import { MDXProvider } from '@mdx-js/react'
 import { CodePreview } from './components/CodePreview'
 
 
-import Button, { frontmatter } from '../components/Button/Button.mdx'
+import Button, { frontmatter, toc } from '../components/Button/Button.mdx'
 import { Layout } from './components/Layout';
 
 const router = createBrowserRouter([
   {
     path: "",
     element: (
-      <Layout frontmatter={frontmatter}>
+      <Layout frontmatter={frontmatter} toc={toc}>
         <Button />
       </Layout>
     ),
