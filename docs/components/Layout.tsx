@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { throttle } from 'lodash'
 
 
 export function Layout({ children, frontmatter, toc }: {
@@ -23,6 +24,27 @@ export function Layout({ children, frontmatter, toc }: {
     )
 }
 
+export type AnchorContainer = HTMLElement | Window;
+
+function getOffsetTop(element: HTMLElement, container: AnchorContainer): number {
+    if (!element.getClientRects().length) {
+        return 0;
+    }
+
+    const rect = element.getBoundingClientRect();
+
+    if (rect.width || rect.height) {
+        if (container === window) {
+            container = element.ownerDocument!.documentElement!;
+            return rect.top - container.clientTop;
+        }
+        return rect.top - (container as HTMLElement).getBoundingClientRect().top;
+    }
+
+    return rect.top;
+}
+
+
 
 function Toc({ toc, className }: {
     toc: Record<string, any>[];
@@ -30,7 +52,40 @@ function Toc({ toc, className }: {
 }) {
     const [active, setActive] = useState(0)
 
+    const timer = useRef(0)
+    const animate = useRef(false)
+
+    const setActiveAnchor = (idx: number, id: string) => {
+        setActive(idx)
+        history.replaceState(null, document.title, `#${id}`)
+    }
+
     const activeClass = 'before:absolute before:-left-0.5 before:top-0 before:w-0.5 before:h-full before:bg-primary'
+
+    useEffect(() => {
+        const elems = toc.map((item) => {
+            return document.getElementById(item.id)!
+        })
+        const handleScroll = throttle(() => {
+            if (animate.current) {
+                return
+            }
+            for (let i = 0; i < elems.length; i++) {
+                const elem = elems[i]
+                const elemTop = getOffsetTop(elem, window)
+                if (elemTop + 100 > 0) {
+                    setActiveAnchor(i, elem.id)
+                    break
+                }
+            }
+        }, 200)
+        window.addEventListener("scroll", handleScroll)
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll)
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <ul className={className}>
@@ -40,12 +95,16 @@ function Toc({ toc, className }: {
                         href={`#${item.id}`}
                         onClick={(e) => {
                             e.preventDefault()
-                            setActive(idx)
+                            setActiveAnchor(idx, item.id)
                             const elem = document.getElementById(item.id)
                             elem?.scrollIntoView({
                                 behavior: 'smooth'
                             })
-                            history.replaceState(null, document.title, item.id)
+                            animate.current = true
+                            clearTimeout(timer.current)
+                            timer.current = window.setTimeout(() => {
+                                animate.current = false
+                            }, 1000);
                         }}
                     >
                         {item.title}
