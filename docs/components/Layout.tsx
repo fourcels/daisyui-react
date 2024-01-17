@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { throttle } from 'lodash'
 
@@ -16,7 +16,7 @@ export function Layout({ children, frontmatter, toc }: {
                 {children}
             </article>
             {toc && (
-                <div className='w-64 relative ml-10'>
+                <div className='hidden md:block w-64 relative ml-10'>
                     <Toc toc={toc} className='sticky top-10' />
                 </div>
             )}
@@ -60,7 +60,6 @@ function Toc({ toc, className }: {
         history.replaceState(null, document.title, `#${id}`)
     }
 
-    const activeClass = 'before:absolute before:-left-0.5 before:top-0 before:w-0.5 before:h-full before:bg-primary'
 
     useEffect(() => {
         const elems = toc.map((item) => {
@@ -90,7 +89,7 @@ function Toc({ toc, className }: {
     return (
         <ul className={className}>
             {toc.map((item, idx) => (
-                <li key={item.id} className={twMerge('border-l-2 pl-4 py-0.5 relative', active === idx && activeClass)}>
+                <li key={item.id} className={twMerge('border-l-2 pl-4 py-0.5', active === idx && 'border-primary')}>
                     <a
                         href={`#${item.id}`}
                         onClick={(e) => {
