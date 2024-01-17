@@ -11,7 +11,7 @@ export function Layout({ children, frontmatter, toc }: {
 }) {
     return (
         <div className='flex justify-center mx-auto'>
-            <article className='prose p-10 max-w-4xl flex-1'>
+            <article className='markdown prose p-10 max-w-4xl flex-1'>
                 {frontmatter?.title && <h1>{frontmatter.title}</h1>}
                 {frontmatter?.description && <p>{frontmatter.description}</p>}
                 {children}
@@ -73,7 +73,7 @@ function Toc({ toc, className }: {
             for (let i = 0; i < elems.length; i++) {
                 const elem = elems[i]
                 const elemTop = getOffsetTop(elem, window)
-                if (elemTop + 100 > 0) {
+                if (elemTop + 50 > 0) {
                     setActiveAnchor(i, elem.id)
                     break
                 }

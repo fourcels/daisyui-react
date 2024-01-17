@@ -128,7 +128,7 @@ function SourceCode({ code, lang, live }: {
                 <div>
                     <SourceCodeContent className="border-t border-dashed" lang={lang} code={code} />
                     <div onClick={() => setShowCode(false)} className='flex justify-center items-center gap-1 py-2 border-t cursor-pointer select-none'>
-                        <IconUp /> 收起
+                        <IconUp /> Hide
                     </div>
                 </div>
             )}
