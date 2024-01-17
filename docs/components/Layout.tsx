@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { throttle } from 'lodash'
+import './Layout.scss'
 
 
 export function Layout({ children, frontmatter, toc }: {
@@ -87,9 +88,9 @@ function Toc({ toc, className }: {
     }, [])
 
     return (
-        <ul className={className}>
+        <ul className={twMerge('toc', className)}>
             {toc.map((item, idx) => (
-                <li key={item.id} className={twMerge('border-l-2 pl-4 py-0.5', active === idx && 'border-primary')}>
+                <li key={item.id} className={twMerge('border-l-2 py-0.5', item.rank <= 2 ? 'pl-4' : 'pl-8', active === idx && 'border-primary')}>
                     <a
                         href={`#${item.id}`}
                         onClick={(e) => {
