@@ -22,7 +22,7 @@ export const Control = (
 
     const classes = twMerge(
         'form-control',
-        horizontal && 'flex-row gap-1',
+        horizontal && 'flex-row gap-2 items-center',
         className,
     )
 
@@ -33,7 +33,7 @@ export const Control = (
                     <span className="label-text">{label}</span>
                 </div>
             )}
-            <div>
+            <div className='flex flex-col'>
                 {children}
                 {help && (
                     <div className='label'>

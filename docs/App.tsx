@@ -39,6 +39,19 @@ const router = createBrowserRouter([
       }
     }
   },
+  {
+    path: "toggle",
+    lazy: async () => {
+      const toggle = await import('../components/Toggle/Toggle.mdx')
+      return {
+        element: (
+          <Layout frontmatter={toggle.frontmatter} toc={toggle.toc}>
+            <toggle.default />
+          </Layout>
+        )
+      }
+    }
+  },
 ]);
 
 function App() {

@@ -1,16 +1,23 @@
-import { Select, Form, SelectProps, Divider } from 'daisyui-react';
+import { Select, Form, SelectProps, Divider, Toggle } from 'daisyui-react';
 import React from 'react';
 const { Option } = Select
 
 export default function App() {
-    const [color, setColor] = React.useState<SelectProps['color']>("primary")
+    const [color, setColor] = React.useState<SelectProps['color']>()
     const [size, setSize] = React.useState<SelectProps['size']>("md")
+    const [bordered, setBordered] = React.useState(true)
+    const [disabled, setDisabled] = React.useState(false)
 
     return (
         <>
-            <div className='flex gap-4'>
+            <div className='flex gap-8'>
                 <Form.Control label="Color">
-                    <Select value={color} onChange={(e) => setColor(e.target.value as any)}>
+                    <Select
+                        value={color}
+                        onChange={
+                            (e) => setColor(e.target.value as any)
+                        }>
+                        <Option value="">default</Option>
                         <Option>primary</Option>
                         <Option>secondary</Option>
                         <Option>accent</Option>
@@ -21,26 +28,48 @@ export default function App() {
                     </Select>
                 </Form.Control>
                 <Form.Control label="Size">
-                    <Select value={size} onChange={(e) => setSize(e.target.value as any)}>
+                    <Select
+                        value={size}
+                        onChange={
+                            (e) => setSize(e.target.value as any)
+                        }>
                         <Option>lg</Option>
                         <Option>md</Option>
                         <Option>sm</Option>
                         <Option>xs</Option>
                     </Select>
                 </Form.Control>
+                <Form.Control label="Bordered" horizontal>
+                    <Toggle
+                        checked={bordered}
+                        onChange={
+                            (e) => setBordered(e.target.checked)
+                        }
+                    />
+                </Form.Control>
+                <Form.Control label="Disabled" horizontal>
+                    <Toggle
+                        checked={disabled}
+                        onChange={
+                            (e) => setDisabled(e.target.checked)
+                        }
+                    />
+                </Form.Control>
             </div>
 
             <Divider>Preview</Divider>
 
             <div className='flex justify-center'>
-                <Select defaultValue="" color={color} size={size}>
-                    <Option disabled value="">Pick your favorite Simpson</Option>
-                    <Option>Homer</Option>
-                    <Option>Marge</Option>
-                    <Option>Bart</Option>
-                    <Option>Lisa</Option>
-                    <Option>Maggie</Option>
-                </Select>
+                <Form.Control label="Simpson">
+                    <Select defaultValue="" color={color} size={size} bordered={bordered} disabled={disabled}>
+                        <Option disabled value="">Pick your favorite Simpson</Option>
+                        <Option>Homer</Option>
+                        <Option>Marge</Option>
+                        <Option>Bart</Option>
+                        <Option>Lisa</Option>
+                        <Option>Maggie</Option>
+                    </Select>
+                </Form.Control>
             </div>
         </>
     )
