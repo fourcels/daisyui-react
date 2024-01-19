@@ -23,13 +23,7 @@ export default defineConfig({
       ],
       rehypePlugins: [
         rehypeSlug,
-        [rehypeAutolinkHeadings, {
-          properties: {
-            className: "anchor",
-            ariaHidden: true,
-            tabIndex: -1,
-          }
-        }],
+        rehypeAutolinkHeadings,
         rehypeToc,
       ],
       providerImportSource: "@mdx-js/react",

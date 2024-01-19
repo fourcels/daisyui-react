@@ -5,5 +5,19 @@ description: Select is used to pick a value from a list of options.
 
 ## Examples
 
-### Select
 <code src="./demo/basic.tsx" />
+
+
+## API
+
+Common props: `dataTheme`, `className`, `style`
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| color | Color of Select | `primary` \| `secondary` \| `accent` \| <br/> `info` \| `success` \| `warning` \| `error` \| <br/> `ghost` |  |
+| bordered | Select with border | boolean | true |
+| children | Select content | `Option` \| `Option[]` |  |
+| disabled | Disabled state | boolean | false |
+| size | Size of Select | `xs` \| `sm` \| `md` \| `lg` | `md` |
+
+It accepts all props which native select support.

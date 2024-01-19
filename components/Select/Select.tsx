@@ -20,7 +20,6 @@ export type SelectProps = Omit<
         size?: ComponentSize
         color?: Exclude<ComponentColor, 'neutral'>
         bordered?: boolean
-        borderOffset?: boolean
     }
 
 const SelectInner = forwardRef<HTMLSelectElement, SelectProps>((
@@ -29,7 +28,6 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>((
         size,
         color,
         bordered = true,
-        borderOffset,
         dataTheme,
         className,
         ...props

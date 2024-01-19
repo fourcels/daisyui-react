@@ -10,7 +10,7 @@ export default function App() {
 
     return (
         <>
-            <div className='flex gap-8'>
+            <div className='flex flex-wrap gap-8'>
                 <Form.Control label="Color">
                     <Select
                         value={color}
@@ -61,7 +61,12 @@ export default function App() {
 
             <div className='flex justify-center'>
                 <Form.Control label="Simpson">
-                    <Select defaultValue="" color={color} size={size} bordered={bordered} disabled={disabled}>
+                    <Select
+                        defaultValue=""
+                        color={color}
+                        size={size}
+                        bordered={bordered}
+                        disabled={disabled}>
                         <Option disabled value="">Pick your favorite Simpson</Option>
                         <Option>Homer</Option>
                         <Option>Marge</Option>
