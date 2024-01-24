@@ -18,8 +18,8 @@ export default function App() {
                         }
                         placeholder={{ disabled: false }}
                         items={[
-                            'primary', 'secondary',
-                            'accent', 'info', 'success', 'warning', 'error',
+                            'primary', 'secondary', 'accent',
+                            'info', 'success', 'warning', 'error',
                             'ghost'
                         ]}
                     />

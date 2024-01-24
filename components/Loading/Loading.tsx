@@ -24,27 +24,39 @@ export const Loading = forwardRef<HTMLSpanElement, LoadingProps>((
   },
   ref
 ) => {
+
+  const sizes = {
+    lg: 'loading-lg',
+    md: 'loading-md',
+    sm: 'loading-sm',
+    xs: 'loading-xs',
+  }
+
+  const variants = {
+    spinner: 'loading-outline',
+    dots: 'loading-link',
+    ring: 'loading-link',
+    ball: 'loading-link',
+    bars: 'loading-link',
+    infinity: 'loading-link',
+  }
+  const colors = {
+    neutral: 'loading-neutral',
+    primary: 'loading-primary',
+    secondary: 'loading-secondary',
+    accent: 'loading-accent',
+    info: 'loading-info',
+    success: 'loading-success',
+    warning: 'loading-warning',
+    error: 'loading-error',
+    ghost: 'loading-ghost',
+  }
+
   const classes = twMerge(
     'loading',
-    size === 'lg' && 'loading-lg',
-    size === 'md' && 'loading-md',
-    size === 'sm' && 'loading-sm',
-    size === 'xs' && 'loading-xs',
-    variant === 'spinner' && 'loading-spinner',
-    variant === 'dots' && 'loading-dots',
-    variant === 'ring' && 'loading-ring',
-    variant === 'ball' && 'loading-ball',
-    variant === 'bars' && 'loading-bars',
-    variant === 'infinity' && 'loading-infinity',
-    color === 'neutral' && 'text-neutral',
-    color === 'primary' && 'text-primary',
-    color === 'secondary' && 'text-secondary',
-    color === 'accent' && 'text-accent',
-    color === 'info' && 'text-info',
-    color === 'success' && 'text-success',
-    color === 'warning' && 'text-warning',
-    color === 'error' && 'text-error',
-    color === 'ghost' && 'text-ghost',
+    size && sizes[size],
+    variant && variants[variant],
+    color && colors[color],
     className,
   )
   return (

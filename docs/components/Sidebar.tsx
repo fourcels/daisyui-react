@@ -12,6 +12,7 @@ export function Sidebar({
                 <Link to="/components/button">Button</Link>
                 <Link to="/components/select">Select</Link>
                 <Link to="/components/toggle">Toggle</Link>
+                <Link to="/components/tooltip">Tooltip</Link>
             </div>
         </div>
     )

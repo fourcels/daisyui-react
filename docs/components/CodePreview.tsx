@@ -1,7 +1,7 @@
 import React, { FC, Suspense, useRef, useState } from 'react';
 import { LiveProvider, LiveError, LivePreview, LiveEditor } from "react-live";
 import * as scope from 'daisyui-react'
-import { Button, Divider } from 'daisyui-react'
+import { Button, Divider, Tooltip } from 'daisyui-react'
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -97,9 +97,11 @@ function SourceCodeContent({ code, lang, className }: {
                     timer.current = window.setTimeout(() => setIsCopied(false), 2000);
                 }}
             >
-                <Button className='group-hover:block hidden absolute bottom-5 right-5' variant='outline'>
-                    {isCopied ? <IconCopied /> : <IconCopy />}
-                </Button>
+                <Tooltip className='group-hover:block hidden absolute bottom-10 right-5' title={isCopied ? 'Copied' : 'Copy code'} position='left'>
+                    <Button variant='outline'>
+                        {isCopied ? <IconCopied /> : <IconCopy />}
+                    </Button>
+                </Tooltip>
             </CopyToClipboard>
             <SyntaxHighlighter
                 customStyle={{
@@ -131,17 +133,21 @@ function SourceCode({ code, lang, live }: {
     return (
         <div>
             <div className='flex justify-center py-2 border-t'>
-                <Button title={showCode ? 'Hide code' : 'Show code'} color="ghost" size='sm' onClick={() => setShowCode(!showCode)}>
-                    {showCode ? <IconCode /> : <IconCodeExpand />}
-                </Button>
+                <Tooltip title={showCode ? 'Hide code' : 'Show code'}>
+                    <Button color="ghost" size='sm' onClick={() => setShowCode(!showCode)}>
+                        {showCode ? <IconCode /> : <IconCodeExpand />}
+                    </Button>
+                </Tooltip>
             </div>
             {showCode && (
                 <div>
                     <SourceCodeContent className="border-t border-dashed" lang={lang} code={code} />
                     <div className='flex justify-center items-center gap-1 py-2 border-t '>
-                        <Button title='Hide code' color="ghost" size='sm' onClick={() => setShowCode(false)}>
-                            <IconUp />Hide
-                        </Button>
+                        <Tooltip title='Hide code'>
+                            <Button color="ghost" size='sm' onClick={() => setShowCode(false)}>
+                                <IconUp />Hide
+                            </Button>
+                        </Tooltip>
                     </div>
                 </div>
             )}
@@ -188,7 +194,6 @@ const IconCopy: FC = () => (
         height={20}
         fill='currentColor'
     >
-        <title>Copy</title>
         <path
             fill="currentcolor"
             fillRule="evenodd"
@@ -210,7 +215,6 @@ const IconCopied: FC = () => (
         height={20}
         fill='currentColor'
     >
-        <title>Copied!</title>
         <path
             fillRule="evenodd"
             d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"
