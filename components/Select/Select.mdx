@@ -5,19 +5,53 @@ description: Select is used to pick a value from a list of options.
 
 ## Examples
 
+### Select
 <code src="./demo/basic.tsx" />
+
+### Select with placeholder
+```tsx live
+<Select placeholder={{disabled: false}} items={["primary", "secondary", "accent"]}/>
+<Select placeholder="Pick color" items={["primary", "secondary", "accent"]}/>
+```
+
+### Select with option children
+```tsx live
+<Select placeholder="Pick color">
+    <Select.Option>primary</Select.Option>
+    <Select.Option>secondary</Select.Option>
+    <Select.Option>accent</Select.Option>
+</Select>
+```
 
 
 ## API
+
+### SelectProps
 
 Common props: `dataTheme`, `className`, `style`
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| color | Color of Select | `primary` \| `secondary` \| `accent` \| <br/> `info` \| `success` \| `warning` \| `error` \| <br/> `ghost` |  |
+| color | Select color | `primary` \| `secondary` \| `accent` \| <br/> `info` \| `success` \| `warning` \| `error` \| <br/> `ghost` | - |
 | bordered | Select with border | boolean | true |
-| children | Select content | `Option` \| `Option[]` |  |
+| children | Select content | Option \| Option[] | - |
 | disabled | Disabled state | boolean | false |
+| items | Select items | SelectItem[] | - |
+| placeholder | Select placeholder | SelectPlaceholder | - |
 | size | Size of Select | `xs` \| `sm` \| `md` \| `lg` | `md` |
 
 It accepts all props which native select support.
+
+### Types
+```tsx
+type SelectItem = string | number | {
+    label: string
+    value?: string | number
+}
+
+type SelectPlaceholder = boolean | string | {
+    content?: string
+    disabled?: boolean = true
+}
+
+```

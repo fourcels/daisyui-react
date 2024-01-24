@@ -14,6 +14,7 @@ import { Layout } from './components/Layout';
 const router = createBrowserRouter([
   {
     Component: Layout,
+    path: '/',
     children: [
       {
         path: "components",

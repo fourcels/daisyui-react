@@ -7,4 +7,21 @@
             content: "#";
         }
     }
+
+    table {
+        min-width: 500px;
+
+        code {
+            color: inherit;
+        }
+
+        td:first-child {
+            font-weight: 600;
+        }
+
+        td:nth-child(3) {
+            color: #c41d7f;
+        }
+    }
+
 }

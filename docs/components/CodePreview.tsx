@@ -85,9 +85,9 @@ function SourceCodeContent({ code, lang, className }: {
     const timer = useRef<number>()
     const [isCopied, setIsCopied] = useState(false)
     return (
-        <div className={twMerge('group relative', className)} >
+        <div className={twMerge('group relative flex', className)} >
             {lang && (
-                <span className='p-1 rounded-bl-md absolute right-0 top-0 dark:bg-black'>{languageNames[lang] || lang.toUpperCase()}</span>
+                <span className='px-2 py-1 rounded-bl-md absolute right-0 top-0 dark:bg-black'>{languageNames[lang] || lang.toUpperCase()}</span>
             )}
             <CopyToClipboard
                 text={code}
@@ -101,7 +101,16 @@ function SourceCodeContent({ code, lang, className }: {
                     {isCopied ? <IconCopied /> : <IconCopy />}
                 </Button>
             </CopyToClipboard>
-            <SyntaxHighlighter customStyle={{ margin: 0, padding: "40px 24px" }} language={lang} style={oneDark}>
+            <SyntaxHighlighter
+                customStyle={{
+                    margin: 0,
+                    padding: "40px 24px",
+                    width: 0,
+                    flex: 1,
+                    maxHeight: 600,
+                }}
+                language={lang}
+                style={oneDark}>
                 {code}
             </SyntaxHighlighter>
         </div>
@@ -121,14 +130,18 @@ function SourceCode({ code, lang, live }: {
     }
     return (
         <div>
-            <div className='flex justify-center py-2 border-t cursor-pointer select-none' onClick={() => setShowCode(!showCode)}>
-                {showCode ? <IconCode /> : <IconCodeExpand />}
+            <div className='flex justify-center py-2 border-t'>
+                <Button title={showCode ? 'Hide code' : 'Show code'} color="ghost" size='sm' onClick={() => setShowCode(!showCode)}>
+                    {showCode ? <IconCode /> : <IconCodeExpand />}
+                </Button>
             </div>
             {showCode && (
                 <div>
                     <SourceCodeContent className="border-t border-dashed" lang={lang} code={code} />
-                    <div onClick={() => setShowCode(false)} className='flex justify-center items-center gap-1 py-2 border-t cursor-pointer select-none'>
-                        <IconUp /> Hide
+                    <div className='flex justify-center items-center gap-1 py-2 border-t '>
+                        <Button title='Hide code' color="ghost" size='sm' onClick={() => setShowCode(false)}>
+                            <IconUp />Hide
+                        </Button>
                     </div>
                 </div>
             )}

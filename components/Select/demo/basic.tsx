@@ -4,7 +4,7 @@ const { Option } = Select
 
 export default function App() {
     const [color, setColor] = React.useState<SelectProps['color']>()
-    const [size, setSize] = React.useState<SelectProps['size']>("md")
+    const [size, setSize] = React.useState<SelectProps['size']>()
     const [bordered, setBordered] = React.useState(true)
     const [disabled, setDisabled] = React.useState(false)
 
@@ -13,31 +13,25 @@ export default function App() {
             <div className='flex flex-wrap gap-8'>
                 <Form.Control label="Color">
                     <Select
-                        value={color}
                         onChange={
                             (e) => setColor(e.target.value as any)
-                        }>
-                        <Option value="">default</Option>
-                        <Option>primary</Option>
-                        <Option>secondary</Option>
-                        <Option>accent</Option>
-                        <Option>success</Option>
-                        <Option>warning</Option>
-                        <Option>error</Option>
-                        <Option>ghost</Option>
-                    </Select>
+                        }
+                        placeholder={{ disabled: false }}
+                        items={[
+                            'primary', 'secondary',
+                            'accent', 'info', 'success', 'warning', 'error',
+                            'ghost'
+                        ]}
+                    />
                 </Form.Control>
                 <Form.Control label="Size">
                     <Select
-                        value={size}
                         onChange={
                             (e) => setSize(e.target.value as any)
-                        }>
-                        <Option>lg</Option>
-                        <Option>md</Option>
-                        <Option>sm</Option>
-                        <Option>xs</Option>
-                    </Select>
+                        }
+                        placeholder={{ disabled: false }}
+                        items={['xs', 'sm', 'md', 'lg']}
+                    />
                 </Form.Control>
                 <Form.Control label="Bordered" horizontal>
                     <Toggle
@@ -62,18 +56,13 @@ export default function App() {
             <div className='flex justify-center'>
                 <Form.Control label="Simpson">
                     <Select
-                        defaultValue=""
                         color={color}
                         size={size}
                         bordered={bordered}
-                        disabled={disabled}>
-                        <Option disabled value="">Pick your favorite Simpson</Option>
-                        <Option>Homer</Option>
-                        <Option>Marge</Option>
-                        <Option>Bart</Option>
-                        <Option>Lisa</Option>
-                        <Option>Maggie</Option>
-                    </Select>
+                        disabled={disabled}
+                        placeholder="Pick your favorite Simpson"
+                        items={["Homer", "Marge", "Bart", "Lisa", "Maggie"]}
+                    />
                 </Form.Control>
             </div>
         </>
