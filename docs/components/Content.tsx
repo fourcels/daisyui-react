@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { throttle } from 'lodash'
-import './Content.scss'
+import './Content.css'
 
 
 export function Content({ children, frontmatter, toc }: {

@@ -5,16 +5,25 @@ import { ComponentBaseProps } from '../types'
 
 export type MenuItemProps = React.LiHTMLAttributes<HTMLLIElement> &
   ComponentBaseProps & {
-    disabled?: boolean
+    disabled?: boolean,
+    active?: boolean,
   }
 
-export const MenuItem = React.forwardRef<HTMLLIElement, MenuItemProps>(
-  ({ className, disabled, ...props }, ref) => {
-    const classes = twMerge(
-      disabled && 'disabled',
-      className
-    )
+export const MenuItem = React.forwardRef<HTMLLIElement, MenuItemProps>((
+  {
+    className,
+    disabled,
+    active,
+    ...props
+  },
+  ref
+) => {
+  const classes = twMerge(
+    active && 'active',
+    disabled && 'disabled',
+    className
+  )
 
-    return <li role="menuitem" className={classes} {...props} ref={ref} />
-  }
+  return <li role="menuitem" className={classes} {...props} ref={ref} />
+}
 )

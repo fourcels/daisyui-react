@@ -7,6 +7,7 @@ import { MenuTitle, MenuTitleProps } from './MenuTitle'
 import { MenuItem, MenuItemProps } from './MenuItem'
 import { MenuDropdown, MenuDropdownProps } from './MenuDropdown'
 import { MenuDetails, MenuDetailsProps } from './MenuDetails'
+import "./Menu.css"
 
 export type {
     MenuTitleProps,

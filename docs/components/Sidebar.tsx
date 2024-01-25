@@ -41,8 +41,8 @@ export function Sidebar({
                 <Menu>
                     <Menu.Title>Components</Menu.Title>
                     {components.map(item => (
-                        <Menu.Item key={item.path}>
-                            <Link to={item.path} className={twMerge(location.pathname === item.path && 'active')}>{item.name}</Link>
+                        <Menu.Item key={item.path} active={location.pathname === item.path}>
+                            <Link to={item.path}>{item.name}</Link>
                         </Menu.Item>
                     ))}
                 </Menu>
