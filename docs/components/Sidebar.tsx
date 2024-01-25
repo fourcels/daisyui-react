@@ -1,18 +1,51 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
+import { Menu } from '../../components/Menu';
+
+type Component = {
+    path: string
+    name: string
+}
 
 export function Sidebar({
     className
 }: {
     className?: string
 }) {
+    const location = useLocation()
+    const components: Component[] = [
+        {
+            name: 'Button',
+            path: '/components/button'
+        },
+        {
+            name: 'Select',
+            path: '/components/select'
+        },
+        {
+            name: 'Toggle',
+            path: '/components/toggle'
+        },
+        {
+            name: 'Tooltip',
+            path: '/components/tooltip'
+        },
+        {
+            name: 'Menu',
+            path: '/components/menu'
+        },
+    ]
     return (
-        <div className={twMerge('px-5 relative border-r bg-base-100 z-10', className)}>
-            <div className='flex flex-col gap-4 pt-10 sticky top-0'>
-                <Link to="/components/button">Button</Link>
-                <Link to="/components/select">Select</Link>
-                <Link to="/components/toggle">Toggle</Link>
-                <Link to="/components/tooltip">Tooltip</Link>
+        <div className={twMerge('relative border-r bg-base-100 z-10', className)}>
+            <div className='sticky top-0'>
+                <Menu>
+                    <Menu.Title>Components</Menu.Title>
+                    {components.map(item => (
+                        <Menu.Item key={item.path}>
+                            <Link to={item.path} className={twMerge(location.pathname === item.path && 'active')}>{item.name}</Link>
+                        </Menu.Item>
+                    ))}
+                </Menu>
             </div>
         </div>
     )

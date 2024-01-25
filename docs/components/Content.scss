@@ -20,7 +20,7 @@
         }
 
         td:nth-child(3) {
-            color: rgb(152, 195, 121);
+            color: oklch(var(--p));
         }
     }
 

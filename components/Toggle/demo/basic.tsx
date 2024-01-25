@@ -1,41 +1,35 @@
 import { Toggle, Form, ToggleProps, Divider, Select } from 'daisyui-react';
 import React from 'react';
 
-const { Option } = Select
 
 export default function App() {
     const [color, setColor] = React.useState<ToggleProps['color']>()
-    const [size, setSize] = React.useState<ToggleProps['size']>("md")
+    const [size, setSize] = React.useState<ToggleProps['size']>()
 
     return (
         <>
             <div className='flex gap-4'>
                 <Form.Control label="Color">
                     <Select
-                        value={color}
                         onChange={
                             (e) => setColor(e.target.value as any)
-                        }>
-                        <Option value="">default</Option>
-                        <Option>primary</Option>
-                        <Option>secondary</Option>
-                        <Option>accent</Option>
-                        <Option>success</Option>
-                        <Option>warning</Option>
-                        <Option>error</Option>
-                    </Select>
+                        }
+                        placeholder={{ disabled: false }}
+                        items={[
+                            'primary', 'secondary', 'accent',
+                            'info', 'success', 'warning', 'error',
+                        ]}
+                    />
                 </Form.Control>
                 <Form.Control label="Size">
                     <Select
-                        value={size}
                         onChange={
                             (e) => setSize(e.target.value as any)
-                        }>
-                        <Option>lg</Option>
-                        <Option>md</Option>
-                        <Option>sm</Option>
-                        <Option>xs</Option>
-                    </Select>
+                        }
+                        placeholder={{ disabled: false }}
+                        items={['xs', 'sm', 'md', 'lg']}
+
+                    />
                 </Form.Control>
             </div>
 

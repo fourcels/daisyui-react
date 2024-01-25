@@ -10,7 +10,7 @@ import {
 import { Option, OptionProps } from './Option'
 import React, { ReactElement, forwardRef } from 'react'
 
-export type { OptionProps }
+export type SelectOptionProps = OptionProps
 export type SelectItem = string | number | {
     label: string;
     value?: string | number;
@@ -37,9 +37,9 @@ export type SelectProps = Omit<
 const SelectInner = forwardRef<HTMLSelectElement, SelectProps>((
     {
         value,
-        defaultValue = value ?? "",
-        items = [],
+        defaultValue = value ? undefined : "",
         placeholder,
+        items = [],
         children,
         size,
         color,
