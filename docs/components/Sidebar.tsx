@@ -28,6 +28,14 @@ const components: Component[] = [
         name: 'Menu',
         path: '/components/menu'
     },
+    {
+        name: 'Dropdown',
+        path: '/components/dropdown'
+    },
+    {
+        name: 'Card',
+        path: '/components/card'
+    },
 ]
 
 export function Sidebar({

@@ -52,7 +52,7 @@ export function CodePreview(props: {
         <div className='code-preview border rounded not-prose'>
             {live && (
                 <div>
-                    <div className='translate-x-0 py-10 px-6'>
+                    <div className='py-10 px-6'>
                         {component}
                     </div>
                     <CodeInfo title={props.title} description={props.description} />

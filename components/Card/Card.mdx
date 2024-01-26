@@ -1,0 +1,30 @@
+---
+title: Card
+description: Cards are used to group and display content in a way that is easily readable.
+---
+
+## Examples
+
+### Card
+<code src="./demo/basic.tsx" />
+
+### Responsive card
+
+```tsx live
+/**
+ * description: vertical on small screen, horizontal on large screen
+ */
+
+
+<Card responsive>
+    <Card.Image src="https://daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg" alt="Album" />
+    <Card.Body>
+        <Card.Title>New album is released!</Card.Title>
+        <p>Click the button to listen on Spotiwhy app.</p>
+        <Card.Actions>
+            <Button color='primary'>Listen</Button>
+        </Card.Actions>
+    </Card.Body>
+</Card>
+
+```

@@ -1,14 +1,15 @@
 import { twMerge } from 'tailwind-merge'
 import { ComponentBaseProps } from '../types'
+import React from 'react'
 
-export type ControlProps = React.HTMLAttributes<HTMLLabelElement>
+export type FormControlProps = React.HTMLAttributes<HTMLLabelElement>
     & ComponentBaseProps & {
         label?: React.ReactNode
         help?: React.ReactNode
         horizontal?: boolean
     }
 
-export const Control = (
+export const FormControl = React.forwardRef<HTMLLabelElement, FormControlProps>((
     {
         children,
         label,
@@ -17,7 +18,8 @@ export const Control = (
         dataTheme,
         className,
         ...props
-    }: ControlProps,
+    },
+    ref,
 ) => {
 
     const classes = twMerge(
@@ -27,7 +29,7 @@ export const Control = (
     )
 
     return (
-        <label data-theme={dataTheme} className={classes} {...props}>
+        <label ref={ref} data-theme={dataTheme} className={classes} {...props}>
             {label && (
                 <div className='label'>
                     <span className="label-text">{label}</span>
@@ -43,4 +45,6 @@ export const Control = (
             </div>
         </label>
     )
-}
+})
+
+FormControl.displayName = 'FormControl'

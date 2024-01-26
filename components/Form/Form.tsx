@@ -1,7 +1,9 @@
 import { twMerge } from 'tailwind-merge'
 import { ComponentBaseProps } from '../types'
 import { forwardRef } from 'react'
-import { Control } from './Control'
+import { FormControl, FormControlProps } from './FormControl'
+
+export type { FormControlProps }
 
 export type FormProps = React.HTMLAttributes<HTMLFormElement>
     & ComponentBaseProps
@@ -30,4 +32,6 @@ const FormInner = forwardRef<HTMLFormElement, FormProps>((
 
 FormInner.displayName = "Form"
 
-export const Form = Object.assign(FormInner, { Control })
+export const Form = Object.assign(FormInner, {
+    Control: FormControl
+})
