@@ -25,7 +25,7 @@ const VoidElementList: ElementType[] = [
 
 export type ButtonProps<
   T extends ElementType = 'button'
-> = React.HTMLAttributes<HTMLButtonElement>
+> = React.ButtonHTMLAttributes<HTMLButtonElement>
   & ComponentBaseProps
   & {
     shape?: ComponentShape
