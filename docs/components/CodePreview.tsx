@@ -49,7 +49,7 @@ export function CodePreview(props: {
     }, [props.lang, props.live])
 
     return (
-        <div className='border rounded not-prose'>
+        <div className='code-preview border rounded not-prose'>
             {live && (
                 <div>
                     <div className='translate-x-0 py-10 px-6'>
@@ -97,7 +97,7 @@ function SourceCodeContent({ code, lang, className }: {
                     timer.current = window.setTimeout(() => setIsCopied(false), 2000);
                 }}
             >
-                <Tooltip className='group-hover:block hidden absolute bottom-10 right-5' title={isCopied ? 'Copied' : 'Copy code'} position='left'>
+                <Tooltip className='group-hover:block hidden absolute bottom-6 right-6' title={isCopied ? 'Copied' : 'Copy code'} position='left'>
                     <Button variant='outline'>
                         {isCopied ? <IconCopied /> : <IconCopy />}
                     </Button>

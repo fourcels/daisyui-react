@@ -7,34 +7,35 @@ type Component = {
     name: string
 }
 
+const components: Component[] = [
+    {
+        name: 'Button',
+        path: '/components/button'
+    },
+    {
+        name: 'Select',
+        path: '/components/select'
+    },
+    {
+        name: 'Toggle',
+        path: '/components/toggle'
+    },
+    {
+        name: 'Tooltip',
+        path: '/components/tooltip'
+    },
+    {
+        name: 'Menu',
+        path: '/components/menu'
+    },
+]
+
 export function Sidebar({
     className
 }: {
     className?: string
 }) {
     const location = useLocation()
-    const components: Component[] = [
-        {
-            name: 'Button',
-            path: '/components/button'
-        },
-        {
-            name: 'Select',
-            path: '/components/select'
-        },
-        {
-            name: 'Toggle',
-            path: '/components/toggle'
-        },
-        {
-            name: 'Tooltip',
-            path: '/components/tooltip'
-        },
-        {
-            name: 'Menu',
-            path: '/components/menu'
-        },
-    ]
     return (
         <div className={twMerge('relative border-r bg-base-100 z-10', className)}>
             <div className='sticky top-0'>

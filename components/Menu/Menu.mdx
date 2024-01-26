@@ -95,3 +95,46 @@ description: Menu is used to display a list of links vertically or horizontally.
     <Menu.Item><a>Item 3</a></Menu.Item>
 </Menu>
 ```
+
+## API
+
+Common props: `dataTheme`, `className`, `style`
+
+### Menu
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| children | content | MenuTitle \| MenuItem \| MenuItem[] | - |
+| direction | Menu direction | `vertical` \| `horizontal` | - |
+| size | Menu size | `xs` \| `sm` \| `md` \| `lg` | - |
+
+### MenuItem
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| active | Active state | boolean | false |
+| children | Content | ReactNode | - |
+| disabled | Disabled state | boolean | false |
+
+### MenuTitle
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| children | Content | ReactNode | - |
+| tag | Tag name | `li` \| `h1` \| `h2` \| etc... | `li` |
+
+### MenuDetails
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| children | content | MenuItem \| MenuItem[] | - |
+| label | Label | ReactNode | - |
+| open | Open state | boolean | false |
+
+### MenuDropdown
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| children | content | MenuItem \| MenuItem[] | - |
+| label | Label | ReactNode | - |
+| open | Open state | boolean | false |

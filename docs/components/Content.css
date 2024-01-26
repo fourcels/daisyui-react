@@ -1,27 +1,26 @@
 .markdown {
-    .icon-link {
-        margin-right: 5px;
-        opacity: 0.6;
+  .icon-link {
+    margin-right: 5px;
+    opacity: 0.6;
 
-        &::before {
-            content: "#";
-        }
+    &::before {
+      content: "#";
+    }
+  }
+
+  table {
+    min-width: 500px;
+
+    code {
+      color: inherit;
     }
 
-    table {
-        min-width: 500px;
-
-        code {
-            color: inherit;
-        }
-
-        td:first-child {
-            font-weight: 600;
-        }
-
-        td:nth-child(3) {
-            color: oklch(var(--p));
-        }
+    td:first-child {
+      font-weight: 600;
     }
 
+    td:nth-child(3) {
+      @apply text-primary;
+    }
+  }
 }

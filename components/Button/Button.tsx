@@ -34,7 +34,7 @@ export type ButtonProps<
     color?: ComponentColor
     glass?: boolean
     wide?: boolean
-    fullWidth?: boolean
+    block?: boolean
     responsive?: boolean
     animation?: boolean
     loading?: boolean
@@ -56,7 +56,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((
     startIcon,
     endIcon,
     wide,
-    fullWidth,
+    block,
     responsive,
     animation = true,
     loading,
@@ -104,7 +104,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((
     color && colors[color],
     glass && 'glass',
     wide && 'btn-wide',
-    fullWidth && 'btn-block',
+    block && 'btn-block',
     responsive && 'btn-xs sm:btn-sm md:btn-md lg:btn-lg',
     !animation && 'no-animation',
     active && 'btn-active',

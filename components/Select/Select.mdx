@@ -26,21 +26,29 @@ description: Select is used to pick a value from a list of options.
 
 ## API
 
-### SelectProps
-
 Common props: `dataTheme`, `className`, `style`
+
+### Select
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | color | Select color | `primary` \| `secondary` \| `accent` \| <br/> `info` \| `success` \| `warning` \| `error` \| <br/> `ghost` | - |
 | bordered | Select with border | boolean | true |
-| children | Select content | Option \| Option[] | - |
+| children | Select content | SelectOption \| SelectOption[] | - |
 | disabled | Disabled state | boolean | false |
 | items | Select items | SelectItem[] | - |
 | placeholder | Select placeholder | SelectPlaceholder | - |
 | size | Size of Select | `xs` \| `sm` \| `md` \| `lg` | - |
 
-It accepts all props which native select support.
+It accepts all props which native `select` support.
+
+### SelectOption
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| children | Content | ReactNode | - |
+
+It accepts all props which native `option` support.
 
 ### Types
 ```tsx

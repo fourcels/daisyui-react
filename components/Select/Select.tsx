@@ -7,10 +7,9 @@ import {
     ListOrItem,
 } from '../types'
 
-import { Option, OptionProps } from './Option'
+import { SelectOption, SelectOptionProps } from './SelectOption'
 import React, { ReactElement, forwardRef } from 'react'
 
-export type SelectOptionProps = OptionProps
 export type SelectItem = string | number | {
     label: string;
     value?: string | number;
@@ -26,7 +25,7 @@ export type SelectProps = Omit<
     'size' | 'color'
 > &
     ComponentBaseProps & {
-        children?: ListOrItem<ReactElement<OptionProps>>
+        children?: ListOrItem<ReactElement<SelectOptionProps>>
         size?: ComponentSize
         color?: Exclude<ComponentColor, 'neutral'>
         bordered?: boolean
@@ -92,7 +91,7 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>((
         }
 
 
-        return <Option value="" disabled={optionDisabled}>{optionLabel}</Option>
+        return <SelectOption value="" disabled={optionDisabled}>{optionLabel}</SelectOption>
     }, [placeholder])
 
     const options = React.useMemo(() => {
@@ -101,10 +100,10 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>((
         }
         return items.map(item => {
             if (typeof item === 'string' || typeof item === 'number') {
-                return <Option key={item}>{item}</Option>
+                return <SelectOption key={item}>{item}</SelectOption>
             }
             const { label, value = label } = item
-            return <Option key={value} value={value}>{label}</Option>
+            return <SelectOption key={value} value={value}>{label}</SelectOption>
         })
     }, [children, items])
     return (
@@ -116,4 +115,6 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>((
 })
 
 SelectInner.displayName = "Select"
-export const Select = Object.assign(SelectInner, { Option })
+export const Select = Object.assign(SelectInner, {
+    Option: SelectOption
+})
