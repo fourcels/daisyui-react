@@ -17,7 +17,7 @@ export function Content({ children, frontmatter, toc }: {
                 {children}
             </article>
             {toc && (
-                <div className='flex-shrink-0 hidden lg:block w-64 relative ml-10'>
+                <div className='flex-shrink-0 hidden lg:block w-64 relative mx-5'>
                     <Toc toc={toc} className='sticky top-10' />
                 </div>
             )}
@@ -92,6 +92,7 @@ function Toc({ toc, className }: {
             {toc.map((item, idx) => (
                 <li key={item.id} className={twMerge('border-l-2 py-0.5', item.rank <= 2 ? 'pl-4' : 'pl-8', active === idx && 'border-primary')}>
                     <a
+                        className='opacity-75 hover:opacity-100 transition-opacity block overflow-hidden text-nowrap text-ellipsis'
                         href={`#${item.id}`}
                         onClick={(e) => {
                             e.preventDefault()
