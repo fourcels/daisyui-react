@@ -114,6 +114,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((
   if (VoidElementList.includes(Tag)) {
     return (
       <Tag
+        role="button"
         {...props}
         ref={ref}
         data-theme={dataTheme}
@@ -125,6 +126,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((
   } else {
     return (
       <Tag
+        role="button"
         {...props}
         ref={ref}
         data-theme={dataTheme}
