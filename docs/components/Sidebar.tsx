@@ -40,6 +40,10 @@ const components: Component[] = [
         name: 'Badge',
         path: '/components/badge'
     },
+    {
+        name: 'Divider',
+        path: '/components/divider'
+    },
 ]
 
 export function Sidebar({

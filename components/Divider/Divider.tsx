@@ -1,15 +1,13 @@
 import { twMerge } from 'tailwind-merge'
 
-import { ComponentBaseProps, ComponentColor } from '../types'
+import { ComponentBaseProps, ComponentColor, ComponentPosition } from '../types'
 import { forwardRef } from 'react'
 
 export type DividerProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'color'> &
     ComponentBaseProps & {
-        vertical?: boolean
-        horizontal?: boolean
+        direction?: 'vertical' | 'horizontal'
         responsive?: boolean
-        start?: boolean
-        end?: boolean
+        position?: 'start' | 'end'
         color?: Exclude<ComponentColor, 'ghost'>
     }
 
@@ -17,12 +15,10 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
     (
         {
             children,
-            vertical,
-            horizontal,
+            direction,
             responsive,
             color,
-            start,
-            end,
+            position,
             dataTheme,
             className,
             ...props
@@ -30,26 +26,33 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
         ref
     ): JSX.Element => {
 
+        const directions = {
+            vertical: 'divider-vertical',
+            horizontal: 'divider-horizontal',
+        }
         const colors = {
-            neutral: 'btn-neutral',
-            primary: 'btn-primary',
-            secondary: 'btn-secondary',
-            accent: 'btn-accent',
-            info: 'btn-info',
-            success: 'btn-success',
-            warning: 'btn-warning',
-            error: 'btn-error',
+            neutral: 'divider-neutral',
+            primary: 'divider-primary',
+            secondary: 'divider-secondary',
+            accent: 'divider-accent',
+            info: 'divider-info',
+            success: 'divider-success',
+            warning: 'divider-warning',
+            error: 'divider-error',
+        }
+
+        const positions = {
+            start: 'divider-start',
+            end: 'divider-end',
         }
 
         const classes = twMerge(
             'divider',
             className,
-            vertical && 'divider-vertical',
-            horizontal && 'divider-horizontal',
             responsive && 'lg:divider-horizontal',
+            direction && directions[direction],
             color && colors[color],
-            start && 'divider-start',
-            end && 'divider-end',
+            position && positions[position],
         )
 
         return (
