@@ -35,11 +35,10 @@ export const MenuDropdown = React.forwardRef<HTMLSpanElement, MenuDropdownProps>
       <ul className={twMerge(
         'menu-dropdown',
         open && 'menu-dropdown-show',
-        menuClassName,
+        menuClassName
       )}>
         {children}
       </ul>
     </>
   )
-}
-)
+})
