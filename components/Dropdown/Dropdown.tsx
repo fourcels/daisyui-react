@@ -19,6 +19,7 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((
         children,
         trigger,
         position,
+        hover,
         end,
         dataTheme,
         className,
@@ -39,6 +40,7 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((
         'dropdown',
         position && positions[position],
         end && 'dropdown-end',
+        hover && 'dropdown-hover',
         className,
     )
 

@@ -7,3 +7,47 @@ description: Dropdown can open a menu or any other element when the button is cl
 
 ### Dropdown
 <code src="./demo/basic.tsx"/>
+
+
+### Card as dropdown
+
+```tsx live
+<Dropdown
+    trigger={(
+        <Button>Click</Button>
+    )}
+>
+    <Card compact shadow={false} className="bg-primary text-primary-content w-64">
+        <Card.Body>
+            <Card.Title>Card title!</Card.Title>
+            <p>you can use any element as a dropdown.</p>
+        </Card.Body>
+    </Card>
+</Dropdown>
+
+```
+
+### Helper dropdown
+```tsx live
+<div className="flex gap-1">
+    A normal text and a helper dropdown
+    <Dropdown
+        end
+        trigger={(
+            <Button size="xs" color="ghost" shape="circle" className="text-info">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-4 h-4 stroke-current">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </Button>
+        )}
+    >
+        <Card compact shadow={false} className="w-64">
+            <Card.Body>
+                <Card.Title>You needed more info?</Card.Title>
+                <p>Here is a description!</p>
+            </Card.Body>
+        </Card>
+    </Dropdown>
+</div>
+
+```

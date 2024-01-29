@@ -36,6 +36,10 @@ const components: Component[] = [
         name: 'Card',
         path: '/components/card'
     },
+    {
+        name: 'Badge',
+        path: '/components/badge'
+    },
 ]
 
 export function Sidebar({
