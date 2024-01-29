@@ -49,7 +49,7 @@ export function CodePreview(props: {
     }, [props.lang, props.live])
 
     return (
-        <div className='code-preview border rounded not-prose'>
+        <div className='code-preview border rounded not-prose leading-normal'>
             {live && (
                 <div>
                     <div className='py-10 px-6'>

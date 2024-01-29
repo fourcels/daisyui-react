@@ -1,0 +1,29 @@
+---
+title: Navbar
+description: Navbar is used to show a navigation bar on the top of the page.
+---
+
+## Examples
+
+### Navbar
+<code src="./demo/basic.tsx"/>
+
+### Navbar with menu and submenu
+```tsx live
+<Navbar className="bg-base-200">
+    <div className="flex-1">
+        <Button color="ghost" className="text-xl">daisyUI</Button>
+    </div>
+    <div className="flex-none">
+        <Menu direction="horizontal">
+            <Menu.Item><a>Link</a></Menu.item>
+            <Menu.Item>
+                <Menu.Details label="Parent" menuClassName="bg-base-200">
+                    <Menu.Item><a>Link 1</a></Menu.Item>
+                    <Menu.Item><a>Link 2</a></Menu.Item>
+                </Menu.Details>
+            </Menu.Item>
+        </Menu>
+    </div>
+</Navbar>
+```

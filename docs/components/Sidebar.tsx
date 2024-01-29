@@ -44,6 +44,10 @@ const components: Component[] = [
         name: 'Divider',
         path: '/components/divider'
     },
+    {
+        name: 'Navbar',
+        path: '/components/navbar'
+    },
 ]
 
 export function Sidebar({

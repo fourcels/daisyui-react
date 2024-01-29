@@ -6,15 +6,25 @@ export type MenuDetailsProps = React.DetailsHTMLAttributes<HTMLDetailsElement> &
   ComponentBaseProps & {
     label: ReactNode
     open?: boolean
+    menuClassName?: string
   }
 
-export const MenuDetails = React.forwardRef<HTMLDetailsElement, MenuDetailsProps>(
-  ({ className, label, open, children, ...props }, ref) => {
-    return (
-      <details {...props} open={open} className={className} ref={ref}>
-        <summary>{label}</summary>
-        <ul>{children}</ul>
-      </details>
-    )
-  }
+export const MenuDetails = React.forwardRef<HTMLDetailsElement, MenuDetailsProps>((
+  {
+    className,
+    menuClassName,
+    label,
+    open,
+    children,
+    ...props
+  },
+  ref
+) => {
+  return (
+    <details {...props} open={open} className={className} ref={ref}>
+      <summary>{label}</summary>
+      <ul className={menuClassName}>{children}</ul>
+    </details>
+  )
+}
 )

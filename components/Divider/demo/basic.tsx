@@ -1,4 +1,4 @@
-import { Select, Form, Divider, DividerProps } from 'daisyui-react';
+import { Select, Form, Divider, DividerProps, Toggle } from 'daisyui-react';
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 
@@ -6,7 +6,6 @@ export default function App() {
     const [color, setColor] = React.useState<DividerProps['color']>()
     const [direction, setDirection] = React.useState<DividerProps['direction']>()
     const [position, setPosition] = React.useState<DividerProps['position']>()
-
     return (
         <>
             <div className='flex flex-wrap gap-8'>
@@ -44,12 +43,13 @@ export default function App() {
 
             <Divider>Preview</Divider>
 
-            <div>
+            <div className='flex'>
                 <Divider
                     color={color}
                     position={position}
                     direction={direction}
                     className={twMerge(
+                        'w-full',
                         direction === 'horizontal' && 'h-32'
                     )}
                 >

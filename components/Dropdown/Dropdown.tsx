@@ -6,7 +6,7 @@ import { ComponentBaseProps, ComponentPosition } from '../types'
 export type DropdownProps<T extends HTMLElement = HTMLDivElement> =
     React.HTMLAttributes<T> &
     ComponentBaseProps & {
-        trigger?: React.ReactNode
+        trigger: React.ReactElement
         position?: ComponentPosition
         end?: boolean
         hover?: boolean
@@ -51,9 +51,9 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((
             data-theme={dataTheme}
             className={classes}
         >
-            <div tabIndex={0}>
-                {trigger}
-            </div>
+            {React.cloneElement(trigger, {
+                tabIndex: 0
+            })}
             <div tabIndex={0} className='dropdown-content z-[10] shadow'>
                 {children}
             </div>
