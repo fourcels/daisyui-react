@@ -48,6 +48,10 @@ const components: Component[] = [
         name: 'Navbar',
         path: '/components/navbar'
     },
+    {
+        name: 'Modal',
+        path: '/components/modal'
+    },
 ]
 
 export function Sidebar({

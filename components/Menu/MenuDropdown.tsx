@@ -42,3 +42,6 @@ export const MenuDropdown = React.forwardRef<HTMLSpanElement, MenuDropdownProps>
     </>
   )
 })
+
+
+MenuDropdown.displayName = 'MenuDropdown'

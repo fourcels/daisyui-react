@@ -25,5 +25,6 @@ export const MenuItem = React.forwardRef<HTMLLIElement, MenuItemProps>((
   )
 
   return <li role="menuitem" className={classes} {...props} ref={ref} />
-}
-)
+})
+
+MenuItem.displayName = 'MenuItem'

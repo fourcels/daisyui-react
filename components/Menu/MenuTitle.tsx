@@ -22,3 +22,5 @@ export const MenuTitle = React.forwardRef<HTMLLIElement, MenuTitleProps>(
         return <Tag {...props} className={classes} ref={ref} />
     }
 )
+
+MenuTitle.displayName = 'MenuTitle'

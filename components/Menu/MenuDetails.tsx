@@ -26,5 +26,6 @@ export const MenuDetails = React.forwardRef<HTMLDetailsElement, MenuDetailsProps
       <ul className={menuClassName}>{children}</ul>
     </details>
   )
-}
-)
+})
+
+MenuDetails.displayName = 'MenuDetails'

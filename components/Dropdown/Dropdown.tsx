@@ -11,6 +11,7 @@ export type DropdownProps<T extends HTMLElement = HTMLDivElement> =
         end?: boolean
         hover?: boolean
         open?: boolean
+        contentClassName?: string
     }
 
 
@@ -23,6 +24,7 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((
         end,
         dataTheme,
         className,
+        contentClassName,
         ...props
     },
     ref,
@@ -54,7 +56,12 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((
             {React.cloneElement(trigger, {
                 tabIndex: 0
             })}
-            <div tabIndex={0} className='dropdown-content z-[10] shadow'>
+            <div
+                tabIndex={0}
+                className={twMerge(
+                    'dropdown-content z-10',
+                    contentClassName,
+                )}>
                 {children}
             </div>
         </div>
