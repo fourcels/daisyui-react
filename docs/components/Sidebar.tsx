@@ -52,6 +52,10 @@ const components: Component[] = [
         name: 'Modal',
         path: '/components/modal'
     },
+    {
+        name: 'Swap',
+        path: '/components/swap'
+    },
 ]
 
 export function Sidebar({
