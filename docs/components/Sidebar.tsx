@@ -56,6 +56,10 @@ const components: Component[] = [
         name: 'Swap',
         path: '/components/swap'
     },
+    {
+        name: 'Checkbox',
+        path: '/components/checkbox'
+    },
 ]
 
 export function Sidebar({
