@@ -1,5 +1,6 @@
 import { RouteObject } from 'react-router';
 import { Content } from './components/Content';
+import { kebabCase } from 'lodash'
 
 const modules = import.meta.glob("/components/**/*.mdx")
 
@@ -9,7 +10,7 @@ function getRoutes() {
     if (Object.prototype.hasOwnProperty.call(modules, key)) {
       const element = modules[key]
       const arr = key.split('/')
-      const path = (arr.pop()!.split('.')[0]).toLowerCase()
+      const path = kebabCase((arr.pop()!.split('.')[0]))
       routes.push({
         path,
         lazy: async () => {

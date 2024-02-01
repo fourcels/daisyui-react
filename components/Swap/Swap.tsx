@@ -1,7 +1,7 @@
 import { ElementType, ReactNode, forwardRef } from 'react'
 import { ComponentBaseProps } from '../types'
 import { twMerge } from 'tailwind-merge'
-import { SwapOn, SwapOnProps } from './SwapON'
+import { SwapOn, SwapOnProps } from './SwapOn'
 import { SwapOff, SwapOffProps } from './SwapOff'
 
 

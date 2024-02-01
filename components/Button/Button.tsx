@@ -23,9 +23,45 @@ const VoidElementList: ElementType[] = [
   'wbr',
 ]
 
+type TagProps = {
+  a: {
+    attr: React.AnchorHTMLAttributes<HTMLAnchorElement>
+    ele: HTMLAnchorElement
+  }
+  button: {
+    attr: React.ButtonHTMLAttributes<HTMLButtonElement>
+    ele: HTMLButtonElement
+  }
+  div: {
+    attr: React.HTMLAttributes<HTMLDivElement>
+    ele: HTMLDivElement
+  }
+  img: {
+    attr: React.ImgHTMLAttributes<HTMLImageElement>
+    ele: HTMLImageElement
+  }
+  input: {
+    attr: React.InputHTMLAttributes<HTMLInputElement>
+    ele: HTMLInputElement
+  }
+  label: {
+    attr: React.LabelHTMLAttributes<HTMLLabelElement>
+    ele: HTMLLabelElement
+  }
+  span: {
+    attr: React.HTMLAttributes<HTMLSpanElement>
+    ele: HTMLSpanElement
+  }
+}
+
+type GetTagProps<T extends ElementType> = T extends keyof TagProps
+  ? TagProps[T]
+  : TagProps['button']
+
 export type ButtonProps<
-  T extends ElementType = 'button'
-> = React.ButtonHTMLAttributes<HTMLButtonElement>
+  T extends ElementType = 'button',
+  A extends React.HTMLAttributes<HTMLElement> = GetTagProps<T>['attr']
+> = Omit<A, 'color' | 'size'>
   & ComponentBaseProps
   & {
     shape?: ComponentShape
@@ -42,10 +78,10 @@ export type ButtonProps<
     startIcon?: ReactNode
     endIcon?: ReactNode
     disabled?: boolean
-    tag?: T
+    as?: T
   }
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>((
+export const ButtonInner = forwardRef<HTMLButtonElement, ButtonProps>((
   {
     children,
     shape,
@@ -65,7 +101,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((
     dataTheme,
     className,
     style,
-    tag: Tag = 'button',
+    as: Tag = 'button',
     ...props
   },
   ref
@@ -143,4 +179,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((
   }
 })
 
-Button.displayName = 'Button'
+ButtonInner.displayName = 'Button'
+
+export const Button = ButtonInner as <
+  T extends ElementType = 'button',
+  E extends HTMLElement = GetTagProps<T>['ele'],
+>(
+  props: ButtonProps<T> & { ref?: React.Ref<E> }
+) => JSX.Element

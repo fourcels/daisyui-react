@@ -16,10 +16,12 @@ export type ToggleProps = Omit<
     ComponentBaseProps & {
         size?: ComponentSize
         color?: Exclude<ComponentColor, 'neutral' | 'ghost'>
+        label?: string
     }
 
 export const Toggle = forwardRef<HTMLInputElement, ToggleProps>((
     {
+        label,
         size,
         color,
         dataTheme,
@@ -53,7 +55,10 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>((
     )
 
     return (
-        <input type="checkbox" {...props} ref={ref} data-theme={dataTheme} className={classes} />
+        <label className='label gap-4'>
+            <span className="label-text">{label}</span>
+            <input type="checkbox" {...props} ref={ref} data-theme={dataTheme} className={classes} />
+        </label>
     )
 })
 

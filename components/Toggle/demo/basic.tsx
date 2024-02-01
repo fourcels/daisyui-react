@@ -37,7 +37,7 @@ export default function App() {
 
             <div className='flex justify-center'>
                 <Form.Control label="Remember me" horizontal>
-                    <Toggle defaultChecked size={size} color={color} />
+                    <Toggle label="Remember me" defaultChecked size={size} color={color} />
                 </Form.Control>
             </div>
         </>

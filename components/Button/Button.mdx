@@ -22,14 +22,14 @@ description: Buttons allow the user to take actions or make choices.
  * description: You can use `btn` class on <button>, <input>, <a>, etc...
  */
 
-<Button tag="a">Link</Button>
 <Button type="submit">Submit</Button>
 <Button type="reset">Reset</Button>
-<Button tag="input" type="button" value="Input" />
-<Button tag="input" type="submit" value="Submit" />
-<Button tag="input" type="radio" aria-label="Radio" />
-<Button tag="input" type="checkbox" aria-label="Checkbox" />
-<Button tag="input" type="reset" aria-label="Reset" />
+<Button as="a">Link</Button>
+<Button as="input" type="button" value="Input" />
+<Button as="input" type="submit" value="Submit" />
+<Button as="input" type="radio" aria-label="Radio" />
+<Button as="input" type="checkbox" aria-label="Checkbox" />
+<Button as="input" type="reset" aria-label="Reset" />
 ```
 
 
@@ -65,7 +65,7 @@ Common props: `dataTheme`, `className`, `style`
 | shape | Shape of button | `circle` \| `square` |  |
 | size | Size of button | `xs` \| `sm` \| `md` \| `lg` | `md` |
 | startIcon | Start Icon | ReactNode | - |
-| tag | Button with different HTML tags | `a` \| `button`  \| `input` \| etc... | `button` |
+| as | Button with different HTML tags | `a` \| `button`  \| `input` \| etc... | `button` |
 | variant | Variant of button | `outline` \| `link` | - |
 | wide | Wide button (more horizontal padding) | boolean | false |
 

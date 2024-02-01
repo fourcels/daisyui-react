@@ -60,6 +60,10 @@ const components: Component[] = [
         name: 'Checkbox',
         path: '/components/checkbox'
     },
+    {
+        name: 'Theme Controller',
+        path: '/components/theme-controller'
+    },
 ]
 
 export function Sidebar({
