@@ -1,4 +1,4 @@
-import { ElementType, ReactNode, forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import { ComponentBaseProps } from '../types'
 import { twMerge } from 'tailwind-merge'
 import { SwapOn, SwapOnProps } from './SwapOn'
@@ -12,11 +12,13 @@ export type SwapProps = React.LabelHTMLAttributes<HTMLLabelElement>
     & {
         effect?: 'flip' | 'rotate'
         active?: boolean
+        checkbox?: boolean
     }
 
 
 const SwapInner = forwardRef<HTMLLabelElement, SwapProps>((
     {
+        checkbox = true,
         active,
         effect,
         children,
@@ -40,7 +42,7 @@ const SwapInner = forwardRef<HTMLLabelElement, SwapProps>((
 
     return (
         <label ref={ref} className={classes} {...props}>
-            {typeof active !== 'boolean' && <input type="checkbox" />}
+            {checkbox && <input type="checkbox" />}
             {children}
         </label>
     )

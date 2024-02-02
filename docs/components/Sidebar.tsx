@@ -61,6 +61,10 @@ const components: Component[] = [
         path: '/components/checkbox'
     },
     {
+        name: 'Radio',
+        path: '/components/radio'
+    },
+    {
         name: 'Theme Controller',
         path: '/components/theme-controller'
     },

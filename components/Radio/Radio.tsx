@@ -9,11 +9,12 @@ import {
 import { ReactNode, forwardRef } from 'react'
 
 
-export type ToggleProps = Omit<
+export type RadioProps = Omit<
     React.InputHTMLAttributes<HTMLInputElement>,
     'size' | 'color'
-> &
-    ComponentBaseProps & {
+>
+    & ComponentBaseProps
+    & {
         size?: ComponentSize
         color?: Exclude<ComponentColor, 'neutral' | 'ghost'>
         label?: ReactNode
@@ -21,9 +22,8 @@ export type ToggleProps = Omit<
         labelClassName?: string
     }
 
-export const Toggle = forwardRef<HTMLInputElement, ToggleProps>((
+export const Radio = forwardRef<HTMLInputElement, RadioProps>((
     {
-        children,
         label,
         labelAlt,
         size,
@@ -37,23 +37,23 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>((
 ) => {
 
     const sizes = {
-        lg: 'toggle-lg',
-        md: 'toggle-md',
-        sm: 'toggle-sm',
-        xs: 'toggle-xs',
+        lg: 'radio-lg',
+        md: 'radio-md',
+        sm: 'radio-sm',
+        xs: 'radio-xs',
     }
     const colors = {
-        primary: 'toggle-primary',
-        secondary: 'toggle-secondary',
-        accent: 'toggle-accent',
-        info: 'toggle-info',
-        success: 'toggle-success',
-        warning: 'toggle-warning',
-        error: 'toggle-error',
+        primary: 'radio-primary',
+        secondary: 'radio-secondary',
+        accent: 'radio-accent',
+        info: 'radio-info',
+        success: 'radio-success',
+        warning: 'radio-warning',
+        error: 'radio-error',
     }
 
     const classes = twMerge(
-        'toggle',
+        'radio',
         size && sizes[size],
         color && colors[color],
         className,
@@ -62,11 +62,10 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>((
     return (
         <label className={twMerge('label gap-4', labelClassName)}>
             {label && <span className="label-text">{label}</span>}
-            <input type="checkbox" {...props} ref={ref} data-theme={dataTheme} className={classes} />
-            {children}
+            <input type="radio" {...props} ref={ref} data-theme={dataTheme} className={classes} />
             {labelAlt && <span className="label-text">{labelAlt}</span>}
         </label>
     )
 })
 
-Toggle.displayName = "Toggle"
+Radio.displayName = "Radio"

@@ -51,11 +51,11 @@ description: Swap allows you to toggle the visibility of two elements using a ch
 ### Activate using class name instead of checkbox
 
 ```tsx live
-<Swap active={false} className="text-6xl">
+<Swap checkbox={false} className="text-6xl">
     <Swap.On>🥵</Swap.On>
     <Swap.Off>🥶</Swap.Off>
 </Swap>
-<Swap active className="text-6xl">
+<Swap active checkbox={false} className="text-6xl">
     <Swap.On>🥳</Swap.On>
     <Swap.Off>😭</Swap.Off>
 </Swap>

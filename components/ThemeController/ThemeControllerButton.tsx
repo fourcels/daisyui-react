@@ -4,8 +4,7 @@ import { forwardRef } from 'react'
 import { Button, ButtonProps } from '../Button'
 
 
-export type ThemeControllerButtonProps =
-    & ButtonProps<'input'>
+export type ThemeControllerButtonProps = ButtonProps<'input'>
 
 
 export const ThemeControllerButton = forwardRef<HTMLInputElement, ThemeControllerButtonProps>((
@@ -16,7 +15,7 @@ export const ThemeControllerButton = forwardRef<HTMLInputElement, ThemeControlle
     ref
 ) => {
     const classes = twMerge(
-        'theme-controller',
+        'theme-controller join-item',
         className,
     )
     return (
