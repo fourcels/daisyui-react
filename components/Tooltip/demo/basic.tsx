@@ -34,14 +34,13 @@ export default function App() {
                         ]}
                     />
                 </Form.Control>
-                <Form.Control label="Force open" horizontal>
-                    <Toggle
-                        checked={open}
-                        onChange={
-                            (e) => setOpen(e.target.checked)
-                        }
-                    />
-                </Form.Control>
+                <Toggle
+                    label="Force open"
+                    checked={open}
+                    onChange={
+                        (e) => setOpen(e.target.checked)
+                    }
+                />
             </div>
 
             <Divider>Preview</Divider>

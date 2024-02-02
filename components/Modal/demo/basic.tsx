@@ -24,22 +24,20 @@ export default function App() {
                         ]}
                     />
                 </Form.Control>
-                <Form.Control label="Backdrop" horizontal>
-                    <Toggle
-                        checked={backdrop}
-                        onChange={
-                            (e) => setBackdrop(e.target.checked)
-                        }
-                    />
-                </Form.Control>
-                <Form.Control label="Close" horizontal>
-                    <Toggle
-                        checked={close}
-                        onChange={
-                            (e) => setClose(e.target.checked)
-                        }
-                    />
-                </Form.Control>
+                <Toggle
+                    label="Backdrop"
+                    checked={backdrop}
+                    onChange={
+                        (e) => setBackdrop(e.target.checked)
+                    }
+                />
+                <Toggle
+                    label="Close"
+                    checked={close}
+                    onChange={
+                        (e) => setClose(e.target.checked)
+                    }
+                />
             </div>
 
             <Divider>Preview</Divider>

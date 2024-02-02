@@ -37,11 +37,9 @@ export default function App() {
 
             <Divider>Preview</Divider>
 
-            <div className='flex justify-center'>
-                <div className='flex flex-col w-36'>
-                    <Radio disabled={disabled} label="Radio 1" name="radio" size={size} color={color} />
-                    <Radio disabled={disabled} label="Radio 2" name="radio" size={size} color={color} />
-                </div>
+            <div className='flex flex-col items-center'>
+                <Radio disabled={disabled} label="Radio 1" name="radio" size={size} color={color} />
+                <Radio disabled={disabled} label="Radio 2" name="radio" size={size} color={color} />
             </div>
         </>
     )

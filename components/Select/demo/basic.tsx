@@ -33,22 +33,20 @@ export default function App() {
                         items={['xs', 'sm', 'md', 'lg']}
                     />
                 </Form.Control>
-                <Form.Control label="Bordered" horizontal>
-                    <Toggle
-                        checked={bordered}
-                        onChange={
-                            (e) => setBordered(e.target.checked)
-                        }
-                    />
-                </Form.Control>
-                <Form.Control label="Disabled" horizontal>
-                    <Toggle
-                        checked={disabled}
-                        onChange={
-                            (e) => setDisabled(e.target.checked)
-                        }
-                    />
-                </Form.Control>
+                <Toggle
+                    label="Bordered"
+                    checked={bordered}
+                    onChange={
+                        (e) => setBordered(e.target.checked)
+                    }
+                />
+                <Toggle
+                    label="Disabled"
+                    checked={disabled}
+                    onChange={
+                        (e) => setDisabled(e.target.checked)
+                    }
+                />
             </div>
 
             <Divider>Preview</Divider>

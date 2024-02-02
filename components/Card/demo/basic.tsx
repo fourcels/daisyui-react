@@ -17,54 +17,48 @@ export default function App() {
     return (
         <>
             <div className='flex flex-wrap gap-8'>
-                <Form.Control label="Bordered" horizontal>
-                    <Toggle
-                        checked={bordered}
-                        onChange={
-                            (e) => setBordered(e.target.checked)
-                        }
-                    />
-                </Form.Control>
-                <Form.Control label="Shadow" horizontal>
-                    <Toggle
-                        checked={shadow}
-                        onChange={
-                            (e) => setShadow(e.target.checked)
-                        }
-                    />
-                </Form.Control>
-                <Form.Control label="Image Full" horizontal>
-                    <Toggle
-                        checked={imageFull}
-                        onChange={
-                            (e) => setImageFull(e.target.checked)
-                        }
-                    />
-                </Form.Control>
-                <Form.Control label="Compact" horizontal>
-                    <Toggle
-                        checked={compact}
-                        onChange={
-                            (e) => setCompact(e.target.checked)
-                        }
-                    />
-                </Form.Control>
-                <Form.Control label="Glass" horizontal>
-                    <Toggle
-                        checked={glass}
-                        onChange={
-                            (e) => setGlass(e.target.checked)
-                        }
-                    />
-                </Form.Control>
-                <Form.Control label="Side" horizontal>
-                    <Toggle
-                        checked={side}
-                        onChange={
-                            (e) => setSide(e.target.checked)
-                        }
-                    />
-                </Form.Control>
+                <Toggle
+                    label="Bordered"
+                    checked={bordered}
+                    onChange={
+                        (e) => setBordered(e.target.checked)
+                    }
+                />
+                <Toggle
+                    label="Shadow"
+                    checked={shadow}
+                    onChange={
+                        (e) => setShadow(e.target.checked)
+                    }
+                />
+                <Toggle
+                    label="Image Full"
+                    checked={imageFull}
+                    onChange={
+                        (e) => setImageFull(e.target.checked)
+                    }
+                />
+                <Toggle
+                    label="Compact"
+                    checked={compact}
+                    onChange={
+                        (e) => setCompact(e.target.checked)
+                    }
+                />
+                <Toggle
+                    label="Glass"
+                    checked={glass}
+                    onChange={
+                        (e) => setGlass(e.target.checked)
+                    }
+                />
+                <Toggle
+                    label="Side"
+                    checked={side}
+                    onChange={
+                        (e) => setSide(e.target.checked)
+                    }
+                />
             </div>
 
             <Divider>Preview</Divider>

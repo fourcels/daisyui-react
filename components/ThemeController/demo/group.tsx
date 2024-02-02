@@ -18,6 +18,7 @@ export default function App() {
         <div className='flex flex-col items-center justify-center gap-4'>
             <Divider>Theme Controller using a radio input</Divider>
             <ThemeController.RadioGroup value={theme} onChange={handleChange} direction='vertical' name="theme-radios" items={items} />
+
             <Divider>Theme Controller using a radio button</Divider>
             <ThemeController.ButtonGroup
                 value={theme}
@@ -25,6 +26,7 @@ export default function App() {
                 direction='vertical'
                 name="theme-buttons"
                 items={items} />
+
             <Divider>Theme Controller using a dropdown</Divider>
             <ThemeController.Dropdown
                 trigger={(

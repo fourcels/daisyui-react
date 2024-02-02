@@ -58,62 +58,55 @@ export default function App() {
                         items={['square', 'circle']}
                     />
                 </Form.Control>
-                <Form.Control label="Glass" horizontal>
-                    <Toggle
-                        checked={glass}
-                        onChange={
-                            (e) => setGlass(e.target.checked)
-                        }
-                    />
-                </Form.Control>
-                <Form.Control label="Wide" horizontal>
-                    <Toggle
-                        checked={wide}
-                        onChange={
-                            (e) => setWide(e.target.checked)
-                        }
-                    />
-                </Form.Control>
-                <Form.Control label="Block" horizontal>
-                    <Toggle
-                        checked={block}
-                        onChange={
-                            (e) => setBlock(e.target.checked)
-                        }
-                    />
-                </Form.Control>
-                <Form.Control label="Active" horizontal>
-                    <Toggle
-                        checked={active}
-                        onChange={
-                            (e) => setActive(e.target.checked)
-                        }
-                    />
-                </Form.Control>
-                <Form.Control label="Disabled" horizontal>
-                    <Toggle
-                        checked={disabled}
-                        onChange={
-                            (e) => setDisabled(e.target.checked)
-                        }
-                    />
-                </Form.Control>
-                <Form.Control label="Loading" horizontal>
-                    <Toggle
-                        checked={loading}
-                        onChange={
-                            (e) => setLoading(e.target.checked)
-                        }
-                    />
-                </Form.Control>
-                <Form.Control label="Animation" horizontal>
-                    <Toggle
-                        checked={animation}
-                        onChange={
-                            (e) => setAnimation(e.target.checked)
-                        }
-                    />
-                </Form.Control>
+                <Toggle
+                    label="Glass"
+                    checked={glass}
+                    onChange={
+                        (e) => setGlass(e.target.checked)
+                    }
+                />
+                <Toggle
+                    label="Wide"
+                    checked={wide}
+                    onChange={
+                        (e) => setWide(e.target.checked)
+                    }
+                />
+                <Toggle
+                    label="Block"
+                    checked={block}
+                    onChange={
+                        (e) => setBlock(e.target.checked)
+                    }
+                />
+                <Toggle
+                    label="Active"
+                    checked={active}
+                    onChange={
+                        (e) => setActive(e.target.checked)
+                    }
+                />
+                <Toggle
+                    label="Disabled"
+                    checked={disabled}
+                    onChange={
+                        (e) => setDisabled(e.target.checked)
+                    }
+                />
+                <Toggle
+                    label="Loading"
+                    checked={loading}
+                    onChange={
+                        (e) => setLoading(e.target.checked)
+                    }
+                />
+                <Toggle
+                    label="Animation"
+                    checked={animation}
+                    onChange={
+                        (e) => setAnimation(e.target.checked)
+                    }
+                />
             </div>
 
             <Divider>Preview</Divider>

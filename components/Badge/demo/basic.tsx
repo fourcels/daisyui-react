@@ -35,14 +35,13 @@ export default function App() {
                         ]}
                     />
                 </Form.Control>
-                <Form.Control label="Outline" horizontal>
-                    <Toggle
-                        checked={outline}
-                        onChange={
-                            (e) => setOutline(e.target.checked)
-                        }
-                    />
-                </Form.Control>
+                <Toggle
+                    label="Outline"
+                    checked={outline}
+                    onChange={
+                        (e) => setOutline(e.target.checked)
+                    }
+                />
             </div>
 
             <Divider>Preview</Divider>

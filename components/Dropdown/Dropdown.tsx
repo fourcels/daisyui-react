@@ -17,6 +17,7 @@ export type DropdownProps<T extends HTMLElement = HTMLDivElement> =
 
 export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((
     {
+        open,
         children,
         trigger,
         position,
@@ -43,6 +44,7 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((
         position && positions[position],
         end && 'dropdown-end',
         hover && 'dropdown-hover',
+        open && 'dropdown-open',
         className,
     )
 

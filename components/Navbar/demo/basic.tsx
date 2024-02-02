@@ -14,22 +14,20 @@ export default function App() {
     return (
         <>
             <div className='flex flex-wrap gap-8'>
-                <Form.Control label="shadow" horizontal>
-                    <Toggle
-                        checked={shadow}
-                        onChange={
-                            (e) => setShadow(e.target.checked)
-                        }
-                    />
-                </Form.Control>
-                <Form.Control label="rounded" horizontal>
-                    <Toggle
-                        checked={rounded}
-                        onChange={
-                            (e) => setRounded(e.target.checked)
-                        }
-                    />
-                </Form.Control>
+                <Toggle
+                    label="shadow"
+                    checked={shadow}
+                    onChange={
+                        (e) => setShadow(e.target.checked)
+                    }
+                />
+                <Toggle
+                    label="rounded"
+                    checked={rounded}
+                    onChange={
+                        (e) => setRounded(e.target.checked)
+                    }
+                />
             </div>
 
             <Divider>Preview</Divider>

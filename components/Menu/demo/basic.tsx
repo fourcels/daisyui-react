@@ -37,14 +37,13 @@ export default function App() {
                     />
                 </Form.Control>
 
-                <Form.Control label="Responsive" horizontal>
-                    <Toggle
-                        checked={responsive}
-                        onChange={
-                            (e) => setResponsive(e.target.checked)
-                        }
-                    />
-                </Form.Control>
+                <Toggle
+                    label="Responsive"
+                    checked={responsive}
+                    onChange={
+                        (e) => setResponsive(e.target.checked)
+                    }
+                />
 
             </div>
 

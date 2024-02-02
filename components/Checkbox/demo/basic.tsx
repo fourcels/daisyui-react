@@ -36,9 +36,11 @@ export default function App() {
             <Divider>Preview</Divider>
 
             <div className='flex justify-center'>
-                <Form.Control label="Remember me" horizontal>
-                    <Checkbox defaultChecked size={size} color={color} />
-                </Form.Control>
+                <Checkbox
+                    label="Checkbox"
+                    size={size}
+                    color={color}
+                />
             </div>
         </>
     )

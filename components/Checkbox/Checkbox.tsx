@@ -6,7 +6,7 @@ import {
     ComponentSize,
 } from '../types'
 
-import { forwardRef } from 'react'
+import { ReactNode, forwardRef } from 'react'
 
 
 export type CheckboxProps = Omit<
@@ -16,10 +16,16 @@ export type CheckboxProps = Omit<
     ComponentBaseProps & {
         size?: ComponentSize
         color?: Exclude<ComponentColor, 'neutral' | 'ghost'>
+        label?: ReactNode
+        labelAlt?: ReactNode
+        labelClassName?: string
     }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((
     {
+        label,
+        labelAlt,
+        labelClassName,
         size,
         color,
         dataTheme,
@@ -53,7 +59,11 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((
     )
 
     return (
-        <input type="checkbox" {...props} ref={ref} data-theme={dataTheme} className={classes} />
+        <label className={twMerge('label gap-4', labelClassName)}>
+            {label && <span className="label-text">{label}</span>}
+            <input type="checkbox" {...props} ref={ref} data-theme={dataTheme} className={classes} />
+            {labelAlt && <span className="label-text">{labelAlt}</span>}
+        </label>
     )
 })
 

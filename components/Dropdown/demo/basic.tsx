@@ -28,30 +28,27 @@ export default function App() {
                         ]}
                     />
                 </Form.Control>
-                <Form.Control label="End" horizontal>
-                    <Toggle
-                        checked={end}
-                        onChange={
-                            (e) => setEnd(e.target.checked)
-                        }
-                    />
-                </Form.Control>
-                <Form.Control label="Hover" horizontal>
-                    <Toggle
-                        checked={hover}
-                        onChange={
-                            (e) => setHover(e.target.checked)
-                        }
-                    />
-                </Form.Control>
-                <Form.Control label="Force open" horizontal>
-                    <Toggle
-                        checked={open}
-                        onChange={
-                            (e) => setOpen(e.target.checked)
-                        }
-                    />
-                </Form.Control>
+                <Toggle
+                    label="End"
+                    checked={end}
+                    onChange={
+                        (e) => setEnd(e.target.checked)
+                    }
+                />
+                <Toggle
+                    label="Hover"
+                    checked={hover}
+                    onChange={
+                        (e) => setHover(e.target.checked)
+                    }
+                />
+                <Toggle
+                    label="Force open"
+                    checked={open}
+                    onChange={
+                        (e) => setOpen(e.target.checked)
+                    }
+                />
             </div>
 
             <Divider>Preview</Divider>
