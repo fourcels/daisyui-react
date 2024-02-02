@@ -68,6 +68,10 @@ const components: Component[] = [
         name: 'Theme Controller',
         path: '/components/theme-controller'
     },
+    {
+        name: 'File Input',
+        path: '/components/file-input'
+    },
 ]
 
 export function Sidebar({
