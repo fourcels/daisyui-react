@@ -4,6 +4,7 @@ import React from 'react';
 export default function App() {
     const [arrow, setArrow] = React.useState<AccordionProps['arrow']>()
     const [bordered, setBordered] = React.useState(true)
+    const [join, setJoin] = React.useState(false)
 
     return (
         <>
@@ -24,6 +25,13 @@ export default function App() {
                         (e) => setBordered(e.target.checked)
                     }
                 />
+                <Toggle
+                    label="Join"
+                    checked={join}
+                    onChange={
+                        (e) => setJoin(e.target.checked)
+                    }
+                />
             </div>
 
             <Divider>Preview</Divider>
@@ -33,6 +41,7 @@ export default function App() {
                     className='w-full max-w-md'
                     arrow={arrow}
                     bordered={bordered}
+                    join={join}
                 >
                     <Accordion.Collapse>
                         <Collapse.Title>Click to open this one and close others</Collapse.Title>

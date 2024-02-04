@@ -7,35 +7,3 @@ description: Accordion is used for showing and hiding content but only one item 
 
 ### Accordion
 <code src="./demo/basic.tsx" />
-
-### Using Accordion and Join together
-
-```tsx live
-/**
- * description: to join the items together and handle border radius automatically
- */
-<Accordion.Join
-    className='w-full max-w-md'
-    arrow="arrow"
->
-    <Accordion.Collapse>
-        <Collapse.Title>Click to open this one and close others</Collapse.Title>
-        <Collapse.Content>
-            <p>hello</p>
-        </Collapse.Content>
-    </Accordion.Collapse>
-    <Accordion.Collapse>
-        <Collapse.Title>Click to open this one and close others</Collapse.Title>
-        <Collapse.Content>
-            <p>hello</p>
-        </Collapse.Content>
-    </Accordion.Collapse>
-    <Accordion.Collapse>
-        <Collapse.Title>Click to open this one and close others</Collapse.Title>
-        <Collapse.Content>
-            <p>hello</p>
-        </Collapse.Content>
-    </Accordion.Collapse>
-</Accordion>
-
-```

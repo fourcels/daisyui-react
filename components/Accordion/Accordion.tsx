@@ -2,7 +2,6 @@ import React, { ReactElement, forwardRef } from 'react';
 import { ComponentBaseProps } from '../types';
 import { twMerge } from 'tailwind-merge';
 import { AccordionCollapse, AccordionCollapseProps } from './AccordionCollapse';
-import { AccordionJoin } from './AccordionJoin';
 
 export type { AccordionCollapseProps }
 
@@ -14,10 +13,12 @@ export type AccordionProps =
         defaultIndex?: number
         bordered?: boolean
         arrow?: 'arrow' | 'plus'
+        join?: boolean
     }
 
 const AccordionInner = forwardRef<HTMLDivElement, AccordionProps>((
     {
+        join,
         defaultIndex = 0,
         arrow,
         bordered = true,
@@ -31,7 +32,8 @@ const AccordionInner = forwardRef<HTMLDivElement, AccordionProps>((
     const [index, setIndex] = React.useState<number>(defaultIndex)
 
     const classes = twMerge(
-        'accordion gap-2 flex flex-col',
+        'accordion',
+        join ? 'join join-vertical' : 'flex flex-col gap-2',
         className,
     )
     return (
@@ -45,6 +47,10 @@ const AccordionInner = forwardRef<HTMLDivElement, AccordionProps>((
                 return React.cloneElement(child, {
                     open: idx === index,
                     onClick: () => setIndex(idx),
+                    className: twMerge(
+                        child.props.className,
+                        join && 'join-item'
+                    ),
                     arrow,
                     bordered,
                 })
@@ -57,5 +63,4 @@ AccordionInner.displayName = 'Accordion'
 
 export const Accordion = Object.assign(AccordionInner, {
     Collapse: AccordionCollapse,
-    Join: AccordionJoin,
 })
