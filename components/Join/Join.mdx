@@ -1,0 +1,29 @@
+---
+title: Join
+description: Join is a container for grouping multiple items, it can be used to group buttons, inputs, or any other element. Join applies border radius to the first and last item. Join can be used to create a horizontal or vertical list of items.
+---
+
+## Examples
+
+### Join
+<code src="./demo/basic.tsx" />
+
+### Responsive
+```tsx live
+/**
+ * description: it's vertical on small screen and horizontal on large screen
+ */
+
+<Join responsive>
+    <Join.Item>
+        <Button>Button</Button>
+    </Join.Item>
+    <Join.Item>
+        <Button>Button</Button>
+    </Join.Item>
+    <Join.Item>
+        <Button>Button</Button>
+    </Join.Item>
+</Join>
+
+```

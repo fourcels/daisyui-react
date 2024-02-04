@@ -6,6 +6,7 @@ import {
   componentShapes,
   bgColors,
   brandColors,
+  componentDirections,
 } from './constants'
 
 import { DEFAULT_THEMES } from './defaultThemes'
@@ -17,8 +18,8 @@ export type ComponentBaseProps = {
 }
 
 
+export type ComponentDirection = typeof componentDirections[number]
 export type ComponentColor = typeof componentColors[number]
-
 export type ComponentPosition = typeof componentPositions[number]
 export type ComponentShape = typeof componentShapes[number]
 export type ComponentSize = typeof componentSizes[number]

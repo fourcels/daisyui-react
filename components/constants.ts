@@ -1,6 +1,7 @@
 export const componentPositions = ['top', 'bottom', 'left', 'right'] as const
 export const componentShapes = ['circle', 'square'] as const
 export const componentSizes = ['lg', 'md', 'sm', 'xs'] as const
+export const componentDirections = ['vertical', 'horizontal'] as const
 export const componentStatuses = [
     'info',
     'success',

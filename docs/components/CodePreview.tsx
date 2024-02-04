@@ -7,7 +7,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { twMerge } from 'tailwind-merge';
-
+import './CodePreview.css'
 
 
 export function CodePreview(props: {
@@ -52,7 +52,7 @@ export function CodePreview(props: {
         <div className='code-preview border rounded not-prose leading-normal'>
             {live && (
                 <div>
-                    <div className='py-10 px-6'>
+                    <div className='py-10 px-6 preview'>
                         {component}
                     </div>
                     <CodeInfo title={props.title} description={props.description} />

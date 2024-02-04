@@ -72,6 +72,14 @@ const components: Component[] = [
         name: 'File Input',
         path: '/components/file-input'
     },
+    {
+        name: 'Join',
+        path: '/components/join'
+    },
+    {
+        name: 'Text Input',
+        path: '/components/input'
+    },
 ]
 
 export function Sidebar({
