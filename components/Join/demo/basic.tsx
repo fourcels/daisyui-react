@@ -25,15 +25,9 @@ export default function App() {
                 <Join
                     direction={direction}
                 >
-                    <Join.Item>
-                        <Button>Button</Button>
-                    </Join.Item>
-                    <Join.Item>
-                        <Button>Button</Button>
-                    </Join.Item>
-                    <Join.Item>
-                        <Button>Button</Button>
-                    </Join.Item>
+                    <Button>Button</Button>
+                    <Button>Button</Button>
+                    <Button>Button</Button>
                 </Join>
             </div>
         </>

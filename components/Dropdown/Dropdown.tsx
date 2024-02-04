@@ -2,6 +2,7 @@ import React, { Children, ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { ComponentBaseProps, ComponentPosition } from '../types'
+import { useOutsideClick } from '../utils'
 
 export type DropdownProps<T extends HTMLElement = HTMLDivElement> =
     React.HTMLAttributes<T> &
@@ -31,6 +32,12 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((
     ref,
 ) => {
 
+    const [show, setShow] = React.useState(false)
+
+    const dropdownRef = useOutsideClick<HTMLDivElement>(() => setShow(false))
+
+    React.useImperativeHandle(ref, () => dropdownRef.current!)
+
     const positions = {
         top: 'dropdown-top',
         bottom: 'dropdown-bottom',
@@ -45,21 +52,21 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((
         end && 'dropdown-end',
         hover && 'dropdown-hover',
         open && 'dropdown-open',
+        show && 'dropdown-open',
         className,
     )
 
     return (
         <div
             {...props}
-            ref={ref}
+            ref={dropdownRef}
             data-theme={dataTheme}
             className={classes}
         >
             {React.cloneElement(trigger, {
-                tabIndex: 0
+                onClick: () => setShow(true),
             })}
             <div
-                tabIndex={0}
                 className={twMerge(
                     'dropdown-content z-10',
                     contentClassName,

@@ -15,15 +15,9 @@ description: Join is a container for grouping multiple items, it can be used to 
  */
 
 <Join responsive>
-    <Join.Item>
-        <Button>Button</Button>
-    </Join.Item>
-    <Join.Item>
-        <Button>Button</Button>
-    </Join.Item>
-    <Join.Item>
-        <Button>Button</Button>
-    </Join.Item>
+    <Button>Button</Button>
+    <Button>Button</Button>
+    <Button>Button</Button>
 </Join>
 
 ```
@@ -31,27 +25,17 @@ description: Join is a container for grouping multiple items, it can be used to 
 ### Custom border radius
 ```tsx live
 <Join>
-    <Join.Item>
-        <Input placeholder="Email"/>
-    </Join.Item>
-    <Join.Item>
-        <Button className="rounded-r-full">Subscribe</Button>
-    </Join.Item>
+    <Input placeholder="Email"/>
+    <Button className="rounded-r-full">Subscribe</Button>
 </Join>
 
 ```
 ### Join radio inputs with btn style
 ```tsx live
 <Join>
-    <Join.Item>
-        <Button as="input" type="radio" name="options" aria-label="Radio 1"/>
-    </Join.Item>
-    <Join.Item>
-        <Button as="input" type="radio" name="options" aria-label="Radio 2"/>
-    </Join.Item>
-    <Join.Item>
-        <Button as="input" type="radio" name="options" aria-label="Radio 3"/>
-    </Join.Item>
+    <Button as="input" type="radio" name="options" aria-label="Radio 1"/>
+    <Button as="input" type="radio" name="options" aria-label="Radio 2"/>
+    <Button as="input" type="radio" name="options" aria-label="Radio 3"/>
 </Join>
 
 ```

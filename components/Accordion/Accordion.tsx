@@ -9,7 +9,7 @@ export type AccordionProps =
     Omit<React.ComponentProps<'div'>, 'children'>
     & ComponentBaseProps
     & {
-        children: ReactElement<AccordionCollapseProps> | ReactElement<AccordionCollapseProps>[]
+        children?: ReactElement<AccordionCollapseProps> | ReactElement<AccordionCollapseProps>[]
         defaultIndex?: number
         bordered?: boolean
         arrow?: 'arrow' | 'plus'
@@ -43,7 +43,7 @@ const AccordionInner = forwardRef<HTMLDivElement, AccordionProps>((
             data-theme={dataTheme}
             {...props}
         >
-            {React.Children.map(children, (child, idx) => {
+            {children && React.Children.map(children, (child, idx) => {
                 return React.cloneElement(child, {
                     open: idx === index,
                     onClick: () => setIndex(idx),

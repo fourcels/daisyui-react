@@ -1,21 +1,19 @@
-import React, { forwardRef } from 'react';
+import React, { ReactElement, forwardRef } from 'react';
 import { ComponentBaseProps, ComponentDirection } from '../types';
 import { twMerge } from 'tailwind-merge';
-import { JoinItem, JoinItemProps } from './JoinItem';
-
-
-export type { JoinItemProps }
 
 export type JoinProps =
-    React.ComponentProps<'div'>
+    Omit<React.ComponentProps<'div'>, 'children'>
     & ComponentBaseProps
     & {
+        children?: ReactElement | ReactElement[]
         direction?: ComponentDirection
         responsive?: boolean
     }
 
-const JoinInner = forwardRef<HTMLDivElement, JoinProps>((
+export const Join = forwardRef<HTMLDivElement, JoinProps>((
     {
+        children,
         responsive,
         direction,
         dataTheme,
@@ -43,12 +41,17 @@ const JoinInner = forwardRef<HTMLDivElement, JoinProps>((
             ref={ref}
             className={classes}
             {...props}
-        />
+        >
+            {children && React.Children.map(children, (child) => {
+                return React.cloneElement(child, {
+                    className: twMerge(
+                        'join-item',
+                        child.props.className
+                    )
+                })
+            })}
+        </div>
     )
 })
 
-JoinInner.displayName = 'Join'
-
-export const Join = Object.assign(JoinInner, {
-    Item: JoinItem
-})
+Join.displayName = 'Join'
