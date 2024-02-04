@@ -84,6 +84,10 @@ const components: Component[] = [
         name: 'Collapse',
         path: '/components/collapse'
     },
+    {
+        name: 'Accordion',
+        path: '/components/accordion'
+    },
 ]
 
 export function Sidebar({
