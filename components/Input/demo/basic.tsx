@@ -1,6 +1,5 @@
-import { Select, Form, Divider, Toggle, Button } from 'daisyui-react';
+import { Select, Form, Divider, Toggle, InputProps, Input } from 'daisyui-react';
 import React from 'react';
-import { Input, InputProps } from '..';
 
 export default function App() {
     const [color, setColor] = React.useState<InputProps['color']>()

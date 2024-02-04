@@ -73,7 +73,7 @@ const components: Component[] = [
         path: '/components/file-input'
     },
     {
-        name: 'Join',
+        name: 'Join (group items)',
         path: '/components/join'
     },
     {
