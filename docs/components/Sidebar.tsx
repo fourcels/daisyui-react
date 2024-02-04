@@ -80,6 +80,10 @@ const components: Component[] = [
         name: 'Text Input',
         path: '/components/input'
     },
+    {
+        name: 'Collapse',
+        path: '/components/collapse'
+    },
 ]
 
 export function Sidebar({

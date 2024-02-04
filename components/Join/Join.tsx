@@ -33,7 +33,8 @@ const JoinInner = forwardRef<HTMLDivElement, JoinProps>((
     const classes = twMerge(
         'join',
         direction && directions[direction],
-        responsive && 'join-vertical lg:join-horizontal'
+        responsive && 'join-vertical lg:join-horizontal',
+        className,
     )
 
 

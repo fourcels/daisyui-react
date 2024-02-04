@@ -1,0 +1,49 @@
+import { Select, Form, Divider, Collapse, CollapseProps, Toggle, } from 'daisyui-react';
+import React from 'react';
+
+export default function App() {
+    const [arrow, setArrow] = React.useState<CollapseProps['arrow']>()
+    const [open, setOpen] = React.useState(false)
+    const [bordered, setBordered] = React.useState(true)
+
+    return (
+        <>
+            <div className='flex flex-wrap gap-8'>
+                <Form.Control label="Arrow">
+                    <Select
+                        onChange={
+                            (e) => setArrow(e.target.value as any)
+                        }
+                        placeholder={{ disabled: false }}
+                        items={['arrow', 'plus']}
+                    />
+                </Form.Control>
+                <Toggle
+                    label="Force open"
+                    checked={open}
+                    onChange={
+                        (e) => setOpen(e.target.checked)
+                    }
+                />
+                <Toggle
+                    label="Bordered"
+                    checked={bordered}
+                    onChange={
+                        (e) => setBordered(e.target.checked)
+                    }
+                />
+            </div>
+
+            <Divider>Preview</Divider>
+
+            <div className='flex justify-center'>
+                <Collapse arrow={arrow} open={open} bordered={bordered}>
+                    <Collapse.Title>Click me to show/hide content</Collapse.Title>
+                    <Collapse.Content>
+                        <p>hello</p>
+                    </Collapse.Content>
+                </Collapse>
+            </div>
+        </>
+    )
+}
