@@ -1,0 +1,32 @@
+---
+title: Badge
+description: Badges are used to inform the user of the status of specific data.
+---
+
+## Examples
+
+### Badge
+<code src="./demo/basic.tsx" />
+
+### Empty badge
+```tsx live
+<Badge size="lg" color="primary"/>
+<Badge size="md" color="primary"/>
+<Badge size="sm" color="primary"/>
+<Badge size="xs" color="primary"/>
+```
+
+### Badge in a button
+```tsx live
+<Button>
+    Inbox <Badge>+99</Badge>
+</Button>
+<Button>
+    Inbox <Badge color="secondary">+99</Badge>
+</Button>
+```
+
+
+## API
+
+Common props: `dataTheme`, `className`, `style`

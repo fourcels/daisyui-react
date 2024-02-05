@@ -88,6 +88,10 @@ const components: Component[] = [
         name: 'Accordion',
         path: '/components/accordion'
     },
+    {
+        name: 'Mask',
+        path: '/components/mask'
+    },
 ]
 
 export function Sidebar({
