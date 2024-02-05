@@ -11,12 +11,13 @@ export type AvatarProps =
     React.ComponentProps<'div'>
     & ComponentBaseProps
     & {
-        mask?: boolean
+        size?: ComponentSize
     }
 
 export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
     (
         {
+            size,
             children,
             dataTheme,
             className,

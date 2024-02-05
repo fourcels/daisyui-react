@@ -9,35 +9,34 @@ import {
 
 import { SelectOption, SelectOptionProps } from './SelectOption'
 import React, { ReactElement, forwardRef } from 'react'
+import { Button } from '../Button'
 
 export type SelectItem = string | number | {
     label: string;
-    value?: string | number;
-}
-
-export type SelectPlaceholder = boolean | string | {
-    content?: string
-    disabled?: boolean
+    value: string | number;
 }
 
 export type SelectProps = Omit<
-    React.SelectHTMLAttributes<HTMLSelectElement>,
-    'size' | 'color'
+    React.ComponentProps<'select'>,
+    'size' | 'color' | 'onChange'
 > &
     ComponentBaseProps & {
         children?: ListOrItem<ReactElement<SelectOptionProps>>
         size?: ComponentSize
         color?: Exclude<ComponentColor, 'neutral'>
         bordered?: boolean
-        placeholder?: SelectPlaceholder
+        placeholder?: string
         items?: SelectItem[]
+        onChange?: (value?: string) => void
+        clearable?: boolean
     }
 
 const SelectInner = forwardRef<HTMLSelectElement, SelectProps>((
     {
-        value,
-        defaultValue = value ? undefined : "",
-        placeholder,
+        clearable = true,
+        onChange,
+        defaultValue = "",
+        placeholder = 'Select...',
         items = [],
         children,
         size,
@@ -66,6 +65,8 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>((
         ghost: 'select-ghost',
     }
 
+    const selectRef = React.useRef<HTMLSelectElement>(null)
+    React.useImperativeHandle(ref, () => selectRef.current!)
     const classes = twMerge(
         'select',
         size && sizes[size],
@@ -73,26 +74,6 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>((
         bordered && 'select-bordered',
         className,
     )
-
-    const placeholderOption = React.useMemo(() => {
-        if (!placeholder) {
-            return
-        }
-        let optionLabel = 'None'
-        let optionDisabled = true
-        if (typeof placeholder === 'string') {
-            optionLabel = placeholder
-        } else if (typeof placeholder === 'boolean') {
-            /* empty */
-        } else {
-            const { content = optionLabel, disabled = true } = placeholder
-            optionLabel = content
-            optionDisabled = disabled
-        }
-
-
-        return <SelectOption value="" disabled={optionDisabled}>{optionLabel}</SelectOption>
-    }, [placeholder])
 
     const options = React.useMemo(() => {
         if (children) {
@@ -105,12 +86,36 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>((
             const { label, value = label } = item
             return <SelectOption key={value} value={value}>{label}</SelectOption>
         })
-    }, [children, items])
+    }, [children, items,])
     return (
-        <select defaultValue={defaultValue} value={value} {...props} ref={ref} data-theme={dataTheme} className={classes}>
-            {placeholderOption}
-            {options}
-        </select>
+        <div className='relative group'>
+            {clearable && (
+                <div className='group-hover:block hidden absolute top-1/2 right-2 -translate-y-1/2'>
+                    <Button
+                        onClick={() => {
+                            const select = selectRef.current
+                            if (select) {
+                                select.value = ""
+                                onChange?.(undefined)
+                            }
+                        }}
+                        shape='circle'
+                        size='xs'
+                        color='neutral'
+                    >✕</Button>
+                </div>
+            )}
+            <select
+                onChange={(e) => onChange?.(e.target.value)}
+                defaultValue={defaultValue}
+                {...props}
+                ref={selectRef}
+                data-theme={dataTheme}
+                className={classes}>
+                {placeholder && <SelectOption value="" disabled>{placeholder}</SelectOption>}
+                {options}
+            </select>
+        </div>
     )
 })
 
