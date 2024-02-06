@@ -7,6 +7,7 @@ export default function App() {
     const [size, setSize] = React.useState<SelectProps['size']>()
     const [bordered, setBordered] = React.useState(true)
     const [disabled, setDisabled] = React.useState(false)
+    const [clearable, setClearable] = React.useState(true)
 
     return (
         <>
@@ -37,6 +38,11 @@ export default function App() {
                     checked={disabled}
                     onChange={(e) => setDisabled(e.target.checked)}
                 />
+                <Toggle
+                    label="Clearable"
+                    checked={clearable}
+                    onChange={(e) => setClearable(e.target.checked)}
+                />
             </div>
 
             <Divider>Preview</Divider>
@@ -44,6 +50,7 @@ export default function App() {
             <div className='flex justify-center'>
                 <Form.Control label="Simpson">
                     <Select
+                        clearable={clearable}
                         color={color}
                         size={size}
                         bordered={bordered}

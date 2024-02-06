@@ -108,6 +108,27 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>((
         return false
     }, [clearable, selectValue, disabled, placeholder])
 
+    const select = (
+        <select
+            value={selectValue}
+            disabled={disabled}
+            onChange={(e) => {
+                const value = e.target.value
+                setSelectValue(value)
+                onChange?.(value)
+            }}
+            {...props}
+            ref={selectRef}
+            data-theme={dataTheme}
+            className={classes}
+        >
+            {placeholder && (
+                <SelectOption value="" disabled>{placeholder}</SelectOption>
+            )}
+            {options}
+        </select>
+    )
+
     return (
         <div className={twMerge('select-wrapper', wrapperClassName)}>
             {showClearable && (

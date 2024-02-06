@@ -19,9 +19,8 @@ export default function App() {
                 <Form.Control label="Position">
                     <Select
                         onChange={
-                            (e) => setPosition(e.target.value as any)
+                            (value) => setPosition(value as any)
                         }
-                        placeholder={{ disabled: false }}
                         items={[
                             'top', 'bottom',
                             'left', 'right',

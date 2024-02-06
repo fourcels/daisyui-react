@@ -13,9 +13,8 @@ export default function App() {
                 <Form.Control label="Mask">
                     <Select
                         onChange={
-                            (e) => setMask(e.target.value as any)
+                            (value) => setMask(value as any)
                         }
-                        placeholder={{ disabled: false }}
                         items={[
                             'squircle', 'heart', 'decagon', 'pentagon', 'diamond', 'square', 'circle',
                             'hexagon', 'hexagon-2',
@@ -28,9 +27,8 @@ export default function App() {
                 <Form.Control label="Half">
                     <Select
                         onChange={
-                            (e) => setHalf(e.target.value as any)
+                            (value) => setHalf(value as any)
                         }
-                        placeholder={{ disabled: false }}
                         items={[
                             'half-1', 'half-2'
                         ]}

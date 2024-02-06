@@ -7,6 +7,7 @@ import {
 } from '../types'
 
 import { ReactNode, forwardRef } from 'react'
+import { Label } from '../Label'
 
 
 export type CheckboxProps = Omit<
@@ -17,14 +18,14 @@ export type CheckboxProps = Omit<
         size?: ComponentSize
         color?: Exclude<ComponentColor, 'neutral' | 'ghost'>
         label?: ReactNode
-        labelAlt?: ReactNode
         labelClassName?: string
+        reverse?: boolean
     }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((
     {
+        reverse,
         label,
-        labelAlt,
         labelClassName,
         size,
         color,
@@ -58,12 +59,19 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((
         className,
     )
 
+    const checkbox = (
+        <input type="checkbox" {...props} ref={ref} data-theme={dataTheme} className={classes} />
+    )
+
+
+    if (!label) {
+        return checkbox
+    }
     return (
-        <label className={twMerge('label gap-4', labelClassName)}>
-            {label && <span className="label-text">{label}</span>}
-            <input type="checkbox" {...props} ref={ref} data-theme={dataTheme} className={classes} />
-            {labelAlt && <span className="label-text">{labelAlt}</span>}
-        </label>
+        <Label reverse={reverse} className={labelClassName}>
+            {checkbox}
+            <Label.Text>{label}</Label.Text>
+        </Label>
     )
 })
 

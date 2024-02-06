@@ -7,6 +7,7 @@ import {
 } from '../types'
 
 import { ReactNode, forwardRef } from 'react'
+import { Label } from '../Label'
 
 
 export type RadioProps = Omit<
@@ -18,14 +19,14 @@ export type RadioProps = Omit<
         size?: ComponentSize
         color?: Exclude<ComponentColor, 'neutral' | 'ghost'>
         label?: ReactNode
-        labelAlt?: ReactNode
         labelClassName?: string
+        reverse?: boolean
     }
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>((
     {
+        reverse,
         label,
-        labelAlt,
         size,
         color,
         dataTheme,
@@ -59,12 +60,19 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((
         className,
     )
 
+    const radio = (
+        <input type="radio" {...props} ref={ref} data-theme={dataTheme} className={classes} />
+    )
+
+    if (!label) {
+        return radio
+    }
+
     return (
-        <label className={twMerge('label gap-4', labelClassName)}>
-            {label && <span className="label-text">{label}</span>}
-            <input type="radio" {...props} ref={ref} data-theme={dataTheme} className={classes} />
-            {labelAlt && <span className="label-text">{labelAlt}</span>}
-        </label>
+        <Label reverse={reverse} className={labelClassName}>
+            {radio}
+            <Label.Text>{label}</Label.Text>
+        </Label>
     )
 })
 

@@ -11,9 +11,8 @@ export default function App() {
                 <Form.Control label="Direction">
                     <Select
                         onChange={
-                            (e) => setDirection(e.target.value as any)
+                            (value) => setDirection(value as any)
                         }
-                        placeholder={{ disabled: false }}
                         items={['vertical', 'horizontal']}
                     />
                 </Form.Control>

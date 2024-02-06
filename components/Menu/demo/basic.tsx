@@ -16,9 +16,8 @@ export default function App() {
                 <Form.Control label="Size">
                     <Select
                         onChange={
-                            (e) => setSize(e.target.value as any)
+                            (value) => setSize(value as any)
                         }
-                        placeholder={{ disabled: false }}
                         items={[
                             'xs', 'sm', 'md', 'lg'
                         ]}
@@ -28,9 +27,8 @@ export default function App() {
                 <Form.Control label="Direction">
                     <Select
                         onChange={
-                            (e) => setDirection(e.target.value as any)
+                            (value) => setDirection(value as any)
                         }
-                        placeholder={{ disabled: false }}
                         items={[
                             'vertical', 'horizontal',
                         ]}

@@ -12,9 +12,8 @@ export default function App() {
                 <Form.Control label="Color">
                     <Select
                         onChange={
-                            (e) => setColor(e.target.value as any)
+                            (value) => setColor(value as any)
                         }
-                        placeholder={{ disabled: false }}
                         items={[
                             'neutral', 'primary', 'secondary', 'accent',
                             'info', 'success', 'warning', 'error',
@@ -24,18 +23,16 @@ export default function App() {
                 <Form.Control label="Direction">
                     <Select
                         onChange={
-                            (e) => setDirection(e.target.value as any)
+                            (value) => setDirection(value as any)
                         }
-                        placeholder={{ disabled: false }}
                         items={['vertical', 'horizontal']}
                     />
                 </Form.Control>
                 <Form.Control label="Position">
                     <Select
                         onChange={
-                            (e) => setPosition(e.target.value as any)
+                            (value) => setPosition(value as any)
                         }
-                        placeholder={{ disabled: false }}
                         items={['start', 'end']}
                     />
                 </Form.Control>

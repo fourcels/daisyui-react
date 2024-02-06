@@ -12,9 +12,8 @@ export default function App() {
                 <Form.Control label="Arrow">
                     <Select
                         onChange={
-                            (e) => setArrow(e.target.value as any)
+                            (value) => setArrow(value as any)
                         }
-                        placeholder={{ disabled: false }}
                         items={['arrow', 'plus']}
                     />
                 </Form.Control>
