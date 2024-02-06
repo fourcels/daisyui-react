@@ -1,7 +1,7 @@
 import React, { FC, Suspense, useRef, useState } from 'react';
 import { LiveProvider, LiveError, LivePreview, LiveEditor } from "react-live";
 import * as scope from 'daisyui-react'
-import { Button, Divider, Tooltip } from 'daisyui-react'
+import { Button, Divider, Tooltip, Loading } from 'daisyui-react'
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -94,19 +94,22 @@ const languageNames: Record<string, string> = {
     tsx: 'TypeScript'
 }
 
-function SourceCodeContent(props: {
-    code?: string
-    loadCode?: CodePrivewProps['loadCode']
+function SourceCodeContent({
+    code,
+    lang,
+    className,
+}: {
+    code: string
     lang: string
     className?: string
 }) {
     const timer = useRef<number>()
     const [copied, setCopied] = useState(false)
-    const code = useCode(props.code, props.loadCode)
+
     return (
-        <div className={twMerge('group relative flex', props.className)} >
-            {props.lang && (
-                <span className='px-2 py-1 rounded-bl-md absolute right-0 top-0 dark:bg-black'>{languageNames[props.lang] || props.lang.toUpperCase()}</span>
+        <div className={twMerge('group relative flex', className)} >
+            {lang && (
+                <span className='px-2 py-1 rounded-bl-md absolute right-0 top-0 dark:bg-black'>{languageNames[lang] || lang.toUpperCase()}</span>
             )}
             <CopyToClipboard
                 text={code}
@@ -122,6 +125,7 @@ function SourceCodeContent(props: {
                     </Button>
                 </Tooltip>
             </CopyToClipboard>
+
             <SyntaxHighlighter
                 customStyle={{
                     margin: 0,
@@ -130,7 +134,7 @@ function SourceCodeContent(props: {
                     flex: 1,
                     maxHeight: 600,
                 }}
-                language={props.lang}
+                language={lang}
                 style={oneDark}>
                 {code}
             </SyntaxHighlighter>
@@ -140,7 +144,9 @@ function SourceCodeContent(props: {
 
 function SourceCode({
     live,
-    ...props
+    lang,
+    code,
+    loadCode,
 }: {
     lang: string
     code?: string
@@ -148,10 +154,10 @@ function SourceCode({
     live: boolean
 }) {
     const [showCode, setShowCode] = useState(false)
-
+    const sourceCode = useCode(code, loadCode)
     if (!live) {
         return (
-            <SourceCodeContent {...props} />
+            <SourceCodeContent code={sourceCode} lang={lang} />
         )
     }
     return (
@@ -165,7 +171,7 @@ function SourceCode({
             </div>
             {showCode && (
                 <div>
-                    <SourceCodeContent className="border-t border-dashed" {...props} />
+                    <SourceCodeContent className="border-t border-dashed" code={sourceCode} lang={lang} />
                     <div className='flex justify-center items-center gap-1 py-2 border-t '>
                         <Tooltip title='Hide code'>
                             <Button color="ghost" size='sm' onClick={() => setShowCode(false)}>

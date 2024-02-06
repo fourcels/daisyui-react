@@ -1,6 +1,5 @@
 import { Select, Form, SelectProps, Divider, Toggle } from 'daisyui-react';
 import React from 'react';
-const { Option } = Select
 
 export default function App() {
     const [color, setColor] = React.useState<SelectProps['color']>()
