@@ -7,7 +7,7 @@ export type LoadingProps =
   & ComponentBaseProps
   & {
     size?: ComponentSize
-    color?: ComponentColor
+    color?: Exclude<ComponentColor, 'ghost'>
     variant?: 'spinner' | 'dots' | 'ring' | 'ball' | 'bars' | 'infinity'
   }
 
@@ -33,23 +33,22 @@ export const Loading = forwardRef<HTMLSpanElement, LoadingProps>((
   }
 
   const variants = {
-    spinner: 'loading-outline',
-    dots: 'loading-link',
-    ring: 'loading-link',
-    ball: 'loading-link',
-    bars: 'loading-link',
-    infinity: 'loading-link',
+    spinner: 'loading-spinner',
+    dots: 'loading-dots',
+    ring: 'loading-ring',
+    ball: 'loading-ball',
+    bars: 'loading-bars',
+    infinity: 'loading-infinity',
   }
   const colors = {
-    neutral: 'loading-neutral',
-    primary: 'loading-primary',
-    secondary: 'loading-secondary',
-    accent: 'loading-accent',
-    info: 'loading-info',
-    success: 'loading-success',
-    warning: 'loading-warning',
-    error: 'loading-error',
-    ghost: 'loading-ghost',
+    neutral: 'text-neutral',
+    primary: 'text-primary',
+    secondary: 'text-secondary',
+    accent: 'text-accent',
+    info: 'text-info',
+    success: 'text-success',
+    warning: 'text-warning',
+    error: 'text-error',
   }
 
   const classes = twMerge(

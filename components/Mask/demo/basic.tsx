@@ -1,6 +1,5 @@
-import { Select, Form, TooltipProps, Divider, Toggle, Tooltip, Button, BadgeProps, Badge } from 'daisyui-react';
+import { Select, Form, Divider, Mask, MaskProps } from 'daisyui-react';
 import React from 'react';
-import { Mask, MaskProps } from '..';
 import { twMerge } from 'tailwind-merge';
 
 export default function App() {

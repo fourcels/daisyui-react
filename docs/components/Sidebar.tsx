@@ -92,6 +92,10 @@ const components: Component[] = [
         name: 'Mask',
         path: '/components/mask'
     },
+    {
+        name: 'Loading',
+        path: '/components/loading'
+    },
 ]
 
 export function Sidebar({
