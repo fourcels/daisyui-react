@@ -1,12 +1,14 @@
+import { forwardRef } from 'react'
+
 export type SelectOptionProps = React.OptionHTMLAttributes<HTMLOptionElement>
 
-export const SelectOption = ({
-    children,
-    ...props
-}: SelectOptionProps): JSX.Element => {
+export const SelectOption = forwardRef<HTMLOptionElement, SelectOptionProps>((
+    props,
+    ref
+) => {
     return (
-        <option {...props}>
-            {children}
-        </option>
+        <option ref={ref} {...props} />
     )
-}
+})
+
+SelectOption.displayName = 'SelectOption'

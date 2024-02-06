@@ -8,14 +8,10 @@ description: Select is used to pick a value from a list of options.
 ### Select
 <code src="./demo/basic.tsx" />
 
-### Select with placeholder
-```tsx live
-<Select placeholder="Pick color" items={["primary", "secondary", "accent"]}/>
-```
 
 ### Select with option children
 ```tsx live
-<Select placeholder="Pick color">
+<Select>
     <Select.Option>primary</Select.Option>
     <Select.Option>secondary</Select.Option>
     <Select.Option>accent</Select.Option>
@@ -36,29 +32,20 @@ Common props: `dataTheme`, `className`, `style`
 | children | Select content | SelectOption \| SelectOption[] | - |
 | disabled | Disabled state | boolean | false |
 | items | Select items | SelectItem[] | - |
-| placeholder | Select placeholder | SelectPlaceholder | - |
+| placeholder | Select placeholder | string \| null | - |
 | size | Size of Select | `xs` \| `sm` \| `md` \| `lg` | - |
 
 It accepts all props which native `select` support.
 
-### SelectOption
-
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| children | Content | ReactNode | - |
-
+### Select.Option
 It accepts all props which native `option` support.
 
 ### Types
 ```tsx
 type SelectItem = string | number | {
     label: string
-    value?: string | number
+    value: string | number
 }
 
-type SelectPlaceholder = boolean | string | {
-    content?: string
-    disabled?: boolean = true
-}
 
 ```
