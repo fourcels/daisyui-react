@@ -10,15 +10,21 @@ import { twMerge } from 'tailwind-merge';
 import './CodePreview.css'
 
 
-export function CodePreview(props: {
-    code: string;
-    lang: string;
-    title?: string;
-    description?: string;
-    live: boolean;
+type CodePrivewProps = {
+    code: string
+    lang: string
+    title?: string
+    description?: string
+    live: boolean
+    loadCode: () => Promise<{ default: string }>
     loadComponent?: () => Promise<{ default: React.ComponentType }>
-}) {
+}
+
+export function CodePreview(props: CodePrivewProps) {
     const code = React.useMemo(() => {
+        if (!props.code) {
+            return
+        }
         return decodeURIComponent(atob(props.code))
     }, [props.code])
     const component = React.useMemo(() => {
@@ -58,9 +64,20 @@ export function CodePreview(props: {
                     <CodeInfo title={props.title} description={props.description} />
                 </div>
             )}
-            <SourceCode live={live} lang={props.lang} code={code} />
+            <SourceCode live={live} lang={props.lang} code={code} loadCode={props.loadCode} />
         </div>
     )
+}
+
+function useCode(code?: string, loadCode?: CodePrivewProps['loadCode']) {
+    const [value, setValue] = React.useState(code ?? "")
+    React.useEffect(() => {
+        loadCode?.().then(({ default: code }) => {
+            setValue(code)
+        })
+    }, [loadCode])
+
+    return value
 }
 
 
@@ -77,29 +94,31 @@ const languageNames: Record<string, string> = {
     tsx: 'TypeScript'
 }
 
-function SourceCodeContent({ code, lang, className }: {
-    code: string;
-    lang: string;
+function SourceCodeContent(props: {
+    code?: string
+    loadCode?: CodePrivewProps['loadCode']
+    lang: string
     className?: string
 }) {
     const timer = useRef<number>()
-    const [isCopied, setIsCopied] = useState(false)
+    const [copied, setCopied] = useState(false)
+    const code = useCode(props.code, props.loadCode)
     return (
-        <div className={twMerge('group relative flex', className)} >
-            {lang && (
-                <span className='px-2 py-1 rounded-bl-md absolute right-0 top-0 dark:bg-black'>{languageNames[lang] || lang.toUpperCase()}</span>
+        <div className={twMerge('group relative flex', props.className)} >
+            {props.lang && (
+                <span className='px-2 py-1 rounded-bl-md absolute right-0 top-0 dark:bg-black'>{languageNames[props.lang] || props.lang.toUpperCase()}</span>
             )}
             <CopyToClipboard
                 text={code}
                 onCopy={() => {
-                    setIsCopied(true);
+                    setCopied(true);
                     clearTimeout(timer.current);
-                    timer.current = window.setTimeout(() => setIsCopied(false), 2000);
+                    timer.current = window.setTimeout(() => setCopied(false), 2000);
                 }}
             >
-                <Tooltip className='group-hover:block hidden absolute bottom-6 right-6' title={isCopied ? 'Copied' : 'Copy code'} position='left'>
+                <Tooltip className='group-hover:block hidden absolute bottom-6 right-6' title={copied ? 'Copied' : 'Copy code'} position='left'>
                     <Button variant='outline'>
-                        {isCopied ? <IconCopied /> : <IconCopy />}
+                        {copied ? <IconCopied /> : <IconCopy />}
                     </Button>
                 </Tooltip>
             </CopyToClipboard>
@@ -111,7 +130,7 @@ function SourceCodeContent({ code, lang, className }: {
                     flex: 1,
                     maxHeight: 600,
                 }}
-                language={lang}
+                language={props.lang}
                 style={oneDark}>
                 {code}
             </SyntaxHighlighter>
@@ -119,15 +138,20 @@ function SourceCodeContent({ code, lang, className }: {
     )
 }
 
-function SourceCode({ code, lang, live }: {
-    lang: string;
-    code: string;
-    live: boolean;
+function SourceCode({
+    live,
+    ...props
+}: {
+    lang: string
+    code?: string
+    loadCode?: () => Promise<{ default: string }>
+    live: boolean
 }) {
     const [showCode, setShowCode] = useState(false)
+
     if (!live) {
         return (
-            <SourceCodeContent lang={lang} code={code} />
+            <SourceCodeContent {...props} />
         )
     }
     return (
@@ -141,7 +165,7 @@ function SourceCode({ code, lang, live }: {
             </div>
             {showCode && (
                 <div>
-                    <SourceCodeContent className="border-t border-dashed" lang={lang} code={code} />
+                    <SourceCodeContent className="border-t border-dashed" {...props} />
                     <div className='flex justify-center items-center gap-1 py-2 border-t '>
                         <Tooltip title='Hide code'>
                             <Button color="ghost" size='sm' onClick={() => setShowCode(false)}>

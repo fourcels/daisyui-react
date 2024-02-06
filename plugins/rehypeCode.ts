@@ -29,9 +29,7 @@ export function remarkCode() {
                 return
             }
             const lang = path.extname(src).substring(1)
-            const raw = fs.readFileSync(src, { encoding: 'utf-8' })
-            const { code, frontmatter } = parseCodeFrontmatter(raw)
-            const estree = fromMarkdown(`<CodePreview live lang="${lang}" code="${btoa(encodeURIComponent(code))}" {...${JSON.stringify(frontmatter)}} loadComponent={() => import("${src}")}/>`, {
+            const estree = fromMarkdown(`<CodePreview live lang="${lang}" loadCode={() => import("${src}?raw")} loadComponent={() => import("${src}")}/>`, {
                 extensions: [mdxjs()],
                 mdastExtensions: [mdxFromMarkdown()]
             })
