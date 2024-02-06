@@ -1,0 +1,7 @@
+.select-wrapper {
+  @apply relative;
+
+  .clearable-wrapper {
+    @apply absolute top-1/2 right-2 -translate-y-1/2;
+  }
+}

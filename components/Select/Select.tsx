@@ -10,6 +10,7 @@ import {
 import { SelectOption, SelectOptionProps } from './SelectOption'
 import React, { ReactElement, forwardRef } from 'react'
 import { Button } from '../Button'
+import './Select.css'
 
 export type SelectItem = string | number | {
     label: string;
@@ -25,16 +26,19 @@ export type SelectProps = Omit<
         size?: ComponentSize
         color?: Exclude<ComponentColor, 'neutral'>
         bordered?: boolean
-        placeholder?: string
+        placeholder?: string | null
         items?: SelectItem[]
-        onChange?: (value?: string) => void
+        onChange?: (value: string) => void
         clearable?: boolean
+        wrapperClassName?: string
     }
 
 const SelectInner = forwardRef<HTMLSelectElement, SelectProps>((
     {
+        disabled,
         clearable = true,
         onChange,
+        value,
         defaultValue = "",
         placeholder = 'Select...',
         items = [],
@@ -44,6 +48,7 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>((
         bordered = true,
         dataTheme,
         className,
+        wrapperClassName,
         ...props
     },
     ref
@@ -67,11 +72,15 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>((
 
     const selectRef = React.useRef<HTMLSelectElement>(null)
     React.useImperativeHandle(ref, () => selectRef.current!)
+
+    const [selectValue, setSelectValue] = React.useState(value ?? defaultValue)
+
     const classes = twMerge(
         'select',
         size && sizes[size],
         color && colors[color],
         bordered && 'select-bordered',
+        !selectValue && 'text-base-content text-opacity-60',
         className,
     )
 
@@ -87,17 +96,26 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>((
             return <SelectOption key={value} value={value}>{label}</SelectOption>
         })
     }, [children, items,])
+
+    const showClearable = React.useMemo(() => {
+        if (disabled) {
+            return false
+        }
+
+        if (clearable && selectValue && placeholder) {
+            return true
+        }
+        return false
+    }, [clearable, selectValue, disabled, placeholder])
+
     return (
-        <div className='relative group'>
-            {clearable && (
-                <div className='group-hover:block hidden absolute top-1/2 right-2 -translate-y-1/2'>
+        <div className={twMerge('select-wrapper', wrapperClassName)}>
+            {showClearable && (
+                <div className='clearable-wrapper'>
                     <Button
                         onClick={() => {
-                            const select = selectRef.current
-                            if (select) {
-                                select.value = ""
-                                onChange?.(undefined)
-                            }
+                            setSelectValue("")
+                            onChange?.("")
                         }}
                         shape='circle'
                         size='xs'
@@ -106,13 +124,21 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>((
                 </div>
             )}
             <select
-                onChange={(e) => onChange?.(e.target.value)}
-                defaultValue={defaultValue}
+                value={selectValue}
+                disabled={disabled}
+                onChange={(e) => {
+                    const value = e.target.value
+                    setSelectValue(value)
+                    onChange?.(value)
+                }}
                 {...props}
                 ref={selectRef}
                 data-theme={dataTheme}
-                className={classes}>
-                {placeholder && <SelectOption value="" disabled>{placeholder}</SelectOption>}
+                className={classes}
+            >
+                {placeholder && (
+                    <SelectOption value="" disabled>{placeholder}</SelectOption>
+                )}
                 {options}
             </select>
         </div>

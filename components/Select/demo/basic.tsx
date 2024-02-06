@@ -13,9 +13,7 @@ export default function App() {
             <div className='flex flex-wrap gap-8'>
                 <Form.Control label="Color">
                     <Select
-                        onChange={
-                            (value) => setColor(value as any)
-                        }
+                        onChange={(value) => setColor(value as any)}
                         items={[
                             'primary', 'secondary', 'accent',
                             'info', 'success', 'warning', 'error',
@@ -25,25 +23,19 @@ export default function App() {
                 </Form.Control>
                 <Form.Control label="Size">
                     <Select
-                        onChange={
-                            (value) => setSize(value as any)
-                        }
+                        onChange={(value) => setSize(value as any)}
                         items={['xs', 'sm', 'md', 'lg']}
                     />
                 </Form.Control>
                 <Toggle
                     label="Bordered"
                     checked={bordered}
-                    onChange={
-                        (e) => setBordered(e.target.checked)
-                    }
+                    onChange={(e) => setBordered(e.target.checked)}
                 />
                 <Toggle
                     label="Disabled"
                     checked={disabled}
-                    onChange={
-                        (e) => setDisabled(e.target.checked)
-                    }
+                    onChange={(e) => setDisabled(e.target.checked)}
                 />
             </div>
 
