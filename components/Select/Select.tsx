@@ -73,7 +73,14 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>((
     const selectRef = React.useRef<HTMLSelectElement>(null)
     React.useImperativeHandle(ref, () => selectRef.current!)
 
+
     const [selectValue, setSelectValue] = React.useState(value ?? defaultValue)
+
+    React.useEffect(() => {
+        if (value !== undefined) {
+            setSelectValue(value)
+        }
+    }, [value])
 
     const classes = twMerge(
         'select',
@@ -108,26 +115,6 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>((
         return false
     }, [clearable, selectValue, disabled, placeholder])
 
-    const select = (
-        <select
-            value={selectValue}
-            disabled={disabled}
-            onChange={(e) => {
-                const value = e.target.value
-                setSelectValue(value)
-                onChange?.(value)
-            }}
-            {...props}
-            ref={selectRef}
-            data-theme={dataTheme}
-            className={classes}
-        >
-            {placeholder && (
-                <SelectOption value="" disabled>{placeholder}</SelectOption>
-            )}
-            {options}
-        </select>
-    )
 
     return (
         <div className={twMerge('select-wrapper', wrapperClassName)}>
