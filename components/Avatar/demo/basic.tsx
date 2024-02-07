@@ -1,15 +1,26 @@
-import { Select, Form, TooltipProps, Divider, Toggle, Tooltip, Button, BadgeProps, Badge } from 'daisyui-react';
+import { Select, Form, Divider, Avatar, AvatarProps } from 'daisyui-react';
 import React from 'react';
-const { Option } = Select
 
 export default function App() {
-    const [color, setColor] = React.useState<BadgeProps['color']>()
-    const [size, setSize] = React.useState<BadgeProps['size']>()
-    const [outline, setOutline] = React.useState(false)
+    const [size, setSize] = React.useState<AvatarProps['size']>()
+    const [color, setColor] = React.useState<AvatarProps['color']>()
+    const [ring, setRing] = React.useState<AvatarProps['ring']>()
+    const [shape, setShape] = React.useState<AvatarProps['shape']>()
+    const [mask, setMask] = React.useState<AvatarProps['mask']>()
 
     return (
         <>
             <div className='flex flex-wrap gap-8'>
+                <Form.Control label="Size">
+                    <Select
+                        onChange={
+                            (value) => setSize(value as any)
+                        }
+                        items={[
+                            'xs', 'sm', 'md', 'lg',
+                        ]}
+                    />
+                </Form.Control>
                 <Form.Control label="Color">
                     <Select
                         onChange={
@@ -18,40 +29,67 @@ export default function App() {
                         items={[
                             'neutral', 'primary', 'secondary', 'accent',
                             'info', 'success', 'warning', 'error',
-                            'ghost',
                         ]}
                     />
                 </Form.Control>
-                <Form.Control label="Size">
+                <Form.Control label="Ring">
                     <Select
                         onChange={
-                            (value) => setSize(value as any)
+                            (value) => setRing(value as any)
                         }
                         items={[
-                            'xs', 'sm',
-                            'md', 'lg',
+                            'neutral', 'primary', 'secondary', 'accent',
+                            'info', 'success', 'warning', 'error',
                         ]}
                     />
                 </Form.Control>
-                <Toggle
-                    label="Outline"
-                    checked={outline}
-                    onChange={
-                        (e) => setOutline(e.target.checked)
-                    }
-                />
+                <Form.Control label="Shape">
+                    <Select
+                        onChange={
+                            (value) => setShape(value as any)
+                        }
+                        items={[
+                            'square', 'circle',
+                        ]}
+                    />
+                </Form.Control>
+                <Form.Control label="Mask">
+                    <Select
+                        onChange={
+                            (value) => setMask(value as any)
+                        }
+                        items={[
+                            'squircle', 'heart', 'decagon', 'pentagon', 'diamond', 'square', 'circle',
+                            'hexagon', 'hexagon-2',
+                            'parallelogram', 'parallelogram-2', 'parallelogram-3', 'parallelogram-4',
+                            'star', 'star-2',
+                            'triangle', 'triangle-2', 'triangle-3', 'triangle-4',
+                        ]}
+                    />
+                </Form.Control>
             </div>
 
             <Divider>Preview</Divider>
 
-            <div className='flex justify-center'>
-                <Badge
-                    color={color}
+            <div className='flex justify-center gap-4'>
+                <Avatar
                     size={size}
-                    outline={outline}
+                    shape={shape}
+                    mask={mask}
+                    color={color}
+                    ring={ring}
                 >
-                    Badge
-                </Badge>
+                    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                </Avatar>
+                <Avatar
+                    size={size}
+                    shape={shape}
+                    mask={mask}
+                    color={color}
+                    ring={ring}
+                >
+                    <span className="text-3xl">D</span>
+                </Avatar>
             </div>
         </>
     )

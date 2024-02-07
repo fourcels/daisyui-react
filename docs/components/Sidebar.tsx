@@ -96,6 +96,10 @@ const components: Component[] = [
         name: 'Loading',
         path: '/components/loading'
     },
+    {
+        name: 'Avatar',
+        path: '/components/avatar'
+    },
 ]
 
 export function Sidebar({
