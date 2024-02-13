@@ -7,6 +7,7 @@ import {
     ComponentSize,
 } from '../types'
 import { Mask, MaskProps } from '../Mask'
+import "./Avatar.css"
 
 export type AvatarProps =
     Omit<React.ComponentProps<'div'>, 'size' | 'color'>
@@ -16,21 +17,19 @@ export type AvatarProps =
         shape?: 'square' | 'circle'
         mask?: MaskProps['mask']
         color?: Exclude<ComponentColor, 'ghost'>
-        ringColor?: Exclude<ComponentColor, 'ghost'>
-        ring?: boolean
-        placehoder?: boolean
+        ring?: 'ring' | Exclude<ComponentColor, 'ghost'>
+        placeholder?: boolean
     }
 
 export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((
     {
 
-        placehoder,
+        placeholder,
         mask,
         shape,
         size,
         color,
         ring,
-        ringColor,
         children,
         dataTheme,
         className,
@@ -61,24 +60,24 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((
         'warning': 'bg-warning',
         'error': 'bg-error',
     }
-    const ringColors = {
-        'neutral': 'ring-neutral',
-        'primary': 'ring-primary',
-        'secondary': 'ring-secondary',
-        'accent': 'ring-accent',
-        'info': 'ring-info',
-        'success': 'ring-success',
-        'warning': 'ring-warning',
-        'error': 'ring-error',
+    const rings = {
+        'ring': 'avatar-ring',
+        'neutral': 'avatar-ring ring-neutral',
+        'primary': 'avatar-ring ring-primary',
+        'secondary': 'avatar-ring ring-secondary',
+        'accent': 'avatar-ring ring-accent',
+        'info': 'avatar-ring ring-info',
+        'success': 'avatar-ring ring-success',
+        'warning': 'avatar-ring ring-warning',
+        'error': 'avatar-ring ring-error',
     }
 
     const classes = twMerge(
-        'w-16 rounded bg-neutral ring-offset-base-100 ring-offset-2',
+        'w-16 rounded bg-neutral',
         size && sizes[size],
         shape && shapes[shape],
         color && colors[color],
-        ringColor && ringColors[ringColor],
-        ring && 'ring',
+        ring && rings[ring],
     )
 
     const content = mask ? (
@@ -87,10 +86,15 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((
         <div className={classes}>{children}</div>
     )
 
+    const avatarClasses = twMerge(
+        'avatar',
+        placeholder && 'placeholder'
+    )
+
     return (
         <div
             {...props}
-            className="avatar placeholder"
+            className={avatarClasses}
             ref={ref}
             data-theme={dataTheme}
         >

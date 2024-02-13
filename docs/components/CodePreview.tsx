@@ -1,7 +1,7 @@
 import React, { FC, Suspense, useRef, useState } from 'react';
-import { LiveProvider, LiveError, LivePreview, LiveEditor } from "react-live";
+import { LiveProvider, LiveError, LivePreview } from "react-live";
 import * as scope from 'daisyui-react'
-import { Button, Divider, Tooltip, Loading } from 'daisyui-react'
+import { Button, ButtonProps, Divider, Tooltip } from 'daisyui-react'
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -80,20 +80,6 @@ function useCode(code?: string, loadCode?: CodePrivewProps['loadCode']) {
     return value
 }
 
-
-const languageNames: Record<string, string> = {
-    diff: 'Diff',
-    html: 'HTML',
-    js: 'JavaScript',
-    jsx: 'JavaScript',
-    md: 'Markdown',
-    mdx: 'MDX',
-    sh: 'Shell',
-    txt: 'Plain text',
-    ts: 'TypeScript',
-    tsx: 'TypeScript'
-}
-
 function SourceCodeContent({
     code,
     lang,
@@ -103,35 +89,17 @@ function SourceCodeContent({
     lang: string
     className?: string
 }) {
-    const timer = useRef<number>()
-    const [copied, setCopied] = useState(false)
+
 
     return (
-        <div className={twMerge('group relative flex', className)} >
-            {lang && (
-                <span className='px-2 py-1 rounded-bl-md absolute right-0 top-0 dark:bg-black'>{languageNames[lang] || lang.toUpperCase()}</span>
-            )}
-            <CopyToClipboard
-                text={code}
-                onCopy={() => {
-                    setCopied(true);
-                    clearTimeout(timer.current);
-                    timer.current = window.setTimeout(() => setCopied(false), 2000);
-                }}
-            >
-                <Tooltip className='group-hover:block hidden absolute bottom-6 right-6' title={copied ? 'Copied' : 'Copy code'} position='left'>
-                    <Button variant='outline'>
-                        {copied ? <IconCopied /> : <IconCopy />}
-                    </Button>
-                </Tooltip>
-            </CopyToClipboard>
-
+        <div className={twMerge('source-code', className)}>
+            <CopyCodeButton className='absolute top-4 right-8' code={code} />
             <SyntaxHighlighter
                 customStyle={{
                     margin: 0,
                     padding: "40px 24px",
+                    flexGrow: 1,
                     width: 0,
-                    flex: 1,
                     maxHeight: 600,
                 }}
                 language={lang}
@@ -139,6 +107,34 @@ function SourceCodeContent({
                 {code}
             </SyntaxHighlighter>
         </div>
+    )
+}
+
+function CopyCodeButton({
+    code,
+    className
+}: {
+    code: string
+    className?: string
+}) {
+
+    const timer = useRef<number>()
+    const [copied, setCopied] = useState(false)
+    return (
+        <CopyToClipboard
+            text={code}
+            onCopy={() => {
+                setCopied(true);
+                clearTimeout(timer.current);
+                timer.current = window.setTimeout(() => setCopied(false), 2000);
+            }}
+        >
+            <Tooltip className={className} title={copied ? 'Copied' : 'Copy code'} position='left' color='accent'>
+                <Button color="neutral">
+                    {copied ? <IconCopied /> : <IconCopy />}
+                </Button>
+            </Tooltip>
+        </CopyToClipboard>
     )
 }
 
@@ -162,7 +158,7 @@ function SourceCode({
     }
     return (
         <div>
-            <div className='flex justify-center py-2 border-t'>
+            <div className='flex justify-center p-2 border-t'>
                 <Tooltip title={showCode ? 'Hide code' : 'Show code'}>
                     <Button color="ghost" size='sm' onClick={() => setShowCode(!showCode)}>
                         {showCode ? <IconCode /> : <IconCodeExpand />}

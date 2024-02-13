@@ -1,0 +1,3 @@
+.avatar-ring {
+  @apply ring ring-offset-base-100 ring-offset-2;
+}

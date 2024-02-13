@@ -38,6 +38,7 @@ export default function App() {
                             (value) => setRing(value as any)
                         }
                         items={[
+                            'ring',
                             'neutral', 'primary', 'secondary', 'accent',
                             'info', 'success', 'warning', 'error',
                         ]}
@@ -87,6 +88,7 @@ export default function App() {
                     mask={mask}
                     color={color}
                     ring={ring}
+                    placeholder
                 >
                     <span className="text-3xl">D</span>
                 </Avatar>
