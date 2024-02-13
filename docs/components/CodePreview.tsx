@@ -129,7 +129,7 @@ function CopyCodeButton({
                 timer.current = window.setTimeout(() => setCopied(false), 2000);
             }}
         >
-            <Tooltip className={className} title={copied ? 'Copied' : 'Copy code'} position='left' color='accent'>
+            <Tooltip className={className} title={copied ? 'Copied' : 'Copy code'} position='left'>
                 <Button color="neutral">
                     {copied ? <IconCopied /> : <IconCopy />}
                 </Button>

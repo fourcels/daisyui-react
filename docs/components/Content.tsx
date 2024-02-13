@@ -77,6 +77,9 @@ function Toc({ toc, className }: {
                     setActiveAnchor(i - 1, elems[i - 1].id)
                     break
                 }
+                if (i === elems.length - 1) {
+                    setActiveAnchor(i, elem.id)
+                }
             }
         }, 200)
         window.addEventListener("scroll", handleScroll)
