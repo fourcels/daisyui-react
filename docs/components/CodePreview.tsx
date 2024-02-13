@@ -100,7 +100,7 @@ function SourceCodeContent({
                     padding: "40px 24px",
                     flexGrow: 1,
                     width: 0,
-                    maxHeight: 600,
+                    maxHeight: 500,
                 }}
                 language={lang}
                 style={oneDark}>
