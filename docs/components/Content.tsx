@@ -70,14 +70,14 @@ function Toc({ toc, className }: {
             if (animate.current) {
                 return
             }
-            for (let i = 1; i < elems.length; i++) {
+            for (let i = elems.length - 1; i >= 0; i--) {
                 const elem = elems[i]
                 const elemTop = getOffsetTop(elem, window)
-                if (elemTop > 0) {
-                    setActiveAnchor(i - 1, elems[i - 1].id)
+                if (elemTop < 0) {
+                    setActiveAnchor(i, elem.id)
                     break
                 }
-                if (i === elems.length - 1) {
+                if (i === 0) {
                     setActiveAnchor(i, elem.id)
                 }
             }
