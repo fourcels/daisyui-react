@@ -8,6 +8,9 @@ import {
 } from '../types'
 import { Mask, MaskProps } from '../Mask'
 import "./Avatar.css"
+import { AvatarGroup, AvatarGroupProps } from './AvatarGroup'
+
+export type { AvatarGroupProps }
 
 export type AvatarProps =
     Omit<React.ComponentProps<'div'>, 'size' | 'color'>
@@ -19,11 +22,13 @@ export type AvatarProps =
         color?: Exclude<ComponentColor, 'ghost'>
         ring?: 'ring' | Exclude<ComponentColor, 'ghost'>
         placeholder?: boolean
+        indicator?: 'online' | 'offline'
     }
 
-export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((
+const AvatarInner = forwardRef<HTMLDivElement, AvatarProps>((
     {
 
+        indicator,
         placeholder,
         mask,
         shape,
@@ -61,15 +66,20 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((
         'error': 'bg-error',
     }
     const rings = {
-        'ring': 'avatar-ring',
-        'neutral': 'avatar-ring ring-neutral',
-        'primary': 'avatar-ring ring-primary',
-        'secondary': 'avatar-ring ring-secondary',
-        'accent': 'avatar-ring ring-accent',
-        'info': 'avatar-ring ring-info',
-        'success': 'avatar-ring ring-success',
-        'warning': 'avatar-ring ring-warning',
-        'error': 'avatar-ring ring-error',
+        ring: 'avatar-ring',
+        neutral: 'avatar-ring ring-neutral',
+        primary: 'avatar-ring ring-primary',
+        secondary: 'avatar-ring ring-secondary',
+        accent: 'avatar-ring ring-accent',
+        info: 'avatar-ring ring-info',
+        success: 'avatar-ring ring-success',
+        warning: 'avatar-ring ring-warning',
+        error: 'avatar-ring ring-error',
+    }
+
+    const indicators = {
+        online: 'online',
+        offline: 'offline',
     }
 
     const classes = twMerge(
@@ -88,7 +98,8 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((
 
     const avatarClasses = twMerge(
         'avatar',
-        placeholder && 'placeholder'
+        placeholder && 'placeholder',
+        indicator && indicators[indicator],
     )
 
     return (
@@ -104,4 +115,8 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((
 }
 )
 
-Avatar.displayName = 'Avatar'
+AvatarInner.displayName = 'Avatar'
+
+export const Avatar = Object.assign(AvatarInner, {
+    Group: AvatarGroup
+})

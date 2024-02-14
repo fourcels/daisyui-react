@@ -70,12 +70,15 @@ export function CodePreview(props: CodePrivewProps) {
 }
 
 function useCode(code?: string, loadCode?: CodePrivewProps['loadCode']) {
-    const [value, setValue] = React.useState(code ?? "")
+    const [value, setValue] = React.useState('')
     React.useEffect(() => {
+        if (code) {
+            return setValue(code)
+        }
         loadCode?.().then(({ default: code }) => {
             setValue(code)
         })
-    }, [loadCode])
+    }, [code, loadCode])
 
     return value
 }

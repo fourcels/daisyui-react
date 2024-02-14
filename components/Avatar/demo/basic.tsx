@@ -7,6 +7,7 @@ export default function App() {
     const [ring, setRing] = React.useState<AvatarProps['ring']>()
     const [shape, setShape] = React.useState<AvatarProps['shape']>()
     const [mask, setMask] = React.useState<AvatarProps['mask']>()
+    const [indicator, setIndicator] = React.useState<AvatarProps['indicator']>()
 
     return (
         <>
@@ -68,6 +69,14 @@ export default function App() {
                         ]}
                     />
                 </Form.Control>
+                <Form.Control label="Indicator">
+                    <Select
+                        onChange={
+                            (value) => setIndicator(value as any)
+                        }
+                        items={['online', 'offline']}
+                    />
+                </Form.Control>
             </div>
 
             <Divider>Preview</Divider>
@@ -79,6 +88,7 @@ export default function App() {
                     mask={mask}
                     color={color}
                     ring={ring}
+                    indicator={indicator}
                 >
                     <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
                 </Avatar>
@@ -89,6 +99,7 @@ export default function App() {
                     color={color}
                     ring={ring}
                     placeholder
+                    indicator={indicator}
                 >
                     <span className="text-3xl">D</span>
                 </Avatar>

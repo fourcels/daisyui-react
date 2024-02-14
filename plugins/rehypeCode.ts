@@ -73,6 +73,5 @@ export function parseCodeFrontmatter(raw: string) {
     try {
         frontmatter = yaml.load(yamlComment) as any;
     } catch { /* empty */ }
-
-    return { code: frontmatter ? code : raw, frontmatter };
+    return { code: frontmatter ? code.trim() : raw.trim(), frontmatter };
 }
