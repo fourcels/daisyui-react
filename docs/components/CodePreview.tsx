@@ -61,7 +61,7 @@ export function CodePreview(props: CodePrivewProps) {
                     <div className='py-10 px-6 preview'>
                         {component}
                     </div>
-                    <CodeInfo title={props.title} description={props.description} />
+                    <CodeInfo description={props.description} />
                 </div>
             )}
             <SourceCode live={live} lang={props.lang} code={code} loadCode={props.loadCode} />
@@ -101,6 +101,7 @@ function SourceCodeContent({
                     flexGrow: 1,
                     width: 0,
                     maxHeight: 500,
+                    borderRadius: 0,
                 }}
                 language={lang}
                 style={oneDark}>
@@ -182,18 +183,14 @@ function SourceCode({
     )
 }
 
-function CodeInfo({ title, description }: {
-    title?: string;
+function CodeInfo({ description }: {
     description?: string;
 }) {
-    if (!title && !description) {
+    if (!description) {
         return null
     }
     return (
-        <>
-            <Divider className='m-0'>{title}</Divider>
-            {description && <div className='p-6'>{description}</div>}
-        </>
+        <div className='border-t p-6'>{description}</div>
     )
 }
 
