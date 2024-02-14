@@ -1,7 +1,10 @@
 .select-wrapper {
-  @apply relative;
+  @apply grid items-center;
 
-  .clearable-wrapper {
-    @apply absolute top-1/2 right-2 -translate-y-1/2;
+  .select {
+    @apply row-start-1 col-start-1;
+  }
+  .select-clearable {
+    @apply row-start-1 col-start-1 justify-self-end mr-2;
   }
 }
