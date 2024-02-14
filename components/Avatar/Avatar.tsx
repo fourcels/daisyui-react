@@ -16,20 +16,21 @@ export type AvatarProps =
     Omit<React.ComponentProps<'div'>, 'size' | 'color'>
     & ComponentBaseProps
     & {
+        alt?: string
+        src?: string
         size?: ComponentSize
         shape?: 'square' | 'circle'
         mask?: MaskProps['mask']
         color?: Exclude<ComponentColor, 'ghost'>
         ring?: 'ring' | Exclude<ComponentColor, 'ghost'>
-        placeholder?: boolean
         indicator?: 'online' | 'offline'
     }
 
 const AvatarInner = forwardRef<HTMLDivElement, AvatarProps>((
     {
-
+        alt = 'avatar',
+        src,
         indicator,
-        placeholder,
         mask,
         shape,
         size,
@@ -89,16 +90,15 @@ const AvatarInner = forwardRef<HTMLDivElement, AvatarProps>((
         color && colors[color],
         ring && rings[ring],
     )
-
+    const contentChildren = src ? <img src={src} alt={alt} /> : children
     const content = mask ? (
-        <Mask mask={mask} className={classes}>{children}</Mask>
+        <Mask mask={mask} className={classes}>{contentChildren}</Mask>
     ) : (
-        <div className={classes}>{children}</div>
+        <div className={classes}>{contentChildren}</div>
     )
 
     const avatarClasses = twMerge(
-        'avatar',
-        placeholder && 'placeholder',
+        'avatar placeholder',
         indicator && indicators[indicator],
     )
 

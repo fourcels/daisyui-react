@@ -89,16 +89,14 @@ export default function App() {
                     color={color}
                     ring={ring}
                     indicator={indicator}
-                >
-                    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                </Avatar>
+                    src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                />
                 <Avatar
                     size={size}
                     shape={shape}
                     mask={mask}
                     color={color}
                     ring={ring}
-                    placeholder
                     indicator={indicator}
                 >
                     <span className="text-3xl">D</span>
