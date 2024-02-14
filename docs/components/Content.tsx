@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { throttle } from 'lodash'
 import './Content.css'
@@ -9,6 +9,16 @@ export function Content({ children, frontmatter, toc }: {
     frontmatter?: Record<string, string>;
     toc?: Record<string, any>[]
 }) {
+    React.useEffect(() => {
+        const originTitle = document.title
+        if (frontmatter?.title) {
+            document.title = `${frontmatter.title} — ${originTitle}`
+        }
+        return () => {
+            document.title = originTitle
+        }
+    }, [frontmatter])
+
     return (
         <div className='flex'>
             <article className='markdown prose max-w-5xl prose-a:no-underline  p-10 flex-1'>
@@ -52,13 +62,13 @@ function Toc({ toc, className }: {
     className?: string;
 }) {
     const [active, setActive] = useState(0)
-
     const timer = useRef(0)
     const animate = useRef(false)
 
-    const setActiveAnchor = (idx: number, id: string) => {
+    const setActiveAnchor = (idx: number) => {
         setActive(idx)
-        history.replaceState(null, document.title, `#${id}`)
+        const elem = toc[idx]
+        history.replaceState(null, "", `#${elem.id}`)
     }
 
 
@@ -74,11 +84,11 @@ function Toc({ toc, className }: {
                 const elem = elems[i]
                 const elemTop = getOffsetTop(elem, window)
                 if (elemTop < 0) {
-                    setActiveAnchor(i, elem.id)
+                    setActiveAnchor(i)
                     break
                 }
                 if (i === 0) {
-                    setActiveAnchor(i, elem.id)
+                    setActiveAnchor(i)
                 }
             }
         }, 200)
@@ -99,7 +109,7 @@ function Toc({ toc, className }: {
                         href={`#${item.id}`}
                         onClick={(e) => {
                             e.preventDefault()
-                            setActiveAnchor(idx, item.id)
+                            setActiveAnchor(idx)
                             const elem = document.getElementById(item.id)
                             elem?.scrollIntoView({
                                 behavior: 'smooth'
