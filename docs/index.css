@@ -6,6 +6,10 @@
   *,
   ::before,
   ::after {
-    @apply dark:border-gray-600;
+    @apply border-base-200;
+  }
+
+  * {
+    @apply scrollbar-thin;
   }
 }
