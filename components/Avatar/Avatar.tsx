@@ -83,21 +83,21 @@ const AvatarInner = forwardRef<HTMLDivElement, AvatarProps>((
         offline: 'offline',
     }
 
-    const classes = twMerge(
+    const contentClasses = twMerge(
         'w-16 rounded bg-neutral',
         size && sizes[size],
         shape && shapes[shape],
         color && colors[color],
         ring && rings[ring],
     )
-    const contentChildren = src ? <img src={src} alt={alt} /> : children
-    const content = mask ? (
-        <Mask mask={mask} className={classes}>{contentChildren}</Mask>
-    ) : (
-        <div className={classes}>{contentChildren}</div>
+
+    const content = (
+        <Mask mask={mask} className={contentClasses}>
+            {src ? <img src={src} alt={alt} /> : children}
+        </Mask>
     )
 
-    const avatarClasses = twMerge(
+    const classes = twMerge(
         'avatar placeholder',
         indicator && indicators[indicator],
     )
@@ -105,7 +105,7 @@ const AvatarInner = forwardRef<HTMLDivElement, AvatarProps>((
     return (
         <div
             {...props}
-            className={avatarClasses}
+            className={classes}
             ref={ref}
             data-theme={dataTheme}
         >
