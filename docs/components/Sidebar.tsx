@@ -100,6 +100,10 @@ const components: Component[] = [
         name: 'Avatar',
         path: '/components/avatar'
     },
+    {
+        name: 'Carousel',
+        path: '/components/carousel'
+    },
 ]
 
 export function Sidebar({

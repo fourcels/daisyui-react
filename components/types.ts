@@ -27,4 +27,4 @@ export type ComponentStatus = typeof componentStatuses[number]
 export type ComponentBrandColors = typeof brandColors[number]
 export type ComponentBgColors = typeof bgColors[number]
 
-export type ListOrItem<T> = T[] | T | Array<T | T[]>
+export type ListOrItem<T> = T[] | T
