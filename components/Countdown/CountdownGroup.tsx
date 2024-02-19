@@ -24,7 +24,7 @@ export const CountdownGroup = forwardRef<HTMLDivElement, CountdownGroupProps>((
 ): JSX.Element => {
 
     const classes = twMerge(
-        'countdown-group font-mono flex items-center gap-4',
+        'countdown-group flex items-center gap-4',
         className,
     )
 

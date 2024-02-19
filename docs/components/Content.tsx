@@ -18,12 +18,11 @@ export function Content({ children, frontmatter, toc }: {
             document.title = originTitle
         }
     }, [frontmatter])
-
     return (
         <div className='flex'>
             <article className='markdown prose max-w-5xl prose-a:no-underline  p-10 flex-1'>
                 {frontmatter?.title && <h1>{frontmatter.title}</h1>}
-                {frontmatter?.description && <p dangerouslySetInnerHTML={{ __html: frontmatter.description }}></p>}
+                {frontmatter?.description && frontmatter.description.trim().split('\n').map((item, idx) => (<p key={idx}>{item}</p>))}
                 {children}
             </article>
             {toc && (
