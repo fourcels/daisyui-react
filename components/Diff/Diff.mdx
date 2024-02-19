@@ -1,0 +1,28 @@
+---
+title: Diff
+description: Diff component shows a side-by-side comparison of two items.
+---
+
+## Examples
+
+### Diff
+```tsx live
+<Diff
+    items={[
+        <img alt="daisy" src="https://daisyui.com/images/stock/photo-1560717789-0ac7c58ac90a.jpg" />,
+        <img alt="daisy" src="https://daisyui.com/images/stock/photo-1560717789-0ac7c58ac90a-blur.jpg" />
+    ]}
+    className='aspect-[16/9]'
+/>
+```
+
+### Diff text
+```tsx live
+<Diff
+    items={[
+        <div className="bg-primary text-primary-content text-9xl font-black grid place-content-center">DAISY</div>,
+        <div className="bg-base-200 text-9xl font-black grid place-content-center">DAISY</div>
+    ]}
+    className='aspect-[16/9]'
+/>
+```

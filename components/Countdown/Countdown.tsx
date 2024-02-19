@@ -23,6 +23,7 @@ const CountdownInner = forwardRef<HTMLSpanElement, CountdownProps>((
         children,
         className,
         wrapperClassName,
+        dataTheme,
         ...props
     },
     ref
@@ -34,12 +35,15 @@ const CountdownInner = forwardRef<HTMLSpanElement, CountdownProps>((
     )
 
     return (
-        <div className={twMerge(
-            'countdown-wrapper text-center',
-            vertical && 'flex flex-col',
-            box && 'p-2 bg-neutral rounded-box text-neutral-content',
-            wrapperClassName,
-        )}>
+        <div
+            className={twMerge(
+                'countdown-wrapper text-center',
+                vertical && 'flex flex-col',
+                box && 'p-2 bg-neutral rounded-box text-neutral-content',
+                wrapperClassName,
+            )}
+            data-theme={dataTheme}
+        >
             <span ref={ref} className={classes} {...props}>
                 <span style={{ "--value": value } as React.CSSProperties}></span>
             </span>

@@ -112,6 +112,10 @@ const components: Component[] = [
         name: 'Countdown',
         path: '/components/countdown'
     },
+    {
+        name: 'Diff',
+        path: '/components/diff'
+    },
 ]
 
 export function Sidebar({
