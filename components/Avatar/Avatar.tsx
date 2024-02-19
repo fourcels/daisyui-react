@@ -100,6 +100,7 @@ const AvatarInner = forwardRef<HTMLDivElement, AvatarProps>((
     const classes = twMerge(
         'avatar placeholder',
         indicator && indicators[indicator],
+        className,
     )
 
     return (

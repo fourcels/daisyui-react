@@ -104,6 +104,10 @@ const components: Component[] = [
         name: 'Carousel',
         path: '/components/carousel'
     },
+    {
+        name: 'Chat bubble',
+        path: '/components/chat'
+    },
 ]
 
 export function Sidebar({
