@@ -23,7 +23,7 @@ export function Content({ children, frontmatter, toc }: {
         <div className='flex'>
             <article className='markdown prose max-w-5xl prose-a:no-underline  p-10 flex-1'>
                 {frontmatter?.title && <h1>{frontmatter.title}</h1>}
-                {frontmatter?.description && <p>{frontmatter.description}</p>}
+                {frontmatter?.description && <p dangerouslySetInnerHTML={{ __html: frontmatter.description }}></p>}
                 {children}
             </article>
             {toc && (

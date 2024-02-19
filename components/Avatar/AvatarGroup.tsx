@@ -1,13 +1,15 @@
-import React, { forwardRef } from 'react'
+import React, { ReactElement, forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import {
-    ComponentBaseProps,
+    ComponentBaseProps, ListOrItem,
 } from '../types'
 
-export type AvatarGroupProps =
-    React.ComponentProps<'div'>
+export type AvatarGroupProps = Omit<React.ComponentProps<'div'>, 'children'>
     & ComponentBaseProps
+    & {
+        children?: ListOrItem<ReactElement>
+    }
 
 
 export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>((

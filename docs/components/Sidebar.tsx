@@ -108,6 +108,10 @@ const components: Component[] = [
         name: 'Chat bubble',
         path: '/components/chat'
     },
+    {
+        name: 'Countdown',
+        path: '/components/countdown'
+    },
 ]
 
 export function Sidebar({
