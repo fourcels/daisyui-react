@@ -18,10 +18,14 @@ export type CarouselProps = Omit<React.ComponentProps<'div'>, 'children'>
         bleed?: boolean
         indicator?: boolean
         actions?: boolean
+        contentClassName?: string
+        wrapperClassName?: string
     }
 
 const CarouselInner = forwardRef<HTMLDivElement, CarouselProps>((
     {
+        contentClassName,
+        wrapperClassName,
         actions,
         indicator,
         bleed,
@@ -76,34 +80,43 @@ const CarouselInner = forwardRef<HTMLDivElement, CarouselProps>((
         'carousel rounded-box relative',
         snap && snaps[snap],
         vertical && 'carousel-vertical',
-        bleed && 'carousel-center p-4 space-x-4 bg-neutral ',
+        bleed && 'space-x-4',
         className,
     )
 
 
 
     return (
-        <div className='carousel-wrapper relative'>
-            <div
-                {...props}
-                data-theme={dataTheme}
-                className={classes}
-                ref={carouselRef}
-            >
-                {children && React.Children.map(children, (child, idx) => {
-                    return React.cloneElement(child, {
-                        width,
-                        ref: (el: HTMLDivElement) => childRefs.current[idx] = el,
-                    })
-                })}
+        <div className={twMerge(
+            'carousel-wrapper',
+            wrapperClassName,
+        )}>
+            <div className={twMerge(
+                'carousel-content',
+                bleed && 'p-4 bg-neutral rounded-box',
+                contentClassName,
+            )}>
+                <div
+                    {...props}
+                    data-theme={dataTheme}
+                    className={classes}
+                    ref={carouselRef}
+                >
+                    {children && React.Children.map(children, (child, idx) => {
+                        return React.cloneElement(child, {
+                            width,
+                            ref: (el: HTMLDivElement) => childRefs.current[idx] = el,
+                        })
+                    })}
+                </div>
+                {actions && (
+                    <Actions
+                        active={active}
+                        count={React.Children.count(children)}
+                        onClick={handleActive}
+                    />
+                )}
             </div>
-            {actions && (
-                <Actions
-                    active={active}
-                    count={React.Children.count(children)}
-                    onClick={handleActive}
-                />
-            )}
             {indicator && (
                 <Indicator
                     active={active}
@@ -125,8 +138,12 @@ function Actions({
     count: number
     onClick?: (idx: number) => void
 }) {
+    if (count <= 1) {
+        return null
+    }
+
     return (
-        <div className='carousel-actions'>
+        <>
             <Button
                 disabled={active === 0}
                 className='carousel-prev'
@@ -143,7 +160,7 @@ function Actions({
                     onClick?.(active + 1)
                 }}
             >❯</Button>
-        </div>
+        </>
     )
 }
 
