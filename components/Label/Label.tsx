@@ -7,7 +7,7 @@ import { LabelText, LabelTextProps } from './LabelText'
 export type { LabelTextProps }
 
 export type LabelProps =
-    React.ComponentProps<'label'>
+    React.HTMLAttributes<HTMLLabelElement>
     & ComponentBaseProps
     & {
         reverse?: boolean

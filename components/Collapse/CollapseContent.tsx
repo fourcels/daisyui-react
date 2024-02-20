@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 
 
 export type CollapseContentProps =
-    React.ComponentProps<'div'>
+    React.HTMLAttributes<HTMLDivElement>
     & ComponentBaseProps
 
 export const CollapseContent = forwardRef<HTMLDivElement, CollapseContentProps>((

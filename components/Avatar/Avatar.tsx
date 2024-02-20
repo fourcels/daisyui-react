@@ -13,7 +13,7 @@ import { AvatarGroup, AvatarGroupProps } from './AvatarGroup'
 export type { AvatarGroupProps }
 
 export type AvatarProps =
-    Omit<React.ComponentProps<'div'>, 'size' | 'color'>
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'size' | 'color'>
     & ComponentBaseProps
     & {
         alt?: string

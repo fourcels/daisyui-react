@@ -4,7 +4,7 @@ import React, { forwardRef } from 'react'
 import { ComponentColor } from '../types'
 
 
-export type ChatBubbleProps = Omit<React.ComponentProps<'div'>, 'color'>
+export type ChatBubbleProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'color'>
     & {
         color?: Exclude<ComponentColor, 'neutral' | 'ghost'>
     }

@@ -2,7 +2,7 @@ import { twMerge } from 'tailwind-merge'
 
 import { forwardRef } from 'react'
 
-export type CarouselItemProps = React.ComponentProps<'div'>
+export type CarouselItemProps = React.HTMLAttributes<HTMLDivElement>
     & {
         width?: 'full' | 'half'
     }

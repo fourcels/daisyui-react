@@ -17,11 +17,13 @@ export type SelectItem = string | number | {
     value: string | number;
 }
 
-export type SelectProps = Omit<
-    React.ComponentProps<'select'>,
-    'size' | 'color' | 'onChange'
-> &
-    ComponentBaseProps & {
+export type SelectProps =
+    Omit<
+        React.SelectHTMLAttributes<HTMLSelectElement>,
+        'size' | 'color' | 'onChange'
+    >
+    & ComponentBaseProps
+    & {
         children?: ListOrItem<ReactElement<SelectOptionProps>>
         size?: ComponentSize
         color?: Exclude<ComponentColor, 'neutral'>

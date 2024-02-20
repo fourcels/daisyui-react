@@ -3,7 +3,7 @@ import { ComponentBaseProps, ComponentDirection } from '../types';
 import { twMerge } from 'tailwind-merge';
 
 export type JoinProps =
-    Omit<React.ComponentProps<'div'>, 'children'>
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>
     & ComponentBaseProps
     & {
         children?: ReactElement | ReactElement[]

@@ -7,7 +7,7 @@ import { CollapseTitle, CollapseTitleProps } from './CollapseTitle';
 export type { CollapseTitleProps, CollapseContentProps }
 
 export type CollapseProps =
-    React.ComponentProps<'div'>
+    React.HTMLAttributes<HTMLDivElement>
     & ComponentBaseProps
     & {
         bordered?: boolean

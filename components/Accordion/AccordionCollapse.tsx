@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 
 
 export type AccordionCollapseProps =
-    React.ComponentProps<'div'>
+    React.HTMLAttributes<HTMLDivElement>
     & ComponentBaseProps
     & {
         bordered?: boolean

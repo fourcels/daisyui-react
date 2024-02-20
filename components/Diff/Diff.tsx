@@ -4,7 +4,7 @@ import React, { forwardRef } from 'react'
 import { ComponentBaseProps } from '../types'
 
 
-export type DiffProps = React.ComponentProps<'div'>
+export type DiffProps = React.HTMLAttributes<HTMLDivElement>
     & ComponentBaseProps
     & {
         items: [React.ReactNode, React.ReactNode]

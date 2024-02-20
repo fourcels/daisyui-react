@@ -5,7 +5,7 @@ import {
     ComponentBaseProps, ListOrItem,
 } from '../types'
 
-export type AvatarGroupProps = Omit<React.ComponentProps<'div'>, 'children'>
+export type AvatarGroupProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>
     & ComponentBaseProps
     & {
         children?: ListOrItem<ReactElement>

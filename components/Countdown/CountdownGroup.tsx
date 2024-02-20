@@ -4,7 +4,7 @@ import React, { ReactElement, forwardRef } from 'react'
 import { ComponentBaseProps, ListOrItem } from '../types'
 
 
-export type CountdownGroupProps = Omit<React.ComponentProps<'div'>, 'children'>
+export type CountdownGroupProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>
     & ComponentBaseProps
     & {
         children?: ListOrItem<ReactElement>

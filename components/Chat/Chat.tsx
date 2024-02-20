@@ -9,7 +9,7 @@ import { ChatFooter, ChatFooterProps } from './ChatFooter'
 
 export type { ChatBubbleProps, ChatImageProps, ChatHeaderProps, ChatFooterProps }
 
-export type ChatProps = React.ComponentProps<'div'>
+export type ChatProps = React.HTMLAttributes<HTMLDivElement>
     & ComponentBaseProps
     & {
         position?: 'start' | 'end'

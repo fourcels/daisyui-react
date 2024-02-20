@@ -4,7 +4,7 @@ import { ComponentBaseProps, ComponentColor, ComponentSize } from '../types'
 import { twMerge } from 'tailwind-merge'
 
 export type LabelTextProps =
-    React.ComponentProps<'span'>
+    React.HTMLAttributes<HTMLSpanElement>
     & ComponentBaseProps
     & {
         alt?: boolean

@@ -6,7 +6,7 @@ import { AccordionCollapse, AccordionCollapseProps } from './AccordionCollapse';
 export type { AccordionCollapseProps }
 
 export type AccordionProps =
-    Omit<React.ComponentProps<'div'>, 'children'>
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>
     & ComponentBaseProps
     & {
         children?: ReactElement<AccordionCollapseProps> | ReactElement<AccordionCollapseProps>[]

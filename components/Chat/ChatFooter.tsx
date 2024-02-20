@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge'
 import React, { forwardRef } from 'react'
 
 
-export type ChatFooterProps = React.ComponentProps<'div'>
+export type ChatFooterProps = React.HTMLAttributes<HTMLDivElement>
 
 export const ChatFooter = forwardRef<HTMLDivElement, ChatFooterProps>((
     {

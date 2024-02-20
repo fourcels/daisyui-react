@@ -33,7 +33,7 @@ const halfs = {
 }
 
 export type MaskProps =
-    React.ComponentProps<'div'>
+    React.HTMLAttributes<HTMLDivElement>
     & ComponentBaseProps
     & {
         mask?: keyof typeof masks

@@ -6,7 +6,7 @@ import { CountdownGroup, CountdownGroupProps } from './CountdownGroup'
 
 export type { CountdownGroupProps }
 
-export type CountdownProps = Omit<React.ComponentProps<'span'>, 'value'>
+export type CountdownProps = Omit<React.HTMLAttributes<HTMLSpanElement>, 'value'>
     & ComponentBaseProps
     & {
         value?: number
