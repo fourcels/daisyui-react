@@ -116,6 +116,10 @@ const components: Component[] = [
         name: 'Diff',
         path: '/components/diff'
     },
+    {
+        name: 'Kbd',
+        path: '/components/kbd'
+    },
 ]
 
 export function Sidebar({
