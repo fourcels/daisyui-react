@@ -8,8 +8,9 @@ import {
 } from '../types'
 
 export type BadgeProps =
-    Omit<React.HTMLAttributes<HTMLSpanElement>, 'color' | 'size'> &
-    ComponentBaseProps & {
+    Omit<React.HTMLAttributes<HTMLSpanElement>, 'color' | 'size'>
+    & ComponentBaseProps
+    & {
         color?: ComponentColor
         size?: ComponentSize
         outline?: boolean

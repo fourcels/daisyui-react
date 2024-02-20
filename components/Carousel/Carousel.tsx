@@ -11,7 +11,7 @@ export type { CarouselItemProps }
 export type CarouselProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>
     & ComponentBaseProps
     & {
-        children?: ListOrItem<ReactElement<React.ComponentProps<typeof CarouselItem>>>
+        children?: ListOrItem<ReactElement>
         snap?: 'start' | 'center' | 'end'
         vertical?: boolean
         width?: CarouselItemProps['width']
