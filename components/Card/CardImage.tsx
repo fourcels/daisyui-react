@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 
-export type CardImageProps = React.ImgHTMLAttributes<HTMLImageElement>
+export type CardImageProps = React.ImgHTMLAttributes<HTMLImageElement>;
 
 export const CardImage = React.forwardRef<HTMLElement, CardImageProps>(
   ({ ...props }, ref) => {
@@ -8,8 +8,8 @@ export const CardImage = React.forwardRef<HTMLElement, CardImageProps>(
       <figure ref={ref}>
         <img {...props} />
       </figure>
-    )
+    );
   }
-)
+);
 
-CardImage.displayName = 'CardImage'
+CardImage.displayName = "CardImage";

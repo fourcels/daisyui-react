@@ -6,93 +6,151 @@ description: Menu is used to display a list of links vertically or horizontally.
 ## Examples
 
 ### Menu
+
 <code src="./demo/basic.tsx" />
 
 ### Menu with title
+
 ```tsx live
 <Menu className="bg-base-200 rounded-box w-56">
-    <Menu.Title>Title</Menu.Title>
-    <Menu.Item><a>Item 1</a></Menu.Item>
-    <Menu.Item><a>Item 2</a></Menu.Item>
-    <Menu.Item><a>Item 3</a></Menu.Item>
+  <Menu.Title>Title</Menu.Title>
+  <Menu.Item>
+    <a>Item 1</a>
+  </Menu.Item>
+  <Menu.Item>
+    <a>Item 2</a>
+  </Menu.Item>
+  <Menu.Item>
+    <a>Item 3</a>
+  </Menu.Item>
 </Menu>
 ```
 
 ### Menu with title as a parent
+
 ```tsx live
 <Menu className="bg-base-200 rounded-box w-56">
-    <Menu.Item>
-        <Menu.Title tag="h2">Title</Menu.Title>
-        <Menu>
-            <Menu.Item><a>Item 1</a></Menu.Item>
-            <Menu.Item><a>Item 2</a></Menu.Item>
-            <Menu.Item><a>Item 3</a></Menu.Item>
-        </Menu>
-    </Menu.Item>
+  <Menu.Item>
+    <Menu.Title tag="h2">Title</Menu.Title>
+    <Menu>
+      <Menu.Item>
+        <a>Item 1</a>
+      </Menu.Item>
+      <Menu.Item>
+        <a>Item 2</a>
+      </Menu.Item>
+      <Menu.Item>
+        <a>Item 3</a>
+      </Menu.Item>
+    </Menu>
+  </Menu.Item>
 </Menu>
 ```
 
 ### Submenu
+
 ```tsx live
 <Menu className="bg-base-200 rounded-box w-56">
-    <Menu.Item><a>Item 1</a></Menu.Item>
-    <Menu.Item>
+  <Menu.Item>
+    <a>Item 1</a>
+  </Menu.Item>
+  <Menu.Item>
+    <a>Parent</a>
+    <Menu>
+      <Menu.Item>
+        <a>Submenu 1</a>
+      </Menu.Item>
+      <Menu.Item>
+        <a>Submenu 2</a>
+      </Menu.Item>
+      <Menu.Item>
         <a>Parent</a>
         <Menu>
-            <Menu.Item><a>Submenu 1</a></Menu.Item>
-            <Menu.Item><a>Submenu 2</a></Menu.Item>
-                <Menu.Item>
-                    <a>Parent</a>
-                    <Menu>
-                        <Menu.Item><a>Submenu 1</a></Menu.Item>
-                        <Menu.Item><a>Submenu 2</a></Menu.Item>
-                    </Menu>
-                </Menu.Item>
+          <Menu.Item>
+            <a>Submenu 1</a>
+          </Menu.Item>
+          <Menu.Item>
+            <a>Submenu 2</a>
+          </Menu.Item>
         </Menu>
-    </Menu.Item>
-    <Menu.Item><a>Item 3</a></Menu.Item>
+      </Menu.Item>
+    </Menu>
+  </Menu.Item>
+  <Menu.Item>
+    <a>Item 3</a>
+  </Menu.Item>
 </Menu>
 ```
+
 ### Collapsible submenu
+
 ```tsx live
 <Menu className="bg-base-200 rounded-box w-56">
-    <Menu.Item><a>Item 1</a></Menu.Item>
-    <Menu.Item>
+  <Menu.Item>
+    <a>Item 1</a>
+  </Menu.Item>
+  <Menu.Item>
+    <Menu.Details open label="Parent">
+      <Menu.Item>
+        <a>Submenu 1</a>
+      </Menu.Item>
+      <Menu.Item>
+        <a>Submenu 2</a>
+      </Menu.Item>
+      <Menu.Item>
         <Menu.Details open label="Parent">
-            <Menu.Item><a>Submenu 1</a></Menu.Item>
-            <Menu.Item><a>Submenu 2</a></Menu.Item>
-            <Menu.Item>
-                <Menu.Details open label='Parent'>
-                    <Menu.Item><a>Submenu 1</a></Menu.Item>
-                    <Menu.Item><a>Submenu 2</a></Menu.Item>
-                </Menu.Details>
-            </Menu.Item>
+          <Menu.Item>
+            <a>Submenu 1</a>
+          </Menu.Item>
+          <Menu.Item>
+            <a>Submenu 2</a>
+          </Menu.Item>
         </Menu.Details>
-    </Menu.Item>
-    <Menu.Item><a>Item 3</a></Menu.Item>
+      </Menu.Item>
+    </Menu.Details>
+  </Menu.Item>
+  <Menu.Item>
+    <a>Item 3</a>
+  </Menu.Item>
 </Menu>
 ```
 
 ### Collapsible submenu that works with class names
+
 ```tsx live
 <Menu className="bg-base-200 rounded-box w-56">
-    <Menu.Item><a>Item 1</a></Menu.Item>
-    <Menu.Item>
-        <Menu.Dropdown open label='Parent'>
-            <Menu.Item><a>Submenu 1</a></Menu.Item>
-            <Menu.Item><a>Submenu 2</a></Menu.Item>
-        </Menu.Dropdown>
-    </Menu.Item>
-    <Menu.Item><a>Item 3</a></Menu.Item>
+  <Menu.Item>
+    <a>Item 1</a>
+  </Menu.Item>
+  <Menu.Item>
+    <Menu.Dropdown open label="Parent">
+      <Menu.Item>
+        <a>Submenu 1</a>
+      </Menu.Item>
+      <Menu.Item>
+        <a>Submenu 2</a>
+      </Menu.Item>
+    </Menu.Dropdown>
+  </Menu.Item>
+  <Menu.Item>
+    <a>Item 3</a>
+  </Menu.Item>
 </Menu>
 ```
 
 ### Menu with active item
+
 ```tsx live
 <Menu className="bg-base-200 rounded-box w-56">
-    <Menu.Item active><a>Item 1</a></Menu.Item>
-    <Menu.Item><a>Item 2</a></Menu.Item>
-    <Menu.Item><a>Item 3</a></Menu.Item>
+  <Menu.Item active>
+    <a>Item 1</a>
+  </Menu.Item>
+  <Menu.Item>
+    <a>Item 2</a>
+  </Menu.Item>
+  <Menu.Item>
+    <a>Item 3</a>
+  </Menu.Item>
 </Menu>
 ```
 
@@ -102,39 +160,39 @@ Common props: `dataTheme`, `className`, `style`
 
 ### Menu
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| children | content | MenuTitle \| MenuItem \| MenuItem[] | - |
-| direction | Menu direction | `vertical` \| `horizontal` | - |
-| size | Menu size | `xs` \| `sm` \| `md` \| `lg` | - |
+| Property  | Description    | Type                                | Default |
+| --------- | -------------- | ----------------------------------- | ------- |
+| children  | content        | MenuTitle \| MenuItem \| MenuItem[] | -       |
+| direction | Menu direction | `vertical` \| `horizontal`          | -       |
+| size      | Menu size      | `xs` \| `sm` \| `md` \| `lg`        | -       |
 
 ### MenuItem
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| active | Active state | boolean | false |
-| children | Content | ReactNode | - |
-| disabled | Disabled state | boolean | false |
+| Property | Description    | Type      | Default |
+| -------- | -------------- | --------- | ------- |
+| active   | Active state   | boolean   | false   |
+| children | Content        | ReactNode | -       |
+| disabled | Disabled state | boolean   | false   |
 
 ### MenuTitle
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| children | Content | ReactNode | - |
-| tag | Tag name | `li` \| `h1` \| `h2` \| etc... | `li` |
+| Property | Description | Type                           | Default |
+| -------- | ----------- | ------------------------------ | ------- |
+| children | Content     | ReactNode                      | -       |
+| tag      | Tag name    | `li` \| `h1` \| `h2` \| etc... | `li`    |
 
 ### MenuDetails
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| children | content | MenuItem \| MenuItem[] | - |
-| label | Label | ReactNode | - |
-| open | Open state | boolean | false |
+| Property | Description | Type                   | Default |
+| -------- | ----------- | ---------------------- | ------- |
+| children | content     | MenuItem \| MenuItem[] | -       |
+| label    | Label       | ReactNode              | -       |
+| open     | Open state  | boolean                | false   |
 
 ### MenuDropdown
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| children | content | MenuItem \| MenuItem[] | - |
-| label | Label | ReactNode | - |
-| open | Open state | boolean | false |
+| Property | Description | Type                   | Default |
+| -------- | ----------- | ---------------------- | ------- |
+| children | content     | MenuItem \| MenuItem[] | -       |
+| label    | Label       | ReactNode              | -       |
+| open     | Open state  | boolean                | false   |

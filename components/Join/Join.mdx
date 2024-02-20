@@ -6,36 +6,38 @@ description: Join is a container for grouping multiple items, it can be used to 
 ## Examples
 
 ### Join
+
 <code src="./demo/basic.tsx" />
 
 ### Responsive
+
 ```tsx live
 /**
  * description: it's vertical on small screen and horizontal on large screen
  */
 
 <Join responsive>
-    <Button>Button</Button>
-    <Button>Button</Button>
-    <Button>Button</Button>
+  <Button>Button</Button>
+  <Button>Button</Button>
+  <Button>Button</Button>
 </Join>
-
 ```
 
 ### Custom border radius
+
 ```tsx live
 <Join>
-    <Input placeholder="Email"/>
-    <Button className="rounded-r-full">Subscribe</Button>
+  <Input placeholder="Email" />
+  <Button className="rounded-r-full">Subscribe</Button>
 </Join>
-
 ```
+
 ### Join radio inputs with btn style
+
 ```tsx live
 <Join>
-    <Button as="input" type="radio" name="options" aria-label="Radio 1"/>
-    <Button as="input" type="radio" name="options" aria-label="Radio 2"/>
-    <Button as="input" type="radio" name="options" aria-label="Radio 3"/>
+  <Button as="input" type="radio" name="options" aria-label="Radio 1" />
+  <Button as="input" type="radio" name="options" aria-label="Radio 2" />
+  <Button as="input" type="radio" name="options" aria-label="Radio 3" />
 </Join>
-
 ```

@@ -1,66 +1,68 @@
-import { twMerge } from 'tailwind-merge'
+import { twMerge } from "tailwind-merge";
 
-import {
-    ComponentBaseProps,
-    ComponentColor,
-    ComponentSize,
-} from '../types'
+import { ComponentBaseProps, ComponentColor, ComponentSize } from "../types";
 
-import { ReactNode, forwardRef } from 'react'
-
+import { ReactNode, forwardRef } from "react";
 
 export type FileInputProps = Omit<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    'size' | 'color'
+  React.InputHTMLAttributes<HTMLInputElement>,
+  "size" | "color"
 > &
-    ComponentBaseProps & {
-        size?: ComponentSize
-        color?: Exclude<ComponentColor, 'neutral' | 'ghost'>
-        label?: ReactNode
-        labelAlt?: ReactNode
-        labelClassName?: string
-    }
+  ComponentBaseProps & {
+    size?: ComponentSize;
+    color?: Exclude<ComponentColor, "neutral" | "ghost">;
+    label?: ReactNode;
+    labelAlt?: ReactNode;
+    labelClassName?: string;
+  };
 
-export const FileInput = forwardRef<HTMLInputElement, FileInputProps>((
+export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
+  (
     {
-        label,
-        labelAlt,
-        labelClassName,
-        size,
-        color,
-        dataTheme,
-        className,
-        ...props
+      label,
+      labelAlt,
+      labelClassName,
+      size,
+      color,
+      dataTheme,
+      className,
+      ...props
     },
     ref
-) => {
-
+  ) => {
     const sizes = {
-        lg: 'file-input-lg',
-        md: 'file-input-md',
-        sm: 'file-input-sm',
-        xs: 'file-input-xs',
-    }
+      lg: "file-input-lg",
+      md: "file-input-md",
+      sm: "file-input-sm",
+      xs: "file-input-xs",
+    };
     const colors = {
-        primary: 'file-input-primary',
-        secondary: 'file-input-secondary',
-        accent: 'file-input-accent',
-        info: 'file-input-info',
-        success: 'file-input-success',
-        warning: 'file-input-warning',
-        error: 'file-input-error',
-    }
+      primary: "file-input-primary",
+      secondary: "file-input-secondary",
+      accent: "file-input-accent",
+      info: "file-input-info",
+      success: "file-input-success",
+      warning: "file-input-warning",
+      error: "file-input-error",
+    };
 
     const classes = twMerge(
-        'file-input',
-        size && sizes[size],
-        color && colors[color],
-        className,
-    )
+      "file-input",
+      size && sizes[size],
+      color && colors[color],
+      className
+    );
 
     return (
-        <input type="file" {...props} ref={ref} data-theme={dataTheme} className={classes} />
-    )
-})
+      <input
+        type="file"
+        {...props}
+        ref={ref}
+        data-theme={dataTheme}
+        className={classes}
+      />
+    );
+  }
+);
 
-FileInput.displayName = "FileInput"
+FileInput.displayName = "FileInput";

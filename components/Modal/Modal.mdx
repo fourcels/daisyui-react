@@ -6,40 +6,31 @@ description: Modal is used to show a dialog or a box when you click a button.
 ## Examples
 
 ### Modal
+
 <code src="./demo/basic.tsx" />
 
 ### Dialog modal with custom width
+
 ```tsx live
 /**
  * description: You can use any w-* and max-w-* utility class to customize the width
  */
 
-<Modal
-    className="w-11/12 max-w-5xl"
-    trigger={<Button>open modal</Button>}
->
-    <Modal.Header>Hello!</Modal.Header>
-    <Modal.Body>
-        Press ESC key or click the button below to close
-    </Modal.Body>
+<Modal className="w-11/12 max-w-5xl" trigger={<Button>open modal</Button>}>
+  <Modal.Header>Hello!</Modal.Header>
+  <Modal.Body>Press ESC key or click the button below to close</Modal.Body>
 </Modal>
-
 ```
 
 ### Responsive
+
 ```tsx live
 /**
  * description: Modal goes bottom on mobile screen and goes middle on desktop
  */
 
-<Modal
-    responsive
-    trigger={<Button>open modal</Button>}
->
-    <Modal.Header>Hello!</Modal.Header>
-    <Modal.Body>
-        Press ESC key or click the button below to close
-    </Modal.Body>
+<Modal responsive trigger={<Button>open modal</Button>}>
+  <Modal.Header>Hello!</Modal.Header>
+  <Modal.Body>Press ESC key or click the button below to close</Modal.Body>
 </Modal>
-
 ```

@@ -1,25 +1,14 @@
-import { twMerge } from 'tailwind-merge'
+import { twMerge } from "tailwind-merge";
 
-import React, { forwardRef } from 'react'
+import React, { forwardRef } from "react";
 
-export type StatValueProps = React.HTMLAttributes<HTMLDivElement>
+export type StatValueProps = React.HTMLAttributes<HTMLDivElement>;
 
-export const StatValue = forwardRef<HTMLDivElement, StatValueProps>((
-    {
-        className,
-        ...props
-    },
-    ref
-): JSX.Element => {
+export const StatValue = forwardRef<HTMLDivElement, StatValueProps>(
+  ({ className, ...props }, ref): JSX.Element => {
+    const classes = twMerge("stat-value", className);
 
-    const classes = twMerge(
-        'stat-value',
-        className,
-    )
-
-    return (
-        <div className={classes} ref={ref} {...props}>
-        </div>
-    )
-})
-StatValue.displayName = 'StatValue'
+    return <div className={classes} ref={ref} {...props}></div>;
+  }
+);
+StatValue.displayName = "StatValue";

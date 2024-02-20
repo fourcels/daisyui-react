@@ -6,9 +6,11 @@ description: Buttons allow the user to take actions or make choices.
 ## Examples
 
 ### Button
+
 <code src="./demo/basic.tsx" />
 
 ### Responsive button
+
 ```tsx live
 /**
  * description: This button will have different sizes on different browser viewpoints
@@ -17,6 +19,7 @@ description: Buttons allow the user to take actions or make choices.
 ```
 
 ### Buttons with different HTML tags
+
 ```tsx live
 /**
  * description: You can use `btn` class on <button>, <input>, <a>, etc...
@@ -32,17 +35,53 @@ description: Buttons allow the user to take actions or make choices.
 <Button as="input" type="reset" aria-label="Reset" />
 ```
 
-
 ### Icon at start
+
 ```tsx live
-<Button startIcon={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>}>
-    Button
+<Button
+  startIcon={
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+      />
+    </svg>
+  }
+>
+  Button
 </Button>
 ```
+
 ### Icon at end
+
 ```tsx live
-<Button endIcon={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>}>
-    Button
+<Button
+  endIcon={
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+      />
+    </svg>
+  }
+>
+  Button
 </Button>
 ```
 
@@ -50,23 +89,23 @@ description: Buttons allow the user to take actions or make choices.
 
 Common props: `dataTheme`, `className`, `style`
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| active | 	Force button to show active state | boolean | false |
-| animation | Click animation | boolean | true |
-| color | Color of button | `neutral` \| `primary` \| `secondary` \| `accent` \| <br/> `info` \| `success` \| `warning` \| `error` \| <br/> `ghost` | - |
-| children | Button content | ReactNode | - |
-| disabled | Force button to show disabled state | boolean | false |
-| endIcon | End Icon | ReactNode | - |
-| block | Full width button | boolean | false |
-| glass | Button with a glass effect | boolean | false |
-| loading | Loading state | boolean | false |
-| responsive | Button have different sizes <br/> on different browser viewpoints | boolean | false |
-| shape | Shape of button | `circle` \| `square` |  |
-| size | Size of button | `xs` \| `sm` \| `md` \| `lg` | `md` |
-| startIcon | Start Icon | ReactNode | - |
-| as | Button with different HTML tags | `a` \| `button`  \| `input` \| etc... | `button` |
-| variant | Variant of button | `outline` \| `link` | - |
-| wide | Wide button (more horizontal padding) | boolean | false |
+| Property   | Description                             | Type                                                                                                        | Default  |
+| ---------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------------- | -------- |
+| active     | Force button to show active state       | boolean                                                                                                     | false    |
+| animation  | Click animation                         | boolean                                                                                                     | true     |
+| color      | Color of button                         | `neutral` \| `primary` \| `secondary` \| `accent` \| `info` \| `success` \| `warning` \| `error` \| `ghost` | -        |
+| children   | Button content                          | ReactNode                                                                                                   | -        |
+| disabled   | Force button to show disabled state     | boolean                                                                                                     | false    |
+| endIcon    | End Icon                                | ReactNode                                                                                                   | -        |
+| block      | Full width button                       | boolean                                                                                                     | false    |
+| glass      | Button with a glass effect              | boolean                                                                                                     | false    |
+| loading    | Loading state                           | boolean                                                                                                     | false    |
+| responsive | Different sizes on different viewpoints | boolean                                                                                                     | false    |
+| shape      | Shape of button                         | `circle` \| `square`                                                                                        |          |
+| size       | Size of button                          | `xs` \| `sm` \| `md` \| `lg`                                                                                | `md`     |
+| startIcon  | Start Icon                              | ReactNode                                                                                                   | -        |
+| as         | Button with different HTML tags         | `a` \| `button` \| `input` \| etc...                                                                        | `button` |
+| variant    | Variant of button                       | `outline` \| `link`                                                                                         | -        |
+| wide       | Wide button (more horizontal padding)   | boolean                                                                                                     | false    |
 
 It accepts all props which native `button` support.
