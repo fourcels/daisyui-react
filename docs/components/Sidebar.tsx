@@ -120,6 +120,10 @@ const components: Component[] = [
         name: 'Kbd',
         path: '/components/kbd'
     },
+    {
+        name: 'Stat',
+        path: '/components/stat'
+    },
 ]
 
 export function Sidebar({

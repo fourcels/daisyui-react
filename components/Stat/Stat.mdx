@@ -1,0 +1,34 @@
+---
+title: Stat
+description: Stat is used to show numbers and data in a box.
+---
+
+## Examples
+
+### Stat
+
+<code src="./demo/basic.tsx" />
+
+### With custom colors and button
+
+```tsx live
+<Stat.Group className="bg-primary text-primary-content">
+  <Stat>
+    <Stat.Title>Account balance</Stat.Title>
+    <Stat.Value>$89,400</Stat.Value>
+    <Stat.Actions>
+      <Button color="success" size="sm">
+        Add funds
+      </Button>
+    </Stat.Actions>
+  </Stat>
+  <Stat>
+    <Stat.Title>Current balance</Stat.Title>
+    <Stat.Value>$89,400</Stat.Value>
+    <Stat.Actions>
+      <Button size="sm">Withdrawal</Button>
+      <Button size="sm">deposit</Button>
+    </Stat.Actions>
+  </Stat>
+</Stat.Group>
+```
