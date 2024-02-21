@@ -9,6 +9,7 @@ import {
   Avatar,
   Button,
   Badge,
+  Checkbox,
 } from "daisyui-react";
 import React from "react";
 
@@ -48,9 +49,7 @@ export default function App() {
         <Table.Head>
           <Table.Row>
             <th>
-              <label>
-                <input type="checkbox" className="checkbox" />
-              </label>
+              <Checkbox />
             </th>
             <th>Name</th>
             <th>Job</th>
@@ -62,9 +61,7 @@ export default function App() {
           {/* row 1 */}
           <Table.Row active={active}>
             <th>
-              <label>
-                <input type="checkbox" className="checkbox" />
-              </label>
+              <Checkbox />
             </th>
             <td>
               <div className="flex items-center gap-3">
@@ -96,9 +93,7 @@ export default function App() {
           {/* row 2 */}
           <Table.Row>
             <th>
-              <label>
-                <input type="checkbox" className="checkbox" />
-              </label>
+              <Checkbox />
             </th>
             <td>
               <div className="flex items-center gap-3">
@@ -130,9 +125,7 @@ export default function App() {
           {/* row 3 */}
           <Table.Row>
             <th>
-              <label>
-                <input type="checkbox" className="checkbox" />
-              </label>
+              <Checkbox />
             </th>
             <td>
               <div className="flex items-center gap-3">
@@ -162,9 +155,7 @@ export default function App() {
           {/* row 4 */}
           <Table.Row>
             <th>
-              <label>
-                <input type="checkbox" className="checkbox" />
-              </label>
+              <Checkbox />
             </th>
             <td>
               <div className="flex items-center gap-3">
