@@ -133,7 +133,7 @@ const components: Component[] = [
 export function Sidebar({ className }: { className?: string }) {
   const location = useLocation();
   return (
-    <div className={twMerge("relative border-r bg-base-100 z-10", className)}>
+    <div className={twMerge("relative bg-base-100 z-10", className)}>
       <div className="sticky top-0 max-h-dvh overflow-y-auto">
         <Menu>
           <Menu.Title>Components</Menu.Title>

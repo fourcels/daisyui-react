@@ -5,4 +5,211 @@ description: Table can be used to show a list of data in a table format.
 
 ## Examples
 
+### Table
+
 <code src="./demo/basic.tsx" />
+
+### Table with pinned-rows
+
+```tsx live
+<div className="max-h-96 overflow-y-auto">
+  <Table pinRows>
+    <Table.Head>
+      <Table.Row>
+        <th>A</th>
+      </Table.Row>
+    </Table.Head>
+    <Table.Body>
+      <Table.Row>
+        <td>Ant-Man</td>
+      </Table.Row>
+      <Table.Row>
+        <td>Aquaman</td>
+      </Table.Row>
+      <Table.Row>
+        <td>Asterix</td>
+      </Table.Row>
+      <Table.Row>
+        <td>The Atom</td>
+      </Table.Row>
+      <Table.Row>
+        <td>The Avengers</td>
+      </Table.Row>
+    </Table.Body>
+    <Table.Head>
+      <Table.Row>
+        <th>B</th>
+      </Table.Row>
+    </Table.Head>
+    <Table.Body>
+      <Table.Row>
+        <td>Batgirl</td>
+      </Table.Row>
+      <Table.Row>
+        <td>Batman</td>
+      </Table.Row>
+      <Table.Row>
+        <td>Batwoman</td>
+      </Table.Row>
+      <Table.Row>
+        <td>Black Canary</td>
+      </Table.Row>
+      <Table.Row>
+        <td>Black Panther</td>
+      </Table.Row>
+    </Table.Body>
+    <Table.Head>
+      <Table.Row>
+        <th>C</th>
+      </Table.Row>
+    </Table.Head>
+    <Table.Body>
+      <Table.Row>
+        <td>Captain America</td>
+      </Table.Row>
+      <Table.Row>
+        <td>Captain Marvel</td>
+      </Table.Row>
+      <Table.Row>
+        <td>Catwoman</td>
+      </Table.Row>
+      <Table.Row>
+        <td>Conan the Barbarian</td>
+      </Table.Row>
+    </Table.Body>
+  </Table>
+</div>
+```
+
+### Table with pinned-rows and pinned-cols
+
+```tsx live
+<div className="overflow-auto max-h-96 max-w-96">
+  <Table pinRows pinCols>
+    <Table.Head>
+      <Table.Row>
+        <th></th>
+        <td>Name</td>
+        <td>Job</td>
+        <td>company</td>
+        <td>location</td>
+        <td>Last Login</td>
+        <td>Favorite Color</td>
+        <th></th>
+      </Table.Row>
+    </Table.Head>
+    <Table.Body>
+      <Table.Row>
+        <th>1</th>
+        <td>Cy Ganderton</td>
+        <td>Quality Control Specialist</td>
+        <td>Littel, Schaden and Vandervort</td>
+        <td>Canada</td>
+        <td>12/16/2020</td>
+        <td>Blue</td>
+        <th>1</th>
+      </Table.Row>
+      <Table.Row>
+        <th>2</th>
+        <td>Hart Hagerty</td>
+        <td>Desktop Support Technician</td>
+        <td>Zemlak, Daniel and Leannon</td>
+        <td>United States</td>
+        <td>12/5/2020</td>
+        <td>Purple</td>
+        <th>2</th>
+      </Table.Row>
+      <Table.Row>
+        <th>3</th>
+        <td>Brice Swyre</td>
+        <td>Tax Accountant</td>
+        <td>Carroll Group</td>
+        <td>China</td>
+        <td>8/15/2020</td>
+        <td>Red</td>
+        <th>3</th>
+      </Table.Row>
+      <Table.Row>
+        <th>4</th>
+        <td>Marjy Ferencz</td>
+        <td>Office Assistant I</td>
+        <td>Rowe-Schoen</td>
+        <td>Russia</td>
+        <td>3/25/2021</td>
+        <td>Crimson</td>
+        <th>4</th>
+      </Table.Row>
+      <Table.Row>
+        <th>5</th>
+        <td>Yancy Tear</td>
+        <td>Community Outreach Specialist</td>
+        <td>Wyman-Ledner</td>
+        <td>Brazil</td>
+        <td>5/22/2020</td>
+        <td>Indigo</td>
+        <th>5</th>
+      </Table.Row>
+      <Table.Row>
+        <th>6</th>
+        <td>Irma Vasilik</td>
+        <td>Editor</td>
+        <td>Wiza, Bins and Emard</td>
+        <td>Venezuela</td>
+        <td>12/8/2020</td>
+        <td>Purple</td>
+        <th>6</th>
+      </Table.Row>
+      <Table.Row>
+        <th>7</th>
+        <td>Meghann Durtnal</td>
+        <td>Staff Accountant IV</td>
+        <td>Schuster-Schimmel</td>
+        <td>Philippines</td>
+        <td>2/17/2021</td>
+        <td>Yellow</td>
+        <th>7</th>
+      </Table.Row>
+      <Table.Row>
+        <th>7</th>
+        <td>Meghann Durtnal</td>
+        <td>Staff Accountant IV</td>
+        <td>Schuster-Schimmel</td>
+        <td>Philippines</td>
+        <td>2/17/2021</td>
+        <td>Yellow</td>
+        <th>7</th>
+      </Table.Row>
+      <Table.Row>
+        <th>8</th>
+        <td>Sammy Seston</td>
+        <td>Accountant I</td>
+        <td>O'Hara, Welch and Keebler</td>
+        <td>Indonesia</td>
+        <td>5/23/2020</td>
+        <td>Crimson</td>
+        <th>8</th>
+      </Table.Row>
+      <Table.Row>
+        <th>9</th>
+        <td>Lesya Tinham</td>
+        <td>Safety Technician IV</td>
+        <td>Turner-Kuhlman</td>
+        <td>Philippines</td>
+        <td>2/21/2021</td>
+        <td>Maroon</td>
+        <th>9</th>
+      </Table.Row>
+      <Table.Row>
+        <th>10</th>
+        <td>Zaneta Tewkesbury</td>
+        <td>VP Marketing</td>
+        <td>Sauer LLC</td>
+        <td>Chad</td>
+        <td>6/23/2020</td>
+        <td>Green</td>
+        <th>10</th>
+      </Table.Row>
+    </Table.Body>
+  </Table>
+</div>
+```
