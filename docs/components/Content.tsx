@@ -23,7 +23,7 @@ export function Content({
   }, [frontmatter]);
   return (
     <div className="flex">
-      <article className="markdown prose max-w-5xl prose-a:no-underline p-10 flex-1">
+      <article className="markdown prose max-w-5xl p-10 flex-1">
         {frontmatter?.title && <h1>{frontmatter.title}</h1>}
         {frontmatter?.description &&
           frontmatter.description
