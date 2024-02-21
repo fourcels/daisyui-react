@@ -124,6 +124,10 @@ const components: Component[] = [
     name: "Stat",
     path: "/components/stat",
   },
+  {
+    name: "Table",
+    path: "/components/table",
+  },
 ];
 
 export function Sidebar({ className }: { className?: string }) {
