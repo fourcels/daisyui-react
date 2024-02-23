@@ -1,0 +1,17 @@
+.timeline-item {
+  &.active {
+    .timeline-middle {
+      @apply text-primary;
+    }
+  }
+  &.active:has(+ &.active) {
+    .timeline-connect-end {
+      @apply bg-primary;
+    }
+  }
+  &.active + &.active {
+    .timeline-connect-start {
+      @apply bg-primary;
+    }
+  }
+}

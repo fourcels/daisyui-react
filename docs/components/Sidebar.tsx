@@ -128,6 +128,10 @@ const components: Component[] = [
     name: "Table",
     path: "/components/table",
   },
+  {
+    name: "Timeline",
+    path: "/components/timeline",
+  },
 ];
 
 export function Sidebar({ className }: { className?: string }) {

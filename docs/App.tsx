@@ -1,36 +1,31 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import { MDXProvider } from '@mdx-js/react'
-import { CodePreview } from './components/CodePreview'
-import './routes'
-import './App.css'
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { MDXProvider } from "@mdx-js/react";
+import { CodePreview } from "./components/CodePreview";
+import "./routes";
+import "./App.css";
 
-
-import { routes } from './routes';
-import { Layout } from './components/Layout';
+import { routes } from "./routes";
+import { Layout } from "./components/Layout";
 
 const router = createBrowserRouter([
   {
     Component: Layout,
-    path: '/',
+    path: "/",
     children: [
       {
         path: "components",
-        children: routes
+        children: routes,
       },
-    ]
+    ],
   },
 ]);
 
 function App() {
-
   return (
     <MDXProvider components={{ CodePreview }}>
       <RouterProvider router={router} />
     </MDXProvider>
-  )
+  );
 }
 
-export default App
+export default App;
