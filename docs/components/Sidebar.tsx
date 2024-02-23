@@ -132,6 +132,10 @@ const components: Component[] = [
     name: "Timeline",
     path: "/components/timeline",
   },
+  {
+    name: "Breadcrumbs",
+    path: "/components/breadcrumbs",
+  },
 ];
 
 export function Sidebar({ className }: { className?: string }) {

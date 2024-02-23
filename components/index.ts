@@ -31,3 +31,4 @@ export * from "./Kbd";
 export * from "./Stat";
 export * from "./Table";
 export * from "./Timeline";
+export * from "./Breadcrumbs";
