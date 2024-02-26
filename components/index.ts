@@ -34,3 +34,4 @@ export * from "./Timeline";
 export * from "./Breadcrumbs";
 export * from "./BottomNavigation";
 export * from "./Link";
+export * from "./Pagination";

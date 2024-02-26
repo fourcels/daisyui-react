@@ -1,0 +1,81 @@
+---
+title: Pagination
+description: Pagination is a group of buttons that allow the user to navigate between a set of related content.
+---
+
+## Examples
+
+### Pagination
+
+<code src="./demo/basic.tsx" />
+
+### With a disabled button
+
+```tsx live
+<Pagination>
+  <Pagination.Item>1</Pagination.Item>
+  <Pagination.Item>2</Pagination.Item>
+  <Pagination.Item disabled>...</Pagination.Item>
+  <Pagination.Item>99</Pagination.Item>
+  <Pagination.Item>100</Pagination.Item>
+</Pagination>
+```
+
+### Extra small buttons
+
+```tsx live
+<Pagination>
+  <Pagination.Item>«</Pagination.Item>
+  <Pagination.Item>Page 22</Pagination.Item>
+  <Pagination.Item>»</Pagination.Item>
+</Pagination>
+```
+
+### Nex/Prev outline buttons with equal width
+
+```tsx live
+<Pagination className="grid grid-cols-2">
+  <Pagination.Item variant="outline">Previous page</Pagination.Item>
+  <Pagination.Item variant="outline">Next</Pagination.Item>
+</Pagination>
+```
+
+### Using radio inputs
+
+```tsx live
+<Pagination>
+  <Pagination.Item
+    defaultChecked
+    shape="square"
+    as="input"
+    type="radio"
+    name="options"
+    aria-label="1"
+  />
+  <Pagination.Item
+    shape="square"
+    as="input"
+    type="radio"
+    name="options"
+    aria-label="2"
+  />
+  <Pagination.Item
+    shape="square"
+    as="input"
+    type="radio"
+    name="options"
+    aria-label="3"
+  />
+  <Pagination.Item
+    shape="square"
+    as="input"
+    type="radio"
+    name="options"
+    aria-label="4"
+  />
+</Pagination>
+```
+
+## API
+
+Common props: `dataTheme`, `className`, `style`
