@@ -43,7 +43,7 @@ const BottomNavigationInner = forwardRef<HTMLDivElement, BottomNavigationProps>(
         {children &&
           React.Children.map(children, (child) =>
             React.cloneElement(child, {
-              color,
+              color: child.props.color || color,
             })
           )}
       </div>

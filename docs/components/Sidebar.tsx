@@ -148,6 +148,10 @@ const components: Component[] = [
     name: "Pagination",
     path: "/components/pagination",
   },
+  {
+    name: "Steps",
+    path: "/components/steps",
+  },
 ];
 
 export function Sidebar({ className }: { className?: string }) {

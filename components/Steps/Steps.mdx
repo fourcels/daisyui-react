@@ -1,0 +1,70 @@
+---
+title: Steps
+description: Steps can be used to show a list of steps in a process.
+---
+
+## Examples
+
+### Steps
+
+<code src="./demo/basic.tsx" />
+
+### With data-content
+
+```tsx live
+<Steps color="neutral">
+  <Steps.Item data-content="?">Step 1</Steps.Item>
+  <Steps.Item data-content="!">Step 2</Steps.Item>
+  <Steps.Item data-content="✓">Step 3</Steps.Item>
+  <Steps.Item data-content="✕">Step 4</Steps.Item>
+  <Steps.Item data-content="★">Step 5</Steps.Item>
+  <Steps.Item data-content="">Step 6</Steps.Item>
+  <Steps.Item data-content="●">Step 7</Steps.Item>
+</Steps>
+```
+
+### Custom colors
+
+```tsx live
+<Steps>
+  <Steps.Item color="info">Fly to moon</Steps.Item>
+  <Steps.Item color="info">Shrink the moon</Steps.Item>
+  <Steps.Item color="info">Grab the moon</Steps.Item>
+  <Steps.Item color="error" data-content="?">
+    Sit on toilet
+  </Steps.Item>
+</Steps>
+```
+
+### With scrollable wrapper
+
+```tsx live
+<div className="overflow-x-auto">
+  <Steps>
+    <Steps.Item>Start</Steps.Item>
+    <Steps.Item color="secondary">2</Steps.Item>
+    <Steps.Item color="secondary">3</Steps.Item>
+    <Steps.Item color="secondary">4</Steps.Item>
+    <Steps.Item>5</Steps.Item>
+    <Steps.Item color="accent">6</Steps.Item>
+    <Steps.Item color="accent">7</Steps.Item>
+    <Steps.Item>8</Steps.Item>
+    <Steps.Item color="error">9</Steps.Item>
+    <Steps.Item color="error">10</Steps.Item>
+    <Steps.Item>11</Steps.Item>
+    <Steps.Item>12</Steps.Item>
+    <Steps.Item color="warning">13</Steps.Item>
+    <Steps.Item color="warning">14</Steps.Item>
+    <Steps.Item>15</Steps.Item>
+    <Steps.Item color="neutral">16</Steps.Item>
+    <Steps.Item color="neutral">17</Steps.Item>
+    <Steps.Item color="neutral">18</Steps.Item>
+    <Steps.Item color="neutral">19</Steps.Item>
+    <Steps.Item color="neutral">20</Steps.Item>
+    <Steps.Item color="neutral">21</Steps.Item>
+    <Steps.Item color="neutral">22</Steps.Item>
+    <Steps.Item color="neutral">23</Steps.Item>
+    <Steps.Item color="neutral">end</Steps.Item>
+  </Steps>
+</div>
+```
