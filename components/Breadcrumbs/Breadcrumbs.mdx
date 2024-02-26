@@ -23,8 +23,8 @@ description: Breadcrumbs helps users to navigate through the website.
 
 ```tsx live
 <Breadcrumbs>
-  <Breadcrumbs.Item>
-    <a className="gap-2">
+  <Breadcrumbs.Item
+    icon={
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -38,11 +38,12 @@ description: Breadcrumbs helps users to navigate through the website.
           d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
         ></path>
       </svg>
-      Home
-    </a>
+    }
+  >
+    <a>Home</a>
   </Breadcrumbs.Item>
-  <Breadcrumbs.Item>
-    <a className="gap-2">
+  <Breadcrumbs.Item
+    icon={
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -56,11 +57,12 @@ description: Breadcrumbs helps users to navigate through the website.
           d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
         ></path>
       </svg>
-      Documents
-    </a>
+    }
+  >
+    <a>Documents</a>
   </Breadcrumbs.Item>
-  <Breadcrumbs.Item>
-    <span className="flex items-center gap-2">
+  <Breadcrumbs.Item
+    icon={
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -74,8 +76,9 @@ description: Breadcrumbs helps users to navigate through the website.
           d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
         ></path>
       </svg>
-      Add Document
-    </span>
+    }
+  >
+    Add Document
   </Breadcrumbs.Item>
 </Breadcrumbs>
 ```
