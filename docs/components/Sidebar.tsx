@@ -140,6 +140,10 @@ const components: Component[] = [
     name: "Bottom Navigation",
     path: "/components/bottom-navigation",
   },
+  {
+    name: "Link",
+    path: "/components/link",
+  },
 ];
 
 export function Sidebar({ className }: { className?: string }) {
