@@ -136,6 +136,10 @@ const components: Component[] = [
     name: "Breadcrumbs",
     path: "/components/breadcrumbs",
   },
+  {
+    name: "Bottom Navigation",
+    path: "/components/bottom-navigation",
+  },
 ];
 
 export function Sidebar({ className }: { className?: string }) {

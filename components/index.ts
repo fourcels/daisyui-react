@@ -32,3 +32,4 @@ export * from "./Stat";
 export * from "./Table";
 export * from "./Timeline";
 export * from "./Breadcrumbs";
+export * from "./BottomNavigation";
