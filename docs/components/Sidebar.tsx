@@ -121,8 +121,8 @@ const components: Component[] = [
     path: "/components/kbd",
   },
   {
-    name: "Stat",
-    path: "/components/stat",
+    name: "Stats",
+    path: "/components/stats",
   },
   {
     name: "Table",

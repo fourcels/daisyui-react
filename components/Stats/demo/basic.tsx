@@ -1,12 +1,4 @@
-import {
-  Select,
-  Form,
-  SelectProps,
-  Divider,
-  Toggle,
-  Stat,
-  Avatar,
-} from "daisyui-react";
+import { Divider, Toggle, Stats, Avatar } from "daisyui-react";
 import React from "react";
 
 export default function App() {
@@ -37,9 +29,9 @@ export default function App() {
       <Divider>Preview</Divider>
 
       <div className="flex justify-center">
-        <Stat.Group center={center} vertical={vertical} responsive={responsive}>
-          <Stat>
-            <Stat.Figure className="text-primary">
+        <Stats center={center} vertical={vertical} responsive={responsive}>
+          <Stats.Stat>
+            <Stats.Figure className="text-primary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -53,13 +45,13 @@ export default function App() {
                   d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
                 ></path>
               </svg>
-            </Stat.Figure>
-            <Stat.Title>Total Likes</Stat.Title>
-            <Stat.Value className="text-primary">25.6K</Stat.Value>
-            <Stat.Desc>21% more than last month</Stat.Desc>
-          </Stat>
-          <Stat>
-            <Stat.Figure className="text-secondary">
+            </Stats.Figure>
+            <Stats.Title>Total Likes</Stats.Title>
+            <Stats.Value className="text-primary">25.6K</Stats.Value>
+            <Stats.Desc>21% more than last month</Stats.Desc>
+          </Stats.Stat>
+          <Stats.Stat>
+            <Stats.Figure className="text-secondary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -73,24 +65,26 @@ export default function App() {
                   d="M13 10V3L4 14h7v7l9-11h-7z"
                 ></path>
               </svg>
-            </Stat.Figure>
-            <Stat.Title>Page Views</Stat.Title>
-            <Stat.Value className="text-secondary">2.6M</Stat.Value>
-            <Stat.Desc>21% more than last month</Stat.Desc>
-          </Stat>
-          <Stat>
-            <Stat.Figure className="text-secondary">
+            </Stats.Figure>
+            <Stats.Title>Page Views</Stats.Title>
+            <Stats.Value className="text-secondary">2.6M</Stats.Value>
+            <Stats.Desc>21% more than last month</Stats.Desc>
+          </Stats.Stat>
+          <Stats.Stat>
+            <Stats.Figure className="text-secondary">
               <Avatar
                 shape="circle"
                 indicator="online"
                 src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
               />
-            </Stat.Figure>
-            <Stat.Value>86%</Stat.Value>
-            <Stat.Title>Tasks done</Stat.Title>
-            <Stat.Desc className="text-secondary">31 tasks remaining</Stat.Desc>
-          </Stat>
-        </Stat.Group>
+            </Stats.Figure>
+            <Stats.Value>86%</Stats.Value>
+            <Stats.Title>Tasks done</Stats.Title>
+            <Stats.Desc className="text-secondary">
+              31 tasks remaining
+            </Stats.Desc>
+          </Stats.Stat>
+        </Stats>
       </div>
     </>
   );

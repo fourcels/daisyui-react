@@ -28,7 +28,7 @@ export * from "./Chat";
 export * from "./Countdown";
 export * from "./Diff";
 export * from "./Kbd";
-export * from "./Stat";
+export * from "./Stats";
 export * from "./Table";
 export * from "./Timeline";
 export * from "./Breadcrumbs";

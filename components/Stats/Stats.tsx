@@ -3,7 +3,23 @@ import { twMerge } from "tailwind-merge";
 import React, { ReactElement, forwardRef } from "react";
 import { ComponentBaseProps, ListOrItem } from "../types";
 
-export type StatGroupProps = Omit<
+import { StatTitle, StatTitleProps } from "./StatTitle";
+import { StatValue, StatValueProps } from "./StatValue";
+import { StatDesc, StatDescProps } from "./StatDesc";
+import { StatFigure, StatFigureProps } from "./StatFigure";
+import { StatActions, StatActionsProps } from "./StatActions";
+import { Stat, StatProps } from "./Stat";
+
+export type {
+  StatTitleProps,
+  StatValueProps,
+  StatDescProps,
+  StatFigureProps,
+  StatActionsProps,
+  StatProps,
+};
+
+export type StatsProps = Omit<
   React.HTMLAttributes<HTMLDivElement>,
   "children"
 > &
@@ -14,7 +30,7 @@ export type StatGroupProps = Omit<
     responsive?: boolean;
   };
 
-export const StatGroup = forwardRef<HTMLDivElement, StatGroupProps>(
+const StatsInner = forwardRef<HTMLDivElement, StatsProps>(
   (
     { responsive, vertical, center, children, dataTheme, className, ...props },
     ref
@@ -38,4 +54,13 @@ export const StatGroup = forwardRef<HTMLDivElement, StatGroupProps>(
     );
   }
 );
-StatGroup.displayName = "StatGroup";
+StatsInner.displayName = "Stats";
+
+export const Stats = Object.assign(StatsInner, {
+  Title: StatTitle,
+  Value: StatValue,
+  Desc: StatDesc,
+  Figure: StatFigure,
+  Actions: StatActions,
+  Stat,
+});
