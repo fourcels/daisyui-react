@@ -8,11 +8,21 @@ export type AlertProps = Omit<React.HTMLAttributes<HTMLDivElement>, "color"> &
     color?: ComponentStatus;
     icon?: React.ReactNode;
     actions?: React.ReactNode;
+    contentClassName?: string;
   };
 
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(
   (
-    { icon, actions, children, color, dataTheme, className, ...props },
+    {
+      contentClassName,
+      icon,
+      actions,
+      children,
+      color,
+      dataTheme,
+      className,
+      ...props
+    },
     ref
   ): JSX.Element => {
     const colors = {
@@ -33,7 +43,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
         className={classes}
       >
         {icon}
-        {children}
+        <div className={contentClassName}>{children}</div>
         {actions}
       </div>
     );

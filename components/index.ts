@@ -41,3 +41,4 @@ export * from "./Alert";
 export * from "./Progress";
 export * from "./RadialProgress";
 export * from "./Skeleton";
+export * from "./Toast";

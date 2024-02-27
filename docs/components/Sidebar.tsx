@@ -172,6 +172,10 @@ const components: Component[] = [
     name: "Skeleton",
     path: "/components/skeleton",
   },
+  {
+    name: "Toast",
+    path: "/components/toast",
+  },
 ];
 
 export function Sidebar({ className }: { className?: string }) {
