@@ -37,3 +37,4 @@ export * from "./Link";
 export * from "./Pagination";
 export * from "./Steps";
 export * from "./Tabs";
+export * from "./Alert";

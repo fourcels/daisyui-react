@@ -156,6 +156,10 @@ const components: Component[] = [
     name: "Tabs",
     path: "/components/tabs",
   },
+  {
+    name: "Alert",
+    path: "/components/alert",
+  },
 ];
 
 export function Sidebar({ className }: { className?: string }) {
