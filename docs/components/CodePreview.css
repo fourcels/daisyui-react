@@ -1,4 +1,6 @@
 .code-preview {
+  @apply text-base-content text-base border rounded;
+
   .preview {
     background-image: repeating-linear-gradient(
       45deg,

@@ -39,3 +39,4 @@ export * from "./Steps";
 export * from "./Tabs";
 export * from "./Alert";
 export * from "./Progress";
+export * from "./RadialProgress";

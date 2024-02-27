@@ -164,6 +164,10 @@ const components: Component[] = [
     name: "Progress",
     path: "/components/progress",
   },
+  {
+    name: "Radial Progress",
+    path: "/components/radial-progress",
+  },
 ];
 
 export function Sidebar({ className }: { className?: string }) {

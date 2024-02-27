@@ -54,7 +54,7 @@ export function CodePreview(props: CodePrivewProps) {
   }, [props.lang, props.live]);
 
   return (
-    <div className="code-preview border rounded not-prose leading-normal">
+    <div className="code-preview not-prose">
       {live && (
         <div>
           <div className="flex">

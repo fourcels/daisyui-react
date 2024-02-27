@@ -1,0 +1,26 @@
+---
+title: Radial progress
+description: Radial progress can be used to show the progress of a task or to show the passing of time.
+---
+
+## Examples
+
+### Radial Progress
+
+<code src="./demo/basic.tsx" />
+
+### With background color and border
+
+```tsx live
+<RadialProgress
+  value={70}
+  className="bg-primary text-primary-content border-4 border-primary"
+/>
+```
+
+### Custom size and custom thickness
+
+```tsx live
+<RadialProgress value={70} size={12} thickness="2px" />
+<RadialProgress value={70} size={12} thickness={2} />
+```
