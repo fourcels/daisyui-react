@@ -168,6 +168,10 @@ const components: Component[] = [
     name: "Radial Progress",
     path: "/components/radial-progress",
   },
+  {
+    name: "Skeleton",
+    path: "/components/skeleton",
+  },
 ];
 
 export function Sidebar({ className }: { className?: string }) {
