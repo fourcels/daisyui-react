@@ -2,14 +2,11 @@ import React, { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 import { ComponentColor } from "../types";
 
-export type StepsItemProps = Omit<
-  React.LiHTMLAttributes<HTMLLIElement>,
-  "color"
-> & {
+export type StepProps = Omit<React.LiHTMLAttributes<HTMLLIElement>, "color"> & {
   color?: Exclude<ComponentColor, "ghost">;
 };
 
-export const StepsItem = forwardRef<HTMLLIElement, StepsItemProps>(
+export const Step = forwardRef<HTMLLIElement, StepProps>(
   ({ color, className, children, ...props }, ref): JSX.Element => {
     const colors = {
       neutral: "step-neutral",
@@ -31,4 +28,4 @@ export const StepsItem = forwardRef<HTMLLIElement, StepsItemProps>(
     );
   }
 );
-StepsItem.displayName = "StepsItem";
+Step.displayName = "Step";

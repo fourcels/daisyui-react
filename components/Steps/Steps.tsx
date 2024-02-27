@@ -2,9 +2,9 @@ import { twMerge } from "tailwind-merge";
 
 import React, { ReactElement, forwardRef } from "react";
 import { ComponentBaseProps, ListOrItem } from "../types";
-import { StepsItem, StepsItemProps } from "./StepsItem";
+import { Step, StepProps } from "./Step";
 
-export type { StepsItemProps };
+export type { StepProps };
 export type StepsProps = Omit<
   React.HTMLAttributes<HTMLUListElement>,
   "children" | "color"
@@ -13,7 +13,7 @@ export type StepsProps = Omit<
     children?: ListOrItem<ReactElement>;
     vertical?: boolean;
     responsive?: boolean;
-    color?: StepsItemProps["color"];
+    color?: StepProps["color"];
   };
 
 const StepsInner = forwardRef<HTMLUListElement, StepsProps>(
@@ -43,5 +43,5 @@ const StepsInner = forwardRef<HTMLUListElement, StepsProps>(
 StepsInner.displayName = "Steps";
 
 export const Steps = Object.assign(StepsInner, {
-  Item: StepsItem,
+  Step,
 });

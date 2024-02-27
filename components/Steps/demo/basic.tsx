@@ -46,10 +46,10 @@ export default function App() {
 
       <div className="flex justify-center">
         <Steps color={color} vertical={vertical} responsive={responsive}>
-          <Steps.Item color="primary">Register</Steps.Item>
-          <Steps.Item color="primary">Choose plan</Steps.Item>
-          <Steps.Item>Purchase</Steps.Item>
-          <Steps.Item>Receive Product</Steps.Item>
+          <Steps.Step color="primary">Register</Steps.Step>
+          <Steps.Step color="primary">Choose plan</Steps.Step>
+          <Steps.Step>Purchase</Steps.Step>
+          <Steps.Step>Receive Product</Steps.Step>
         </Steps>
       </div>
     </>
