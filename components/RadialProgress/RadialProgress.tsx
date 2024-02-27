@@ -37,6 +37,7 @@ export const RadialProgress = forwardRef<HTMLDivElement, RadialProgressProps>(
 
     return (
       <div
+        role="progressbar"
         {...props}
         ref={ref}
         data-theme={dataTheme}
