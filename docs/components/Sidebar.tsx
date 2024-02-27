@@ -160,6 +160,10 @@ const components: Component[] = [
     name: "Alert",
     path: "/components/alert",
   },
+  {
+    name: "Progress",
+    path: "/components/progress",
+  },
 ];
 
 export function Sidebar({ className }: { className?: string }) {

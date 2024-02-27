@@ -8,13 +8,13 @@ function getRoutes() {
   const routes: RouteObject[] = [];
   for (const key in modules) {
     if (Object.prototype.hasOwnProperty.call(modules, key)) {
-      const element = modules[key];
+      const loadModule = modules[key];
       const arr = key.split("/");
       const path = kebabCase(arr.pop()!.split(".")[0]);
       routes.push({
         path,
         lazy: async () => {
-          const module: any = await element();
+          const module: any = await loadModule();
           return {
             element: (
               <Content frontmatter={module.frontmatter} toc={module.toc}>
