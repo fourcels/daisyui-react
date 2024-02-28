@@ -90,7 +90,7 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>(
       size && sizes[size],
       color && colors[color],
       bordered && "select-bordered",
-      !selectValue && "text-base-content text-opacity-60",
+      !selectValue && "text-base-content/60",
       className
     );
 
