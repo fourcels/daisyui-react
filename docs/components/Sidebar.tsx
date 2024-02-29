@@ -13,10 +13,6 @@ const components: Component[] = [
     path: "/components/button",
   },
   {
-    name: "Select",
-    path: "/components/select",
-  },
-  {
     name: "Toggle",
     path: "/components/toggle",
   },
@@ -57,6 +53,14 @@ const components: Component[] = [
     path: "/components/swap",
   },
   {
+    name: "Theme Controller",
+    path: "/components/theme-controller",
+  },
+  {
+    name: "Join (group items)",
+    path: "/components/join",
+  },
+  {
     name: "Checkbox",
     path: "/components/checkbox",
   },
@@ -65,20 +69,16 @@ const components: Component[] = [
     path: "/components/radio",
   },
   {
-    name: "Theme Controller",
-    path: "/components/theme-controller",
-  },
-  {
     name: "File Input",
     path: "/components/file-input",
   },
   {
-    name: "Join (group items)",
-    path: "/components/join",
-  },
-  {
     name: "Text Input",
     path: "/components/input",
+  },
+  {
+    name: "Select",
+    path: "/components/select",
   },
   {
     name: "Collapse",
