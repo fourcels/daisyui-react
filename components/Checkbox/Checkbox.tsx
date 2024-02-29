@@ -2,7 +2,7 @@ import { twMerge } from "tailwind-merge";
 
 import { ComponentBaseProps, ComponentColor, ComponentSize } from "../types";
 
-import { ReactNode, forwardRef } from "react";
+import React, { ReactNode, forwardRef } from "react";
 import { Label } from "../Label";
 
 export type CheckboxProps = Omit<
@@ -15,11 +15,13 @@ export type CheckboxProps = Omit<
     label?: ReactNode;
     labelClassName?: string;
     reverse?: boolean;
+    indeterminate?: boolean;
   };
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
+      indeterminate,
       reverse,
       label,
       labelClassName,
@@ -31,6 +33,18 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     },
     ref
   ) => {
+    const inputRef = React.useRef<HTMLInputElement>(null);
+
+    React.useImperativeHandle(ref, () => inputRef.current!);
+
+    React.useEffect(() => {
+      const input = inputRef.current;
+      if (!input) {
+        return;
+      }
+      input.indeterminate = !!indeterminate;
+    }, [indeterminate]);
+
     const sizes = {
       lg: "checkbox-lg",
       md: "checkbox-md",
@@ -58,9 +72,14 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       <input
         type="checkbox"
         {...props}
-        ref={ref}
+        ref={inputRef}
         data-theme={dataTheme}
         className={classes}
+        onClick={(e) => {
+          if (indeterminate) {
+            return e.preventDefault();
+          }
+        }}
       />
     );
 

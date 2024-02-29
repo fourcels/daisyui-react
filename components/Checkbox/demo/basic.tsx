@@ -12,6 +12,7 @@ export default function App() {
   const [color, setColor] = React.useState<CheckboxProps["color"]>();
   const [size, setSize] = React.useState<CheckboxProps["size"]>();
   const [reverse, setReverse] = React.useState(false);
+  const [indeterminate, setIndeterminate] = React.useState(false);
   return (
     <>
       <div className="flex gap-4">
@@ -41,12 +42,18 @@ export default function App() {
           checked={reverse}
           onChange={(e) => setReverse(e.target.checked)}
         />
+        <Toggle
+          label="Indeterminate"
+          checked={indeterminate}
+          onChange={(e) => setIndeterminate(e.target.checked)}
+        />
       </div>
 
       <Divider>Preview</Divider>
 
       <div className="flex justify-center">
         <Checkbox
+          indeterminate={indeterminate}
           reverse={reverse}
           label="Checkbox"
           size={size}
