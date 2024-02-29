@@ -11,11 +11,12 @@ import React from "react";
 export default function App() {
   const [color, setColor] = React.useState<CheckboxProps["color"]>();
   const [size, setSize] = React.useState<CheckboxProps["size"]>();
+  const [disabled, setDisabled] = React.useState(false);
   const [reverse, setReverse] = React.useState(false);
   const [indeterminate, setIndeterminate] = React.useState(false);
   return (
     <>
-      <div className="flex gap-4">
+      <div className="flex flex-wrap gap-4">
         <Form.Control label="Color">
           <Select
             onChange={(value) => setColor(value as any)}
@@ -36,7 +37,11 @@ export default function App() {
             items={["xs", "sm", "md", "lg"]}
           />
         </Form.Control>
-
+        <Toggle
+          label="Disabled"
+          checked={disabled}
+          onChange={(e) => setDisabled(e.target.checked)}
+        />
         <Toggle
           label="Reverse"
           checked={reverse}
@@ -58,6 +63,7 @@ export default function App() {
           label="Checkbox"
           size={size}
           color={color}
+          disabled={disabled}
         />
       </div>
     </>

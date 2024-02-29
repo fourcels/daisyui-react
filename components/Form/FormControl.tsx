@@ -5,13 +5,25 @@ import React from "react";
 export type FormControlProps = React.HTMLAttributes<HTMLDivElement> &
   ComponentBaseProps & {
     label?: React.ReactNode;
-    help?: React.ReactNode;
+    labelAlt?: React.ReactNode;
+    labelAlt2?: React.ReactNode;
+    labelAlt3?: React.ReactNode;
     horizontal?: boolean;
   };
 
 export const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>(
   (
-    { children, label, help, horizontal, dataTheme, className, ...props },
+    {
+      children,
+      label,
+      labelAlt,
+      labelAlt2,
+      labelAlt3,
+      horizontal,
+      dataTheme,
+      className,
+      ...props
+    },
     ref
   ) => {
     const classes = twMerge(
@@ -22,16 +34,18 @@ export const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>(
 
     return (
       <div ref={ref} data-theme={dataTheme} className={classes} {...props}>
-        {label && (
+        {(label || labelAlt) && (
           <label className="label">
             <span className="label-text">{label}</span>
+            <span className="label-text-alt">{labelAlt}</span>
           </label>
         )}
         <div className="flex flex-col">
           {children}
-          {help && (
+          {(labelAlt2 || labelAlt3) && (
             <div className="label">
-              <span className="label-text-alt">{help}</span>
+              <span className="label-text-alt">{labelAlt2}</span>
+              <span className="label-text-alt">{labelAlt3}</span>
             </div>
           )}
         </div>
