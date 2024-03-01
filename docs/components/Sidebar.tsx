@@ -69,6 +69,10 @@ const components: Component[] = [
     path: "/components/radio",
   },
   {
+    name: "Range",
+    path: "/components/range",
+  },
+  {
     name: "File Input",
     path: "/components/file-input",
   },
