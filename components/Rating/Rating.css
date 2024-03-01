@@ -1,0 +1,40 @@
+.rating {
+  :where(.rating-item) {
+    animation: rating-pop var(--animation-input, 0.25s) ease-out;
+    @apply bg-base-content h-6 w-6 opacity-20 cursor-pointer rounded-none;
+    &.active {
+      @apply opacity-100;
+    }
+  }
+}
+
+.rating-half {
+  :where(.rating-item) {
+    @apply w-3;
+  }
+  &.rating-xs .rating-item {
+    @apply w-1.5;
+  }
+  &.rating-sm .rating-item {
+    @apply w-2;
+  }
+  &.rating-md .rating-item {
+    @apply w-3;
+  }
+  &.rating-lg .rating-item {
+    @apply w-5;
+  }
+}
+
+.rating-xs .rating-item {
+  @apply h-3 w-3;
+}
+.rating-sm .rating-item {
+  @apply h-4 w-4;
+}
+.rating-md .rating-item {
+  @apply h-6 w-6;
+}
+.rating-lg .rating-item {
+  @apply h-10 w-10;
+}

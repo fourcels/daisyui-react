@@ -43,3 +43,4 @@ export * from "./RadialProgress";
 export * from "./Skeleton";
 export * from "./Toast";
 export * from "./Range";
+export * from "./Rating";

@@ -73,6 +73,10 @@ const components: Component[] = [
     path: "/components/range",
   },
   {
+    name: "Rating",
+    path: "/components/rating",
+  },
+  {
     name: "File Input",
     path: "/components/file-input",
   },
