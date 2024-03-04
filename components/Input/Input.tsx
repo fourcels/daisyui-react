@@ -10,7 +10,7 @@ export type InputProps = Omit<
 > &
   ComponentBaseProps & {
     size?: ComponentSize;
-    color?: Exclude<ComponentColor, "neutral">;
+    color?: Exclude<ComponentColor, "neutral" | "ghost">;
     bordered?: boolean;
   };
 

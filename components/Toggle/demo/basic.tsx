@@ -32,8 +32,8 @@ export default function App() {
 
         <Toggle
           label="Reverse"
-          checked={reverse}
-          onChange={(e) => setReverse(e.target.checked)}
+          defaultValue={reverse}
+          onChange={(val) => setReverse(val)}
         />
       </div>
 

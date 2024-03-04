@@ -2,12 +2,12 @@ import { twMerge } from "tailwind-merge";
 
 import { ComponentBaseProps, ComponentColor, ComponentSize } from "../types";
 
-import { ReactNode, forwardRef } from "react";
+import React, { ReactNode, forwardRef } from "react";
 import { Label } from "../Label";
 
 export type ToggleProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
-  "size" | "color"
+  "size" | "color" | "value" | "defaultValue" | "onChange"
 > &
   ComponentBaseProps & {
     size?: ComponentSize;
@@ -15,11 +15,17 @@ export type ToggleProps = Omit<
     label?: ReactNode;
     labelClassName?: string;
     reverse?: boolean;
+    value?: boolean;
+    defaultValue?: boolean;
+    onChange?: (val: boolean) => void;
   };
 
 export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
   (
     {
+      value,
+      defaultValue = false,
+      onChange,
       reverse,
       children,
       label,
@@ -54,33 +60,27 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
       color && colors[color],
       className
     );
+    const [valueInner, setValueInner] = React.useState(value ?? defaultValue);
+    React.useEffect(() => {
+      typeof value !== "undefined" && setValueInner(value);
+    }, [value]);
 
-    const toggle = (
-      <input
-        type="checkbox"
-        {...props}
-        ref={ref}
-        data-theme={dataTheme}
-        className={classes}
-      />
-    );
-
-    if (children) {
-      return (
-        <Label className={labelClassName}>
-          {toggle}
-          {children}
-        </Label>
-      );
-    }
-
-    if (!label) {
-      return toggle;
-    }
     return (
       <Label reverse={reverse} className={labelClassName}>
-        {toggle}
-        <Label.Text>{label}</Label.Text>
+        <input
+          checked={valueInner}
+          onChange={(e) => {
+            const value = e.target.checked;
+            setValueInner(value);
+            onChange?.(value);
+          }}
+          type="checkbox"
+          {...props}
+          ref={ref}
+          data-theme={dataTheme}
+          className={classes}
+        />
+        <Label.Text>{label || children}</Label.Text>
       </Label>
     );
   }
