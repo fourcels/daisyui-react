@@ -1,5 +1,8 @@
 .rating {
   input {
+    &:active:focus {
+      transform: translateY(0) !important;
+    }
     @apply opacity-20;
     &.active {
       @apply opacity-100;
