@@ -2,7 +2,7 @@ import { twMerge } from "tailwind-merge";
 import { ComponentBaseProps } from "../types";
 import React from "react";
 
-export type FormControlProps = React.HTMLAttributes<HTMLLabelElement> &
+export type FormControlProps = React.HTMLAttributes<HTMLDivElement> &
   ComponentBaseProps & {
     label?: React.ReactNode;
     labelAlt?: React.ReactNode;
@@ -11,7 +11,7 @@ export type FormControlProps = React.HTMLAttributes<HTMLLabelElement> &
     horizontal?: boolean;
   };
 
-export const FormControl = React.forwardRef<HTMLLabelElement, FormControlProps>(
+export const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>(
   (
     {
       children,
@@ -33,23 +33,23 @@ export const FormControl = React.forwardRef<HTMLLabelElement, FormControlProps>(
     );
 
     return (
-      <label ref={ref} data-theme={dataTheme} className={classes} {...props}>
+      <div ref={ref} data-theme={dataTheme} className={classes} {...props}>
         {(label || labelAlt) && (
-          <div className="label">
+          <label className="label">
             <span className="label-text">{label}</span>
             <span className="label-text-alt">{labelAlt}</span>
-          </div>
+          </label>
         )}
         <div className="flex flex-col">
           {children}
           {(labelAlt2 || labelAlt3) && (
-            <div className="label">
+            <label className="label">
               <span className="label-text-alt">{labelAlt2}</span>
               <span className="label-text-alt">{labelAlt3}</span>
-            </div>
+            </label>
           )}
         </div>
-      </label>
+      </div>
     );
   }
 );
