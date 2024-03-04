@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 import "./Rating.css";
+import { ComponentColor } from "../types";
 
 const masks = {
   squircle: "mask-squircle",
@@ -29,21 +30,34 @@ const halfs = {
   "half-2": "mask-half-2",
 };
 
-export type RatingItemProps = React.InputHTMLAttributes<HTMLInputElement> & {
-  color?: string;
+export type RatingItemProps = React.ButtonHTMLAttributes<HTMLInputElement> & {
+  color?: Exclude<ComponentColor, "neutral" | "ghost">;
   mask?: keyof typeof masks;
   half?: keyof typeof halfs;
+  active?: boolean;
 };
 
 export const RatingItem = forwardRef<HTMLInputElement, RatingItemProps>(
-  ({ color, half, mask, className, ...props }, ref): JSX.Element => {
+  ({ active, color, half, mask, className, ...props }, ref): JSX.Element => {
+    const colors = {
+      primary: "bg-primary",
+      secondary: "bg-secondary",
+      accent: "bg-accent",
+      info: "bg-info",
+      success: "bg-success",
+      warning: "bg-warning",
+      error: "bg-error",
+    };
+
     const classes = twMerge(
-      "rating-item mask",
+      "mask",
       mask ? masks[mask] : "mask-star",
       half && halfs[half],
+      color && colors[color],
+      active && "active",
       className
     );
-    return <div {...props} className={classes} ref={ref} />;
+    return <input type="button" {...props} className={classes} ref={ref} />;
   }
 );
 

@@ -10,21 +10,27 @@ export type RatingProps = Omit<
   "size" | "color"
 > &
   ComponentBaseProps & {
+    defaultValue?: number;
+    value?: number;
     size?: ComponentSize;
     count?: number;
-    defaultValue?: number;
     mask?: RatingItemProps["mask"];
+    color?: RatingItemProps["color"];
     half?: boolean;
-    name?: string;
     itemClassName?: string;
+    clearable?: boolean;
+    readonly?: boolean;
   };
 
 export const Rating = forwardRef<HTMLDivElement, RatingProps>(
   (
     {
-      name = "rating",
+      readonly,
+      color,
+      clearable = true,
       half,
       mask,
+      value,
       defaultValue = 0,
       count = 5,
       size,
@@ -41,20 +47,69 @@ export const Rating = forwardRef<HTMLDivElement, RatingProps>(
       sm: "rating-sm",
       xs: "rating-xs",
     };
-    const [value, setValue] = React.useState(defaultValue);
 
-    const classes = twMerge("rating", size && sizes[size], className);
+    const [valueInner, setValueInner] = React.useState(value ?? defaultValue);
+
+    React.useEffect(() => {
+      typeof value !== "undefined" && setValueInner(value);
+    }, [value]);
+
+    const activeValue = React.useMemo(() => {
+      return Math.ceil(valueInner);
+    }, [valueInner]);
+
+    const classes = twMerge(
+      "rating",
+      size && sizes[size],
+      half && "rating-half",
+      readonly && "pointer-events-none",
+      className
+    );
     return (
       <div ref={ref} className={classes} {...props}>
-        {[...Array(count)].map((_, i) => (
-          <RatingItem
-            name={name}
-            className={twMerge(i + 1 <= value && "active", itemClassName)}
-            mask={mask}
-            key={i}
-            onClick={() => setValue(i + 1)}
-          />
-        ))}
+        {[...Array(count)].map((_, i) =>
+          half ? (
+            <div key={i} className="flex">
+              <RatingItem
+                half="half-1"
+                active={i * 2 + 1 <= activeValue}
+                color={color}
+                mask={mask}
+                onClick={() => {
+                  if (clearable && activeValue === i * 2 + 1) {
+                    return setValueInner(0);
+                  }
+                  setValueInner(i * 2 + 1);
+                }}
+              />
+              <RatingItem
+                half="half-2"
+                active={i * 2 + 2 <= activeValue}
+                color={color}
+                mask={mask}
+                onClick={() => {
+                  if (clearable && activeValue === i * 2 + 2) {
+                    return setValueInner(0);
+                  }
+                  setValueInner(i * 2 + 2);
+                }}
+              />
+            </div>
+          ) : (
+            <RatingItem
+              active={i + 1 <= activeValue}
+              color={color}
+              mask={mask}
+              key={i}
+              onClick={() => {
+                if (clearable && activeValue === i + 1) {
+                  return setValueInner(0);
+                }
+                setValueInner(i + 1);
+              }}
+            />
+          )
+        )}
       </div>
     );
   }
