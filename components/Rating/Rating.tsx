@@ -72,6 +72,7 @@ export const Rating = forwardRef<HTMLDivElement, RatingProps>(
             <div key={i} className="flex">
               <RatingItem
                 half="half-1"
+                className={itemClassName}
                 active={i * 2 + 1 <= activeValue}
                 color={color}
                 mask={mask}
@@ -84,6 +85,7 @@ export const Rating = forwardRef<HTMLDivElement, RatingProps>(
               />
               <RatingItem
                 half="half-2"
+                className={itemClassName}
                 active={i * 2 + 2 <= activeValue}
                 color={color}
                 mask={mask}
@@ -97,6 +99,7 @@ export const Rating = forwardRef<HTMLDivElement, RatingProps>(
             </div>
           ) : (
             <RatingItem
+              className={itemClassName}
               active={i + 1 <= activeValue}
               color={color}
               mask={mask}
