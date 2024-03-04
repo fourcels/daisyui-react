@@ -42,11 +42,7 @@ export default function App() {
             items={["xs", "sm", "md", "lg"]}
           />
         </Form.Control>
-        <Toggle
-          label="Outline"
-          checked={outline}
-          onChange={(e) => setOutline(e.target.checked)}
-        />
+        <Toggle label="Outline" onChange={(checked) => setOutline(checked)} />
       </div>
 
       <Divider>Preview</Divider>

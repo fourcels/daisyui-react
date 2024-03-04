@@ -39,7 +39,7 @@ export default function App() {
         <Toggle
           label="Measure"
           checked={measure}
-          onChange={(e) => setMeasure(e.target.checked)}
+          onChange={(checked) => setMeasure(checked)}
         />
       </div>
 

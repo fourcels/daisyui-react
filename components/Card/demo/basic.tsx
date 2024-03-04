@@ -16,34 +16,21 @@ export default function App() {
       <div className="flex flex-wrap gap-8">
         <Toggle
           label="Bordered"
-          checked={bordered}
-          onChange={(e) => setBordered(e.target.checked)}
+          defaultChecked
+          onChange={(checked) => setBordered(checked)}
         />
         <Toggle
           label="Shadow"
-          checked={shadow}
-          onChange={(e) => setShadow(e.target.checked)}
+          defaultChecked
+          onChange={(checked) => setShadow(checked)}
         />
         <Toggle
           label="Image Full"
-          checked={imageFull}
-          onChange={(e) => setImageFull(e.target.checked)}
+          onChange={(checked) => setImageFull(checked)}
         />
-        <Toggle
-          label="Compact"
-          checked={compact}
-          onChange={(e) => setCompact(e.target.checked)}
-        />
-        <Toggle
-          label="Glass"
-          checked={glass}
-          onChange={(e) => setGlass(e.target.checked)}
-        />
-        <Toggle
-          label="Side"
-          checked={side}
-          onChange={(e) => setSide(e.target.checked)}
-        />
+        <Toggle label="Compact" onChange={(checked) => setCompact(checked)} />
+        <Toggle label="Glass" onChange={(checked) => setGlass(checked)} />
+        <Toggle label="Side" onChange={(checked) => setSide(checked)} />
       </div>
 
       <Divider>Preview</Divider>

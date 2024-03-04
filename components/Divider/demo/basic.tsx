@@ -33,19 +33,19 @@ export default function App() {
         <Form.Control label="Position">
           <Select
             onChange={(value) => setPosition(value as any)}
-            items={["start", "end"]}
+            items={["start", "center", "end"]}
           />
         </Form.Control>
       </div>
 
       <Divider>Preview</Divider>
 
-      <div className="flex">
+      <div className="flex justify-center">
         <Divider
           color={color}
           position={position}
           direction={direction}
-          className={twMerge("w-full", direction === "horizontal" && "h-32")}
+          className={twMerge(direction === "horizontal" ? "h-32" : "w-full")}
         >
           Divider
         </Divider>

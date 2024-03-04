@@ -35,17 +35,17 @@ export default function App() {
         <Toggle
           label="Bordered"
           checked={bordered}
-          onChange={(e) => setBordered(e.target.checked)}
+          onChange={(checked) => setBordered(checked)}
         />
         <Toggle
           label="Disabled"
           checked={disabled}
-          onChange={(e) => setDisabled(e.target.checked)}
+          onChange={(checked) => setDisabled(checked)}
         />
         <Toggle
           label="Clearable"
           checked={clearable}
-          onChange={(e) => setClearable(e.target.checked)}
+          onChange={(checked) => setClearable(checked)}
         />
       </div>
 

@@ -43,12 +43,12 @@ export default function App() {
         <Toggle
           label="Active"
           checked={active}
-          onChange={(e) => setActive(e.target.checked)}
+          onChange={(checked) => setActive(checked)}
         />
         <Toggle
           label="Disabled"
           checked={disabled}
-          onChange={(e) => setDisabled(e.target.checked)}
+          onChange={(checked) => setDisabled(checked)}
         />
       </div>
 

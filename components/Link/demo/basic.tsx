@@ -36,7 +36,7 @@ export default function App() {
         <Toggle
           label="Hover"
           checked={hover}
-          onChange={(e) => setHover(e.target.checked)}
+          onChange={(checked) => setHover(checked)}
         />
       </div>
 

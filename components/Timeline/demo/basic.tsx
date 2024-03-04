@@ -8,32 +8,32 @@ export default function App() {
   const [responsive, setResponsive] = React.useState(false);
   return (
     <>
-      <div className="flex gap-4">
+      <div className="flex flex-wrap gap-4">
         <Toggle
           label="Middle"
           checked={middle}
-          onChange={(e) => setMiddle(e.target.checked)}
+          onChange={(checked) => setMiddle(checked)}
         />
         <Toggle
           label="Compact"
           checked={compact}
-          onChange={(e) => setCompact(e.target.checked)}
+          onChange={(checked) => setCompact(checked)}
         />
         <Toggle
           label="Vertical"
           checked={vertical}
-          onChange={(e) => setVertical(e.target.checked)}
+          onChange={(checked) => setVertical(checked)}
         />
         <Toggle
           label="Responsive"
           checked={responsive}
-          onChange={(e) => setResponsive(e.target.checked)}
+          onChange={(checked) => setResponsive(checked)}
         />
       </div>
 
       <Divider>Preview</Divider>
 
-      <div className="flex justify-center">
+      <div className="flex justify-center overflow-x-auto">
         <Timeline
           vertical={vertical}
           responsive={responsive}

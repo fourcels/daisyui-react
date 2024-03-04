@@ -30,11 +30,7 @@ export default function App() {
           />
         </Form.Control>
 
-        <Toggle
-          label="Reverse"
-          defaultValue={reverse}
-          onChange={(val) => setReverse(val)}
-        />
+        <Toggle label="Reverse" onChange={(val) => setReverse(val)} />
       </div>
 
       <Divider>Preview</Divider>

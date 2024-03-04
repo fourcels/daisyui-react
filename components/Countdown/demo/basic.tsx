@@ -24,12 +24,12 @@ export default function App() {
         <Toggle
           label="Vertical"
           checked={vertical}
-          onChange={(e) => setVertical(e.target.checked)}
+          onChange={(checked) => setVertical(checked)}
         />
         <Toggle
           label="Box"
           checked={box}
-          onChange={(e) => setBox(e.target.checked)}
+          onChange={(checked) => setBox(checked)}
         />
       </div>
 

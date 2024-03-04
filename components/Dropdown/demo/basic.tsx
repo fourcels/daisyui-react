@@ -25,21 +25,9 @@ export default function App() {
             items={["top", "bottom", "left", "right"]}
           />
         </Form.Control>
-        <Toggle
-          label="End"
-          checked={end}
-          onChange={(e) => setEnd(e.target.checked)}
-        />
-        <Toggle
-          label="Hover"
-          checked={hover}
-          onChange={(e) => setHover(e.target.checked)}
-        />
-        <Toggle
-          label="Force open"
-          checked={open}
-          onChange={(e) => setOpen(e.target.checked)}
-        />
+        <Toggle label="End" onChange={(checked) => setEnd(checked)} />
+        <Toggle label="Hover" onChange={(checked) => setHover(checked)} />
+        <Toggle label="Force open" onChange={(checked) => setOpen(checked)} />
       </div>
 
       <Divider>Preview</Divider>

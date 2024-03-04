@@ -68,28 +68,22 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       className
     );
 
-    const checkbox = (
-      <input
-        type="checkbox"
-        {...props}
-        ref={inputRef}
-        data-theme={dataTheme}
-        className={classes}
-        onClick={(e) => {
-          if (indeterminate) {
-            return e.preventDefault();
-          }
-        }}
-      />
-    );
-
-    if (!label) {
-      return checkbox;
-    }
     return (
-      <Label reverse={reverse} className={labelClassName}>
-        {checkbox}
-        <Label.Text>{label}</Label.Text>
+      <Label
+        reverse={reverse}
+        className={twMerge(
+          indeterminate && "pointer-events-none",
+          labelClassName
+        )}
+      >
+        <input
+          type="checkbox"
+          {...props}
+          ref={inputRef}
+          data-theme={dataTheme}
+          className={classes}
+        />
+        {label && <Label.Text>{label}</Label.Text>}
       </Label>
     );
   }

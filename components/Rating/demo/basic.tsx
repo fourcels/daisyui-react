@@ -70,17 +70,17 @@ export default function App() {
         <Toggle
           label="Readonly"
           checked={readonly}
-          onChange={(e) => setReadonly(e.target.checked)}
+          onChange={(checked) => setReadonly(checked)}
         />
         <Toggle
           label="Half"
           checked={half}
-          onChange={(e) => setHalf(e.target.checked)}
+          onChange={(checked) => setHalf(checked)}
         />
         <Toggle
           label="Clearable"
           checked={clearable}
-          onChange={(e) => setClearable(e.target.checked)}
+          onChange={(checked) => setClearable(checked)}
         />
       </div>
 

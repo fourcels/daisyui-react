@@ -18,16 +18,8 @@ export default function App() {
   return (
     <>
       <div className="flex flex-wrap gap-8">
-        <Toggle
-          label="shadow"
-          checked={shadow}
-          onChange={(e) => setShadow(e.target.checked)}
-        />
-        <Toggle
-          label="rounded"
-          checked={rounded}
-          onChange={(e) => setRounded(e.target.checked)}
-        />
+        <Toggle label="Shadow" onChange={(checked) => setShadow(checked)} />
+        <Toggle label="Rounded" onChange={(checked) => setRounded(checked)} />
       </div>
 
       <Divider>Preview</Divider>

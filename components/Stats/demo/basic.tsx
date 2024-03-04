@@ -12,17 +12,17 @@ export default function App() {
         <Toggle
           label="Center"
           checked={center}
-          onChange={(e) => setCenter(e.target.checked)}
+          onChange={(checked) => setCenter(checked)}
         />
         <Toggle
           label="Vertical"
           checked={vertical}
-          onChange={(e) => setVertical(e.target.checked)}
+          onChange={(checked) => setVertical(checked)}
         />
         <Toggle
           label="Responsive"
           checked={responsive}
-          onChange={(e) => setResponsive(e.target.checked)}
+          onChange={(checked) => setResponsive(checked)}
         />
       </div>
 

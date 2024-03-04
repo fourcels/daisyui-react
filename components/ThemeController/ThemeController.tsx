@@ -43,28 +43,14 @@ export type {
   ThemeControllerDropdownProps,
 };
 
-export type ThemeControllerProps = Omit<ToggleProps, "label"> & {
-  label?: [ReactNode, ReactNode];
-};
+export type ThemeControllerProps = ToggleProps;
 
 export const ThemeControllerInner = forwardRef<
   HTMLInputElement,
   ThemeControllerProps
->(({ label, className, ...props }, ref) => {
+>(({ className, ...props }, ref) => {
   const classes = twMerge("theme-controller", className);
-  const toggle = <Toggle ref={ref} {...props} className={classes} />;
-
-  if (!label) {
-    return toggle;
-  }
-
-  return (
-    <Label>
-      <LabelText>{label[0]}</LabelText>
-      {toggle}
-      <LabelText>{label[1]}</LabelText>
-    </Label>
-  );
+  return <Toggle ref={ref} {...props} className={classes} />;
 });
 
 ThemeControllerInner.displayName = "ThemeController";

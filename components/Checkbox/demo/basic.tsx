@@ -40,17 +40,17 @@ export default function App() {
         <Toggle
           label="Disabled"
           checked={disabled}
-          onChange={(e) => setDisabled(e.target.checked)}
+          onChange={(checked) => setDisabled(checked)}
         />
         <Toggle
           label="Reverse"
           checked={reverse}
-          onChange={(e) => setReverse(e.target.checked)}
+          onChange={(checked) => setReverse(checked)}
         />
         <Toggle
           label="Indeterminate"
           checked={indeterminate}
-          onChange={(e) => setIndeterminate(e.target.checked)}
+          onChange={(checked) => setIndeterminate(checked)}
         />
       </div>
 

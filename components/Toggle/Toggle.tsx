@@ -7,28 +7,28 @@ import { Label } from "../Label";
 
 export type ToggleProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
-  "size" | "color" | "value" | "defaultValue" | "onChange"
+  "size" | "color" | "onChange"
 > &
   ComponentBaseProps & {
     size?: ComponentSize;
     color?: Exclude<ComponentColor, "neutral" | "ghost">;
     label?: ReactNode;
+    labelAlt?: ReactNode;
     labelClassName?: string;
     reverse?: boolean;
-    value?: boolean;
-    defaultValue?: boolean;
-    onChange?: (val: boolean) => void;
+    onChange?: (checked: boolean) => void;
   };
 
 export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
   (
     {
-      value,
-      defaultValue = false,
+      defaultChecked = false,
+      checked,
       onChange,
       reverse,
       children,
       label,
+      labelAlt,
       size,
       color,
       dataTheme,
@@ -60,18 +60,21 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
       color && colors[color],
       className
     );
-    const [valueInner, setValueInner] = React.useState(value ?? defaultValue);
+    const [checkedInner, setCheckedInner] = React.useState(
+      checked ?? defaultChecked
+    );
     React.useEffect(() => {
-      typeof value !== "undefined" && setValueInner(value);
-    }, [value]);
+      typeof checked !== "undefined" && setCheckedInner(checked);
+    }, [checked]);
 
     return (
       <Label reverse={reverse} className={labelClassName}>
+        {labelAlt && <Label.Text>{labelAlt}</Label.Text>}
         <input
-          checked={valueInner}
+          checked={checkedInner}
           onChange={(e) => {
             const value = e.target.checked;
-            setValueInner(value);
+            setCheckedInner(value);
             onChange?.(value);
           }}
           type="checkbox"
@@ -80,7 +83,8 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
           data-theme={dataTheme}
           className={classes}
         />
-        <Label.Text>{label || children}</Label.Text>
+        {label && <Label.Text>{label}</Label.Text>}
+        {children}
       </Label>
     );
   }

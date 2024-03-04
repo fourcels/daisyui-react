@@ -25,12 +25,12 @@ export default function App() {
         <Toggle
           label="Force open"
           checked={open}
-          onChange={(e) => setOpen(e.target.checked)}
+          onChange={(checked) => setOpen(checked)}
         />
         <Toggle
           label="Bordered"
           checked={bordered}
-          onChange={(e) => setBordered(e.target.checked)}
+          onChange={(checked) => setBordered(checked)}
         />
       </div>
 

@@ -7,7 +7,7 @@ export type DividerProps = Omit<React.HTMLAttributes<HTMLDivElement>, "color"> &
   ComponentBaseProps & {
     direction?: "vertical" | "horizontal";
     responsive?: boolean;
-    position?: "start" | "end";
+    position?: "start" | "center" | "end";
     color?: Exclude<ComponentColor, "ghost">;
   };
 
@@ -42,6 +42,7 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
 
     const positions = {
       start: "divider-start",
+      center: "divider-center",
       end: "divider-end",
     };
 

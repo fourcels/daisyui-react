@@ -37,11 +37,7 @@ export default function App() {
             items={["top", "bottom", "left", "right"]}
           />
         </Form.Control>
-        <Toggle
-          label="Force open"
-          checked={open}
-          onChange={(e) => setOpen(e.target.checked)}
-        />
+        <Toggle label="Force open" onChange={(checked) => setOpen(checked)} />
       </div>
 
       <Divider>Preview</Divider>

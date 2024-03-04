@@ -49,8 +49,7 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
       position && positions[position],
       end && "dropdown-end",
       hover && "dropdown-hover",
-      open && "dropdown-open",
-      show && "dropdown-open",
+      (open || show) && "dropdown-open",
       className
     );
 

@@ -25,8 +25,7 @@ export default function App() {
 
         <Toggle
           label="Responsive"
-          checked={responsive}
-          onChange={(e) => setResponsive(e.target.checked)}
+          onChange={(checked) => setResponsive(checked)}
         />
       </div>
 

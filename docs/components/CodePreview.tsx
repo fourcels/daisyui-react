@@ -58,9 +58,7 @@ export function CodePreview(props: CodePrivewProps) {
       {live && (
         <div>
           <div className="flex">
-            <div className="py-10 px-6 preview flex-1 w-0 overflow-x-auto">
-              {component}
-            </div>
+            <div className="py-10 px-6 preview flex-1 w-0">{component}</div>
           </div>
           <CodeInfo description={props.description} />
         </div>

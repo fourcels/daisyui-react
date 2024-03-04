@@ -26,12 +26,12 @@ export default function App() {
         <Toggle
           label="Bordered"
           checked={bordered}
-          onChange={(e) => setBordered(e.target.checked)}
+          onChange={(checked) => setBordered(checked)}
         />
         <Toggle
           label="Join"
           checked={join}
-          onChange={(e) => setJoin(e.target.checked)}
+          onChange={(checked) => setJoin(checked)}
         />
       </div>
 

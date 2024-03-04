@@ -24,7 +24,7 @@ export default function App() {
         <Toggle
           label="Vertical"
           checked={vertical}
-          onChange={(e) => setVertical(e.target.checked)}
+          onChange={(checked) => setVertical(checked)}
         />
       </div>
 

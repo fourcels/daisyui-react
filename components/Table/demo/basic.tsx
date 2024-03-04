@@ -30,17 +30,17 @@ export default function App() {
         <Toggle
           label="Zebra"
           checked={zebra}
-          onChange={(e) => setZebra(e.target.checked)}
+          onChange={(checked) => setZebra(checked)}
         />
         <Toggle
           label="Hover"
           checked={hover}
-          onChange={(e) => setHover(e.target.checked)}
+          onChange={(checked) => setHover(checked)}
         />
         <Toggle
           label="Active"
           checked={active}
-          onChange={(e) => setActive(e.target.checked)}
+          onChange={(checked) => setActive(checked)}
         />
       </div>
       <Divider>Preview</Divider>

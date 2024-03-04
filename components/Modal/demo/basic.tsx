@@ -22,15 +22,11 @@ export default function App() {
             items={["top", "middle", "bottom"]}
           />
         </Form.Control>
-        <Toggle
-          label="Backdrop"
-          checked={backdrop}
-          onChange={(e) => setBackdrop(e.target.checked)}
-        />
+        <Toggle label="Backdrop" onChange={(checked) => setBackdrop(checked)} />
         <Toggle
           label="Close"
-          checked={close}
-          onChange={(e) => setClose(e.target.checked)}
+          defaultChecked
+          onChange={(checked) => setClose(checked)}
         />
       </div>
 
