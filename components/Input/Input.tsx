@@ -10,7 +10,7 @@ export type InputProps = Omit<
 > &
   ComponentBaseProps & {
     size?: ComponentSize;
-    color?: Exclude<ComponentColor, "neutral" | "ghost">;
+    color?: Exclude<ComponentColor, "neutral">;
     bordered?: boolean;
     start?: React.ReactNode;
     end?: React.ReactNode;
@@ -60,18 +60,17 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     );
 
     return (
-      <label className={classes}>
+      <label className={classes} data-theme={dataTheme}>
         {start}
         <input
-          {...props}
           ref={ref}
-          data-theme={dataTheme}
           className={twMerge(
             "grow",
             disabled && "input-disabled",
             inputClassName
           )}
           disabled={disabled}
+          {...props}
         />
         {end}
       </label>

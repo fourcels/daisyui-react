@@ -28,6 +28,7 @@ export default function App() {
               "success",
               "warning",
               "error",
+              "ghost",
             ]}
           />
         </Form.Control>

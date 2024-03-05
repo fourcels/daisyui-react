@@ -5,9 +5,9 @@ import React from "react";
 export type FormControlProps = React.HTMLAttributes<HTMLDivElement> &
   ComponentBaseProps & {
     label?: React.ReactNode;
-    labelAlt?: React.ReactNode;
-    labelAlt2?: React.ReactNode;
-    labelAlt3?: React.ReactNode;
+    labelTR?: React.ReactNode;
+    labelBL?: React.ReactNode;
+    labelBR?: React.ReactNode;
   };
 
 export const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>(
@@ -15,9 +15,9 @@ export const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>(
     {
       children,
       label,
-      labelAlt,
-      labelAlt2,
-      labelAlt3,
+      labelTR,
+      labelBL,
+      labelBR,
       dataTheme,
       className,
       ...props
@@ -28,17 +28,17 @@ export const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>(
 
     return (
       <div ref={ref} data-theme={dataTheme} className={classes} {...props}>
-        {(label || labelAlt) && (
+        {(label || labelTR) && (
           <label className="label">
             <span className="label-text">{label}</span>
-            <span className="label-text-alt">{labelAlt}</span>
+            <span className="label-text-alt">{labelTR}</span>
           </label>
         )}
         {children}
-        {(labelAlt2 || labelAlt3) && (
+        {(labelBL || labelBR) && (
           <label className="label">
-            <span className="label-text-alt">{labelAlt2}</span>
-            <span className="label-text-alt">{labelAlt3}</span>
+            <span className="label-text-alt">{labelBL}</span>
+            <span className="label-text-alt">{labelBR}</span>
           </label>
         )}
       </div>
