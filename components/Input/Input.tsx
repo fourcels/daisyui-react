@@ -2,11 +2,13 @@ import { twMerge } from "tailwind-merge";
 
 import { ComponentBaseProps, ComponentColor, ComponentSize } from "../types";
 
-import { ReactNode, forwardRef } from "react";
+import React, { ReactNode, forwardRef } from "react";
+import "./Input.css";
+import { Button } from "../Button";
 
 export type InputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
-  "size" | "color"
+  "size" | "color" | "onChange"
 > &
   ComponentBaseProps & {
     size?: ComponentSize;
@@ -15,13 +17,21 @@ export type InputProps = Omit<
     start?: React.ReactNode;
     end?: React.ReactNode;
     inputClassName?: string;
+    wrapperClassName?: string;
+    onChange?: (value: string) => void;
+    clearable?: boolean;
   };
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
+      clearable = true,
+      onChange,
+      value,
+      defaultValue = "",
       disabled,
       inputClassName,
+      wrapperClassName,
       start,
       end,
       size,
@@ -59,19 +69,54 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       className
     );
 
+    const [valueInner, setValueInner] = React.useState(value ?? defaultValue);
+
+    const showClearable = React.useMemo(() => {
+      if (disabled) {
+        return false;
+      }
+
+      if (clearable && valueInner) {
+        return true;
+      }
+      return false;
+    }, [clearable, valueInner, disabled]);
+
     return (
       <label className={classes} data-theme={dataTheme}>
         {start}
-        <input
-          ref={ref}
-          className={twMerge(
-            "grow",
-            disabled && "input-disabled",
-            inputClassName
+        <div className={twMerge("input-wrapper", wrapperClassName)}>
+          <input
+            value={valueInner}
+            onChange={(e) => {
+              const value = e.target.value;
+              setValueInner(value);
+              onChange?.(value);
+            }}
+            ref={ref}
+            className={twMerge(
+              "w-full",
+              disabled && "input-disabled",
+              inputClassName
+            )}
+            disabled={disabled}
+            {...props}
+          />
+          {showClearable && (
+            <Button
+              onClick={() => {
+                setValueInner("");
+                onChange?.("");
+              }}
+              shape="circle"
+              size="xs"
+              color="neutral"
+              className="input-clearable"
+            >
+              ✕
+            </Button>
           )}
-          disabled={disabled}
-          {...props}
-        />
+        </div>
         {end}
       </label>
     );

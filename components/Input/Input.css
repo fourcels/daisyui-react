@@ -1,0 +1,10 @@
+.input-wrapper {
+  @apply grow grid items-center;
+
+  input {
+    @apply row-start-1 col-start-1;
+  }
+  .input-clearable {
+    @apply row-start-1 col-start-1 justify-self-end;
+  }
+}
