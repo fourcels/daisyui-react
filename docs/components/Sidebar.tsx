@@ -12,10 +12,7 @@ const components: Component[] = [
     name: "Button",
     path: "/components/button",
   },
-  {
-    name: "Toggle",
-    path: "/components/toggle",
-  },
+
   {
     name: "Tooltip",
     path: "/components/tooltip",
@@ -65,6 +62,10 @@ const components: Component[] = [
     path: "/components/checkbox",
   },
   {
+    name: "File Input",
+    path: "/components/file-input",
+  },
+  {
     name: "Radio",
     path: "/components/radio",
   },
@@ -77,16 +78,20 @@ const components: Component[] = [
     path: "/components/rating",
   },
   {
-    name: "File Input",
-    path: "/components/file-input",
+    name: "Select",
+    path: "/components/select",
   },
   {
     name: "Text Input",
     path: "/components/input",
   },
   {
-    name: "Select",
-    path: "/components/select",
+    name: "Textarea",
+    path: "/components/textarea",
+  },
+  {
+    name: "Toggle",
+    path: "/components/toggle",
   },
   {
     name: "Collapse",
