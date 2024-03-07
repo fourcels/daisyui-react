@@ -16,7 +16,10 @@ export type ToggleProps = Omit<
     labelAlt?: ReactNode;
     labelClassName?: string;
     reverse?: boolean;
-    onChange?: (checked: boolean) => void;
+    onChange?: (
+      checked: boolean,
+      e: React.ChangeEvent<HTMLInputElement>
+    ) => void;
   };
 
 export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
@@ -73,9 +76,9 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
         <input
           checked={checkedInner}
           onChange={(e) => {
-            const value = e.target.checked;
-            setCheckedInner(value);
-            onChange?.(value);
+            const checked = e.target.checked;
+            setCheckedInner(checked);
+            onChange?.(checked, e);
           }}
           type="checkbox"
           {...props}

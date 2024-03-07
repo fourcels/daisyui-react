@@ -31,7 +31,7 @@ export type SelectProps = Omit<
     bordered?: boolean;
     placeholder?: string | null;
     items?: SelectItem[];
-    onChange?: (value: string) => void;
+    onChange?: (value: string, e: React.ChangeEvent<HTMLSelectElement>) => void;
     clearable?: boolean;
     wrapperClassName?: string;
   };
@@ -130,7 +130,7 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>(
           onChange={(e) => {
             const value = e.target.value;
             setSelectValue(value);
-            onChange?.(value);
+            onChange?.(value, e);
           }}
           {...props}
           ref={selectRef}
@@ -147,8 +147,12 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>(
         {showClearable && (
           <Button
             onClick={() => {
-              setSelectValue("");
-              onChange?.("");
+              const select = selectRef.current;
+              if (!select) {
+                return;
+              }
+              select.value = "";
+              select.dispatchEvent(new Event("change", { bubbles: true }));
             }}
             shape="circle"
             size="xs"

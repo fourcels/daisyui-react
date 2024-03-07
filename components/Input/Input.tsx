@@ -16,9 +16,9 @@ export type InputProps = Omit<
     bordered?: boolean;
     start?: React.ReactNode;
     end?: React.ReactNode;
-    inputClassName?: string;
+    labelClassName?: string;
     wrapperClassName?: string;
-    onChange?: (value: string) => void;
+    onChange?: (value: string, e: React.ChangeEvent<HTMLInputElement>) => void;
     clearable?: boolean;
   };
 
@@ -30,15 +30,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       value,
       defaultValue = "",
       disabled,
-      inputClassName,
+      labelClassName,
       wrapperClassName,
+      className,
       start,
       end,
       size,
       color,
       bordered = true,
       dataTheme,
-      className,
       ...props
     },
     ref
@@ -60,16 +60,16 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       ghost: "input-ghost",
     };
 
-    const classes = twMerge(
-      "input flex items-center gap-2",
-      size && sizes[size],
-      color && colors[color],
-      bordered && "input-bordered",
-      disabled && "input-disabled",
-      className
-    );
+    const inputRef = React.useRef<HTMLInputElement>(null);
+    React.useImperativeHandle(ref, () => inputRef.current!);
 
     const [valueInner, setValueInner] = React.useState(value ?? defaultValue);
+
+    React.useEffect(() => {
+      if (value !== undefined) {
+        setValueInner(value);
+      }
+    }, [value]);
 
     const showClearable = React.useMemo(() => {
       if (disabled) {
@@ -83,7 +83,17 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     }, [clearable, valueInner, disabled]);
 
     return (
-      <label className={classes} data-theme={dataTheme}>
+      <label
+        className={twMerge(
+          "input-label",
+          size && sizes[size],
+          color && colors[color],
+          bordered && "input-bordered",
+          disabled && "input-disabled",
+          labelClassName
+        )}
+        data-theme={dataTheme}
+      >
         {start}
         <div className={twMerge("input-wrapper", wrapperClassName)}>
           <input
@@ -91,13 +101,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             onChange={(e) => {
               const value = e.target.value;
               setValueInner(value);
-              onChange?.(value);
+              onChange?.(value, e);
             }}
-            ref={ref}
+            ref={inputRef}
             className={twMerge(
               "w-full",
               disabled && "input-disabled",
-              inputClassName
+              className
             )}
             disabled={disabled}
             {...props}
@@ -105,8 +115,16 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           {showClearable && (
             <Button
               onClick={() => {
-                setValueInner("");
-                onChange?.("");
+                const input = inputRef.current;
+                if (!input) {
+                  return;
+                }
+
+                const lastValue = input.value;
+                input.value = "";
+                // @ts-expect-error react _valueTracker
+                input._valueTracker.setValue(lastValue);
+                input.dispatchEvent(new Event("input", { bubbles: true }));
               }}
               shape="circle"
               size="xs"
