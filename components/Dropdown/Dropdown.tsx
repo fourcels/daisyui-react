@@ -4,16 +4,15 @@ import { twMerge } from "tailwind-merge";
 import { ComponentBaseProps, ComponentPosition } from "../types";
 import { useOutsideClick } from "../utils";
 
-export type DropdownProps<T extends HTMLElement = HTMLDivElement> =
-  React.HTMLAttributes<T> &
-    ComponentBaseProps & {
-      trigger: React.ReactElement;
-      position?: ComponentPosition;
-      end?: boolean;
-      hover?: boolean;
-      open?: boolean;
-      contentClassName?: string;
-    };
+export type DropdownProps = React.HTMLAttributes<HTMLDivElement> &
+  ComponentBaseProps & {
+    trigger: React.ReactElement;
+    position?: ComponentPosition;
+    end?: boolean;
+    hover?: boolean;
+    open?: boolean;
+    contentClassName?: string;
+  };
 
 export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
   (
