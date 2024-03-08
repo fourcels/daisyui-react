@@ -21,6 +21,7 @@ export type CheckboxProps = Omit<
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
+      onChange,
       indeterminate,
       reverse,
       label,
@@ -69,13 +70,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     );
 
     return (
-      <Label
-        reverse={reverse}
-        className={twMerge(
-          indeterminate && "pointer-events-none",
-          labelClassName
-        )}
-      >
+      <Label reverse={reverse} className={twMerge(labelClassName)}>
         <input
           type="checkbox"
           {...props}
