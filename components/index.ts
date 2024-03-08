@@ -45,3 +45,4 @@ export * from "./Toast";
 export * from "./Range";
 export * from "./Rating";
 export * from "./Textarea";
+export * from "./Artboard";
