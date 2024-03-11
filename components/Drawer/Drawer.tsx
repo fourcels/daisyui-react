@@ -4,9 +4,9 @@ import { twMerge } from "tailwind-merge";
 import { ComponentBaseProps } from "../types";
 import { DrawerSide, DrawerSideProps } from "./DrawerSide";
 import { DrawerContent, DrawerContentProps } from "./DrawerContent";
-import "./Drawer.css";
 import { DrawerContext } from "./DrawerContext";
 import { DrawerToggle, DrawerToggleProps } from "./DrawerToggle";
+import "./Drawer.css";
 
 export type { DrawerSideProps, DrawerContentProps, DrawerToggleProps };
 
@@ -19,11 +19,13 @@ export type DrawerProps = Omit<
     end?: boolean;
     onClose?: (open: boolean) => void;
     overlay?: boolean;
+    responsive?: boolean;
   };
 
 const DrawerInner = React.forwardRef<HTMLDivElement, DrawerProps>(
   (
     {
+      responsive,
       open = false,
       onClose,
       overlay = true,
@@ -44,7 +46,7 @@ const DrawerInner = React.forwardRef<HTMLDivElement, DrawerProps>(
     const classes = twMerge(
       "drawer",
       end && "drawer-end",
-      openInner && "drawer-open",
+      responsive && "lg:drawer-open",
       className
     );
 
@@ -53,6 +55,12 @@ const DrawerInner = React.forwardRef<HTMLDivElement, DrawerProps>(
         value={{ open: openInner, setOpen: setOpenInner, overlay }}
       >
         <div {...props} ref={ref} data-theme={dataTheme} className={classes}>
+          <input
+            type="checkbox"
+            checked={openInner}
+            onChange={(e) => setOpenInner(e.target.checked)}
+            className="drawer-toggle"
+          />
           {children}
         </div>
       </DrawerContext.Provider>

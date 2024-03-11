@@ -13,6 +13,7 @@ import { Drawer } from "..";
 export default function App() {
   const [end, setEnd] = React.useState(false);
   const [overlay, setOverlay] = React.useState(true);
+  const [responsive, setResponsive] = React.useState(false);
 
   return (
     <>
@@ -23,11 +24,15 @@ export default function App() {
           defaultChecked
           onChange={(checked) => setOverlay(checked)}
         />
+        <Toggle
+          label="Responsive"
+          onChange={(checked) => setResponsive(checked)}
+        />
       </div>
 
       <Divider>Preview</Divider>
 
-      <Drawer end={end} overlay={overlay}>
+      <Drawer end={end} overlay={overlay} responsive={responsive}>
         <Drawer.Content className="flex justify-center">
           <Drawer.Toggle>
             <Button color="primary">Open drawer</Button>
