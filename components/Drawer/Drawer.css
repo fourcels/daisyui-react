@@ -1,0 +1,28 @@
+.drawer-open {
+  .drawer-side {
+    @apply pointer-events-auto visible overflow-y-auto;
+    > *:not(.drawer-overlay) {
+      transform: translateX(0%);
+    }
+    > .drawer-overlay {
+      @apply bg-black/60;
+    }
+  }
+}
+.drawer-end {
+  .drawer-content {
+    @apply col-start-1;
+  }
+  .drawer-side {
+    @apply col-start-2 justify-items-end;
+    > *:not(.drawer-overlay) {
+      transform: translateX(100%);
+      [dir="rtl"] & {
+        transform: translateX(-100%);
+      }
+    }
+  }
+  &.drawer-open .drawer-side > *:not(.drawer-overlay) {
+    transform: translateX(0%);
+  }
+}

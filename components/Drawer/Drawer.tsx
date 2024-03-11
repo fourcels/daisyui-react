@@ -2,28 +2,68 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 
 import { ComponentBaseProps } from "../types";
+import { DrawerSide, DrawerSideProps } from "./DrawerSide";
+import { DrawerContent, DrawerContentProps } from "./DrawerContent";
+import "./Drawer.css";
+import { DrawerContext } from "./DrawerContext";
+import { DrawerToggle, DrawerToggleProps } from "./DrawerToggle";
 
-export type DrawerProps = React.HTMLAttributes<HTMLDivElement> &
+export type { DrawerSideProps, DrawerContentProps, DrawerToggleProps };
+
+export type DrawerProps = Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  "onChange"
+> &
   ComponentBaseProps & {
     open?: boolean;
     end?: boolean;
+    onClose?: (open: boolean) => void;
+    overlay?: boolean;
   };
 
-export const Drawer = React.forwardRef<HTMLDivElement, DrawerProps>(
-  ({ open, children, end, dataTheme, className, ...props }, ref) => {
+const DrawerInner = React.forwardRef<HTMLDivElement, DrawerProps>(
+  (
+    {
+      open = false,
+      onClose,
+      overlay = true,
+      children,
+      end,
+      dataTheme,
+      className,
+      ...props
+    },
+    ref
+  ) => {
+    const [openInner, setOpenInner] = React.useState(open);
+
+    React.useEffect(() => {
+      setOpenInner(open);
+    }, [open]);
+
     const classes = twMerge(
       "drawer",
       end && "drawer-end",
-      open && "drawer-open",
+      openInner && "drawer-open",
       className
     );
 
     return (
-      <div {...props} ref={ref} data-theme={dataTheme} className={classes}>
-        {children}
-      </div>
+      <DrawerContext.Provider
+        value={{ open: openInner, setOpen: setOpenInner, overlay }}
+      >
+        <div {...props} ref={ref} data-theme={dataTheme} className={classes}>
+          {children}
+        </div>
+      </DrawerContext.Provider>
     );
   }
 );
 
-Drawer.displayName = "Drawer";
+DrawerInner.displayName = "Drawer";
+
+export const Drawer = Object.assign(DrawerInner, {
+  Toggle: DrawerToggle,
+  Side: DrawerSide,
+  Content: DrawerContent,
+});

@@ -3,53 +3,54 @@ import {
   Form,
   Divider,
   Toggle,
-  Button,
   DropdownProps,
-  Dropdown,
   Menu,
+  Button,
 } from "daisyui-react";
 import React from "react";
+import { Drawer } from "..";
 
 export default function App() {
-  const [position, setPosition] = React.useState<DropdownProps["position"]>();
   const [end, setEnd] = React.useState(false);
-  const [hover, setHover] = React.useState(false);
-  const [open, setOpen] = React.useState(false);
+  const [overlay, setOverlay] = React.useState(true);
 
   return (
     <>
       <div className="flex flex-wrap gap-8">
-        <Form.Control label="Position">
-          <Select
-            onChange={(value) => setPosition(value as any)}
-            items={["top", "bottom", "left", "right"]}
-          />
-        </Form.Control>
         <Toggle label="End" onChange={(checked) => setEnd(checked)} />
-        <Toggle label="Hover" onChange={(checked) => setHover(checked)} />
-        <Toggle label="Force open" onChange={(checked) => setOpen(checked)} />
+        <Toggle
+          label="Overlay"
+          defaultChecked
+          onChange={(checked) => setOverlay(checked)}
+        />
       </div>
 
       <Divider>Preview</Divider>
 
-      <div className="flex justify-center">
-        <Dropdown
-          position={position}
-          open={open}
-          end={end}
-          hover={hover}
-          trigger={<Button>Click</Button>}
-        >
-          <Menu className="bg-base-200 rounded-box w-52">
+      <Drawer end={end} overlay={overlay}>
+        <Drawer.Content className="flex justify-center">
+          <Drawer.Toggle>
+            <Button color="primary">Open drawer</Button>
+          </Drawer.Toggle>
+        </Drawer.Content>
+        <Drawer.Side>
+          <Menu className="p-4 w-60 md:w-80">
             <Menu.Item>
-              <a>Item 1</a>
+              <a>Sidebar Item 1</a>
             </Menu.Item>
             <Menu.Item>
-              <a>Item 2</a>
+              <a>Sidebar Item 2</a>
             </Menu.Item>
           </Menu>
-        </Dropdown>
-      </div>
+          <div className="flex justify-center">
+            <Drawer.Toggle>
+              <Button wide color="neutral">
+                Close drawer
+              </Button>
+            </Drawer.Toggle>
+          </div>
+        </Drawer.Side>
+      </Drawer>
     </>
   );
 }
