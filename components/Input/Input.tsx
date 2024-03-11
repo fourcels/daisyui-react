@@ -16,7 +16,7 @@ export type InputProps = Omit<
     bordered?: boolean;
     start?: React.ReactNode;
     end?: React.ReactNode;
-    labelClassName?: string;
+    inputClassName?: string;
     wrapperClassName?: string;
     onChange?: (value: string, e: React.ChangeEvent<HTMLInputElement>) => void;
     clearable?: boolean;
@@ -30,7 +30,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       value,
       defaultValue = "",
       disabled,
-      labelClassName,
+      inputClassName,
       wrapperClassName,
       className,
       start,
@@ -90,7 +90,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           color && colors[color],
           bordered && "input-bordered",
           disabled && "input-disabled",
-          labelClassName
+          className
         )}
         data-theme={dataTheme}
       >
@@ -107,7 +107,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             className={twMerge(
               "w-full",
               disabled && "input-disabled",
-              className
+              inputClassName
             )}
             disabled={disabled}
             {...props}
