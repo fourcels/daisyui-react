@@ -19,7 +19,7 @@ export default function App() {
   return (
     <>
       <div className="flex flex-wrap gap-8">
-        <Form.Control label="Color">
+        <Form.Control label="Size">
           <Select
             onChange={(value) => setSize(value as any)}
             items={["xs", "sm", "md", "lg"]}
