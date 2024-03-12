@@ -43,36 +43,12 @@ description: Pagination is a group of buttons that allow the user to navigate be
 ### Using radio inputs
 
 ```tsx live
-<Pagination>
-  <Pagination.Item
-    defaultChecked
-    shape="square"
-    as="input"
-    type="radio"
-    name="options"
-    aria-label="1"
-  />
-  <Pagination.Item
-    shape="square"
-    as="input"
-    type="radio"
-    name="options"
-    aria-label="2"
-  />
-  <Pagination.Item
-    shape="square"
-    as="input"
-    type="radio"
-    name="options"
-    aria-label="3"
-  />
-  <Pagination.Item
-    shape="square"
-    as="input"
-    type="radio"
-    name="options"
-    aria-label="4"
-  />
+<Pagination name="pagination">
+  <Pagination.Radio defaultChecked aria-label="1" />
+  <Pagination.Radio aria-label="2" />
+  <Pagination.Radio aria-label="3" />
+  <Pagination.Radio aria-label="4" />
+  <Pagination.Radio aria-label="5" />
 </Pagination>
 ```
 
