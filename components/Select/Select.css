@@ -5,6 +5,6 @@
     @apply row-start-1 col-start-1;
   }
   .select-clearable {
-    @apply row-start-1 col-start-1 justify-self-end mr-2;
+    @apply row-start-1 col-start-1 justify-self-end mr-2 z-10;
   }
 }

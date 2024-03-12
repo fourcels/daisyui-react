@@ -1,6 +1,7 @@
 import React, { ReactElement, forwardRef } from "react";
 import { ComponentBaseProps, ComponentDirection } from "../types";
 import { twMerge } from "tailwind-merge";
+import "./Join.css";
 
 export type JoinProps = Omit<React.HTMLAttributes<HTMLDivElement>, "children"> &
   ComponentBaseProps & {

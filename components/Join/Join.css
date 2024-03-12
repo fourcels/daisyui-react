@@ -1,0 +1,5 @@
+.join {
+  &-item:focus-within {
+    @apply isolate;
+  }
+}

@@ -1,0 +1,62 @@
+---
+title: Indicator
+description: Indicators are used to place an element on the corner of another element.
+---
+
+## Examples
+
+### Indicator
+
+<code src="./demo/basic.tsx" />
+
+### for button
+
+```tsx live
+<Indicator indicator={<Badge color="secondary">99+</Badge>}>
+  <Button>index</Button>
+</Indicator>
+```
+
+### for avatar
+
+```tsx live
+<Indicator indicator={<Badge color="secondary">typing…</Badge>}>
+  <Avatar src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+</Indicator>
+```
+
+### for an input
+
+```tsx live
+<Indicator indicator={<Badge>Required</Badge>}>
+  <Input placeholder="Your email address" />
+</Indicator>
+```
+
+### A button as an indicator for a card
+
+```tsx live
+<Indicator vertical="bottom" indicator={<Button color="primary">Apply</Button>}>
+  <Card>
+    <Card.Body>
+      <Card.Title>Job Title</Card.Title>
+      <p>Rerum reiciendis beatae tenetur excepturi</p>
+    </Card.Body>
+  </Card>
+</Indicator>
+```
+
+### in center of an image
+
+```tsx live
+<Indicator
+  vertical="middle"
+  horizontal="center"
+  indicator={<Badge color="secondary">Uploading Image...</Badge>}
+>
+  <img
+    alt="Tailwind CSS examples"
+    src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+  />
+</Indicator>
+```

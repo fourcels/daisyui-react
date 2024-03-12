@@ -1,0 +1,11 @@
+.indicator {
+  .indicator-item {
+    @apply flex;
+    &:where(.indicator-middle) {
+      bottom: auto;
+    }
+    &:where(.indicator-center) {
+      inset-inline-end: auto;
+    }
+  }
+}

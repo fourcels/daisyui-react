@@ -124,6 +124,24 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>(
 
     return (
       <div className={twMerge("select-wrapper", wrapperClassName)}>
+        {showClearable && (
+          <Button
+            onClick={() => {
+              const select = selectRef.current;
+              if (!select) {
+                return;
+              }
+              select.value = "";
+              select.dispatchEvent(new Event("change", { bubbles: true }));
+            }}
+            shape="circle"
+            size="xs"
+            color="neutral"
+            className="select-clearable"
+          >
+            ✕
+          </Button>
+        )}
         <select
           value={selectValue}
           disabled={disabled}
@@ -144,24 +162,6 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>(
           )}
           {options}
         </select>
-        {showClearable && (
-          <Button
-            onClick={() => {
-              const select = selectRef.current;
-              if (!select) {
-                return;
-              }
-              select.value = "";
-              select.dispatchEvent(new Event("change", { bubbles: true }));
-            }}
-            shape="circle"
-            size="xs"
-            color="neutral"
-            className="select-clearable"
-          >
-            ✕
-          </Button>
-        )}
       </div>
     );
   }

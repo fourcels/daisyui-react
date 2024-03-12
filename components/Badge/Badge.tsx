@@ -45,13 +45,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
     );
 
     return (
-      <span
-        role="tooltip"
-        {...props}
-        ref={ref}
-        data-theme={dataTheme}
-        className={classes}
-      >
+      <span {...props} ref={ref} data-theme={dataTheme} className={classes}>
         {children}
       </span>
     );

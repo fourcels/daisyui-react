@@ -23,6 +23,20 @@ description: Join is a container for grouping multiple items, it can be used to 
 </Join>
 ```
 
+### With extra elements in the group
+
+```tsx live
+<Join>
+  <Input placeholder="Search" />
+  <Select
+    placeholder="Filter"
+    clearable={false}
+    items={["Sci-fi", "Drama", "Action"]}
+  />
+  <Button>Search</Button>
+</Join>
+```
+
 ### Custom border radius
 
 ```tsx live

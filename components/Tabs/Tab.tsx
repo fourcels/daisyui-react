@@ -7,6 +7,7 @@ export type TabProps = React.HTMLAttributes<HTMLAnchorElement> & {
   label?: React.ReactNode;
   contentClassName?: string;
   activeClassName?: string;
+  indicator?: React.ReactElement;
 };
 
 export const Tab = forwardRef<HTMLAnchorElement, TabProps>(
@@ -20,12 +21,13 @@ export const Tab = forwardRef<HTMLAnchorElement, TabProps>(
       disabled,
       className,
       children,
+      indicator,
       ...props
     },
     ref
   ): JSX.Element => {
     const classes = twMerge(
-      "tab",
+      "tab gap-2 flex",
       active && ["tab-active", activeClassName],
       disabled && "tab-disabled",
       className
@@ -41,6 +43,7 @@ export const Tab = forwardRef<HTMLAnchorElement, TabProps>(
           {...props}
         >
           {label}
+          {indicator}
         </a>
         {children && (
           <div
