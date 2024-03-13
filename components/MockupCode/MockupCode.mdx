@@ -1,0 +1,67 @@
+---
+title: Browser mockup
+description: Browser mockup shows a box that looks like a browser window.
+---
+
+## Examples
+
+### mockup code with line prefix
+
+```tsx live
+<MockupCode>
+  <MockupCode.Line prefix="$">npm i daisyui</MockupCode.Line>
+</MockupCode>
+```
+
+### Multi line
+
+```tsx live
+<MockupCode>
+  <MockupCode.Line prefix="$">npm i daisyui</MockupCode.Line>
+  <MockupCode.Line prefix=">" className="text-warning">
+    installing...
+  </MockupCode.Line>
+  <MockupCode.Line prefix=">" className="text-success">
+    Done!
+  </MockupCode.Line>
+</MockupCode>
+```
+
+### Highlighted line
+
+```tsx live
+<MockupCode>
+  <MockupCode.Line prefix="1">npm i daisyui</MockupCode.Line>
+  <MockupCode.Line prefix="2">installing...</MockupCode.Line>
+  <MockupCode.Line prefix="3" className="bg-warning text-warning-content">
+    Error!
+  </MockupCode.Line>
+</MockupCode>
+```
+
+### Long line will scroll
+
+```tsx live
+<MockupCode>
+  <MockupCode.Line prefix="~">
+    Magnam dolore beatae necessitatibus nemopsum itaque sit. Et porro quae qui
+    et et dolore ratione.
+  </MockupCode.Line>
+</MockupCode>
+```
+
+### Without prefix
+
+```tsx live
+<MockupCode>
+  <MockupCode.Line>without prefix</MockupCode.Line>
+</MockupCode>
+```
+
+### With color
+
+```tsx live
+<MockupCode className="bg-primary text-primary-content">
+  <MockupCode.Line>can be any color!</MockupCode.Line>
+</MockupCode>
+```
