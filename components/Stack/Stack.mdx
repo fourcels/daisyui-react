@@ -1,0 +1,82 @@
+---
+title: Stack
+description: Stack visually puts elements on top of each other.
+---
+
+## Examples
+
+### Stack
+
+```tsx live
+<Stack>
+  <div className="grid w-32 h-20 rounded bg-primary text-primary-content place-content-center">
+    1
+  </div>
+  <div className="grid w-32 h-20 rounded bg-accent text-accent-content place-content-center">
+    2
+  </div>
+  <div className="grid w-32 h-20 rounded bg-secondary text-secondary-content place-content-center">
+    3
+  </div>
+</Stack>
+```
+
+### Stacked images
+
+```tsx live
+<Stack>
+  <img
+    src="https://daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.jpg"
+    className="rounded w-28"
+  />
+  <img
+    src="https://daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.jpg"
+    className="rounded w-28"
+  />
+  <img
+    src="https://daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.jpg"
+    className="rounded w-28"
+  />
+</Stack>
+```
+
+### Stacked cards
+
+```tsx live
+<Stack>
+  <Card className="text-center w-36 border-base-content">
+    <Card.Body>A</Card.Body>
+  </Card>
+  <Card className="text-center w-36 border-base-content">
+    <Card.Body>B</Card.Body>
+  </Card>
+  <Card className="text-center w-36 border-base-content">
+    <Card.Body>C</Card.Body>
+  </Card>
+</Stack>
+```
+
+### Stacked cards 2
+
+```tsx live
+<Stack>
+  <Card bordered={false} className="bg-primary text-primary-content">
+    <Card.Body>
+      <Card.Title>Notification 1</Card.Title>
+      <p>You have 3 unread messages. Tap here to see.</p>
+    </Card.Body>
+  </Card>
+  <Card bordered={false} className="bg-primary text-primary-content">
+    <Card.Body>
+      <Card.Title>Notification 2</Card.Title>
+      <p>You have 3 unread messages. Tap here to see.</p>
+    </Card.Body>
+  </Card>
+  <Card bordered={false} className="bg-primary text-primary-content">
+    <Card.Body>
+      <Card.Title>Notification 3</Card.Title>
+      <p>You have 3 unread messages. Tap here to see.</p>
+    </Card.Body>
+  </Card>
+</Stack>
+```

@@ -41,7 +41,7 @@ const CardInner = React.forwardRef<HTMLDivElement, CardProps>(
       side && "card-side",
       responsive && "lg:card-side",
       glass && "glass",
-      shadow && "shadow-xl",
+      shadow && "shadow-md",
       imageFull && "image-full",
       className
     );
