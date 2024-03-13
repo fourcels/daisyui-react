@@ -23,7 +23,7 @@ export function Content({
   }, [frontmatter]);
   return (
     <div className="flex">
-      <article className="markdown prose max-w-5xl p-10 flex-1">
+      <article className="markdown prose max-w-5xl">
         {frontmatter?.title && <h1>{frontmatter.title}</h1>}
         {frontmatter?.description &&
           frontmatter.description
@@ -33,8 +33,8 @@ export function Content({
         {children}
       </article>
       {toc && (
-        <div className="flex-shrink-0 hidden lg:block w-64 relative mx-5">
-          <Toc toc={toc} className="sticky top-10" />
+        <div className="toc-wrapper">
+          <Toc toc={toc} className="sticky top-8" />
         </div>
       )}
     </div>
@@ -115,9 +115,9 @@ function Toc({
         <li
           key={item.id}
           className={twMerge(
-            "border-l-2 py-0.5",
-            item.rank <= 2 ? "pl-4" : "pl-8",
-            active === idx && "border-primary"
+            "toc-item",
+            item.rank > 2 && "toc-item-sub",
+            active === idx && "active"
           )}
         >
           <a

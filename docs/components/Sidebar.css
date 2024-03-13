@@ -1,0 +1,3 @@
+.sidebar {
+  @apply relative bg-base-100 z-10;
+}

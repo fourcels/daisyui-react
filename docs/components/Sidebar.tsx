@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 import { Menu } from "daisyui-react";
+import "./Sidebar.css";
 
 type MenuItem = {
   href?: string;
@@ -376,7 +377,7 @@ function MenuItem({ data }: { data: MenuItem }) {
 
 export function Sidebar({ className }: { className?: string }) {
   return (
-    <div className={twMerge("relative bg-base-100 z-10", className)}>
+    <div className={twMerge("sidebar", className)}>
       <div className="sticky top-0 max-h-dvh overflow-y-auto">
         <Menu>
           {items.map((item) => (

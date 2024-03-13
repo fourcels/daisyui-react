@@ -3,7 +3,7 @@ import { ComponentBaseProps } from "../types";
 import { twMerge } from "tailwind-merge";
 
 export type FooterTitleProps = React.HTMLAttributes<HTMLHeadingElement>;
-export const FooterTitle = forwardRef<HTMLDivElement, FooterTitleProps>(
+export const FooterTitle = forwardRef<HTMLHeadingElement, FooterTitleProps>(
   ({ children, className, ...props }, ref) => {
     const classes = twMerge("footer-title", className);
 

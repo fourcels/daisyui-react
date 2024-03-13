@@ -48,3 +48,4 @@ export * from "./Textarea";
 export * from "./Artboard";
 export * from "./Indicator";
 export * from "./Footer";
+export * from "./Hero";

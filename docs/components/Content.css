@@ -1,4 +1,5 @@
 .markdown {
+  @apply p-8 flex-1;
   a:has(> .icon-link) {
     text-decoration: none;
   }
@@ -25,6 +26,22 @@
 
     td:nth-child(3) {
       @apply text-primary;
+    }
+  }
+}
+
+.toc-wrapper {
+  @apply flex-shrink-0 hidden lg:block w-48 relative mr-4;
+}
+
+.toc {
+  .toc-item {
+    @apply border-l-2 py-0.5 pl-4;
+    &.toc-item-sub {
+      @apply pl-8;
+    }
+    &.active {
+      @apply border-primary;
     }
   }
 }
