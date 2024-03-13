@@ -50,3 +50,4 @@ export * from "./Indicator";
 export * from "./Footer";
 export * from "./Hero";
 export * from "./Stack";
+export * from "./MockupBrowser";
