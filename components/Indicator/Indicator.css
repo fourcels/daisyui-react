@@ -1,6 +1,6 @@
 .indicator {
   .indicator-item {
-    @apply flex;
+    @apply flex z-10;
     &:where(.indicator-middle) {
       bottom: auto;
     }

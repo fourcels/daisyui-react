@@ -9,31 +9,25 @@ description: Join is a container for grouping multiple items, it can be used to 
 
 <code src="./demo/basic.tsx" />
 
-### Responsive
-
-```tsx live
-/**
- * description: it's vertical on small screen and horizontal on large screen
- */
-
-<Join responsive>
-  <Button>Button</Button>
-  <Button>Button</Button>
-  <Button>Button</Button>
-</Join>
-```
-
 ### With extra elements in the group
 
 ```tsx live
 <Join>
-  <Input placeholder="Search" />
-  <Select
-    placeholder="Filter"
-    clearable={false}
-    items={["Sci-fi", "Drama", "Action"]}
-  />
-  <Button>Search</Button>
+  <Join.Item>
+    <Input placeholder="Search" />
+  </Join.Item>
+  <Join.Item>
+    <Select
+      placeholder="Filter"
+      clearable={false}
+      items={["Sci-fi", "Drama", "Action"]}
+    />
+  </Join.Item>
+  <Indicator indicator={<Badge color="secondary">new</Badge>}>
+    <Join.Item>
+      <Button>Search</Button>
+    </Join.Item>
+  </Indicator>
 </Join>
 ```
 
@@ -41,8 +35,12 @@ description: Join is a container for grouping multiple items, it can be used to 
 
 ```tsx live
 <Join>
-  <Input placeholder="Email" />
-  <Button className="rounded-r-full">Subscribe</Button>
+  <Join.Item>
+    <Input placeholder="Email" />
+  </Join.Item>
+  <Join.Item>
+    <Button className="rounded-r-full">Subscribe</Button>
+  </Join.Item>
 </Join>
 ```
 
@@ -50,8 +48,14 @@ description: Join is a container for grouping multiple items, it can be used to 
 
 ```tsx live
 <Join>
-  <Button as="input" type="radio" name="options" aria-label="Radio 1" />
-  <Button as="input" type="radio" name="options" aria-label="Radio 2" />
-  <Button as="input" type="radio" name="options" aria-label="Radio 3" />
+  <Join.Item>
+    <Button as="input" type="radio" name="options" aria-label="Radio 1" />
+  </Join.Item>
+  <Join.Item>
+    <Button as="input" type="radio" name="options" aria-label="Radio 2" />
+  </Join.Item>
+  <Join.Item>
+    <Button as="input" type="radio" name="options" aria-label="Radio 3" />
+  </Join.Item>
 </Join>
 ```

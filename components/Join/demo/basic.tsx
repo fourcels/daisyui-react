@@ -13,6 +13,7 @@ import { twMerge } from "tailwind-merge";
 
 export default function App() {
   const [direction, setDirection] = React.useState<JoinProps["direction"]>();
+  const [responsive, setResponsive] = React.useState(false);
 
   return (
     <>
@@ -23,15 +24,25 @@ export default function App() {
             items={["vertical", "horizontal"]}
           />
         </Form.Control>
+        <Toggle
+          label="Responsive"
+          onChange={(checked) => setResponsive(checked)}
+        />
       </div>
 
       <Divider>Preview</Divider>
 
       <div className="flex justify-center">
-        <Join direction={direction}>
-          <Button>Button</Button>
-          <Button>Button</Button>
-          <Button>Button</Button>
+        <Join direction={direction} responsive={responsive}>
+          <Join.Item>
+            <Button>Button</Button>
+          </Join.Item>
+          <Join.Item>
+            <Button>Button</Button>
+          </Join.Item>
+          <Join.Item>
+            <Button>Button</Button>
+          </Join.Item>
         </Join>
       </div>
     </>

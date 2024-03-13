@@ -49,7 +49,6 @@ export const Indicator = forwardRef<HTMLDivElement, IndicatorProps>(
             {indicator}
           </div>
         )}
-
         {children}
       </div>
     );
