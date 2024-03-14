@@ -8,8 +8,7 @@ description: Browser mockup shows a box that looks like a browser window.
 ### Browser mockup
 
 ```tsx live
-<MockupBrowser className="w-full">
-  <MockupBrowser.Toolbar>https://daisyui.com</MockupBrowser.Toolbar>
+<MockupBrowser className="w-full" toolbar="https://daisyui.com">
   <div className="flex justify-center px-4 py-16 border-t border-base-300">
     Hello!
   </div>
@@ -19,10 +18,10 @@ description: Browser mockup shows a box that looks like a browser window.
 ### Browser mockup with background color
 
 ```tsx live
-<MockupBrowser className="w-full border-base-content bg-base-300">
-  <MockupBrowser.Toolbar>https://daisyui.com</MockupBrowser.Toolbar>
-  <div className="flex justify-center px-4 py-16 border-t border-base-300">
-    Hello!
-  </div>
+<MockupBrowser
+  className="w-full border-base-content bg-base-300"
+  toolbar="https://daisyui.com"
+>
+  <div className="flex justify-center px-4 py-16 bg-base-200">Hello!</div>
 </MockupBrowser>
 ```

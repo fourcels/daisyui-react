@@ -53,3 +53,4 @@ export * from "./Stack";
 export * from "./MockupBrowser";
 export * from "./MockupCode";
 export * from "./MockupPhone";
+export * from "./MockupWindow";
