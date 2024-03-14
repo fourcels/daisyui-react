@@ -6,9 +6,9 @@ import {
   DropdownProps,
   Menu,
   Button,
+  Drawer,
 } from "daisyui-react";
 import React from "react";
-import { Drawer } from "..";
 
 export default function App() {
   const [end, setEnd] = React.useState(false);

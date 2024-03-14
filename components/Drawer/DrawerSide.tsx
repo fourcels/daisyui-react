@@ -22,12 +22,7 @@ export const DrawerSide = React.forwardRef<HTMLDivElement, DrawerSideProps>(
             onClick={() => setOpen(false)}
           ></div>
         )}
-        <div
-          className={twMerge(
-            "bg-base-200 text-base-content min-h-full relative",
-            contentClassName
-          )}
-        >
+        <div className={twMerge("min-h-full relative", contentClassName)}>
           {children}
         </div>
       </div>

@@ -50,6 +50,7 @@ export * from "./Indicator";
 export * from "./Footer";
 export * from "./Hero";
 export * from "./Stack";
+export * from "./Drawer";
 export * from "./MockupBrowser";
 export * from "./MockupCode";
 export * from "./MockupPhone";

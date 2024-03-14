@@ -34,7 +34,7 @@ export function Content({
       </article>
       {toc && (
         <div className="toc-wrapper">
-          <Toc toc={toc} className="sticky top-8" />
+          <Toc toc={toc} className="sticky top-16" />
         </div>
       )}
     </div>

@@ -1,15 +1,20 @@
 import { ScrollRestoration } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
 import { Outlet } from "react-router";
+import { Drawer } from "daisyui-react";
+import { Toolbar } from "./Toolbar";
 
 export function Layout() {
   return (
-    <div className="flex min-h-full">
+    <Drawer responsive>
       <ScrollRestoration />
-      <Sidebar className="w-64 flex-shrink-0 hidden md:block" />
-      <div className="flex-1">
+      <Drawer.Content>
+        <Toolbar />
         <Outlet />
-      </div>
-    </div>
+      </Drawer.Content>
+      <Drawer.Side className="!overscroll-contain">
+        <Sidebar className="bg-base-100 w-64" />
+      </Drawer.Side>
+    </Drawer>
   );
 }
