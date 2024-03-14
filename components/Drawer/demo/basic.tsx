@@ -38,7 +38,7 @@ export default function App() {
             <Button color="primary">Open drawer</Button>
           </Drawer.Toggle>
         </Drawer.Content>
-        <Drawer.Side>
+        <Drawer.Side wrapperClassName="z-30">
           <Menu className="p-4 w-60 md:w-80">
             <Menu.Item>
               <a>Sidebar Item 1</a>

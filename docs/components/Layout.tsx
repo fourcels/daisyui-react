@@ -12,8 +12,8 @@ export function Layout() {
         <Toolbar />
         <Outlet />
       </Drawer.Content>
-      <Drawer.Side className="!overscroll-contain">
-        <Sidebar className="bg-base-100 w-64" />
+      <Drawer.Side className="w-64 overflow-y-auto overscroll-contain">
+        <Sidebar />
       </Drawer.Side>
     </Drawer>
   );

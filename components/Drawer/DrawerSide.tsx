@@ -4,17 +4,19 @@ import { useDrawer } from "./DrawerContext";
 
 export type DrawerSideProps = React.HTMLAttributes<HTMLDivElement> & {
   overlay?: boolean;
-  contentClassName?: string;
+  wrapperClassName?: string;
 };
 
 export const DrawerSide = React.forwardRef<HTMLDivElement, DrawerSideProps>(
-  ({ contentClassName, children, className, ...props }, ref) => {
+  ({ wrapperClassName, children, className, ...props }, ref) => {
     const { setOpen, overlay } = useDrawer();
 
-    const classes = twMerge("drawer-side z-20", className);
-
     return (
-      <div {...props} ref={ref} className={classes}>
+      <div
+        {...props}
+        ref={ref}
+        className={twMerge("drawer-side z-20", wrapperClassName)}
+      >
         {overlay && (
           <div
             aria-label="close sidebar"
@@ -22,7 +24,7 @@ export const DrawerSide = React.forwardRef<HTMLDivElement, DrawerSideProps>(
             onClick={() => setOpen(false)}
           ></div>
         )}
-        <div className={twMerge("min-h-full relative", contentClassName)}>
+        <div className={twMerge("h-full bg-base-100", className)}>
           {children}
         </div>
       </div>
