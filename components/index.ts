@@ -52,3 +52,4 @@ export * from "./Hero";
 export * from "./Stack";
 export * from "./MockupBrowser";
 export * from "./MockupCode";
+export * from "./MockupPhone";
