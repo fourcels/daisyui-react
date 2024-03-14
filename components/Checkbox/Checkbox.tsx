@@ -21,7 +21,6 @@ export type CheckboxProps = Omit<
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
-      onChange,
       indeterminate,
       reverse,
       label,
