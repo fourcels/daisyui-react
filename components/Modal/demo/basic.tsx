@@ -12,7 +12,7 @@ import React from "react";
 export default function App() {
   const [position, setPosition] = React.useState<ModalProps["position"]>();
   const [backdrop, setBackdrop] = React.useState(false);
-  const [close, setClose] = React.useState(true);
+  const [closable, setClosable] = React.useState(true);
   return (
     <>
       <div className="flex flex-wrap gap-8">
@@ -24,9 +24,9 @@ export default function App() {
         </Form.Control>
         <Toggle label="Backdrop" onChange={(checked) => setBackdrop(checked)} />
         <Toggle
-          label="Close"
+          label="Closable"
           defaultChecked
-          onChange={(checked) => setClose(checked)}
+          onChange={(checked) => setClosable(checked)}
         />
       </div>
 
@@ -35,7 +35,7 @@ export default function App() {
       <div className="flex justify-center">
         <Modal
           position={position}
-          close={close}
+          closable={closable}
           backdrop={backdrop}
           trigger={<Button>open modal</Button>}
         >

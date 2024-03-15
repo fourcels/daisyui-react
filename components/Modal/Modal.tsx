@@ -23,7 +23,7 @@ export type ModalProps = React.HTMLAttributes<HTMLDialogElement> &
     responsive?: boolean;
     backdrop?: boolean;
     trigger?: ReactElement;
-    close?: boolean;
+    closable?: boolean;
     position?: "top" | "middle" | "bottom";
   };
 
@@ -33,7 +33,7 @@ const ModalInner = forwardRef<HTMLDialogElement, ModalProps>(
       position,
       trigger,
       open,
-      close = true,
+      closable = true,
       children,
       responsive,
       backdrop,
@@ -79,7 +79,7 @@ const ModalInner = forwardRef<HTMLDialogElement, ModalProps>(
           ref={dialogRef}
         >
           <div data-theme={dataTheme} className={bodyClasses}>
-            {close && (
+            {closable && (
               <Button
                 onClick={() => dialogRef.current?.close()}
                 size="sm"

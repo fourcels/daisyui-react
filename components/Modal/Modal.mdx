@@ -34,3 +34,24 @@ description: Modal is used to show a dialog or a box when you click a button.
   <Modal.Body>Press ESC key or click the button below to close</Modal.Body>
 </Modal>
 ```
+
+## API
+
+Common props: `dataTheme`, `className`, `style`
+
+### Modal
+
+| Property   | Description | Type                          | Default |
+| ---------- | ----------- | ----------------------------- | ------- |
+| backdrop   | -           | boolean                       | true    |
+| closable   | -           | boolean                       | true    |
+| open       | Force open  | boolean                       | false   |
+| position   | -           | `top` \| `middle` \| `bottom` | -       |
+| responsive | -           | boolean                       | false   |
+| trigger    | -           | ReactElement                  | -       |
+
+### Modal.ActionButton
+
+| Property | Description | Type                                | Default |
+| -------- | ----------- | ----------------------------------- | ------- |
+| onClick  | -           | (dialog: HTMLDialogElement) => void | -       |
