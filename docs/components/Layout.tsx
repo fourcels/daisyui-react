@@ -12,7 +12,7 @@ export function Layout() {
         <Toolbar />
         <Outlet />
       </Drawer.Content>
-      <Drawer.Side className="w-64 overflow-y-auto overscroll-contain">
+      <Drawer.Side>
         <Sidebar />
       </Drawer.Side>
     </Drawer>

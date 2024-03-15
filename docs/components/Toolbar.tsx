@@ -1,8 +1,27 @@
 import { Button, Drawer, Input, Kbd, Navbar } from "daisyui-react";
+import { throttle } from "lodash";
+import React from "react";
+import { twMerge } from "tailwind-merge";
 
 export function Toolbar() {
+  const [shadow, setShadow] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = throttle(() => {
+      setShadow(document.documentElement.scrollTop > 50 ? true : false);
+    }, 200);
+
+    document.addEventListener("scroll", handleScroll);
+    return () => document.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <Navbar className="px-4 sticky top-0 backdrop-blur bg-base-100/90 z-20">
+    <Navbar
+      className={twMerge(
+        "px-4 sticky top-0 backdrop-blur bg-base-100/90 z-20 transition-shadow [transform:translateZ(0)]",
+        shadow && "shadow-sm"
+      )}
+    >
       <div className="flex flex-1 gap-2">
         <Drawer.Toggle>
           <Button shape="square" color="ghost" className="lg:hidden">

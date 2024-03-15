@@ -12,13 +12,10 @@ export const DrawerSide = React.forwardRef<HTMLDivElement, DrawerSideProps>(
     const { setOpen, overlay } = useDrawer();
 
     return (
-      <div
-        {...props}
-        ref={ref}
-        className={twMerge("drawer-side z-20", wrapperClassName)}
-      >
+      <div {...props} className={twMerge("drawer-side z-20", wrapperClassName)}>
         {overlay && (
           <div
+            ref={ref}
             aria-label="close sidebar"
             className="drawer-overlay"
             onClick={() => setOpen(false)}
