@@ -6,3 +6,25 @@ description: Accordion is used for showing and hiding content but only one item 
 ## Exmaples
 
 <code src="./demo/basic.tsx" />
+
+## API
+
+Common props: `dataTheme`, `className`, `style`
+
+### Accordion
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| arrow | Adds arrow icon | `arrow` \| `plus` | - |
+| bordered | - | boolean | true |
+| children | - | ListOrItem\<ReactElement\> | - |
+| defaultActive | - | number | 0 |
+| join | join the items together | boolean | false |
+
+### Accordion.Collapse
+
+| Property | Description     | Type              | Default |
+| -------- | --------------- | ----------------- | ------- |
+| arrow    | Adds arrow icon | `arrow` \| `plus` | -       |
+| bordered | -               | boolean           | true    |
+| open     | Force open      | boolean           | false   |

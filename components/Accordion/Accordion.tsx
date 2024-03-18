@@ -1,5 +1,5 @@
 import React, { ReactElement, forwardRef } from "react";
-import { ComponentBaseProps } from "../types";
+import { ComponentBaseProps, ListOrItem } from "../types";
 import { twMerge } from "tailwind-merge";
 import { AccordionCollapse, AccordionCollapseProps } from "./AccordionCollapse";
 
@@ -10,10 +10,8 @@ export type AccordionProps = Omit<
   "children"
 > &
   ComponentBaseProps & {
-    children?:
-      | ReactElement<AccordionCollapseProps>
-      | ReactElement<AccordionCollapseProps>[];
-    defaultIndex?: number;
+    children?: ListOrItem<ReactElement>;
+    defaultActive?: number;
     bordered?: boolean;
     arrow?: "arrow" | "plus";
     join?: boolean;
@@ -23,7 +21,7 @@ const AccordionInner = forwardRef<HTMLDivElement, AccordionProps>(
   (
     {
       join,
-      defaultIndex = 0,
+      defaultActive = 0,
       arrow,
       bordered = true,
       children,
@@ -33,7 +31,7 @@ const AccordionInner = forwardRef<HTMLDivElement, AccordionProps>(
     },
     ref
   ) => {
-    const [index, setIndex] = React.useState<number>(defaultIndex);
+    const [active, setActive] = React.useState<number>(defaultActive);
 
     const classes = twMerge(
       "accordion",
@@ -45,8 +43,8 @@ const AccordionInner = forwardRef<HTMLDivElement, AccordionProps>(
         {children &&
           React.Children.map(children, (child, idx) => {
             return React.cloneElement(child, {
-              open: idx === index,
-              onClick: () => setIndex(idx),
+              open: idx === active,
+              onClick: () => setActive(idx),
               className: twMerge(child.props.className, join && "join-item"),
               arrow,
               bordered,
