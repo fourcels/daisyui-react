@@ -1,7 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
 import { forwardRef } from "react";
-import { Swap, SwapProps } from "../Swap";
 import { ComponentBaseProps } from "../types";
 
 export type ThemeControllerSwapProps = ComponentBaseProps &

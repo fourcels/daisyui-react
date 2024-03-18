@@ -10,11 +10,10 @@ export type SwapProps = React.LabelHTMLAttributes<HTMLLabelElement> &
   ComponentBaseProps & {
     effect?: "flip" | "rotate";
     active?: boolean;
-    checkbox?: boolean;
   };
 
 const SwapInner = forwardRef<HTMLLabelElement, SwapProps>(
-  ({ checkbox = true, active, effect, children, className, ...props }, ref) => {
+  ({ active, effect, children, className, ...props }, ref) => {
     const effects = {
       flip: "swap-flip",
       rotate: "swap-rotate",
@@ -29,7 +28,7 @@ const SwapInner = forwardRef<HTMLLabelElement, SwapProps>(
 
     return (
       <label ref={ref} className={classes} {...props}>
-        {checkbox && <input type="checkbox" />}
+        <input type="checkbox" />
         {children}
       </label>
     );
