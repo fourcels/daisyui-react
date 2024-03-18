@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-import { ReactNode, forwardRef } from "react";
+import { forwardRef } from "react";
 import { Toggle, ToggleProps } from "../Toggle";
 import {
   ThemeControllerButton,
@@ -30,8 +30,6 @@ import {
   ThemeControllerDropdown,
   ThemeControllerDropdownProps,
 } from "./ThemeControllerDropdown";
-import { Label } from "../Label";
-import { LabelText } from "../Label/LabelText";
 
 export type {
   ThemeControllerButtonProps,

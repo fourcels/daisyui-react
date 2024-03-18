@@ -14,7 +14,7 @@ export type ToggleProps = Omit<
     color?: Exclude<ComponentColor, "neutral" | "ghost">;
     label?: ReactNode;
     labelAlt?: ReactNode;
-    labelClassName?: string;
+    wrapperClassName?: string;
     reverse?: boolean;
     onChange?: (
       checked: boolean,
@@ -36,7 +36,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
       color,
       dataTheme,
       className,
-      labelClassName,
+      wrapperClassName,
       ...props
     },
     ref
@@ -71,7 +71,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
     }, [checked]);
 
     return (
-      <Label reverse={reverse} className={labelClassName}>
+      <Label reverse={reverse} className={wrapperClassName}>
         {labelAlt && <Label.Text>{labelAlt}</Label.Text>}
         <input
           checked={checkedInner}

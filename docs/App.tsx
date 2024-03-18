@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Link } from "react-router-dom";
 import { MDXProvider } from "@mdx-js/react";
 import { CodePreview } from "./components/CodePreview";
 import "./routes";
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <MDXProvider components={{ CodePreview }}>
+    <MDXProvider components={{ CodePreview, Link }}>
       <RouterProvider router={router} />
     </MDXProvider>
   );

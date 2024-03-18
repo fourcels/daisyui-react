@@ -8,3 +8,21 @@ description: Toggle is a checkbox that is styled to look like a switch button.
 ### Toggle
 
 <code src="./demo/basic.tsx" />
+
+## API
+
+Common props: `dataTheme`, `className`, `style`
+
+### Toggle
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| color | Toggle color | `primary` \| `secondary` \| `accent` \| `info` \| `success` \| `warning` \| `error` | - |
+| label | - | string | - |
+| labelAlt | - | string | - |
+| onChange | - | (checked: boolean, e: ChangeEvent) => void | - |
+| reverse | Label order reverse | boolean | false |
+| size | Toggle size | `xs` \| `sm` \| `md` \| `lg` | - |
+| wrapperClassName | - | string | - |
+
+It accepts all props which native `checkbox` support.

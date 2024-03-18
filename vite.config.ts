@@ -11,6 +11,7 @@ import remarkGfm from "remark-gfm";
 import { rehypeToc } from "./plugins/rehypeToc";
 import { remarkCode } from "./plugins/remarkCode";
 import { rehypeTable } from "./plugins/rehypeTable";
+import { remarkLink } from "./plugins/remarkLink";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -21,6 +22,7 @@ export default defineConfig({
         remarkMdxFrontmatter,
         remarkGfm,
         remarkCode,
+        remarkLink,
       ],
       rehypePlugins: [
         rehypeSlug,

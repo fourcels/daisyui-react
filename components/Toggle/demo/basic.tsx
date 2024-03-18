@@ -1,6 +1,5 @@
 import { Toggle, Form, ToggleProps, Divider, Select } from "daisyui-react";
 import React from "react";
-import { Label } from "../../Label";
 
 export default function App() {
   const [color, setColor] = React.useState<ToggleProps["color"]>();
