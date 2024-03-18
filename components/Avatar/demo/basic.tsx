@@ -37,7 +37,6 @@ export default function App() {
           <Select
             onChange={(value) => setRing(value as any)}
             items={[
-              "ring",
               "neutral",
               "primary",
               "secondary",

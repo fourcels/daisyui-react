@@ -19,7 +19,7 @@ export type AvatarProps = Omit<
     shape?: "square" | "circle";
     mask?: MaskProps["mask"];
     color?: Exclude<ComponentColor, "ghost">;
-    ring?: "ring" | Exclude<ComponentColor, "ghost">;
+    ring?: Exclude<ComponentColor, "ghost">;
     indicator?: "online" | "offline";
   };
 
@@ -64,7 +64,6 @@ const AvatarInner = forwardRef<HTMLDivElement, AvatarProps>(
       error: "bg-error",
     };
     const rings = {
-      ring: "avatar-ring",
       neutral: "avatar-ring ring-neutral",
       primary: "avatar-ring ring-primary",
       secondary: "avatar-ring ring-secondary",
