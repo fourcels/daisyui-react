@@ -54,11 +54,11 @@ export const ThemeControllerInner = forwardRef<
 ThemeControllerInner.displayName = "ThemeController";
 
 export const ThemeController = Object.assign(ThemeControllerInner, {
-  Button: ThemeControllerButton,
   Checkbox: ThemeControllerCheckbox,
   Swap: ThemeControllerSwap,
   Radio: ThemeControllerRadio,
   RadioGroup: ThemeControllerRadioGroup,
+  Button: ThemeControllerButton,
   ButtonGroup: ThemeControllerButtonGroup,
   Dropdown: ThemeControllerDropdown,
 });

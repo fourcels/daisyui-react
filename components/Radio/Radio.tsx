@@ -13,7 +13,7 @@ export type RadioProps = Omit<
     size?: ComponentSize;
     color?: Exclude<ComponentColor, "neutral" | "ghost">;
     label?: ReactNode;
-    labelClassName?: string;
+    wrapperClassName?: string;
     reverse?: boolean;
   };
 
@@ -26,7 +26,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       color,
       dataTheme,
       className,
-      labelClassName,
+      wrapperClassName,
       ...props
     },
     ref
@@ -69,7 +69,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
     }
 
     return (
-      <Label reverse={reverse} className={labelClassName}>
+      <Label reverse={reverse} className={wrapperClassName}>
         {radio}
         <Label.Text>{label}</Label.Text>
       </Label>

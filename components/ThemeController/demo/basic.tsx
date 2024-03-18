@@ -99,7 +99,7 @@ export default function App() {
         checked={checked}
         value="synthwave"
         onChange={(checked) => setChecked(checked)}
-        labelClassName="grid place-items-center gap-0"
+        wrapperClassName="grid place-items-center gap-0"
         className="row-start-1 col-start-1 col-span-2"
       >
         <svg

@@ -19,12 +19,80 @@ Common props: `dataTheme`, `className`, `style`
 
 ### ThemeController
 
-| Property | Description | Type                       | Default |
-| -------- | ----------- | -------------------------- | ------- |
-| checked  | -           | boolean                    | false   |
-| label    | -           | string                     | -       |
-| labelAlt | -           | string                     | -       |
-| onChange | -           | (checked: boolean) => void | -       |
-| value    | -           | string                     | -       |
+| Property | Description | Type    | Default |
+| -------- | ----------- | ------- | ------- |
+| checked  | -           | boolean | false   |
+| label    | -           | string  | -       |
+| labelAlt | -           | string  | -       |
+| value    | -           | string  | -       |
 
 It accepts all props which [Toggle](/components/toggle/) support.
+
+### ThemeController.Checkbox
+
+| Property | Description | Type    | Default |
+| -------- | ----------- | ------- | ------- |
+| checked  | -           | boolean | false   |
+| label    | -           | string  | -       |
+| value    | -           | string  | -       |
+
+It accepts all props which [Checkbox](/components/checkbox/) support.
+
+### ThemeController.Swap
+
+| Property | Description         | Type               | Default |
+| -------- | ------------------- | ------------------ | ------- |
+| checked  | -                   | boolean            | false   |
+| effect   | Adds effect to swap | `flip` \| `rotate` | -       |
+| value    | -                   | string             | -       |
+
+It accepts all props which native `checkbox` support.
+
+### ThemeController.RadioGroup
+
+| Property   | Description | Type                      | Default |
+| ---------- | ----------- | ------------------------- | ------- |
+| items      | -           | ThemeControllerItem[]     | -       |
+| name       | -           | string                    | -       |
+| onChange   | -           | (value: string) => void   | -       |
+| radioProps | -           | ThemeControllerRadioProps | -       |
+| value      | -           | string                    | -       |
+| vertical   | -           | boolean                   | false   |
+
+### ThemeController.ButtonGroup
+
+| Property    | Description | Type                       | Default |
+| ----------- | ----------- | -------------------------- | ------- |
+| buttonProps | -           | ThemeControllerButtonProps | -       |
+| items       | -           | ThemeControllerItem[]      | -       |
+| name        | -           | string                     | -       |
+| onChange    | -           | (value: string) => void    | -       |
+| value       | -           | string                     | -       |
+| vertical    | -           | boolean                    | false   |
+
+### ThemeController.Dropdown
+
+| Property    | Description | Type                       | Default |
+| ----------- | ----------- | -------------------------- | ------- |
+| buttonProps | -           | ThemeControllerButtonProps | -       |
+| items       | -           | ThemeControllerItem[]      | -       |
+| name        | -           | string                     | -       |
+| onChange    | -           | (value: string) => void    | -       |
+| value       | -           | string                     | -       |
+
+It accepts all props which [Dropdown](/components/dropdown/) support.
+
+### ThemeController Components
+
+`ThemeController.Checkbox`, `ThemeController.Swap`, `ThemeController.Radio`, `ThemeController.RadioGroup`, `ThemeController.Button`, `ThemeController.ButtonGroup`, `ThemeController.Dropdown`,
+
+### Types
+
+```tsx
+export type ThemeControllerItem =
+  | string
+  | {
+      value: string;
+      label: string;
+    };
+```

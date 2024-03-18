@@ -1,32 +1,24 @@
 import { twMerge } from "tailwind-merge";
 
 import { forwardRef } from "react";
-import { Radio } from "../Radio";
 import { ComponentBaseProps } from "../types";
 import {
   ThemeControllerRadio,
   ThemeControllerRadioProps,
 } from "./ThemeControllerRadio";
-import { ThemeControllerButtonProps } from ".";
-
-export type ThemeControllerGroupItem =
-  | string
-  | {
-      value: string;
-      label: string;
-    };
+import { ThemeControllerItem } from "./types";
 
 export type ThemeControllerRadioGroupProps = Omit<
   React.HTMLAttributes<HTMLDivElement>,
   "onChange"
 > &
   ComponentBaseProps & {
-    direction?: "vertical" | "horizontal";
+    vertical?: boolean;
     radioProps?: ThemeControllerRadioProps;
-    items?: ThemeControllerGroupItem[];
+    items?: ThemeControllerItem[];
     name: string;
-    value?: ThemeControllerRadioProps["value"];
-    onChange?: (value: ThemeControllerRadioProps["value"]) => void;
+    value?: string;
+    onChange?: (value: string) => void;
   };
 
 export const ThemeControllerRadioGroup = forwardRef<
@@ -39,7 +31,7 @@ export const ThemeControllerRadioGroup = forwardRef<
       onChange,
       items,
       name,
-      direction,
+      vertical,
       dataTheme,
       className,
       radioProps,
@@ -49,7 +41,7 @@ export const ThemeControllerRadioGroup = forwardRef<
   ) => {
     const classes = twMerge(
       "flex flex-wrap gap-4",
-      direction === "vertical" && "flex-col gap-0",
+      vertical && "flex-col gap-0",
       className
     );
     return (

@@ -16,7 +16,7 @@ export default function App() {
       <ThemeController.RadioGroup
         value={theme}
         onChange={handleChange}
-        direction="vertical"
+        vertical
         name="theme-radios"
         items={items}
       />
@@ -25,7 +25,7 @@ export default function App() {
       <ThemeController.ButtonGroup
         value={theme}
         onChange={handleChange}
-        direction="vertical"
+        vertical
         name="theme-buttons"
         items={items}
       />

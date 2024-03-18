@@ -13,7 +13,7 @@ export type CheckboxProps = Omit<
     size?: ComponentSize;
     color?: Exclude<ComponentColor, "neutral" | "ghost">;
     label?: ReactNode;
-    labelClassName?: string;
+    wrapperClassName?: string;
     reverse?: boolean;
     indeterminate?: boolean;
   };
@@ -24,7 +24,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       indeterminate,
       reverse,
       label,
-      labelClassName,
+      wrapperClassName,
       size,
       color,
       dataTheme,
@@ -69,7 +69,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     );
 
     return (
-      <Label reverse={reverse} className={twMerge(labelClassName)}>
+      <Label reverse={reverse} className={wrapperClassName}>
         <input
           type="checkbox"
           {...props}

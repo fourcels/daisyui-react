@@ -2,7 +2,7 @@ import { twMerge } from "tailwind-merge";
 
 import { forwardRef } from "react";
 import { ComponentBaseProps } from "../types";
-import { ThemeControllerGroupItem } from "./ThemeControllerRadioGroup";
+import { ThemeControllerItem } from "./types";
 import {
   ThemeControllerButton,
   ThemeControllerButtonProps,
@@ -13,12 +13,12 @@ export type ThemeControllerButtonGroupProps = Omit<
   "onChange"
 > &
   ComponentBaseProps & {
-    direction?: "vertical" | "horizontal";
+    vertical?: boolean;
     buttonProps?: ThemeControllerButtonProps;
-    items?: ThemeControllerGroupItem[];
+    items?: ThemeControllerItem[];
     name: string;
-    value?: ThemeControllerButtonProps["value"];
-    onChange?: (value: ThemeControllerButtonProps["value"]) => void;
+    value?: string;
+    onChange?: (value: string) => void;
   };
 
 export const ThemeControllerButtonGroup = forwardRef<
@@ -31,7 +31,7 @@ export const ThemeControllerButtonGroup = forwardRef<
       onChange,
       items,
       name,
-      direction,
+      vertical,
       dataTheme,
       className,
       buttonProps,
@@ -39,11 +39,7 @@ export const ThemeControllerButtonGroup = forwardRef<
     },
     ref
   ) => {
-    const classes = twMerge(
-      "join",
-      direction === "vertical" && "join-vertical",
-      className
-    );
+    const classes = twMerge("join", vertical && "join-vertical", className);
     return (
       <div className={classes} ref={ref} data-theme={dataTheme} {...props}>
         {items?.map((item) => {

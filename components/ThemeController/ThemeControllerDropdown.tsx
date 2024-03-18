@@ -1,8 +1,5 @@
-import { twMerge } from "tailwind-merge";
-
 import { forwardRef } from "react";
-import { ComponentBaseProps } from "../types";
-import { ThemeControllerGroupItem } from "./ThemeControllerRadioGroup";
+import { ThemeControllerItem } from "./types";
 import {
   ThemeControllerButton,
   ThemeControllerButtonProps,
@@ -11,11 +8,11 @@ import { Dropdown, DropdownProps } from "../Dropdown";
 import { Menu } from "../Menu";
 
 export type ThemeControllerDropdownProps = DropdownProps & {
-  items?: ThemeControllerGroupItem[];
+  items?: ThemeControllerItem[];
   buttonProps?: ThemeControllerButtonProps;
   name: string;
-  value?: ThemeControllerButtonProps["value"];
-  onChange?: (value: ThemeControllerButtonProps["value"]) => void;
+  value?: string;
+  onChange?: (value: string) => void;
 };
 
 export const ThemeControllerDropdown = forwardRef<
