@@ -4,12 +4,13 @@ import React, { useEffect, useState } from "react";
 const useCountdown = (start: number) => {
   const [counter, setCounter] = useState(start);
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setCounter(counter > 0 ? counter - 1 : start);
+    const timer = setInterval(() => {
+      setCounter((counter) => {
+        return counter > 0 ? counter - 1 : start;
+      });
     }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [counter, start]);
+    return () => clearInterval(timer);
+  }, [start]);
   return counter;
 };
 

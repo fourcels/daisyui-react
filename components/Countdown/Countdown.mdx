@@ -6,3 +6,25 @@ description: Countdown gives you a transition effect of changing numbers.
 ## Examples
 
 <code src="./demo/basic.tsx" />
+
+## API
+
+Common props: `dataTheme`, `className`, `style`
+
+### Countdown
+
+| Property         | Description | Type      | Default |
+| ---------------- | ----------- | --------- | ------- |
+| box              | In boxes    | boolean   | false   |
+| children         | -           | ReactNode | -       |
+| value            | -           | number    | 0       |
+| vertical         | -           | boolean   | false   |
+| wrapperClassName | -           | string    | -       |
+
+### Countdown.Group
+
+| Property | Description | Type                       | Default |
+| -------- | ----------- | -------------------------- | ------- |
+| box      | In boxes    | boolean                    | false   |
+| children | -           | ListOrItem\<ReactElement\> | -       |
+| vertical | -           | boolean                    | false   |

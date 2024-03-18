@@ -44,6 +44,7 @@ Common props: `dataTheme`, `className`, `style`
 | Property   | Description | Type                          | Default |
 | ---------- | ----------- | ----------------------------- | ------- |
 | backdrop   | -           | boolean                       | true    |
+| children   | -           | ReactNode                     | -       |
 | closable   | -           | boolean                       | true    |
 | open       | Force open  | boolean                       | false   |
 | position   | -           | `top` \| `middle` \| `bottom` | -       |
@@ -56,6 +57,8 @@ Common props: `dataTheme`, `className`, `style`
 | -------- | ----------- | ----------------------------------- | ------- |
 | onClick  | -           | (dialog: HTMLDialogElement) => void | -       |
 
+It accepts all props which [Button](/components/button/) support.
+
 ### Modal.Action
 
 ### Modal.Body
@@ -63,3 +66,7 @@ Common props: `dataTheme`, `className`, `style`
 ### Modal.Content
 
 ### Modal.Header
+
+| Property | Description | Type      | Default |
+| -------- | ----------- | --------- | ------- |
+| children | -           | ReactNode | -       |
