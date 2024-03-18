@@ -121,7 +121,6 @@ function Toc({
           )}
         >
           <a
-            className="opacity-75 hover:opacity-100 transition-opacity block overflow-hidden text-nowrap text-ellipsis"
             href={`#${item.id}`}
             onClick={(e) => {
               e.preventDefault();

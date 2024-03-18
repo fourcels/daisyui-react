@@ -43,5 +43,11 @@
     &.active {
       @apply border-primary;
     }
+    a {
+      @apply opacity-75 transition-opacity block overflow-hidden text-nowrap text-ellipsis;
+      &:hover {
+        @apply opacity-100 text-wrap underline;
+      }
+    }
   }
 }
