@@ -1,12 +1,7 @@
 import React, { ReactElement, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
-import {
-  ComponentBaseProps,
-  ComponentColor,
-  ComponentSize,
-  ListOrItem,
-} from "../types";
+import { ComponentBaseProps, ComponentSize, ListOrItem } from "../types";
 import {
   BottomNavigationItem,
   BottomNavigationItemProps,

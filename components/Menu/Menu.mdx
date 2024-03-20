@@ -160,39 +160,40 @@ Common props: `dataTheme`, `className`, `style`
 
 ### Menu
 
-| Property  | Description    | Type                                | Default |
-| --------- | -------------- | ----------------------------------- | ------- |
-| children  | content        | MenuTitle \| MenuItem \| MenuItem[] | -       |
-| direction | Menu direction | `vertical` \| `horizontal`          | -       |
-| size      | Menu size      | `xs` \| `sm` \| `md` \| `lg`        | -       |
+| Property  | Description    | Type                         | Default |
+| --------- | -------------- | ---------------------------- | ------- |
+| children  | content        | Menu.Item[]                  | -       |
+| direction | Menu direction | `vertical` \| `horizontal`   | -       |
+| size      | Menu size      | `xs` \| `sm` \| `md` \| `lg` | -       |
 
-### MenuItem
+### Menu.Item
 
 | Property | Description    | Type      | Default |
 | -------- | -------------- | --------- | ------- |
 | active   | Active state   | boolean   | false   |
 | children | Content        | ReactNode | -       |
 | disabled | Disabled state | boolean   | false   |
+| title    | Menu title     | boolean   | false   |
 
-### MenuTitle
+### Menu.Title
 
-| Property | Description | Type                           | Default |
-| -------- | ----------- | ------------------------------ | ------- |
-| children | Content     | ReactNode                      | -       |
-| tag      | Tag name    | `li` \| `h1` \| `h2` \| etc... | `li`    |
+| Property | Description | Type      | Default |
+| -------- | ----------- | --------- | ------- |
+| children | -           | ReactNode | -       |
+| icon     | -           | ReactNode | -       |
 
-### MenuDetails
+### Menu.Details
 
-| Property | Description | Type                   | Default |
-| -------- | ----------- | ---------------------- | ------- |
-| children | content     | MenuItem \| MenuItem[] | -       |
-| label    | Label       | ReactNode              | -       |
-| open     | Open state  | boolean                | false   |
+| Property | Description | Type        | Default |
+| -------- | ----------- | ----------- | ------- |
+| children | content     | Menu.Item[] | -       |
+| label    | Label       | ReactNode   | -       |
+| open     | Open state  | boolean     | false   |
 
-### MenuDropdown
+### Menu.Dropdown
 
-| Property | Description | Type                   | Default |
-| -------- | ----------- | ---------------------- | ------- |
-| children | content     | MenuItem \| MenuItem[] | -       |
-| label    | Label       | ReactNode              | -       |
-| open     | Open state  | boolean                | false   |
+| Property | Description | Type        | Default |
+| -------- | ----------- | ----------- | ------- |
+| children | content     | Menu.Item[] | -       |
+| label    | Label       | ReactNode   | -       |
+| open     | Open state  | boolean     | false   |
