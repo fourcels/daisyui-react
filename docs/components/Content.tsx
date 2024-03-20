@@ -75,11 +75,14 @@ function Toc({
   const timer = useRef(0);
   const animate = useRef(false);
 
-  const setActiveAnchor = (idx: number) => {
-    setActive(idx);
-    const elem = toc[idx];
-    history.replaceState(null, "", `#${elem.id}`);
-  };
+  const setActiveAnchor = React.useCallback(
+    (idx: number) => {
+      setActive(idx);
+      const elem = toc[idx];
+      history.replaceState(null, "", `#${elem.id}`);
+    },
+    [toc]
+  );
 
   useEffect(() => {
     const elems = toc.map((item) => {
@@ -106,8 +109,7 @@ function Toc({
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [toc]);
+  }, [toc, setActiveAnchor]);
 
   return (
     <ul className={twMerge("toc", className)}>
