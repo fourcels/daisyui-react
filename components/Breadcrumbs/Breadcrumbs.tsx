@@ -1,13 +1,18 @@
-import React, { forwardRef } from "react";
+import React, { ReactElement, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { ComponentBaseProps } from "../types";
+import { ComponentBaseProps, ListOrItem } from "../types";
 import { BreadcrumbsItem, BreadcrumbsItemProps } from "./BreadcrumbsItem";
 
 export type { BreadcrumbsItemProps };
 
-export type BreadcrumbsProps = React.HTMLAttributes<HTMLDivElement> &
-  ComponentBaseProps;
+export type BreadcrumbsProps = Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  "children"
+> &
+  ComponentBaseProps & {
+    children?: ListOrItem<ReactElement>;
+  };
 
 const BreadcrumbsInner = forwardRef<HTMLDivElement, BreadcrumbsProps>(
   ({ children, dataTheme, className, ...props }, ref): JSX.Element => {

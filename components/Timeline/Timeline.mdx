@@ -72,3 +72,47 @@ description: Timeline component shows a list of events in chronological order.
   </Timeline.Item>
 </Timeline>
 ```
+
+## API
+
+Common props: `dataTheme`, `className`, `style`
+
+### Timeline
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| children | - | Timeline.Item[] | - |
+| compact | forces all items on one side | boolean | false |
+| middle | Timeline middle icon | boolean | - |
+| responsive | vertical by default, horizontal on large screen | boolean | false |
+| snap | snaps the icon to the start instead of middle | boolean | false |
+| vertical | - | boolean | false |
+
+### Timeline.Item
+
+| Property | Description       | Type                       | Default |
+| -------- | ----------------- | -------------------------- | ------- |
+| active   | -                 | boolean                    | false   |
+| children | -                 | ReactNode                  | -       |
+| connect  | Show connect line | `both` \| `start` \| `end` | -       |
+| middle   | Show middle icon  | boolean                    | true    |
+
+### Timeline.Start
+
+| Property | Description | Type      | Default |
+| -------- | ----------- | --------- | ------- |
+| box      | -           | boolean   | false   |
+| children | -           | ReactNode | -       |
+
+### Timeline.End
+
+| Property | Description | Type      | Default |
+| -------- | ----------- | --------- | ------- |
+| box      | -           | boolean   | false   |
+| children | -           | ReactNode | -       |
+
+### Timeline.Middle
+
+| Property | Description | Type      | Default |
+| -------- | ----------- | --------- | ------- |
+| children | -           | ReactNode | -       |

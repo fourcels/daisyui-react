@@ -1,7 +1,7 @@
 import React, { FC, Suspense, useRef, useState } from "react";
 import { LiveProvider, LiveError, LivePreview } from "react-live";
 import * as scope from "daisyui-react";
-import { Button, ButtonProps, Divider, Tooltip } from "daisyui-react";
+import { Button, Tooltip } from "daisyui-react";
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -15,7 +15,7 @@ type CodePrivewProps = {
   title?: string;
   description?: string;
   live: boolean;
-  loadCode: () => Promise<{ default: string }>;
+  loadCode?: () => Promise<{ default: string }>;
   loadComponent?: () => Promise<{ default: React.ComponentType }>;
 };
 
