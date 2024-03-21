@@ -16,7 +16,16 @@ export type RadialProgressProps = Omit<
 
 export const RadialProgress = forwardRef<HTMLDivElement, RadialProgressProps>(
   (
-    { value, size, thickness, children, color, dataTheme, className, ...props },
+    {
+      value = 0,
+      size,
+      thickness,
+      children,
+      color,
+      dataTheme,
+      className,
+      ...props
+    },
     ref
   ): JSX.Element => {
     const colors = {

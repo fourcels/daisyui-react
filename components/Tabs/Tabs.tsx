@@ -29,7 +29,7 @@ const TabsInner = forwardRef<HTMLDivElement, TabsProps>(
     },
     ref
   ): JSX.Element => {
-    const [activeIdx, setActiveIdx] = React.useState(defaultActive);
+    const [active, setActive] = React.useState(defaultActive);
 
     const sizes = {
       xs: "tabs-xs",
@@ -62,8 +62,8 @@ const TabsInner = forwardRef<HTMLDivElement, TabsProps>(
         {children &&
           React.Children.map(children, (child, idx) =>
             React.cloneElement(child, {
-              active: idx === activeIdx,
-              onClick: () => setActiveIdx(idx),
+              active: idx === active,
+              onClick: () => setActive(idx),
               activeClassName,
             })
           )}

@@ -21,6 +21,9 @@ export type CheckboxProps = Omit<
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
+      onChange,
+      checked,
+      defaultChecked = false,
       indeterminate,
       reverse,
       label,
@@ -33,6 +36,9 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     },
     ref
   ) => {
+    const [checkedInner, setCheckedInner] = React.useState(
+      checked ?? defaultChecked
+    );
     const inputRef = React.useRef<HTMLInputElement>(null);
 
     React.useImperativeHandle(ref, () => inputRef.current!);
@@ -42,8 +48,9 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       if (!input) {
         return;
       }
+      typeof checked != "undefined" && setCheckedInner(checked);
       input.indeterminate = !!indeterminate;
-    }, [indeterminate]);
+    }, [checked, indeterminate]);
 
     const sizes = {
       lg: "checkbox-lg",
@@ -71,6 +78,15 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <Label reverse={reverse} className={wrapperClassName}>
         <input
+          checked={checkedInner}
+          onChange={(e) => {
+            if (indeterminate) {
+              e.preventDefault();
+              return;
+            }
+            setCheckedInner(e.target.checked);
+            onChange?.(e);
+          }}
           type="checkbox"
           {...props}
           ref={inputRef}

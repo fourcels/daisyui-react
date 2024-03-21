@@ -20,11 +20,13 @@ export type ToggleProps = Omit<
       checked: boolean,
       e: React.ChangeEvent<HTMLInputElement>
     ) => void;
+    indeterminate?: boolean;
   };
 
 export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
   (
     {
+      indeterminate,
       defaultChecked = false,
       checked,
       onChange,
@@ -41,6 +43,10 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
     },
     ref
   ) => {
+    const inputRef = React.useRef<HTMLInputElement>(null);
+
+    React.useImperativeHandle(ref, () => inputRef.current!);
+
     const sizes = {
       lg: "toggle-lg",
       md: "toggle-md",
@@ -67,8 +73,13 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
       checked ?? defaultChecked
     );
     React.useEffect(() => {
-      typeof checked !== "undefined" && setCheckedInner(checked);
-    }, [checked]);
+      const input = inputRef.current;
+      if (!input) {
+        return;
+      }
+      typeof checked != "undefined" && setCheckedInner(checked);
+      input.indeterminate = !!indeterminate;
+    }, [checked, indeterminate]);
 
     return (
       <Label reverse={reverse} className={wrapperClassName}>
@@ -76,13 +87,17 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
         <input
           checked={checkedInner}
           onChange={(e) => {
+            if (indeterminate) {
+              e.preventDefault();
+              return;
+            }
             const checked = e.target.checked;
             setCheckedInner(checked);
             onChange?.(checked, e);
           }}
           type="checkbox"
           {...props}
-          ref={ref}
+          ref={inputRef}
           data-theme={dataTheme}
           className={classes}
         />

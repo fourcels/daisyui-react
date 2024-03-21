@@ -21,3 +21,29 @@ description: Tabs can be used to show a list of links in a tabbed format.
   <Tabs.Tab label="tab 3">Tab 3</Tabs.Tab>
 </Tabs>
 ```
+
+## API
+
+Common props: `dataTheme`, `className`, `style`
+
+### Tabs
+
+| Property        | Description | Type                              | Default |
+| --------------- | ----------- | --------------------------------- | ------- |
+| children        | -           | Tabs.Tab[]                        | -       |
+| size            | -           | `xs` \| `sm` \| `md` \| `lg`      | -       |
+| variant         | -           | `bordered` \| `lifted` \| `boxed` | -       |
+| defaultActive   | -           | number                            | 0       |
+| activeClassName | -           | string                            | -       |
+
+### Tabs.Tab
+
+| Property         | Description | Type      | Default |
+| ---------------- | ----------- | --------- | ------- |
+| active           | -           | boolean   | false   |
+| activeClassName  | -           | string    | -       |
+| children         | -           | ReactNode | -       |
+| contentClassName | -           | string    | -       |
+| disabled         | -           | boolean   | -       |
+| indicator        | -           | ReactNode | -       |
+| label            | -           | ReactNode | -       |

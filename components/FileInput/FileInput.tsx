@@ -11,25 +11,10 @@ export type FileInputProps = Omit<
   ComponentBaseProps & {
     size?: ComponentSize;
     color?: Exclude<ComponentColor, "neutral" | "ghost">;
-    label?: ReactNode;
-    labelAlt?: ReactNode;
-    labelClassName?: string;
   };
 
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
-  (
-    {
-      label,
-      labelAlt,
-      labelClassName,
-      size,
-      color,
-      dataTheme,
-      className,
-      ...props
-    },
-    ref
-  ) => {
+  ({ size, color, dataTheme, className, ...props }, ref) => {
     const sizes = {
       lg: "file-input-lg",
       md: "file-input-md",

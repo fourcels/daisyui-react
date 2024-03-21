@@ -25,15 +25,20 @@ Common props: `dataTheme`, `className`, `style`
 
 ### Select
 
-| Property    | Description        | Type                                                                                           | Default |
-| ----------- | ------------------ | ---------------------------------------------------------------------------------------------- | ------- |
-| color       | Select color       | `primary` \| `secondary` \| `accent` \| `info` \| `success` \| `warning` \| `error` \| `ghost` | -       |
-| bordered    | Select with border | boolean                                                                                        | true    |
-| children    | Select content     | Select.Option \| Select.Option[]                                                               | -       |
-| disabled    | Disabled state     | boolean                                                                                        | false   |
-| items       | Select items       | SelectItem[]                                                                                   | -       |
-| placeholder | Select placeholder | string \| null                                                                                 | -       |
-| size        | Size of Select     | `xs` \| `sm` \| `md` \| `lg`                                                                   | -       |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| clearable | - | boolean | true |
+| color | Select color | `primary` \| `secondary` \| `accent` \| `info` \| `success` \| `warning` \| `error` \| `ghost` | - |
+| bordered | Select with border | boolean | true |
+| children | Select content | Select.Option[] | - |
+| defaultValue | - | string | "" |
+| disabled | Disabled state | boolean | false |
+| items | Select items | SelectItem[] | - |
+| onChange | - | (value: string, e: ChangeEvent) => void | - |
+| placeholder | Select placeholder | string \| null | "Select..." |
+| size | Size of Select | `xs` \| `sm` \| `md` \| `lg` | - |
+| value | - | string | - |
+| wrapperClassName | - | string | - |
 
 It accepts all props which native `select` support.
 

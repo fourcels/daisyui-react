@@ -17,12 +17,16 @@ Common props: `dataTheme`, `className`, `style`
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
+| checked | - | boolean | - |
 | color | Toggle color | `primary` \| `secondary` \| `accent` \| `info` \| `success` \| `warning` \| `error` | - |
+| defaultChecked | - | boolean | false |
+| disabled | - | boolean | false |
+| indeterminate | - | boolean | false |
 | label | - | string | - |
 | labelAlt | - | string | - |
 | onChange | - | (checked: boolean, e: ChangeEvent) => void | - |
-| reverse | Label order reverse | boolean | false |
+| reverse | reverse label order | boolean | false |
 | size | Toggle size | `xs` \| `sm` \| `md` \| `lg` | - |
 | wrapperClassName | - | string | - |
 
-It accepts all props which native `checkbox` support.
+It accepts all props which native `input[checkbox]` support.

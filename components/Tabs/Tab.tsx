@@ -7,7 +7,7 @@ export type TabProps = React.HTMLAttributes<HTMLAnchorElement> & {
   label?: React.ReactNode;
   contentClassName?: string;
   activeClassName?: string;
-  indicator?: React.ReactElement;
+  indicator?: React.ReactNode;
 };
 
 export const Tab = forwardRef<HTMLAnchorElement, TabProps>(

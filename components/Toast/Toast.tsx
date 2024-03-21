@@ -2,7 +2,6 @@ import React, { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { ComponentBaseProps } from "../types";
-import { Alert, AlertProps } from "../Alert";
 
 const horizontals = {
   start: "toast-start",

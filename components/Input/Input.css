@@ -2,7 +2,7 @@
   @apply input flex items-center gap-2;
 }
 
-.input-wrapper {
+.input-content {
   @apply grow grid items-center;
 
   input {

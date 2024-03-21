@@ -17,7 +17,7 @@ export type InputProps = Omit<
     start?: React.ReactNode;
     end?: React.ReactNode;
     inputClassName?: string;
-    wrapperClassName?: string;
+    contentClassName?: string;
     onChange?: (value: string, e: React.ChangeEvent<HTMLInputElement>) => void;
     clearable?: boolean;
   };
@@ -31,7 +31,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       defaultValue = "",
       disabled,
       inputClassName,
-      wrapperClassName,
+      contentClassName,
       className,
       start,
       end,
@@ -95,7 +95,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         data-theme={dataTheme}
       >
         {start}
-        <div className={twMerge("input-wrapper", wrapperClassName)}>
+        <div className={twMerge("input-content", contentClassName)}>
           <input
             value={valueInner}
             onChange={(e) => {

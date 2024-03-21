@@ -60,8 +60,8 @@ description: Text Input is a simple input field.
     }
   />
   <Input
+    autoComplete="new-password"
     type="password"
-    defaultValue="password"
     placeholder="Password"
     start={
       <svg
@@ -99,3 +99,26 @@ description: Text Input is a simple input field.
   <Input placeholder="Search" end={<Badge color="info">Optional</Badge>} />
 </div>
 ```
+
+## API
+
+Common props: `dataTheme`, `className`, `style`
+
+### Input
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| clearable | - | boolean | true |
+| color | - | `primary` \| `secondary` \| `accent` \| `info` \| `success` \| `warning` \| `error` \| `ghost` | - |
+| bordered | - | boolean | true |
+| contentClassName | - | string | - |
+| defaultValue | - | string | "" |
+| disabled | Disabled state | boolean | false |
+| end | - | ReactNode | - |
+| inputClassName | - | string | - |
+| onChange | - | (value: string, e: ChangeEvent) => void | - |
+| size | - | `xs` \| `sm` \| `md` \| `lg` | - |
+| start | - | ReactNode | - |
+| value | - | string | - |
+
+It accepts all props which native `input` support.

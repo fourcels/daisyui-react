@@ -47,7 +47,7 @@ export default function App() {
       <Divider>Preview</Divider>
 
       <div className="flex justify-center">
-        <Form.Control label="Pick a file" labelAlt="Alt label">
+        <Form.Control label="Pick a file" labelTR="Alt label">
           <FileInput size={size} color={color} disabled={disabled} />
         </Form.Control>
       </div>

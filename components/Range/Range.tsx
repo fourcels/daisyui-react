@@ -2,7 +2,7 @@ import { twMerge } from "tailwind-merge";
 
 import { ComponentBaseProps, ComponentColor, ComponentSize } from "../types";
 
-import React, { ReactNode, forwardRef } from "react";
+import React, { forwardRef } from "react";
 
 export type RangeProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,

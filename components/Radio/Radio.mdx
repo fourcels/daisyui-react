@@ -22,3 +22,20 @@ description: Radio buttons allow the user to select one option from a set.
   <Radio label="Blue pill" name="pill" className="checked:bg-blue-500" />
 </div>
 ```
+
+## API
+
+Common props: `dataTheme`, `className`, `style`
+
+### Radio
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| color | - | `primary` \| `secondary` \| `accent` \| `info` \| `success` \| `warning` \| `error` | - |
+| disabled | - | boolean | false |
+| label | - | ReactNode | - |
+| reverse | reverse label order | boolean | false |
+| size | - | `xs` \| `sm` \| `md` \| `lg` | - |
+| wrapperClassName | - | string | - |
+
+It accepts all props which native `input[radio]` support.

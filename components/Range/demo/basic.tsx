@@ -46,7 +46,7 @@ export default function App() {
       <Divider>Preview</Divider>
 
       <div className="flex flex-col items-center">
-        <Range size={size} color={color} step={20} measure={measure} />
+        <Range size={size} color={color} measure={measure} />
       </div>
     </>
   );

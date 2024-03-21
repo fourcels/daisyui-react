@@ -5,6 +5,8 @@ export default function App() {
   const [color, setColor] = React.useState<ToggleProps["color"]>();
   const [size, setSize] = React.useState<ToggleProps["size"]>();
   const [reverse, setReverse] = React.useState(false);
+  const [disabled, setDisabled] = React.useState(false);
+  const [indeterminate, setIndeterminate] = React.useState(false);
   return (
     <>
       <div className="flex gap-4">
@@ -30,12 +32,19 @@ export default function App() {
         </Form.Control>
 
         <Toggle label="Reverse" onChange={(val) => setReverse(val)} />
+        <Toggle label="Disabled" onChange={(val) => setDisabled(val)} />
+        <Toggle
+          label="Indeterminate"
+          onChange={(val) => setIndeterminate(val)}
+        />
       </div>
 
       <Divider>Preview</Divider>
 
       <div className="flex justify-center">
         <Toggle
+          disabled={disabled}
+          indeterminate={indeterminate}
           reverse={reverse}
           label="Remember me"
           size={size}
