@@ -7,7 +7,7 @@ import { Label } from "../Label";
 
 export type CheckboxProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
-  "size" | "color"
+  "size" | "color" | "onChange"
 > &
   ComponentBaseProps & {
     size?: ComponentSize;
@@ -16,6 +16,10 @@ export type CheckboxProps = Omit<
     wrapperClassName?: string;
     reverse?: boolean;
     indeterminate?: boolean;
+    onChange?: (
+      checked: boolean,
+      e: React.ChangeEvent<HTMLInputElement>
+    ) => void;
   };
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
@@ -84,8 +88,9 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               e.preventDefault();
               return;
             }
-            setCheckedInner(e.target.checked);
-            onChange?.(e);
+            const checked = e.target.checked;
+            setCheckedInner(checked);
+            onChange?.(checked, e);
           }}
           type="checkbox"
           {...props}

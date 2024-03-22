@@ -17,7 +17,7 @@ export default function App() {
       <ThemeController.Checkbox
         checked={checked}
         value="synthwave"
-        onChange={(e) => setChecked(e.target.checked)}
+        onChange={(checked) => setChecked(checked)}
       />
 
       <Divider>Theme Controller using a swap</Divider>
