@@ -111,7 +111,7 @@ description: Hero is a component for displaying a large box or image with a titl
 ```tsx live
 <Hero
   className="min-h-[500px]"
-  overlayImage="https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg"
+  overlayUrl="https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg"
 >
   <Hero.Content className="text-center text-neutral-content">
     <div className="max-w-md">
@@ -126,3 +126,14 @@ description: Hero is a component for displaying a large box or image with a titl
   </Hero.Content>
 </Hero>
 ```
+
+## API
+
+Common props: `dataTheme`, `className`, `style`
+
+### Hero
+
+| Property   | Description       | Type      | Default |
+| ---------- | ----------------- | --------- | ------- |
+| children   | -                 | ReactNode | -       |
+| overlayUrl | overlay image url | string    | -       |

@@ -1,13 +1,18 @@
-import React, { forwardRef } from "react";
+import React, { ReactElement, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { ComponentBaseProps } from "../types";
+import { ComponentBaseProps, ListOrItem } from "../types";
 import { MockupCodeLine, MockupCodeLineProps } from "./MockupCodeLine";
 
 export type { MockupCodeLineProps };
 
-export type MockupCodeProps = React.HTMLAttributes<HTMLDivElement> &
-  ComponentBaseProps;
+export type MockupCodeProps = Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  "children"
+> &
+  ComponentBaseProps & {
+    children?: ListOrItem<ReactElement>;
+  };
 
 const MockupCodeInner = forwardRef<HTMLDivElement, MockupCodeProps>(
   ({ dataTheme, className, ...props }, ref): JSX.Element => {

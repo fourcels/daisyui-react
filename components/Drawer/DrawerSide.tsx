@@ -3,7 +3,6 @@ import { twMerge } from "tailwind-merge";
 import { useDrawer } from "./DrawerContext";
 
 export type DrawerSideProps = React.HTMLAttributes<HTMLDivElement> & {
-  overlay?: boolean;
   wrapperClassName?: string;
 };
 

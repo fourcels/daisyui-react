@@ -32,13 +32,18 @@ export default function App() {
 
       <Divider>Preview</Divider>
 
-      <Drawer end={end} overlay={overlay} responsive={responsive}>
+      <Drawer
+        end={end}
+        overlay={overlay}
+        responsive={responsive}
+        className="h-[250px]"
+      >
         <Drawer.Content className="flex justify-center">
           <Drawer.Toggle>
             <Button color="primary">Open drawer</Button>
           </Drawer.Toggle>
         </Drawer.Content>
-        <Drawer.Side wrapperClassName="z-30">
+        <Drawer.Side wrapperClassName="z-30 h-full">
           <Menu className="p-4 w-60 md:w-80">
             <Menu.Item>
               <a>Sidebar Item 1</a>

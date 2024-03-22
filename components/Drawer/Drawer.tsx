@@ -17,7 +17,7 @@ export type DrawerProps = Omit<
   ComponentBaseProps & {
     open?: boolean;
     end?: boolean;
-    onClose?: (open: boolean) => void;
+    onChange?: (open: boolean) => void;
     overlay?: boolean;
     responsive?: boolean;
   };
@@ -27,7 +27,7 @@ const DrawerInner = React.forwardRef<HTMLDivElement, DrawerProps>(
     {
       responsive,
       open = false,
-      onClose,
+      onChange,
       overlay = true,
       children,
       end,
@@ -58,7 +58,11 @@ const DrawerInner = React.forwardRef<HTMLDivElement, DrawerProps>(
           <input
             type="checkbox"
             checked={openInner}
-            onChange={(e) => setOpenInner(e.target.checked)}
+            onChange={(e) => {
+              const checked = e.target.checked;
+              setOpenInner(checked);
+              onChange?.(checked);
+            }}
             className="drawer-toggle"
           />
           {children}

@@ -2,19 +2,14 @@ import {
   Select,
   Form,
   Divider,
-  Alert,
-  AlertProps,
-  Button,
   MockupPhoneProps,
-  Toggle,
   MockupPhone,
-  Artboard,
 } from "daisyui-react";
 import React from "react";
 
 export default function App() {
   const [color, setColor] = React.useState<MockupPhoneProps["color"]>();
-  const [camera, setCamera] = React.useState(true);
+  const [size, setSize] = React.useState<MockupPhoneProps["size"]>();
 
   return (
     <>
@@ -34,18 +29,26 @@ export default function App() {
             ]}
           />
         </Form.Control>
-        <Toggle
-          label="Camera"
-          checked={camera}
-          onChange={(checked) => setCamera(checked)}
-        />
+        <Form.Control label="Size">
+          <Select
+            onChange={(value) => setSize(value as any)}
+            items={[
+              "phone-1",
+              "phone-2",
+              "phone-3",
+              "phone-4",
+              "phone-5",
+              "phone-6",
+            ]}
+          />
+        </Form.Control>
       </div>
 
       <Divider>Preview</Divider>
 
-      <div className="flex justify-center">
-        <MockupPhone camera={camera} color={color}>
-          <Artboard>Hi.</Artboard>
+      <div className="flex justify-center overflow-x-auto">
+        <MockupPhone size={size} color={color}>
+          Hi.
         </MockupPhone>
       </div>
     </>

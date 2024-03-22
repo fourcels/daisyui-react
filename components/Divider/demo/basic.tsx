@@ -6,6 +6,7 @@ export default function App() {
   const [color, setColor] = React.useState<DividerProps["color"]>();
   const [direction, setDirection] = React.useState<DividerProps["direction"]>();
   const [position, setPosition] = React.useState<DividerProps["position"]>();
+  const [responsive, setResponsive] = React.useState(false);
   return (
     <>
       <div className="flex flex-wrap gap-8">
@@ -36,19 +37,35 @@ export default function App() {
             items={["start", "center", "end"]}
           />
         </Form.Control>
+        <Toggle
+          label="Responsive"
+          onChange={(checked) => setResponsive(checked)}
+        />
       </div>
 
       <Divider>Preview</Divider>
 
-      <div className="flex justify-center">
+      <div
+        className={twMerge(
+          "flex flex-col w-full",
+          direction === "horizontal" && "flex-row",
+          responsive && "lg:flex-row"
+        )}
+      >
+        <div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
+          Content
+        </div>
         <Divider
           color={color}
           position={position}
           direction={direction}
-          className={twMerge(direction === "horizontal" ? "h-32" : "w-full")}
+          responsive={responsive}
         >
-          Divider
+          OR
         </Divider>
+        <div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
+          Content
+        </div>
       </div>
     </>
   );

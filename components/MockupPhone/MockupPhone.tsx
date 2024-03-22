@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { ComponentBaseProps, ComponentColor } from "../types";
-import { Artboard } from "../Artboard";
+import { Artboard, ArtboardProps } from "../Artboard";
 
 export type MockupPhoneProps = Omit<
   React.HTMLAttributes<HTMLDivElement>,
@@ -10,12 +10,12 @@ export type MockupPhoneProps = Omit<
 > &
   ComponentBaseProps & {
     color?: Exclude<ComponentColor, "ghost">;
-    camera?: boolean;
+    size?: ArtboardProps["size"];
   };
 
 export const MockupPhone = forwardRef<HTMLDivElement, MockupPhoneProps>(
   (
-    { color, camera = true, children, dataTheme, className, ...props },
+    { size, color, children, dataTheme, className, ...props },
     ref
   ): JSX.Element => {
     const colors = {
@@ -32,8 +32,10 @@ export const MockupPhone = forwardRef<HTMLDivElement, MockupPhoneProps>(
     const classes = twMerge("mockup-phone", color && colors[color], className);
     return (
       <div {...props} className={classes} ref={ref} data-theme={dataTheme}>
-        {camera && <div className="camera"></div>}
-        <div className="display">{children}</div>
+        <div className="camera"></div>
+        <div className="display">
+          <Artboard size={size}>{children}</Artboard>
+        </div>
       </div>
     );
   }

@@ -5,20 +5,18 @@ description: Divider will be used to separate content vertically or horizontally
 
 ## Examples
 
-### Divider
-
 <code src="./demo/basic.tsx" />
 
-### Responsive
+## API
 
-```tsx live
-<div className="flex flex-col w-full lg:flex-row">
-  <div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
-    Content
-  </div>
-  <Divider responsive>OR</Divider>
-  <div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
-    Content
-  </div>
-</div>
-```
+Common props: `dataTheme`, `className`, `style`
+
+### Divider
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| children | - | ReactNode | - |
+| color | - | `neutral` \| `primary` \| `secondary` \| `accent` \| `info` \| `success` \| `warning` \| `error` | - |
+| direction | - | `vertical` \| `horizontal` | - |
+| position | - | `start` \| `center` \| `end` | - |
+| responsive | - | boolean | false |

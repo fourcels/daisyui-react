@@ -5,20 +5,17 @@ description: Window mockup shows a box that looks like an operating system windo
 
 ## Examples
 
-### window mockup with border
-
 ```tsx live
-<MockupWindow className="w-full">
-  <div className="flex justify-center px-4 py-16 border-t border-base-300">
-    Hello!
-  </div>
-</MockupWindow>
+<MockupWindow className="w-full">Hello!</MockupWindow>
 ```
 
-### Browser mockup with background color
+## API
 
-```tsx live
-<MockupWindow className="w-full border-base-content bg-base-300">
-  <div className="flex justify-center px-4 py-16 bg-base-200">Hello!</div>
-</MockupWindow>
-```
+Common props: `dataTheme`, `className`, `style`
+
+### MockupWindow
+
+| Property         | Description | Type      | Default |
+| ---------------- | ----------- | --------- | ------- |
+| children         | -           | ReactNode | -       |
+| contentClassName | -           | string    | -       |

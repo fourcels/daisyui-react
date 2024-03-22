@@ -6,3 +6,37 @@ description: Drawer is a grid layout that can show/hide a sidebar on the left or
 ## Examples
 
 <code src="./demo/basic.tsx" />
+
+## API
+
+Common props: `dataTheme`, `className`, `style`
+
+### Drawer
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| children | - | ReactNode | - |
+| end | - | boolean | false |
+| onChange | - | (open: boolean) => void | - |
+| open | Forces the drawer to be open | boolean | false |
+| overlay | The label covers the content when drawer is open | boolean | true |
+| responsive | Sidebar is always visible on large screen, can be toggled on small screen | boolean | false |
+
+### Drawer.Toggle
+
+| Property | Description | Type         | Default |
+| -------- | ----------- | ------------ | ------- |
+| children | -           | ReactElement | -       |
+
+### Drawer.Side
+
+| Property         | Description | Type      | Default |
+| ---------------- | ----------- | --------- | ------- |
+| children         | -           | ReactNode | -       |
+| wrapperClassName | -           | string    | -       |
+
+### Drawer.Content
+
+| Property | Description | Type      | Default |
+| -------- | ----------- | --------- | ------- |
+| children | -           | ReactNode | -       |

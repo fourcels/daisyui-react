@@ -44,22 +44,6 @@ description: Stack visually puts elements on top of each other.
 
 ```tsx live
 <Stack>
-  <Card className="text-center w-36 border-base-content">
-    <Card.Body>A</Card.Body>
-  </Card>
-  <Card className="text-center w-36 border-base-content">
-    <Card.Body>B</Card.Body>
-  </Card>
-  <Card className="text-center w-36 border-base-content">
-    <Card.Body>C</Card.Body>
-  </Card>
-</Stack>
-```
-
-### Stacked cards 2
-
-```tsx live
-<Stack>
   <Card bordered={false} className="bg-primary text-primary-content">
     <Card.Body>
       <Card.Title>Notification 1</Card.Title>
@@ -80,3 +64,13 @@ description: Stack visually puts elements on top of each other.
   </Card>
 </Stack>
 ```
+
+## API
+
+Common props: `dataTheme`, `className`, `style`
+
+### Stack
+
+| Property | Description | Type      | Default |
+| -------- | ----------- | --------- | ------- |
+| children | -           | ReactNode | -       |
