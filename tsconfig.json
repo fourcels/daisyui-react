@@ -19,7 +19,8 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "daisyui-react": ["./components"]
-    }
+    },
+    "types": ["vitest/globals"]
   },
   "include": ["docs", "components"],
   "references": [
