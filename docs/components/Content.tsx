@@ -95,7 +95,7 @@ function Toc({
       for (let i = elems.length - 1; i >= 0; i--) {
         const elem = elems[i];
         const elemTop = getOffsetTop(elem, window);
-        if (elemTop < 0) {
+        if (elemTop < 64) {
           setActiveAnchor(i);
           break;
         }
@@ -128,7 +128,11 @@ function Toc({
               e.preventDefault();
               setActiveAnchor(idx);
               const elem = document.getElementById(item.id);
-              elem?.scrollIntoView({
+              if (!elem) {
+                return;
+              }
+              window.scrollTo({
+                top: elem.offsetTop - 64,
                 behavior: "smooth",
               });
               animate.current = true;

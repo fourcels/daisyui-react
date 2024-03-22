@@ -1,28 +1,20 @@
 import { twMerge } from "tailwind-merge";
 
 import { forwardRef } from "react";
-import { ComponentBaseProps } from "../types";
+import { Swap, SwapProps } from "../Swap";
 
-export type ThemeControllerSwapProps = ComponentBaseProps &
-  React.InputHTMLAttributes<HTMLInputElement> & {
-    effect?: "flip" | "rotate";
-  };
+export type ThemeControllerSwapProps = SwapProps;
 
 export const ThemeControllerSwap = forwardRef<
   HTMLLabelElement,
   ThemeControllerSwapProps
->(({ children, effect, className, dataTheme, ...props }, ref) => {
-  const effects = {
-    flip: "swap-flip",
-    rotate: "swap-rotate",
-  };
-
-  const classes = twMerge("swap", effect && effects[effect], className);
+>(({ inputClassName, ...props }, ref) => {
   return (
-    <label ref={ref} className={classes} data-theme={dataTheme}>
-      <input type="checkbox" className="theme-controller" {...props} />
-      {children}
-    </label>
+    <Swap
+      ref={ref}
+      inputClassName={twMerge("theme-controller", inputClassName)}
+      {...props}
+    />
   );
 });
 

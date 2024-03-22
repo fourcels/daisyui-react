@@ -24,7 +24,7 @@ export default function App() {
       <ThemeController.Swap
         checked={checked}
         value="synthwave"
-        onChange={(e) => setChecked(e.target.checked)}
+        onChange={(checked) => setChecked(checked)}
       >
         <Swap.On>
           <svg
