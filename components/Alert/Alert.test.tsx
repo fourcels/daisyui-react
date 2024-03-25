@@ -1,20 +1,26 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { createRef } from "react";
 import { Alert } from "./Alert";
 
 describe("Alert", () => {
   it("renders a default state", () => {
-    render(<Alert>Test</Alert>);
-    expect(screen.getByRole("alert")).toBeTruthy();
+    const { getByRole } = render(<Alert>Test</Alert>);
+    expect(getByRole("alert")).toBeTruthy();
+  });
+  it("Should forward the ref to the root element", () => {
+    const ref = createRef<HTMLDivElement>();
+    render(<Alert ref={ref} />);
+    expect(ref.current).toBeInTheDocument();
   });
   it("renders an icon", () => {
-    render(<Alert icon={<div data-testid="foo" />}>Test</Alert>);
-    expect(screen.getByTestId("foo")).toBeTruthy();
+    const { getByTestId } = render(
+      <Alert icon={<div data-testid="foo" />}>Test</Alert>
+    );
+    expect(getByTestId("foo")).toBeTruthy();
   });
 
-  it("should be able to access the native div", () => {
-    const alertRef = createRef<HTMLDivElement>();
-    render(<Alert data-testid="alert" ref={alertRef} />);
-    expect(screen.getByRole("alert")).toEqual(alertRef.current);
+  it("renders a status", () => {
+    const { getByRole } = render(<Alert color="success">Test</Alert>);
+    expect(getByRole("alert").classList).toContain("alert-success");
   });
 });

@@ -13,21 +13,14 @@ Common props: `dataTheme`, `className`, `style`
 
 ### Accordion
 
-| Property      | Description             | Type                 | Default |
-| ------------- | ----------------------- | -------------------- | ------- |
-| arrow         | Adds arrow icon         | `arrow` \| `plus`    | -       |
-| bordered      | -                       | boolean              | true    |
-| children      | -                       | Accordion.Collapse[] | -       |
-| defaultActive | -                       | number               | 0       |
-| join          | join the items together | boolean              | false   |
+| Property      | Description             | Type              | Default |
+| ------------- | ----------------------- | ----------------- | ------- |
+| icon          | Collapse arrow icon     | `arrow` \| `plus` | -       |
+| bordered      | Collapse bordered       | boolean           | -       |
+| children      | -                       | Accordion.Item[]  | -       |
+| defaultActive | -                       | number            | 0       |
+| join          | join the items together | boolean           | false   |
 
-### Accordion.Collapse
-
-| Property | Description     | Type              | Default |
-| -------- | --------------- | ----------------- | ------- |
-| arrow    | Adds arrow icon | `arrow` \| `plus` | -       |
-| bordered | -               | boolean           | true    |
-| children | -               | ReactNode         | -       |
-| open     | Force open      | boolean           | false   |
+### Accordion.Item
 
 It accepts all props which [Collapse](/components/collapse/) support.

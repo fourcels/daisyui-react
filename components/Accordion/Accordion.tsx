@@ -1,9 +1,9 @@
 import React, { ReactElement, forwardRef } from "react";
 import { ComponentBaseProps, ListOrItem } from "../types";
 import { twMerge } from "tailwind-merge";
-import { AccordionCollapse, AccordionCollapseProps } from "./AccordionCollapse";
+import { AccordionItem, AccordionItemProps } from "./AccordionItem";
 
-export type { AccordionCollapseProps };
+export type { AccordionItemProps };
 
 export type AccordionProps = Omit<
   React.HTMLAttributes<HTMLDivElement>,
@@ -13,7 +13,7 @@ export type AccordionProps = Omit<
     children?: ListOrItem<ReactElement>;
     defaultActive?: number;
     bordered?: boolean;
-    arrow?: "arrow" | "plus";
+    icon?: AccordionItemProps["icon"];
     join?: boolean;
   };
 
@@ -22,7 +22,7 @@ const AccordionInner = forwardRef<HTMLDivElement, AccordionProps>(
     {
       join,
       defaultActive = 0,
-      arrow,
+      icon,
       bordered = true,
       children,
       dataTheme,
@@ -46,7 +46,7 @@ const AccordionInner = forwardRef<HTMLDivElement, AccordionProps>(
               open: idx === active,
               onClick: () => setActive(idx),
               className: twMerge(child.props.className, join && "join-item"),
-              arrow,
+              icon,
               bordered,
             });
           })}
@@ -58,5 +58,5 @@ const AccordionInner = forwardRef<HTMLDivElement, AccordionProps>(
 AccordionInner.displayName = "Accordion";
 
 export const Accordion = Object.assign(AccordionInner, {
-  Collapse: AccordionCollapse,
+  Item: AccordionItem,
 });

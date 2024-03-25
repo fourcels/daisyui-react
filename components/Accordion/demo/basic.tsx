@@ -10,16 +10,16 @@ import {
 import React from "react";
 
 export default function App() {
-  const [arrow, setArrow] = React.useState<AccordionProps["arrow"]>();
+  const [icon, setIcon] = React.useState<AccordionProps["icon"]>();
   const [bordered, setBordered] = React.useState(true);
   const [join, setJoin] = React.useState(false);
 
   return (
     <>
       <div className="flex flex-wrap gap-8">
-        <Form.Control label="Arrow">
+        <Form.Control label="Icon">
           <Select
-            onChange={(value) => setArrow(value as any)}
+            onChange={(value) => setIcon(value as any)}
             items={["arrow", "plus"]}
           />
         </Form.Control>
@@ -40,34 +40,25 @@ export default function App() {
       <div className="flex justify-center">
         <Accordion
           className="w-full max-w-md"
-          arrow={arrow}
+          icon={icon}
           bordered={bordered}
           join={join}
         >
-          <Accordion.Collapse>
-            <Collapse.Title>
-              Click to open this one and close others
-            </Collapse.Title>
-            <Collapse.Content>
-              <p>hello</p>
-            </Collapse.Content>
-          </Accordion.Collapse>
-          <Accordion.Collapse>
-            <Collapse.Title>
-              Click to open this one and close others
-            </Collapse.Title>
-            <Collapse.Content>
-              <p>hello</p>
-            </Collapse.Content>
-          </Accordion.Collapse>
-          <Accordion.Collapse>
-            <Collapse.Title>
-              Click to open this one and close others
-            </Collapse.Title>
-            <Collapse.Content>
-              <p>hello</p>
-            </Collapse.Content>
-          </Accordion.Collapse>
+          <Accordion.Item title="Click to open this one and close others">
+            <p>hello</p>
+          </Accordion.Item>
+          <Accordion.Item title="Click to open this one and close others">
+            <p>hello</p>
+          </Accordion.Item>
+          <Accordion.Item title="Click to open this one and close others">
+            <p>hello</p>
+          </Accordion.Item>
+          <Accordion.Item title="Click to open this one and close others">
+            <p>hello</p>
+          </Accordion.Item>
+          <Accordion.Item title="Click to open this one and close others">
+            <p>hello</p>
+          </Accordion.Item>
         </Accordion>
       </div>
     </>

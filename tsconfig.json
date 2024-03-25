@@ -20,9 +20,9 @@
     "paths": {
       "daisyui-react": ["./components"]
     },
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
-  "include": ["docs", "components"],
+  "include": ["docs", "components", "components/Accordion/.test.tsx"],
   "references": [
     {
       "path": "./tsconfig.node.json"
