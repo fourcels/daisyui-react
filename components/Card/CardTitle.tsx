@@ -1,18 +1,12 @@
-import React, { ElementType } from "react";
+import React from "react";
 import { twMerge } from "tailwind-merge";
-import { ComponentBaseProps } from "../types";
 
-export type CardTitleProps = React.HTMLAttributes<HTMLDivElement> &
-  ComponentBaseProps & {
-    tag?: ElementType;
-  };
+export type CardTitleProps = React.HTMLAttributes<HTMLHeadingElement>;
 
-export const CardTitle = React.forwardRef<HTMLElement, CardTitleProps>(
-  ({ className, tag = "div", ...props }, ref) => {
-    const Tag = tag;
-
+export const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
+  ({ className, ...props }, ref) => {
     return (
-      <Tag {...props} className={twMerge("card-title", className)} ref={ref} />
+      <h2 {...props} className={twMerge("card-title", className)} ref={ref} />
     );
   }
 );

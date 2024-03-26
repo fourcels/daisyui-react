@@ -1,9 +1,7 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
-import { ComponentBaseProps } from "../types";
 
-export type CardActionsProps = React.HTMLAttributes<HTMLDivElement> &
-  ComponentBaseProps;
+export type CardActionsProps = React.HTMLAttributes<HTMLDivElement>;
 
 export const CardActions = React.forwardRef<HTMLDivElement, CardActionsProps>(
   ({ className, ...props }, ref) => (

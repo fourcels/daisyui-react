@@ -4,8 +4,8 @@ import { Accordion } from "./Accordion";
 
 describe("Accordion", () => {
   it("Should render Accordion", () => {
-    const { getByTestId } = render(<Accordion data-testid="accordion" />);
-    expect(getByTestId("accordion")).toBeInTheDocument();
+    const { getByTestId } = render(<Accordion data-testid="Accordion" />);
+    expect(getByTestId("Accordion")).toBeInTheDocument();
   });
 
   it("Should forward the ref to the root element", () => {
@@ -16,17 +16,17 @@ describe("Accordion", () => {
 
   it("Should apply additional class names", () => {
     const { getByTestId } = render(
-      <Accordion className="custom-class" data-testid="accordion" />
+      <Accordion className="custom-class" data-testid="Accordion" />
     );
-    expect(getByTestId("accordion")).toHaveClass("custom-class");
+    expect(getByTestId("Accordion")).toHaveClass("custom-class");
   });
   it("Should apply join", () => {
     const { getByTestId } = render(
-      <Accordion data-testid="accordion" join>
-        <Accordion.Item data-testid="accordion.item"></Accordion.Item>
+      <Accordion data-testid="Accordion" join>
+        <Accordion.Item data-testid="Accordion.Item"></Accordion.Item>
       </Accordion>
     );
-    expect(getByTestId("accordion")).toHaveClass("join join-vertical");
-    expect(getByTestId("accordion.item")).toHaveClass("join-item");
+    expect(getByTestId("Accordion")).toHaveClass("join join-vertical");
+    expect(getByTestId("Accordion.Item")).toHaveClass("join-item");
   });
 });
