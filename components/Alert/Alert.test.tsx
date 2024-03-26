@@ -5,7 +5,7 @@ import { Alert } from "./Alert";
 describe("Alert", () => {
   it("renders a default state", () => {
     const { getByRole } = render(<Alert>Test</Alert>);
-    expect(getByRole("alert")).toBeTruthy();
+    expect(getByRole("alert")).toBeInTheDocument();
   });
   it("Should forward the ref to the root element", () => {
     const ref = createRef<HTMLDivElement>();
@@ -16,11 +16,11 @@ describe("Alert", () => {
     const { getByTestId } = render(
       <Alert icon={<div data-testid="foo" />}>Test</Alert>
     );
-    expect(getByTestId("foo")).toBeTruthy();
+    expect(getByTestId("foo")).toBeInTheDocument();
   });
 
-  it("renders a status", () => {
+  it("renders a color", () => {
     const { getByRole } = render(<Alert color="success">Test</Alert>);
-    expect(getByRole("alert").classList).toContain("alert-success");
+    expect(getByRole("alert")).toHaveClass("alert-success");
   });
 });
