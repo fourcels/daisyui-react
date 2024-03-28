@@ -68,4 +68,12 @@ describe("Card", () => {
     );
     expect(getByTestId("Card")).toHaveClass("image-full");
   });
+  it("renders with card body", () => {
+    const { getByTestId } = render(
+      <Card>
+        <Card.Body data-testid="Card.Body"></Card.Body>
+      </Card>
+    );
+    expect(getByTestId("Card.Body")).toBeInTheDocument();
+  });
 });
