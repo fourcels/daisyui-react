@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { throttle } from "lodash";
+import { debounce, throttle } from "lodash";
 import "./Content.css";
 
 export function Content({
@@ -74,6 +74,7 @@ function Toc({
   const [active, setActive] = useState(0);
   const timer = useRef(0);
   const animate = useRef(false);
+  const tocRef = React.useRef<HTMLUListElement>(null);
 
   const setActiveAnchor = React.useCallback(
     (idx: number) => {
@@ -112,7 +113,7 @@ function Toc({
   }, [toc, setActiveAnchor]);
 
   return (
-    <ul className={twMerge("toc", className)}>
+    <ul ref={tocRef} className={twMerge("toc", className)}>
       {toc.map((item, idx) => (
         <li
           key={item.id}
@@ -123,6 +124,7 @@ function Toc({
           )}
         >
           <a
+            title={item.title}
             href={`#${item.id}`}
             onClick={(e) => {
               e.preventDefault();

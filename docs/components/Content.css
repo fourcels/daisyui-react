@@ -39,7 +39,7 @@
 }
 
 .toc-wrapper {
-  @apply flex-shrink-0 hidden lg:block w-48 relative mr-4;
+  @apply flex-shrink-0 hidden md:block min-w-40 max-w-48 lg:max-w-[240px] relative mr-4;
 }
 
 .toc {
@@ -54,7 +54,7 @@
     a {
       @apply opacity-75 transition-opacity block overflow-hidden text-nowrap text-ellipsis;
       &:hover {
-        @apply opacity-100 text-wrap underline;
+        @apply opacity-100 underline;
       }
     }
   }
