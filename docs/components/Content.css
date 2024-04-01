@@ -1,11 +1,11 @@
 .markdown {
   @apply p-8 flex-1;
   a:has(> .icon-link) {
+    margin-right: 5px;
     text-decoration: none;
   }
 
   .icon-link {
-    margin-right: 5px;
     opacity: 0.6;
 
     &::before {

@@ -3,6 +3,13 @@ import { twMerge } from "tailwind-merge";
 import { debounce, throttle } from "lodash";
 import "./Content.css";
 
+let animate = false;
+
+type TocItem = {
+  id: string;
+  title: string;
+};
+
 export function Content({
   children,
   frontmatter,
@@ -10,8 +17,12 @@ export function Content({
 }: {
   children: React.ReactNode;
   frontmatter?: Record<string, string>;
-  toc?: Record<string, any>[];
+  toc?: TocItem[];
 }) {
+  const articleRef = React.useRef<HTMLElement>(null);
+  const tocRef = React.useRef<TocRef>(null);
+  const timer = useRef(0);
+
   React.useEffect(() => {
     const originTitle = document.title;
     if (frontmatter?.title) {
@@ -21,9 +32,40 @@ export function Content({
       document.title = originTitle;
     };
   }, [frontmatter]);
+
+  React.useEffect(() => {
+    const elem = articleRef.current;
+
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.matches("span.icon-link")) {
+        e.preventDefault();
+        const elem = target.parentElement?.parentElement;
+        if (!elem) {
+          return;
+        }
+        tocRef.current?.setActiveAnchor(elem.id);
+        window.scrollTo({
+          top: elem.offsetTop - 64,
+          behavior: "smooth",
+        });
+        animate = true;
+        clearTimeout(timer.current);
+        timer.current = window.setTimeout(() => {
+          animate = false;
+        }, 1000);
+      }
+    };
+    elem?.addEventListener("click", handleClick);
+
+    return () => {
+      elem?.removeEventListener("click", handleClick);
+    };
+  }, []);
+
   return (
     <div className="flex">
-      <article className="markdown prose max-w-5xl">
+      <article ref={articleRef} className="markdown prose max-w-5xl">
         {frontmatter?.title && <h1>{frontmatter.title}</h1>}
         {frontmatter?.description &&
           frontmatter.description
@@ -34,47 +76,25 @@ export function Content({
       </article>
       {toc && (
         <div className="toc-wrapper">
-          <Toc toc={toc} className="sticky top-16" />
+          <Toc ref={tocRef} toc={toc} className="sticky top-16" />
         </div>
       )}
     </div>
   );
 }
 
-export type AnchorContainer = HTMLElement | Window;
-
-function getOffsetTop(
-  element: HTMLElement,
-  container: AnchorContainer
-): number {
-  if (!element.getClientRects().length) {
-    return 0;
-  }
-
-  const rect = element.getBoundingClientRect();
-
-  if (rect.width || rect.height) {
-    if (container === window) {
-      container = element.ownerDocument!.documentElement!;
-      return rect.top - container.clientTop;
-    }
-    return rect.top - (container as HTMLElement).getBoundingClientRect().top;
-  }
-
-  return rect.top;
-}
-
-function Toc({
-  toc,
-  className,
-}: {
+type TocProps = {
   toc: Record<string, any>[];
   className?: string;
-}) {
+};
+
+type TocRef = {
+  setActiveAnchor: (id?: string) => void;
+};
+
+const Toc = React.forwardRef<TocRef, TocProps>(({ toc, className }, ref) => {
   const [active, setActive] = useState(0);
   const timer = useRef(0);
-  const animate = useRef(false);
-  const tocRef = React.useRef<HTMLUListElement>(null);
 
   const setActiveAnchor = React.useCallback(
     (idx: number) => {
@@ -85,18 +105,36 @@ function Toc({
     [toc]
   );
 
+  React.useImperativeHandle(
+    ref,
+    () => ({
+      setActiveAnchor(id) {
+        if (!id) {
+          return;
+        }
+        for (let i = 0; i < toc.length; i++) {
+          const item = toc[i];
+          if (item.id === id) {
+            setActiveAnchor(i);
+            break;
+          }
+        }
+      },
+    }),
+    [toc, setActiveAnchor]
+  );
+
   useEffect(() => {
     const elems = toc.map((item) => {
       return document.getElementById(item.id)!;
     });
     const handleScroll = throttle(() => {
-      if (animate.current) {
+      if (animate) {
         return;
       }
       for (let i = elems.length - 1; i >= 0; i--) {
         const elem = elems[i];
-        const elemTop = getOffsetTop(elem, window);
-        if (elemTop < 64) {
+        if (elem.offsetTop - document.documentElement.scrollTop < 64) {
           setActiveAnchor(i);
           break;
         }
@@ -113,7 +151,7 @@ function Toc({
   }, [toc, setActiveAnchor]);
 
   return (
-    <ul ref={tocRef} className={twMerge("toc", className)}>
+    <ul className={twMerge("toc", className)}>
       {toc.map((item, idx) => (
         <li
           key={item.id}
@@ -137,10 +175,10 @@ function Toc({
                 top: elem.offsetTop - 64,
                 behavior: "smooth",
               });
-              animate.current = true;
+              animate = true;
               clearTimeout(timer.current);
               timer.current = window.setTimeout(() => {
-                animate.current = false;
+                animate = false;
               }, 1000);
             }}
           >
@@ -150,4 +188,4 @@ function Toc({
       ))}
     </ul>
   );
-}
+});

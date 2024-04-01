@@ -11,20 +11,17 @@ description: Buttons allow the user to take actions or make choices.
 
 ### Responsive button
 
+This button will have different sizes on different browser viewpoints
+
 ```tsx live
-/**
- * description: This button will have different sizes on different browser viewpoints
- */
 <Button responsive>Responsive</Button>
 ```
 
 ### Buttons with different HTML tags
 
-```tsx live
-/**
- * description: You can use `btn` class on <button>, <input>, <a>, etc...
- */
+You can use `Button` as \<button\>, \<input\>, \<a\>, etc...
 
+```tsx live
 <Button type="submit">Submit</Button>
 <Button type="reset">Reset</Button>
 <Button as="a">Link</Button>

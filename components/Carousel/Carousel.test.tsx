@@ -26,12 +26,6 @@ describe("Carousel", () => {
     );
     expect(getByTestId("Carousel")).toHaveClass("carousel-vertical");
   });
-  it("renders with vertical", () => {
-    const { getByTestId } = render(
-      <Carousel vertical data-testid="Carousel" />
-    );
-    expect(getByTestId("Carousel")).toHaveClass("carousel-vertical");
-  });
   it("renders with width", () => {
     const { getByTestId } = render(
       <Carousel width="full">
@@ -49,5 +43,14 @@ describe("Carousel", () => {
     );
     expect(container.querySelector(".carousel-prev")).toBeInTheDocument();
     expect(container.querySelector(".carousel-next")).toBeInTheDocument();
+  });
+  it("renders with indicator", () => {
+    const { container } = render(
+      <Carousel indicator>
+        <Carousel.Item></Carousel.Item>
+        <Carousel.Item></Carousel.Item>
+      </Carousel>
+    );
+    expect(container.querySelector(".carousel-indicator")).toBeInTheDocument();
   });
 });

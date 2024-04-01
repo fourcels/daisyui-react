@@ -183,7 +183,7 @@ function Indicator({
     return null;
   }
   return (
-    <div className="flex justify-center w-full py-2 gap-2">
+    <div className="carousel-indicator flex justify-center w-full py-2 gap-2">
       {Array.from({ length: count }, (_, idx) => {
         return (
           <Button
