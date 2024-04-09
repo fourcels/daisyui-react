@@ -3,7 +3,7 @@ import { createRef } from "react";
 import { BottomNavigation } from "./BottomNavigation";
 
 describe("BottomNavigation", () => {
-  it("renders a default state", () => {
+  it("Should render BottomNavigation", () => {
     const { getByTestId } = render(
       <BottomNavigation data-testid="BottomNavigation" />
     );
@@ -14,7 +14,7 @@ describe("BottomNavigation", () => {
     render(<BottomNavigation ref={ref} />);
     expect(ref.current).toBeInTheDocument();
   });
-  it("renders a size", () => {
+  it("renders with size", () => {
     const { getByTestId } = render(
       <BottomNavigation size="lg" data-testid="BottomNavigation">
         <BottomNavigation.Item>Test</BottomNavigation.Item>
@@ -23,7 +23,7 @@ describe("BottomNavigation", () => {
     expect(getByTestId("BottomNavigation")).toHaveClass("btm-nav-lg");
   });
 
-  it("renders a color", () => {
+  it("renders with color", () => {
     const { getByTestId } = render(
       <BottomNavigation color="primary" data-testid="BottomNavigation">
         <BottomNavigation.Item data-testid="BottomNavigation.Item">

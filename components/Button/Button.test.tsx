@@ -3,7 +3,7 @@ import { createRef } from "react";
 import { Button } from "./Button";
 
 describe("Button", () => {
-  it("renders a default state", () => {
+  it("Should render Button", () => {
     const { getByTestId } = render(<Button data-testid="Button">Test</Button>);
     expect(getByTestId("Button")).toBeInTheDocument();
   });
@@ -12,7 +12,7 @@ describe("Button", () => {
     render(<Button ref={ref} />);
     expect(ref.current).toBeInTheDocument();
   });
-  it("renders a size", () => {
+  it("renders with size", () => {
     const { getByTestId } = render(
       <Button size="lg" data-testid="Button">
         Test
@@ -21,7 +21,7 @@ describe("Button", () => {
     expect(getByTestId("Button")).toHaveClass("btn-lg");
   });
 
-  it("renders a color", () => {
+  it("renders with color", () => {
     const { getByTestId } = render(
       <Button color="primary" data-testid="Button">
         Test

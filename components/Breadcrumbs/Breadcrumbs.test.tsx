@@ -3,7 +3,7 @@ import { createRef } from "react";
 import { Breadcrumbs } from "./Breadcrumbs";
 
 describe("Breadcrumbs", () => {
-  it("renders a default state", () => {
+  it("Should render Breadcrumbs", () => {
     const { getByTestId } = render(<Breadcrumbs data-testid="Breadcrumbs" />);
     expect(getByTestId("Breadcrumbs")).toBeInTheDocument();
   });

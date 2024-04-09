@@ -3,7 +3,7 @@ import { createRef } from "react";
 import { Card } from "./Card";
 
 describe("Card", () => {
-  it("renders a default state", () => {
+  it("Should render Card", () => {
     const { getByTestId } = render(<Card data-testid="Card">Test</Card>);
     expect(getByTestId("Card")).toBeInTheDocument();
   });

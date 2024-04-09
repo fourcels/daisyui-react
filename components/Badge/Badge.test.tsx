@@ -3,7 +3,7 @@ import { createRef } from "react";
 import { Badge } from "./Badge";
 
 describe("Badge", () => {
-  it("renders a default state", () => {
+  it("Should render Badge", () => {
     const { getByTestId } = render(<Badge data-testid="Badge">Test</Badge>);
     expect(getByTestId("Badge")).toBeInTheDocument();
   });
@@ -12,7 +12,7 @@ describe("Badge", () => {
     render(<Badge ref={ref} />);
     expect(ref.current).toBeInTheDocument();
   });
-  it("renders a size", () => {
+  it("renders with size", () => {
     const { getByTestId } = render(
       <Badge size="lg" data-testid="Badge">
         Test
@@ -21,7 +21,7 @@ describe("Badge", () => {
     expect(getByTestId("Badge")).toHaveClass("badge-lg");
   });
 
-  it("renders a color", () => {
+  it("renders with color", () => {
     const { getByTestId } = render(
       <Badge color="primary" data-testid="Badge">
         Test

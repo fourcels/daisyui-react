@@ -3,7 +3,7 @@ import { createRef } from "react";
 import { Avatar } from "./Avatar";
 
 describe("Avatar", () => {
-  it("renders a default state", () => {
+  it("Should render Avatar", () => {
     const { getByTestId } = render(<Avatar data-testid="Avatar">Test</Avatar>);
     expect(getByTestId("Avatar")).toBeInTheDocument();
   });
@@ -21,7 +21,7 @@ describe("Avatar", () => {
     );
     expect(getByTestId("Avatar").querySelector("img")).toBeInTheDocument();
   });
-  it("renders a shape", () => {
+  it("renders with shape", () => {
     const { getByTestId } = render(
       <Avatar shape="circle" data-testid="Avatar">
         Test
@@ -29,7 +29,7 @@ describe("Avatar", () => {
     );
     expect(getByTestId("Avatar").firstElementChild).toHaveClass("rounded-full");
   });
-  it("renders a indicator", () => {
+  it("renders with indicator", () => {
     const { getByTestId } = render(
       <Avatar indicator="online" data-testid="Avatar">
         Test
@@ -46,7 +46,7 @@ describe("Avatar", () => {
     expect(getByTestId("Avatar").firstElementChild).toHaveClass("w-24");
   });
 
-  it("renders a color", () => {
+  it("renders with color", () => {
     const { getByTestId } = render(
       <Avatar color="primary" data-testid="Avatar">
         Test
@@ -54,7 +54,7 @@ describe("Avatar", () => {
     );
     expect(getByTestId("Avatar").firstElementChild).toHaveClass("bg-primary");
   });
-  it("renders a ring", () => {
+  it("renders with ring", () => {
     const { getByTestId } = render(
       <Avatar ring="primary" data-testid="Avatar">
         Test

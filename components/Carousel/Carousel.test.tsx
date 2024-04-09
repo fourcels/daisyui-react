@@ -3,7 +3,7 @@ import { createRef } from "react";
 import { Carousel } from "./Carousel";
 
 describe("Carousel", () => {
-  it("renders a default state", () => {
+  it("Should render Carousel", () => {
     const { getByTestId } = render(
       <Carousel data-testid="Carousel"></Carousel>
     );
@@ -14,7 +14,7 @@ describe("Carousel", () => {
     render(<Carousel ref={ref} />);
     expect(ref.current).toBeInTheDocument();
   });
-  it("renders with a snap", () => {
+  it("renders with snap", () => {
     const { getByTestId } = render(
       <Carousel snap="start" data-testid="Carousel" />
     );
@@ -52,5 +52,21 @@ describe("Carousel", () => {
       </Carousel>
     );
     expect(container.querySelector(".carousel-indicator")).toBeInTheDocument();
+  });
+  it("renders with wrapperClassName", () => {
+    const { container } = render(
+      <Carousel wrapperClassName="customClassName"></Carousel>
+    );
+    expect(container.querySelector(".carousel-wrapper")).toHaveClass(
+      "customClassName"
+    );
+  });
+  it("renders with contentClassName", () => {
+    const { container } = render(
+      <Carousel contentClassName="customClassName"></Carousel>
+    );
+    expect(container.querySelector(".carousel-content")).toHaveClass(
+      "customClassName"
+    );
   });
 });
