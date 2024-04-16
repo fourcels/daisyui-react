@@ -1,8 +1,6 @@
-import React, { ReactElement, forwardRef, useCallback, useRef } from "react";
+import React, { ReactElement, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
-
 import { ComponentBaseProps } from "../types";
-
 import { ModalHeader, ModalHeaderProps } from "./ModalHeader";
 import { ModalBody, ModalBodyProps } from "./ModalBody";
 import { ModalAction, ModalActionProps } from "./ModalAction";
@@ -25,6 +23,7 @@ export type ModalProps = React.HTMLAttributes<HTMLDialogElement> &
     trigger?: ReactElement;
     closable?: boolean;
     position?: "top" | "middle" | "bottom";
+    contentClassName?: string;
   };
 
 const ModalInner = forwardRef<HTMLDialogElement, ModalProps>(
@@ -39,6 +38,7 @@ const ModalInner = forwardRef<HTMLDialogElement, ModalProps>(
       backdrop,
       dataTheme,
       className,
+      contentClassName,
       ...props
     },
     ref
@@ -53,14 +53,13 @@ const ModalInner = forwardRef<HTMLDialogElement, ModalProps>(
       bottom: "modal-bottom",
     };
 
-    const containerClasses = twMerge(
+    const classes = twMerge(
       "modal",
       open && "modal-open",
       position && positions[position],
-      responsive && "modal-bottom sm:modal-middle"
+      responsive && "modal-bottom sm:modal-middle",
+      className
     );
-
-    const bodyClasses = twMerge("modal-box", className);
 
     return (
       <ModalContext.Provider value={dialogRef}>
@@ -75,17 +74,17 @@ const ModalInner = forwardRef<HTMLDialogElement, ModalProps>(
           aria-label="Modal"
           open={open}
           data-theme={dataTheme}
-          className={containerClasses}
+          className={classes}
           ref={dialogRef}
         >
-          <div data-theme={dataTheme} className={bodyClasses}>
+          <div className={twMerge("modal-box", contentClassName)}>
             {closable && (
               <Button
                 onClick={() => dialogRef.current?.close()}
                 size="sm"
                 color="ghost"
                 shape="circle"
-                className="absolute right-2 top-2"
+                className="modal-close absolute right-2 top-2"
               >
                 ✕
               </Button>

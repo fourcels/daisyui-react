@@ -6,7 +6,7 @@ import { useOutsideClick } from "../utils";
 
 export type DropdownProps = React.HTMLAttributes<HTMLDivElement> &
   ComponentBaseProps & {
-    trigger: React.ReactElement;
+    trigger?: React.ReactElement;
     position?: ComponentPosition;
     end?: boolean;
     hover?: boolean;
@@ -59,9 +59,10 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
         data-theme={dataTheme}
         className={classes}
       >
-        {React.cloneElement(trigger, {
-          onClick: () => setShow(true),
-        })}
+        {trigger &&
+          React.cloneElement(trigger, {
+            onClick: () => setShow(true),
+          })}
         <div className={twMerge("dropdown-content z-10", contentClassName)}>
           {children}
         </div>

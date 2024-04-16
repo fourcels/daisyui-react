@@ -5,7 +5,7 @@ import { ComponentBaseProps } from "../types";
 
 export type DiffProps = React.HTMLAttributes<HTMLDivElement> &
   ComponentBaseProps & {
-    items: [React.ReactNode, React.ReactNode];
+    items?: [React.ReactNode, React.ReactNode];
   };
 
 export const Diff = forwardRef<HTMLDivElement, DiffProps>(
@@ -14,8 +14,8 @@ export const Diff = forwardRef<HTMLDivElement, DiffProps>(
 
     return (
       <div className={classes} ref={ref} data-theme={dataTheme} {...props}>
-        <div className="diff-item-1">{items[0]}</div>
-        <div className="diff-item-2">{items[1]}</div>
+        <div className="diff-item-1">{items?.[0]}</div>
+        <div className="diff-item-2">{items?.[1]}</div>
         <div className="diff-resizer"></div>
       </div>
     );

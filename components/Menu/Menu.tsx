@@ -1,7 +1,11 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-import { ComponentBaseProps, ComponentSize } from "../types";
+import {
+  ComponentBaseProps,
+  ComponentDirection,
+  ComponentSize,
+} from "../types";
 
 import { MenuTitle, MenuTitleProps } from "./MenuTitle";
 import { MenuItem, MenuItemProps } from "./MenuItem";
@@ -19,7 +23,7 @@ export type {
 export type MenuProps = React.HTMLAttributes<HTMLUListElement> &
   ComponentBaseProps & {
     responsive?: boolean;
-    direction?: "vertical" | "horizontal";
+    direction?: ComponentDirection;
     size?: ComponentSize;
   };
 

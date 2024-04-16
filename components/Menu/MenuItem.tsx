@@ -1,7 +1,10 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-export type MenuItemProps = React.LiHTMLAttributes<HTMLLIElement> & {
+export type MenuItemProps = Omit<
+  React.LiHTMLAttributes<HTMLLIElement>,
+  "title"
+> & {
   disabled?: boolean;
   active?: boolean;
   title?: boolean;

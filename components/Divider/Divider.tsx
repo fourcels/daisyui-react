@@ -48,11 +48,11 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
 
     const classes = twMerge(
       "divider",
-      className,
       responsive && "lg:divider-horizontal",
       direction && directions[direction],
       color && colors[color],
-      position && positions[position]
+      position && positions[position],
+      className
     );
 
     return (

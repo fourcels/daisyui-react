@@ -5,7 +5,7 @@ import { ComponentBaseProps } from "../types";
 
 export type MockupBrowserProps = React.HTMLAttributes<HTMLDivElement> &
   ComponentBaseProps & {
-    toolbar?: string;
+    toolbar?: React.ReactNode;
   };
 
 export const MockupBrowser = forwardRef<HTMLDivElement, MockupBrowserProps>(

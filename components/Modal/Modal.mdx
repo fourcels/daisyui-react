@@ -14,7 +14,10 @@ description: Modal is used to show a dialog or a box when you click a button.
 You can use any w-\* and max-w-\* utility class to customize the width
 
 ```tsx live
-<Modal className="w-11/12 max-w-5xl" trigger={<Button>open modal</Button>}>
+<Modal
+  contentClassName="w-11/12 max-w-5xl"
+  trigger={<Button>open modal</Button>}
+>
   <Modal.Header>Hello!</Modal.Header>
   <Modal.Body>Press ESC key or click the button below to close</Modal.Body>
 </Modal>
@@ -37,15 +40,16 @@ Common props: `dataTheme`, `className`, `style`
 
 ### Modal
 
-| Property   | Description | Type                          | Default |
-| ---------- | ----------- | ----------------------------- | ------- |
-| backdrop   | -           | boolean                       | true    |
-| children   | -           | ReactNode                     | -       |
-| closable   | -           | boolean                       | true    |
-| open       | Force open  | boolean                       | false   |
-| position   | -           | `top` \| `middle` \| `bottom` | -       |
-| responsive | -           | boolean                       | false   |
-| trigger    | -           | ReactElement                  | -       |
+| Property         | Description | Type                          | Default |
+| ---------------- | ----------- | ----------------------------- | ------- |
+| backdrop         | -           | boolean                       | true    |
+| children         | -           | ReactNode                     | -       |
+| closable         | -           | boolean                       | true    |
+| contentClassName | -           | string                        | -       |
+| open             | Force open  | boolean                       | false   |
+| position         | -           | `top` \| `middle` \| `bottom` | -       |
+| responsive       | -           | boolean                       | false   |
+| trigger          | -           | ReactElement                  | -       |
 
 ### Modal.ActionButton
 

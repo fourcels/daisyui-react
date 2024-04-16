@@ -5,7 +5,7 @@ import { ComponentBaseProps } from "../types";
 
 export type MenuDropdownProps = React.HTMLAttributes<HTMLSpanElement> &
   ComponentBaseProps & {
-    label: ReactNode;
+    label?: ReactNode;
     open?: boolean;
     menuClassName?: string;
   };

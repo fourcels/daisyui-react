@@ -7,11 +7,11 @@ export type { HeroContentProps };
 
 export type HeroProps = React.HTMLAttributes<HTMLDivElement> &
   ComponentBaseProps & {
-    overlayUrl?: string;
+    overlay?: string;
   };
 
 const HeroInner = forwardRef<HTMLDivElement, HeroProps>(
-  ({ overlayUrl, style, children, dataTheme, className, ...props }, ref) => {
+  ({ overlay, style, children, dataTheme, className, ...props }, ref) => {
     const classes = twMerge("hero", className);
 
     return (
@@ -19,12 +19,12 @@ const HeroInner = forwardRef<HTMLDivElement, HeroProps>(
         ref={ref}
         className={classes}
         style={{
-          backgroundImage: overlayUrl && `url(${overlayUrl})`,
+          backgroundImage: overlay && `url(${overlay})`,
           ...style,
         }}
         {...props}
       >
-        {overlayUrl && <div className="hero-overlay"></div>}
+        {overlay && <div className="hero-overlay"></div>}
         {children}
       </div>
     );

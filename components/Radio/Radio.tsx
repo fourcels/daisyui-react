@@ -54,24 +54,16 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       className
     );
 
-    const radio = (
-      <input
-        type="radio"
-        {...props}
-        ref={ref}
-        data-theme={dataTheme}
-        className={classes}
-      />
-    );
-
-    if (!label) {
-      return radio;
-    }
-
     return (
       <Label reverse={reverse} className={wrapperClassName}>
-        {radio}
-        <Label.Text>{label}</Label.Text>
+        <input
+          type="radio"
+          {...props}
+          ref={ref}
+          data-theme={dataTheme}
+          className={classes}
+        />
+        {label && <Label.Text>{label}</Label.Text>}
       </Label>
     );
   }

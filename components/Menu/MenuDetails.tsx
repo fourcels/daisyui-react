@@ -4,7 +4,7 @@ import { ComponentBaseProps } from "../types";
 
 export type MenuDetailsProps = React.DetailsHTMLAttributes<HTMLDetailsElement> &
   ComponentBaseProps & {
-    label: ReactNode;
+    label?: ReactNode;
     open?: boolean;
     menuClassName?: string;
   };
