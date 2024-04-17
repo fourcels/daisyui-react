@@ -9,7 +9,7 @@ describe("Range", () => {
   });
 
   it("Should forward the ref to the root element", () => {
-    const ref = createRef<HTMLDivElement>();
+    const ref = createRef<HTMLInputElement>();
     render(<Range ref={ref} />);
     expect(ref.current).toBeInTheDocument();
   });

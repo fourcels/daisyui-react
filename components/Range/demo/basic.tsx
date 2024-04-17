@@ -11,7 +11,8 @@ import React from "react";
 export default function App() {
   const [color, setColor] = React.useState<RadioProps["color"]>();
   const [size, setSize] = React.useState<RadioProps["size"]>();
-  const [measure, setMeasure] = React.useState(true);
+  const [step, setStep] = React.useState(0);
+  const [measure, setMeasure] = React.useState(false);
 
   return (
     <>
@@ -36,6 +37,15 @@ export default function App() {
             items={["xs", "sm", "md", "lg"]}
           />
         </Form.Control>
+        <Form.Control label="Step">
+          <Range
+            size="sm"
+            step={5}
+            max={25}
+            value={step}
+            onChange={(value) => setStep(value)}
+          />
+        </Form.Control>
         <Toggle
           label="Measure"
           checked={measure}
@@ -46,7 +56,7 @@ export default function App() {
       <Divider>Preview</Divider>
 
       <div className="flex flex-col items-center">
-        <Range size={size} color={color} measure={measure} />
+        <Range size={size} color={color} measure={measure} step={step} />
       </div>
     </>
   );

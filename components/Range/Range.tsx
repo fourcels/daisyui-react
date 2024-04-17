@@ -2,32 +2,59 @@ import { twMerge } from "tailwind-merge";
 
 import { ComponentBaseProps, ComponentColor, ComponentSize } from "../types";
 
-import React, { forwardRef } from "react";
+import React, { forwardRef, useMemo, useState } from "react";
 
 export type RangeProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
-  "size" | "color"
+  | "size"
+  | "color"
+  | "min"
+  | "max"
+  | "step"
+  | "value"
+  | "defaultValue"
+  | "onChange"
 > &
   ComponentBaseProps & {
     size?: ComponentSize;
     color?: Exclude<ComponentColor, "neutral" | "ghost">;
     measure?: boolean;
     wrapperClassName?: string;
+    min?: number;
+    max?: number;
+    step?: number;
+    value?: number;
+    defaultValue?: number;
+    onChange?: (value: number, e: React.ChangeEvent<HTMLInputElement>) => void;
   };
 
 export const Range = forwardRef<HTMLInputElement, RangeProps>(
   (
     {
       wrapperClassName,
-      measure = true,
+      measure,
       size,
       color,
       dataTheme,
       className,
+      value,
+      defaultValue = 0,
+      max = 100,
+      min = 0,
+      step = 1,
+      onChange,
       ...props
     },
     ref
   ) => {
+    const [valueInner, setValueInner] = useState(value ?? defaultValue);
+
+    React.useEffect(() => {
+      if (value !== undefined) {
+        setValueInner(value);
+      }
+    }, [value]);
+
     const sizes = {
       lg: "range-lg",
       md: "range-md",
@@ -51,29 +78,41 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(
       className
     );
 
-    const showMeasure = measure && props.step;
-
-    const step = props.step !== undefined ? Number(props.step) : 1;
-    const min = props.min !== undefined ? Number(props.min) : 0;
-    const max = props.max !== undefined ? Number(props.max) : 100;
-
-    const numTicks = Math.max(Math.ceil((max - min) / step), 1) + 1;
+    const numTicks = useMemo(() => {
+      return step > 0 ? Math.max(Math.ceil((max - min) / step), 1) + 1 : 0;
+    }, [step, min, max]);
     return (
       <div className={twMerge("range-wrapper w-full", wrapperClassName)}>
-        <input
-          type="range"
-          {...props}
-          ref={ref}
-          data-theme={dataTheme}
-          className={classes}
-        />
-        {showMeasure && (
-          <div className="w-full flex justify-between text-xs px-2">
-            {[...Array(numTicks)].map((_, i) => (
-              <span key={i}>|</span>
-            ))}
+        <div className="flex items-center gap-2">
+          <div className="flex flex-col flex-1 gap-1">
+            <input
+              type="range"
+              value={valueInner}
+              max={max}
+              min={min}
+              step={step > 0 ? step : "any"}
+              ref={ref}
+              data-theme={dataTheme}
+              className={classes}
+              onChange={(e) => {
+                const value = +e.target.value;
+                setValueInner(value);
+                onChange?.(value, e);
+              }}
+              {...props}
+            />
+            {measure && (
+              <div className="w-full flex justify-between text-xs px-2">
+                {[...Array(numTicks)].map((_, i) => (
+                  <span key={i}>|</span>
+                ))}
+              </div>
+            )}
           </div>
-        )}
+          <div className="w-8 text-center flex-shrink-0">
+            {valueInner.toFixed(0)}
+          </div>
+        </div>
       </div>
     );
   }
