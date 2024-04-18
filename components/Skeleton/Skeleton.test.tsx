@@ -13,4 +13,9 @@ describe("Skeleton", () => {
     render(<Skeleton ref={ref} />);
     expect(ref.current).toBeInTheDocument();
   });
+
+  it("renders with circle", () => {
+    const { getByTestId } = render(<Skeleton data-testid="Skeleton" circle />);
+    expect(getByTestId("Skeleton")).toHaveClass("rounded-full");
+  });
 });

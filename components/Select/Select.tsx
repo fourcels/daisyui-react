@@ -29,7 +29,7 @@ export type SelectProps = Omit<
     size?: ComponentSize;
     color?: Exclude<ComponentColor, "neutral">;
     bordered?: boolean;
-    placeholder?: string | null;
+    placeholder?: string | boolean;
     items?: SelectItem[];
     onChange?: (value: string, e: React.ChangeEvent<HTMLSelectElement>) => void;
     clearable?: boolean;
@@ -44,7 +44,7 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>(
       onChange,
       value,
       defaultValue = "",
-      placeholder = "Select...",
+      placeholder = true,
       items = [],
       children,
       size,
@@ -80,6 +80,10 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>(
     const [selectValue, setSelectValue] = React.useState(value ?? defaultValue);
 
     React.useEffect(() => {
+      setSelectValue(selectRef.current?.value || "");
+    }, []);
+
+    React.useEffect(() => {
       if (value !== undefined) {
         setSelectValue(value);
       }
@@ -102,7 +106,7 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>(
         if (typeof item === "string" || typeof item === "number") {
           return <SelectOption key={item}>{item}</SelectOption>;
         }
-        const { label, value = label } = item;
+        const { label, value } = item;
         return (
           <SelectOption key={value} value={value}>
             {label}
@@ -157,7 +161,7 @@ const SelectInner = forwardRef<HTMLSelectElement, SelectProps>(
         >
           {placeholder && (
             <SelectOption value="" disabled>
-              {placeholder}
+              {typeof placeholder === "string" ? placeholder : "Select..."}
             </SelectOption>
           )}
           {options}

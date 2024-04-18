@@ -9,8 +9,16 @@ describe("Swap", () => {
   });
 
   it("Should forward the ref to the root element", () => {
-    const ref = createRef<HTMLDivElement>();
+    const ref = createRef<HTMLLabelElement>();
     render(<Swap ref={ref} />);
     expect(ref.current).toBeInTheDocument();
+  });
+  it("renders with active", () => {
+    const { container } = render(<Swap active />);
+    expect(container.firstElementChild).toHaveClass("swap-active");
+  });
+  it("renders with effect", () => {
+    const { container } = render(<Swap effect="flip" />);
+    expect(container.firstElementChild).toHaveClass("swap-flip");
   });
 });

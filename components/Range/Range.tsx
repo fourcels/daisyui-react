@@ -26,6 +26,7 @@ export type RangeProps = Omit<
     value?: number;
     defaultValue?: number;
     onChange?: (value: number, e: React.ChangeEvent<HTMLInputElement>) => void;
+    label?: boolean | ((value: number) => React.ReactNode);
   };
 
 export const Range = forwardRef<HTMLInputElement, RangeProps>(
@@ -43,6 +44,7 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(
       min = 0,
       step = 1,
       onChange,
+      label,
       ...props
     },
     ref
@@ -81,6 +83,22 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(
     const numTicks = useMemo(() => {
       return step > 0 ? Math.max(Math.ceil((max - min) / step), 1) + 1 : 0;
     }, [step, min, max]);
+
+    const labelInner = useMemo(() => {
+      if (!label) {
+        return null;
+      }
+      if (typeof label === "boolean") {
+        return (
+          <div className="range-label w-8 text-center flex-shrink-0">
+            {valueInner.toFixed(0)}
+          </div>
+        );
+      } else {
+        return label(valueInner);
+      }
+    }, [label, valueInner]);
+
     return (
       <div className={twMerge("range-wrapper w-full", wrapperClassName)}>
         <div className="flex items-center gap-2">
@@ -102,16 +120,14 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(
               {...props}
             />
             {measure && (
-              <div className="w-full flex justify-between text-xs px-2">
+              <div className="range-measure w-full flex justify-between text-xs px-2">
                 {[...Array(numTicks)].map((_, i) => (
                   <span key={i}>|</span>
                 ))}
               </div>
             )}
           </div>
-          <div className="w-8 text-center flex-shrink-0">
-            {valueInner.toFixed(0)}
-          </div>
+          {labelInner}
         </div>
       </div>
     );

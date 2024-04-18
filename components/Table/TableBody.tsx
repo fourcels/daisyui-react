@@ -14,7 +14,7 @@ export const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
         {children &&
           React.Children.map(children, (child) =>
             React.cloneElement(child, {
-              hover,
+              hover: child.props.hover || hover,
             })
           )}
       </tbody>

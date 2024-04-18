@@ -43,6 +43,7 @@ export default function App() {
             step={5}
             max={25}
             value={step}
+            label
             onChange={(value) => setStep(value)}
           />
         </Form.Control>
@@ -56,7 +57,7 @@ export default function App() {
       <Divider>Preview</Divider>
 
       <div className="flex flex-col items-center">
-        <Range size={size} color={color} measure={measure} step={step} />
+        <Range label size={size} color={color} measure={measure} step={step} />
       </div>
     </>
   );
