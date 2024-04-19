@@ -61,4 +61,26 @@ describe("ThemeController", () => {
     );
     expect(container.firstElementChild).toHaveClass("swap-flip");
   });
+  it("raido group renders with vertical", () => {
+    const { getByTestId } = render(
+      <ThemeController.RadioGroup
+        data-testid="ThemeController.RadioGroup"
+        name="theme-radios"
+        vertical
+      ></ThemeController.RadioGroup>
+    );
+    expect(getByTestId("ThemeController.RadioGroup")).toHaveClass("flex-col");
+  });
+  it("button group renders with vertical", () => {
+    const { getByTestId } = render(
+      <ThemeController.ButtonGroup
+        data-testid="ThemeController.ButtonGroup"
+        name="theme-button"
+        vertical
+      ></ThemeController.ButtonGroup>
+    );
+    expect(getByTestId("ThemeController.ButtonGroup")).toHaveClass(
+      "join-vertical"
+    );
+  });
 });

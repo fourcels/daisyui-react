@@ -9,7 +9,7 @@ import {
 
 export type TooltipProps = Omit<React.HTMLAttributes<HTMLDivElement>, "color"> &
   ComponentBaseProps & {
-    title: string;
+    title?: string;
     open?: boolean;
     color?: Exclude<ComponentColor, "neutral" | "ghost">;
     position?: ComponentPosition;

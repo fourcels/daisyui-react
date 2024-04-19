@@ -13,4 +13,16 @@ describe("Toast", () => {
     render(<Toast ref={ref} />);
     expect(ref.current).toBeInTheDocument();
   });
+  it("renders with horizontal", () => {
+    const { getByTestId } = render(
+      <Toast data-testid="Toast" horizontal="start" />
+    );
+    expect(getByTestId("Toast")).toHaveClass("toast-start");
+  });
+  it("renders with vertical", () => {
+    const { getByTestId } = render(
+      <Toast data-testid="Toast" vertical="top" />
+    );
+    expect(getByTestId("Toast")).toHaveClass("toast-top");
+  });
 });
