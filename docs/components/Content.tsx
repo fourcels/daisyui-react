@@ -143,6 +143,7 @@ const Toc = React.forwardRef<TocRef, TocProps>(({ toc, className }, ref) => {
         }
       }
     }, 200);
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
 
     return () => {
