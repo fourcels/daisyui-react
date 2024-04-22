@@ -67,6 +67,14 @@ describe("Menu", () => {
     );
     expect(getByTestId("foo")).toBeInTheDocument();
   });
+  it("details renders with icon", () => {
+    const { getByTestId } = render(
+      <Menu>
+        <Menu.Details icon={<div data-testid="foo"></div>}></Menu.Details>
+      </Menu>
+    );
+    expect(getByTestId("foo")).toBeInTheDocument();
+  });
   it("details renders with open", () => {
     const { getByTestId } = render(
       <Menu>
@@ -93,6 +101,14 @@ describe("Menu", () => {
     const { getByTestId } = render(
       <Menu>
         <Menu.Dropdown label={<div data-testid="foo"></div>}></Menu.Dropdown>
+      </Menu>
+    );
+    expect(getByTestId("foo")).toBeInTheDocument();
+  });
+  it("dropdown renders with icon", () => {
+    const { getByTestId } = render(
+      <Menu>
+        <Menu.Dropdown icon={<div data-testid="foo"></div>}></Menu.Dropdown>
       </Menu>
     );
     expect(getByTestId("foo")).toBeInTheDocument();
