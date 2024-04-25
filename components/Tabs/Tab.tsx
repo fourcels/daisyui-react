@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
-export type TabProps = React.HTMLAttributes<HTMLAnchorElement> & {
+export type TabProps = React.HTMLAttributes<HTMLSpanElement> & {
   active?: boolean;
   disabled?: boolean;
   label?: React.ReactNode;
@@ -10,7 +10,7 @@ export type TabProps = React.HTMLAttributes<HTMLAnchorElement> & {
   indicator?: React.ReactNode;
 };
 
-export const Tab = forwardRef<HTMLAnchorElement, TabProps>(
+export const Tab = forwardRef<HTMLSpanElement, TabProps>(
   (
     {
       onClick,
@@ -35,7 +35,7 @@ export const Tab = forwardRef<HTMLAnchorElement, TabProps>(
 
     return (
       <>
-        <a
+        <span
           onClick={onClick}
           role="tab"
           ref={ref}
@@ -44,11 +44,11 @@ export const Tab = forwardRef<HTMLAnchorElement, TabProps>(
         >
           {label}
           {indicator}
-        </a>
+        </span>
         {children && (
           <div
             role="tabpanel"
-            className={twMerge("tab-content p-4", contentClassName)}
+            className={twMerge("tab-content py-4", contentClassName)}
           >
             {children}
           </div>

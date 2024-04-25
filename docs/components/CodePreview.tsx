@@ -88,21 +88,23 @@ function useCode(code?: string, loadCode?: CodePrivewProps["loadCode"]) {
 }
 
 function SourceCodeContent({
+  live,
   code,
   lang,
   className,
 }: {
+  live: boolean;
   code: string;
   lang: string;
   className?: string;
 }) {
   return (
     <div className={twMerge("source-code", className)}>
-      <CopyCodeButton className="absolute top-4 right-8" code={code} />
+      <CopyCodeButton className="absolute top-4 right-4" code={code} />
       <SyntaxHighlighter
         customStyle={{
           margin: 0,
-          padding: "40px 24px",
+          padding: live ? "40px 24px" : 24,
           flexGrow: 1,
           width: 0,
           maxHeight: 500,
@@ -140,7 +142,7 @@ function CopyCodeButton({
         title={copied ? "Copied" : "Copy code"}
         position="left"
       >
-        <Button color="neutral">
+        <Button size="sm" color="ghost" shape="square">
           {copied ? <IconCopied /> : <IconCopy />}
         </Button>
       </Tooltip>
@@ -162,7 +164,7 @@ function SourceCode({
   const [showCode, setShowCode] = useState(false);
   const sourceCode = useCode(code, loadCode);
   if (!live) {
-    return <SourceCodeContent code={sourceCode} lang={lang} />;
+    return <SourceCodeContent live={live} code={sourceCode} lang={lang} />;
   }
   return (
     <div>
@@ -180,6 +182,7 @@ function SourceCode({
       {showCode && (
         <div>
           <SourceCodeContent
+            live={live}
             className="border-t border-dashed"
             code={sourceCode}
             lang={lang}

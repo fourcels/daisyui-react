@@ -1,0 +1,43 @@
+---
+title: Install daisyUI as a Tailwind CSS plugin
+description: How to install daisyUI as a Tailwind CSS plugin?
+---
+
+You need [Node.js](https://nodejs.org/en/download/) and [Tailwind CSS](https://tailwindcss.com/docs/installation/) installed.
+
+## Install daisyUI
+
+import { Tabs } from "daisyui-react";
+
+<Tabs>
+  <Tabs.Tab label="npm">
+
+```
+npm i -D daisyui daisyui-react
+```
+
+  </Tabs.Tab>
+  <Tabs.Tab label="yarn">
+
+```
+yarn add -D daisyui daisyui-react
+```
+
+  </Tabs.Tab>
+  <Tabs.Tab label="pnpm">
+
+```
+pnpm add -D daisyui daisyui-react
+```
+
+  </Tabs.Tab>
+</Tabs>
+
+## Add daisyUI to your `tailwind.config.js` files
+
+```ts
+module.exports = {
+  //...
+  plugins: [require("daisyui")],
+};
+```

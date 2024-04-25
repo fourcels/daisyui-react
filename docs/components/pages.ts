@@ -4,8 +4,6 @@ export type Page = {
   tags?: string;
   icon?: string;
   items?: Page[];
-  badge?: string;
-  title?: boolean;
   collapsible?: boolean;
   target?: string;
 };
@@ -124,9 +122,9 @@ export const pages: Page[] = [
             href: "/components/kbd/",
           },
           {
-            name: "Stat",
+            name: "Stats",
             tags: "stats data",
-            href: "/components/stat/",
+            href: "/components/stats/",
           },
           {
             name: "Table",
@@ -180,9 +178,9 @@ export const pages: Page[] = [
             href: "/components/steps/",
           },
           {
-            name: "Tab",
+            name: "Tabs",
             tags: "tabs",
-            href: "/components/tab/",
+            href: "/components/tabs/",
           },
         ],
       },

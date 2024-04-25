@@ -22,7 +22,7 @@
     },
     "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
-  "include": ["docs", "components", "components/Accordion/.test.tsx"],
+  "include": ["docs", "components"],
   "references": [
     {
       "path": "./tsconfig.node.json"
