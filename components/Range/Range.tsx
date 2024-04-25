@@ -119,7 +119,7 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(
               }}
               {...props}
             />
-            {measure && (
+            {measure && step > 0 && (
               <div className="range-measure w-full flex justify-between text-xs px-2">
                 {[...Array(numTicks)].map((_, i) => (
                   <span key={i}>|</span>

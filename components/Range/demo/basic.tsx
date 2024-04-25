@@ -13,6 +13,7 @@ export default function App() {
   const [size, setSize] = React.useState<RadioProps["size"]>();
   const [step, setStep] = React.useState(0);
   const [measure, setMeasure] = React.useState(false);
+  const [label, setLabel] = React.useState(false);
 
   return (
     <>
@@ -52,12 +53,23 @@ export default function App() {
           checked={measure}
           onChange={(checked) => setMeasure(checked)}
         />
+        <Toggle
+          label="Label"
+          checked={label}
+          onChange={(checked) => setLabel(checked)}
+        />
       </div>
 
       <Divider>Preview</Divider>
 
       <div className="flex flex-col items-center">
-        <Range label size={size} color={color} measure={measure} step={step} />
+        <Range
+          label={label}
+          size={size}
+          color={color}
+          measure={measure}
+          step={step}
+        />
       </div>
     </>
   );
