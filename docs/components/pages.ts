@@ -20,11 +20,6 @@ export const pages: Page[] = [
         href: "/docs/install/",
       },
       {
-        name: "Use",
-        tags: "how use",
-        href: "/docs/use/",
-      },
-      {
         name: "Config",
         tags: "setup config styled themes base logs utils rtl",
         href: "/docs/config/",

@@ -104,7 +104,7 @@ function SourceCodeContent({
       <SyntaxHighlighter
         customStyle={{
           margin: 0,
-          padding: live ? "40px 24px" : 24,
+          padding: live ? "40px 24px" : "20px 16px",
           flexGrow: 1,
           width: 0,
           maxHeight: 500,
