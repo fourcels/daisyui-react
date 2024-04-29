@@ -13,6 +13,7 @@ import { rehypeToc } from "./plugins/rehypeToc";
 import { remarkCode } from "./plugins/remarkCode";
 import { rehypeTable } from "./plugins/rehypeTable";
 import { remarkLink } from "./plugins/remarkLink";
+import { componentMatter } from "./plugins/componentMatter";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -34,6 +35,7 @@ export default defineConfig({
       providerImportSource: "@mdx-js/react",
     }),
     react(),
+    componentMatter(),
   ],
   resolve: {
     alias: {

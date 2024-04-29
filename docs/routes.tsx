@@ -2,6 +2,10 @@ import { RouteObject } from "react-router";
 import { Content } from "./components/Content";
 import { kebabCase } from "lodash";
 
+import { matters } from "virtual:component-matter";
+
+console.log(matters);
+
 const components = import.meta.glob("/components/**/*.mdx");
 const docs = import.meta.glob("./docs/*.mdx");
 
