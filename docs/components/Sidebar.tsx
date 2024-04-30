@@ -133,39 +133,41 @@ export function Sidebar({ className }: { className?: string }) {
           shadow && "shadow-sm"
         )}
       >
-        <Button
-          color="ghost"
-          className="font-title font-bold inline-flex text-lg md:text-2xl px-2"
-          startIcon={
-            <svg
-              className="h-6 w-6 md:h-8 md:w-8"
-              width="32"
-              height="32"
-              viewBox="0 0 415 415"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                x="82.5"
-                y="290"
-                width="250"
-                height="125"
-                rx="62.5"
-                fill="#1AD1A5"
-              />
-              <circle
-                cx="207.5"
-                cy="135"
-                r="130"
-                fill="black"
-                fillOpacity=".3"
-              />
-              <circle cx="207.5" cy="135" r="125" fill="white" />
-              <circle cx="207.5" cy="135" r="56" fill="#FF9903" />
-            </svg>
-          }
-        >
-          daisyUI
-        </Button>
+        <Link to="/">
+          <Button
+            color="ghost"
+            className="font-title font-bold inline-flex text-lg md:text-2xl px-2"
+            startIcon={
+              <svg
+                className="h-6 w-6 md:h-8 md:w-8"
+                width="32"
+                height="32"
+                viewBox="0 0 415 415"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="82.5"
+                  y="290"
+                  width="250"
+                  height="125"
+                  rx="62.5"
+                  fill="#1AD1A5"
+                />
+                <circle
+                  cx="207.5"
+                  cy="135"
+                  r="130"
+                  fill="black"
+                  fillOpacity=".3"
+                />
+                <circle cx="207.5" cy="135" r="125" fill="white" />
+                <circle cx="207.5" cy="135" r="56" fill="#FF9903" />
+              </svg>
+            }
+          >
+            daisyUI
+          </Button>
+        </Link>
       </div>
       <Menu>
         {pages.map((item, i) => (

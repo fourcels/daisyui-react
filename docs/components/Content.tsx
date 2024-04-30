@@ -65,7 +65,7 @@ export function Content({
 
   return (
     <div className="flex">
-      <article ref={articleRef} className="markdown prose max-w-5xl">
+      <article ref={articleRef} className="markdown prose min-w-80 max-w-7xl">
         {frontmatter?.title && <h1>{frontmatter.title}</h1>}
         {frontmatter?.description &&
           frontmatter.description

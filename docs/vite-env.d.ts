@@ -6,5 +6,10 @@ declare module "*.mdx" {
 }
 
 declare module "virtual:component-matter" {
-  export const matters: Record<string, string>[];
+  type Matter = {
+    title: string;
+    description: string;
+    slug: string;
+  };
+  export const matters: Matter[];
 }

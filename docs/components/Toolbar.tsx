@@ -1,6 +1,7 @@
 import { Button, Drawer, Input, Kbd, Navbar } from "daisyui-react";
 import { throttle } from "lodash";
 import React from "react";
+import { Link } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
 export function Toolbar() {
@@ -72,6 +73,9 @@ export function Toolbar() {
           }
         />
       </div>
+      <Link to="/components/">
+        <Button color="ghost">Components</Button>
+      </Link>
     </Navbar>
   );
 }
