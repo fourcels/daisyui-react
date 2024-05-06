@@ -17,13 +17,13 @@ describe("Hero", () => {
     const { getByTestId } = render(
       <Hero
         data-testid="Hero"
-        overlay="https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg"
+        overlay="https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg"
       />
     );
     const hero = getByTestId("Hero");
     expect(hero).toHaveStyle({
       backgroundImage:
-        "url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)",
+        "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)",
     });
     expect(hero.querySelector(".hero-overlay")).toBeInTheDocument();
   });

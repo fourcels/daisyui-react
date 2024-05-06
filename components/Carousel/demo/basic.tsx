@@ -38,37 +38,37 @@ export default function App() {
         >
           <Carousel.Item>
             <img
-              src="https://daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.jpg"
+              src="https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.jpg"
               alt="Burger"
             />
           </Carousel.Item>
           <Carousel.Item>
             <img
-              src="https://daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.jpg"
+              src="https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.jpg"
               alt="Burger"
             />
           </Carousel.Item>
           <Carousel.Item>
             <img
-              src="https://daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.jpg"
+              src="https://img.daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.jpg"
               alt="Burger"
             />
           </Carousel.Item>
           <Carousel.Item>
             <img
-              src="https://daisyui.com/images/stock/photo-1494253109108-2e30c049369b.jpg"
+              src="https://img.daisyui.com/images/stock/photo-1494253109108-2e30c049369b.jpg"
               alt="Burger"
             />
           </Carousel.Item>
           <Carousel.Item>
             <img
-              src="https://daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.jpg"
+              src="https://img.daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.jpg"
               alt="Burger"
             />
           </Carousel.Item>
           <Carousel.Item>
             <img
-              src="https://daisyui.com/images/stock/photo-1559181567-c3190ca9959b.jpg"
+              src="https://img.daisyui.com/images/stock/photo-1559181567-c3190ca9959b.jpg"
               alt="Burger"
             />
           </Carousel.Item>

@@ -46,7 +46,7 @@ export default function App() {
           className={twMerge("bg-base-200 w-96", side && "w-auto")}
         >
           <Card.Image
-            src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
             alt="Shoes"
           />
           <Card.Body>

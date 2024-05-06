@@ -60,7 +60,7 @@ export default function App() {
           >
             <img
               className={twMerge("w-40 h-40 max-w-none")}
-              src="https://daisyui.com/images/stock/photo-1567653418876-5bb0e566e1c2.jpg"
+              src="https://img.daisyui.com/images/stock/photo-1567653418876-5bb0e566e1c2.jpg"
             />
           </Mask>
         </div>

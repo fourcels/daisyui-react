@@ -75,7 +75,7 @@ export default function App() {
               <Avatar
                 shape="circle"
                 indicator="online"
-                src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
               />
             </Stats.Figure>
             <Stats.Value>86%</Stats.Value>

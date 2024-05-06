@@ -41,7 +41,7 @@ export default function App() {
       <div>
         <Chat position={position}>
           <Chat.Image
-            src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
             alt="Tailwind CSS chat bubble component"
           />
           <Chat.Header>
