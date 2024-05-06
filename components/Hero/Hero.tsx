@@ -18,6 +18,7 @@ const HeroInner = forwardRef<HTMLDivElement, HeroProps>(
       <div
         ref={ref}
         className={classes}
+        data-theme={dataTheme}
         style={{
           backgroundImage: overlay && `url(${overlay})`,
           ...style,

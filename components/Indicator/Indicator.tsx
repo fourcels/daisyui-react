@@ -37,7 +37,7 @@ export const Indicator = forwardRef<HTMLDivElement, IndicatorProps>(
     const classes = twMerge("indicator", className);
 
     return (
-      <div ref={ref} className={classes} {...props}>
+      <div ref={ref} className={classes} data-theme={dataTheme} {...props}>
         {indicator && (
           <div
             className={twMerge(

@@ -1,6 +1,5 @@
 import { Select, Form, Divider, LoadingProps, Loading } from "daisyui-react";
 import React from "react";
-import { twMerge } from "tailwind-merge";
 
 export default function App() {
   const [size, setSize] = React.useState<LoadingProps["size"]>();

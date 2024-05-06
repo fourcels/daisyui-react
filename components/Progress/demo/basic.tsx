@@ -1,13 +1,4 @@
-import {
-  Select,
-  Form,
-  Divider,
-  Alert,
-  AlertProps,
-  Button,
-  ProgressProps,
-  Progress,
-} from "daisyui-react";
+import { Select, Form, Divider, ProgressProps, Progress } from "daisyui-react";
 import React from "react";
 
 export default function App() {

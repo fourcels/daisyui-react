@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { ComponentBaseProps, ComponentColor, ComponentSize } from "../types";
+import { ComponentBaseProps } from "../types";
 import { twMerge } from "tailwind-merge";
 
 export type LabelTextProps = React.HTMLAttributes<HTMLSpanElement> &

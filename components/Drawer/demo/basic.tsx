@@ -1,13 +1,4 @@
-import {
-  Select,
-  Form,
-  Divider,
-  Toggle,
-  DropdownProps,
-  Menu,
-  Button,
-  Drawer,
-} from "daisyui-react";
+import { Divider, Toggle, Menu, Button, Drawer } from "daisyui-react";
 import React from "react";
 
 export default function App() {

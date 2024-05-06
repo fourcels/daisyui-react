@@ -1,5 +1,4 @@
-import { Divider, Countdown, Toggle, Diff } from "daisyui-react";
-import React, { useEffect, useState } from "react";
+import { Divider, Diff } from "daisyui-react";
 
 export default function App() {
   return (

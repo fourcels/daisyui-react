@@ -2,14 +2,12 @@ import {
   Select,
   Form,
   Divider,
-  DividerProps,
   JoinProps,
   Join,
   Button,
   Toggle,
 } from "daisyui-react";
 import React from "react";
-import { twMerge } from "tailwind-merge";
 
 export default function App() {
   const [direction, setDirection] = React.useState<JoinProps["direction"]>();

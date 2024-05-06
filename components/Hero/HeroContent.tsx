@@ -1,5 +1,4 @@
 import React, { forwardRef } from "react";
-import { ComponentBaseProps } from "../types";
 import { twMerge } from "tailwind-merge";
 
 export type HeroContentProps = React.HTMLAttributes<HTMLDivElement>;

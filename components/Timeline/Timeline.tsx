@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 
 import React, { ReactElement, forwardRef } from "react";
-import { ComponentBaseProps, ComponentColor, ListOrItem } from "../types";
+import { ComponentBaseProps, ListOrItem } from "../types";
 import { TimelineItem, TimelineItemProps } from "./TimelineItem";
 import { TimelineStart, TimelineStartProps } from "./TimelineStart";
 import { TimelineMiddle, TimelineMiddleProps } from "./TimelineMiddle";

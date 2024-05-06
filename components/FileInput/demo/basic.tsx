@@ -3,7 +3,6 @@ import {
   Form,
   Divider,
   Select,
-  Checkbox,
   FileInputProps,
   FileInput,
 } from "daisyui-react";

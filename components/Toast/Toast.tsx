@@ -23,7 +23,7 @@ export type ToastProps = React.HTMLAttributes<HTMLDivElement> &
 
 export const Toast = forwardRef<HTMLDivElement, ToastProps>(
   (
-    { vertical, horizontal, color, children, dataTheme, className, ...props },
+    { vertical, horizontal, children, dataTheme, className, ...props },
     ref
   ): JSX.Element => {
     const classes = twMerge(

@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-import { ComponentBaseProps, ComponentColor, ComponentSize } from "../types";
+import { ComponentBaseProps, ComponentSize } from "../types";
 
 import React, { forwardRef } from "react";
 import { RatingItem, RatingItemProps } from "./RatingItem";
@@ -66,7 +66,7 @@ export const Rating = forwardRef<HTMLDivElement, RatingProps>(
       className
     );
     return (
-      <div ref={ref} className={classes} {...props}>
+      <div data-theme={dataTheme} ref={ref} className={classes} {...props}>
         {[...Array(count)].map((_, i) =>
           half ? (
             <div key={i} className="flex">

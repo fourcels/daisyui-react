@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { ComponentBaseProps, ComponentColor, ComponentStatus } from "../types";
+import { ComponentBaseProps, ComponentColor } from "../types";
 
 export type ProgressProps = Omit<
   React.ProgressHTMLAttributes<HTMLProgressElement>,

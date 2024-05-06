@@ -1,4 +1,4 @@
-import React, { ReactElement, forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { ComponentBaseProps, ComponentDirection } from "../types";
 import { twMerge } from "tailwind-merge";
 import "./Join.css";
@@ -30,7 +30,7 @@ const JoinInner = forwardRef<HTMLDivElement, JoinProps>(
     );
 
     return (
-      <div ref={ref} className={classes} {...props}>
+      <div ref={ref} className={classes} data-theme={dataTheme} {...props}>
         {children}
       </div>
     );

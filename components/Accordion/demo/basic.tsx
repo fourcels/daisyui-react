@@ -2,7 +2,6 @@ import {
   Select,
   Form,
   Divider,
-  Collapse,
   Toggle,
   Accordion,
   AccordionProps,

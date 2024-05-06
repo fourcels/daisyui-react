@@ -1,4 +1,4 @@
-import { Divider, Label, Swap, ThemeController } from "daisyui-react";
+import { Divider, Swap, ThemeController } from "daisyui-react";
 import React from "react";
 
 export default function App() {

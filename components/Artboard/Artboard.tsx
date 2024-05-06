@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { ComponentBaseProps, ComponentStatus } from "../types";
+import { ComponentBaseProps } from "../types";
 
 export type ArtboardProps = React.HTMLAttributes<HTMLDivElement> &
   ComponentBaseProps & {

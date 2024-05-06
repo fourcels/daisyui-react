@@ -1,5 +1,4 @@
 import React, { forwardRef } from "react";
-import { twMerge } from "tailwind-merge";
 
 export type BreadcrumbsItemProps = React.LiHTMLAttributes<HTMLLIElement> & {
   icon: React.ReactNode;

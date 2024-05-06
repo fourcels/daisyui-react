@@ -1,16 +1,12 @@
 import {
   Select,
   Form,
-  TooltipProps,
   Divider,
   Toggle,
-  Tooltip,
-  Button,
   BadgeProps,
   Badge,
 } from "daisyui-react";
 import React from "react";
-const { Option } = Select;
 
 export default function App() {
   const [color, setColor] = React.useState<BadgeProps["color"]>();

@@ -1,11 +1,8 @@
 import {
   Select,
   Form,
-  TooltipProps,
   Divider,
   Toggle,
-  Tooltip,
-  Button,
   BottomNavigationProps,
   BottomNavigation,
 } from "daisyui-react";

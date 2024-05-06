@@ -1,5 +1,5 @@
-import { Button, Divider, Swap, ThemeController } from "daisyui-react";
-import React, { ChangeEvent } from "react";
+import { Button, Divider, ThemeController } from "daisyui-react";
+import React from "react";
 
 export default function App() {
   const [theme, setTheme] = React.useState("default");

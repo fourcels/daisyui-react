@@ -2,17 +2,11 @@ import {
   Select,
   Form,
   Divider,
-  DividerProps,
-  JoinProps,
-  Join,
-  Button,
-  Toggle,
   Indicator,
   Badge,
   IndicatorProps,
 } from "daisyui-react";
 import React from "react";
-import { twMerge } from "tailwind-merge";
 
 export default function App() {
   const [horizontal, setHorizontal] =

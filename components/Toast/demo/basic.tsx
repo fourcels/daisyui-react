@@ -1,19 +1,7 @@
-import {
-  Select,
-  Form,
-  TooltipProps,
-  Divider,
-  Toggle,
-  Tooltip,
-  Button,
-  Toast,
-  ToastProps,
-  Alert,
-} from "daisyui-react";
+import { Select, Form, Divider, Toast, ToastProps, Alert } from "daisyui-react";
 import React from "react";
 
 export default function App() {
-  const [color, setColor] = React.useState<ToastProps["color"]>();
   const [horizontal, setHorizontal] =
     React.useState<ToastProps["horizontal"]>();
   const [vertical, setVertical] = React.useState<ToastProps["vertical"]>();

@@ -1,4 +1,4 @@
-import React, { ReactElement, forwardRef } from "react";
+import React, { ReactElement } from "react";
 import { twMerge } from "tailwind-merge";
 
 export type JoinItemProps = {

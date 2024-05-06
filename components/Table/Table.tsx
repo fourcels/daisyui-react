@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-import React, { ReactNode, forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { ComponentBaseProps, ComponentSize } from "../types";
 import { TableRow, TableRowProps } from "./TableRow";
 import { TableBody, TableBodyProps } from "./TableBody";

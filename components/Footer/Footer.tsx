@@ -15,7 +15,7 @@ const FooterInner = forwardRef<HTMLDivElement, FooterProps>(
     const classes = twMerge("footer", center && "footer-center", className);
 
     return (
-      <div ref={ref} className={classes} {...props}>
+      <div ref={ref} data-theme={dataTheme} className={classes} {...props}>
         {children}
       </div>
     );

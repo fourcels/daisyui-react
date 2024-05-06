@@ -2,7 +2,6 @@ import {
   Form,
   Divider,
   Select,
-  Range,
   Toggle,
   TextareaProps,
   Textarea,
