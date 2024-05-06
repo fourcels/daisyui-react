@@ -1,7 +1,8 @@
 import React, { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { ComponentBaseProps } from "../types";
+import { ComponentBaseProps, ComponentStatus } from "../types";
+import { Alert } from "../Alert";
 
 const horizontals = {
   start: "toast-start",
@@ -19,11 +20,12 @@ export type ToastProps = React.HTMLAttributes<HTMLDivElement> &
   ComponentBaseProps & {
     vertical?: keyof typeof verticals;
     horizontal?: keyof typeof horizontals;
+    color?: ComponentStatus;
   };
 
 export const Toast = forwardRef<HTMLDivElement, ToastProps>(
   (
-    { vertical, horizontal, children, dataTheme, className, ...props },
+    { vertical, horizontal, color, children, dataTheme, className, ...props },
     ref
   ): JSX.Element => {
     const classes = twMerge(
@@ -35,7 +37,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
 
     return (
       <div {...props} ref={ref} data-theme={dataTheme} className={classes}>
-        {children}
+        <Alert color={color}>{children}</Alert>
       </div>
     );
   }

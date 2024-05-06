@@ -1,7 +1,8 @@
-import { Select, Form, Divider, Toast, ToastProps, Alert } from "daisyui-react";
+import { Select, Form, Divider, Toast, ToastProps } from "daisyui-react";
 import React from "react";
 
 export default function App() {
+  const [color, setColor] = React.useState<ToastProps["color"]>();
   const [horizontal, setHorizontal] =
     React.useState<ToastProps["horizontal"]>();
   const [vertical, setVertical] = React.useState<ToastProps["vertical"]>();
@@ -9,6 +10,12 @@ export default function App() {
   return (
     <>
       <div className="flex flex-wrap gap-8">
+        <Form.Control label="Color">
+          <Select
+            onChange={(value) => setColor(value as any)}
+            items={["info", "success", "warning", "error"]}
+          />
+        </Form.Control>
         <Form.Control label="Horizontal">
           <Select
             onChange={(value) => setHorizontal(value as any)}
@@ -26,8 +33,13 @@ export default function App() {
       <Divider>Preview</Divider>
 
       <div className="h-60 relative">
-        <Toast horizontal={horizontal} vertical={vertical} className="absolute">
-          <Alert color="info">New message arrived.</Alert>
+        <Toast
+          horizontal={horizontal}
+          vertical={vertical}
+          color={color}
+          className="absolute"
+        >
+          New message arrived.
         </Toast>
       </div>
     </>

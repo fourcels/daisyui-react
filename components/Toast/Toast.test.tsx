@@ -13,6 +13,12 @@ describe("Toast", () => {
     render(<Toast ref={ref} />);
     expect(ref.current).toBeInTheDocument();
   });
+  it("renders with color", () => {
+    const { getByTestId } = render(<Toast data-testid="Toast" color="info" />);
+    expect(getByTestId("Toast").querySelector(".alert")).toHaveClass(
+      "alert-info"
+    );
+  });
   it("renders with horizontal", () => {
     const { getByTestId } = render(
       <Toast data-testid="Toast" horizontal="start" />
