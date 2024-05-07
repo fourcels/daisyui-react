@@ -3,6 +3,8 @@ import { Card } from "daisyui-react";
 import { Content } from "../components/Content";
 import { Link } from "react-router-dom";
 
+const { BASE_URL } = import.meta.env;
+
 export function Component() {
   return (
     <Content
@@ -15,7 +17,9 @@ export function Component() {
         {matters.map((item, i) => (
           <Link to={`/components/${item.slug}/`} key={i}>
             <Card compact className="h-full">
-              <Card.Image src={`/images/components/${item.slug}.jpg`} />
+              <Card.Image
+                src={`${BASE_URL}images/components/${item.slug}.jpg`}
+              />
               <Card.Body>
                 <Card.Title>{item.title}</Card.Title>
                 <p>{item.description}</p>

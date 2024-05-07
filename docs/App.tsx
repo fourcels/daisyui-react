@@ -7,13 +7,18 @@ import "./App.css";
 import { routes } from "./routes";
 import { Layout } from "./components/Layout";
 
-const router = createBrowserRouter([
-  {
-    Component: Layout,
-    path: "/",
-    children: routes,
-  },
-]);
+const { BASE_URL } = import.meta.env;
+
+const router = createBrowserRouter(
+  [
+    {
+      Component: Layout,
+      path: "/",
+      children: routes,
+    },
+  ],
+  { basename: BASE_URL }
+);
 
 function App() {
   return (
