@@ -1,5 +1,5 @@
 .select-wrapper {
-  @apply grid items-center;
+  @apply inline-grid items-center;
 
   .select {
     @apply row-start-1 col-start-1;

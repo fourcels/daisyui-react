@@ -1,8 +1,16 @@
 {
   "name": "daisyui-react",
   "private": false,
-  "version": "0.0.0",
+  "version": "0.5.0",
+  "homepage": "https://github.com/fourcels/daisyui-react",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fourcels/daisyui-react.git"
+  },
   "type": "module",
+  "main": "dist/index.js",
+  "module": "components/index.ts",
+  "sideEffects": false,
   "scripts": {
     "dev": "vite",
     "build": "tsup",
@@ -82,17 +90,5 @@
     "vfile-matter": "^5.0.0",
     "vite": "^5.2.11",
     "vitest": "^1.6.0"
-  },
-  "tsup": {
-    "entry": [
-      "components/index.ts"
-    ],
-    "splitting": true,
-    "sourcemap": true,
-    "clean": true,
-    "dts": true,
-    "format": [
-      "esm"
-    ]
   }
 }
