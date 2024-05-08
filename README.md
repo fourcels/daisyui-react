@@ -1,6 +1,6 @@
 # daisyui-react
 
-[![][version]](https://www.npmjs.com/package/daisyui)
+[![][version]](https://www.npmjs.com/package/@fourcels/daisyui-react)
 
 daisyUI components built with React, Typescript and TailwindCSS [See docs](https://fourcels.github.io/daisyui-react/)
 
