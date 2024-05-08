@@ -1,5 +1,7 @@
 # daisyui-react
 
+[![][version]](https://www.npmjs.com/package/daisyui)
+
 daisyUI components built with React, Typescript and TailwindCSS [See docs](https://fourcels.github.io/daisyui-react/)
 
 ## Install
