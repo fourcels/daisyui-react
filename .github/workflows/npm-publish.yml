@@ -25,6 +25,6 @@ jobs:
       - run: pnpm install
       - run: pnpm build
       - run: pnpm version ${{github.ref_name}} --no-git-tag-version --allow-same-version
-      - run: pnpm publish
+      - run: pnpm publish --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
