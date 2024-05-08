@@ -30,3 +30,5 @@ module.exports = {
 ```tsx
 import "@fourcels/daisyui-react/dist/index.css";
 ```
+
+[version]: https://badgen.net/github/tag/fourcels/daisyui-react?label=Version&color=1AD1A5
