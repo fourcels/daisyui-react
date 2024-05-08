@@ -1,4 +1,4 @@
-import { RouteObject } from "react-router";
+import { Navigate, RouteObject } from "react-router";
 import { Content } from "./components/Content";
 import { kebabCase } from "lodash";
 
@@ -63,7 +63,7 @@ function getRoutes() {
   const routes: RouteObject[] = [
     {
       index: true,
-      lazy: () => import("./pages/Home"),
+      element: <Navigate to="/docs/install" />,
     },
     {
       path: "/docs",
