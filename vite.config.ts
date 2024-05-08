@@ -17,7 +17,6 @@ import { componentMatter } from "./plugins/componentMatter";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/daisyui-react/",
   plugins: [
     mdx({
       remarkPlugins: [

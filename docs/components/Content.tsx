@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { debounce, throttle } from "lodash";
+import { throttle } from "lodash";
 import "./Content.css";
 
 let animate = false;
@@ -96,14 +96,9 @@ const Toc = React.forwardRef<TocRef, TocProps>(({ toc, className }, ref) => {
   const [active, setActive] = useState(0);
   const timer = useRef(0);
 
-  const setActiveAnchor = React.useCallback(
-    (idx: number) => {
-      setActive(idx);
-      const elem = toc[idx];
-      history.replaceState(null, "", `#${elem.id}`);
-    },
-    [toc]
-  );
+  const setActiveAnchor = React.useCallback((idx: number) => {
+    setActive(idx);
+  }, []);
 
   React.useImperativeHandle(
     ref,

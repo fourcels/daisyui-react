@@ -85,7 +85,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <label
         className={twMerge(
-          "input-label",
+          "input input-label",
           size && sizes[size],
           color && colors[color],
           bordered && "input-bordered",

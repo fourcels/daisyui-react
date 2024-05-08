@@ -3,9 +3,9 @@ title: Install
 description: How to install daisyUI as a Tailwind CSS plugin?
 ---
 
-You need [Node.js](https://nodejs.org/en/download/) and [Tailwind CSS](https://tailwindcss.com/docs/installation/) installed.
+## Install
 
-## Install daisyUI
+Make sure you've installed [TailwindCSS](https://tailwindcss.com/docs/installation) and [daisyUI](https://daisyui.com/docs/install/).
 
 import { Tabs } from "daisyui-react";
 
@@ -13,31 +13,41 @@ import { Tabs } from "daisyui-react";
   <Tabs.Tab label="npm">
 
 ```
-npm i -D daisyui daisyui-react
+npm i -D @fourcels/daisyui-react tailwind-merge
 ```
 
   </Tabs.Tab>
   <Tabs.Tab label="yarn">
 
 ```
-yarn add -D daisyui daisyui-react
+yarn add -D @fourcels/daisyui-react tailwind-merge
 ```
 
   </Tabs.Tab>
   <Tabs.Tab label="pnpm">
 
 ```
-pnpm add -D daisyui daisyui-react
+pnpm add -D @fourcels/daisyui-react tailwind-merge
 ```
 
   </Tabs.Tab>
 </Tabs>
 
-## Add daisyUI to your `tailwind.config.js` files
+## Add daisyui-react to your `tailwind.config.js` files
 
-```ts
+```js
 module.exports = {
   //...
+  content: [
+    //...
+    "node_modules/@fourcels/daisyui-react/dist/**/*.js",
+  ],
   plugins: [require("daisyui")],
 };
+```
+
+## Add styles to your `main.tsx` files
+
+```tsx
+import "@fourcels/daisyui-react/dist/index.css";
 ```
